@@ -25,6 +25,8 @@ use Yii;
  */
 class Category extends \yii\db\ActiveRecord
 {
+    public static $treeList = [];
+
     /**
      * @inheritdoc
      */
@@ -86,6 +88,35 @@ class Category extends \yii\db\ActiveRecord
             $model = Model::findOne($this->modelid);
             return $model['name'];
         }
+    }
+
+    public function getData()
+    {
+        $data = self::find()->select('id,parentid,level,catname')->asArray()->all();
+        if($data){
+            $data = self::tree($data);
+        }
+        return $data;
+    }
+
+    private static function tree(&$data, $parent_id = 0, $level = 1)
+    {
+        if($data){
+            foreach ($data as $key => $val){
+                if($val['parentid'] == $parent_id){
+                    echo 'a';
+                    //$input = strlen($val['catname'])+$level;	// 计算填充长度
+                    //$cat_name = str_pad($val['catname'], $input, "--", STR_PAD_LEFT); // 填充前缀
+                    //$value['level'] = $level;
+                    self::$treeList [] = $val;
+                    unset($data[$key]);
+                    self::tree($data,$val['parentid'],$level+1);
+                }
+            }
+        }
+        echo '<pre>';
+        print_r(self::$treeList);exit;
+        return self::$treeList;
     }
 
 }
