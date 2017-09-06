@@ -35,13 +35,15 @@ class CategoryController extends Controller
      */
     public function actionIndex()
     {
-        //header('<meta http-equiv="Content-Type" content="text/html; charset=utf-8">');
+        header('<meta http-equiv="Content-Type" content="text/html; charset=utf-8">');
         $model = new Category();
+        //$searchModel = new CategorySearch();
         //$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-        $dataProvider = $model->getData();
+        $data = $model->getList();
 
         return $this->render('index', [
-            'dataProvider' => $dataProvider,
+            'model' => $model,
+            'data' => $data
         ]);
     }
 

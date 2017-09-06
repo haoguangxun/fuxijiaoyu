@@ -80,42 +80,60 @@ class Category extends \yii\db\ActiveRecord
     /**
      * 获得栏目类型与所属模型
      */
-    public function getModelType()
+    public static function getModelType($type,$modelid)
     {
-        if($this->type == 1){
+        if($type == 1){
             return '单网页';
         }else{
-            $model = Model::findOne($this->modelid);
+            $model = Model::findOne($modelid);
             return $model['name'];
         }
     }
 
-    public function getData()
+    /**
+     * 获取分类列表
+     * @return array
+     */
+    public function getList()
     {
-        $data = self::find()->select('id,parentid,level,catname')->asArray()->all();
+        $num = self::find()->where('parentid=0')->asArray()->count();
+        $data = self::find()->select('id,parentid,catname,type,modelid,sort,ismenu')->orderBy('sort asc')->asArray()->all();
+        //echo '<pre>';
+        //print_r($data);
+        $arr = [];
         if($data){
-            $data = self::tree($data);
+            for($i=1;$i<=$num;$i++){
+                $res_data = array_merge($arr,self::tree($data));
+            }
         }
-        return $data;
+        //print_r($res_data);exit;
+        return $res_data;
     }
 
+    /**
+     * 生成树形结构
+     * @param $data
+     * @param int $parent_id
+     * @param int $level
+     * @return array
+     */
     private static function tree(&$data, $parent_id = 0, $level = 1)
     {
+        //echo 'level:'.$level."<br>";
         if($data){
             foreach ($data as $key => $val){
+                //echo $val['parentid'].'-'.$parent_id."<br>";
                 if($val['parentid'] == $parent_id){
-                    echo 'a';
-                    //$input = strlen($val['catname'])+$level;	// 计算填充长度
-                    //$cat_name = str_pad($val['catname'], $input, "--", STR_PAD_LEFT); // 填充前缀
-                    //$value['level'] = $level;
-                    self::$treeList [] = $val;
+                    $val['catname'] = str_repeat('| -- ',$level-1).$val['catname'];
+                    $val['level'] = $level;
+                    self::$treeList[] = $val;
                     unset($data[$key]);
-                    self::tree($data,$val['parentid'],$level+1);
+                    self::tree($data,$val['id'],$level+1);
                 }
             }
         }
-        echo '<pre>';
-        print_r(self::$treeList);exit;
+
+        //print_r(self::$treeList);exit;
         return self::$treeList;
     }
 
