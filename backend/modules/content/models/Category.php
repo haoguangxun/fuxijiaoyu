@@ -103,7 +103,7 @@ class Category extends \yii\db\ActiveRecord
         $arr = [];
         if($data){
             for($i=1;$i<=$num;$i++){
-                $res_data = array_merge($arr,self::tree($data));
+                $res_data = array_merge($arr,self::getTreeList($data));
             }
         }
         //print_r($res_data);exit;
@@ -117,18 +117,18 @@ class Category extends \yii\db\ActiveRecord
      * @param int $level
      * @return array
      */
-    private static function tree(&$data, $parent_id = 0, $level = 1)
+    private static function getTreeList(&$data, $parent_id = 0, $level = 1)
     {
         //echo 'level:'.$level."<br>";
         if($data){
             foreach ($data as $key => $val){
                 //echo $val['parentid'].'-'.$parent_id."<br>";
                 if($val['parentid'] == $parent_id){
-                    $val['catname'] = str_repeat('| -- ',$level-1).$val['catname'];
+                    $val['catname'] = str_repeat('| ---- ',$level-1).$val['catname'];
                     $val['level'] = $level;
                     self::$treeList[] = $val;
                     unset($data[$key]);
-                    self::tree($data,$val['id'],$level+1);
+                    self::getTreeList($data,$val['id'],$level+1);
                 }
             }
         }
@@ -137,4 +137,27 @@ class Category extends \yii\db\ActiveRecord
         return self::$treeList;
     }
 
+    /**
+     * 根据子类id查找出所有父级分类信息
+     * @param $arr
+     * @param $id
+     * @return array
+     */
+    public static function getParentList($arr,$pid){
+        //$arr 所有分类列表
+        //$id 父级分类id
+        static $list=array();
+        foreach($arr as $val){
+
+            if($val['id']== $pid){//父级分类id等于所查找的id
+                $list[]=$val;
+
+                if($val['parentid']>0){
+                    self::getParentList($arr,$val['parentid']);
+
+                }
+            }
+        }
+        return $list;
+    }
 }
