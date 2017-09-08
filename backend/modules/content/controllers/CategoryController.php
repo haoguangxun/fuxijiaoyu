@@ -41,6 +41,13 @@ class CategoryController extends Controller
         //$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         $data = $model->getList();
 
+        var_dump($data);
+
+        $data2 = $model->getParentList();
+        var_dump($data2);
+
+        $data3 = $model->getSonList();
+        var_dump($data3);exit;
         return $this->render('index', [
             'model' => $model,
             'data' => $data

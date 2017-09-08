@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use backend\modules\content\models\Model;
 
 /* @var $this yii\web\View */
 /* @var $model backend\modules\content\models\Category */
@@ -12,15 +13,16 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'modelid')->textInput() ?>
+    <?= $form->field($model, 'modelid')->dropdownList(
+        Model::find()->select(['name', 'modelid'])->indexBy('modelid')->column(),
+        ['prompt'=>'选择模型']
+    ) ?>
 
+    <?= $form->field($model, 'parentid')->dropdownList(
+        \backend\modules\content\models\Category::getTreeList(),
+        ['prompt'=>'选择模型']
+    ) ?>
     <?= $form->field($model, 'parentid')->textInput() ?>
-
-    <?= $form->field($model, 'arrparentid')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'child')->textInput() ?>
-
-    <?= $form->field($model, 'arrchildid')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'catname')->textInput(['maxlength' => true]) ?>
 

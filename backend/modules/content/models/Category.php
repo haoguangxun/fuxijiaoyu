@@ -3,6 +3,7 @@
 namespace backend\modules\content\models;
 
 use Yii;
+use common\helper\Tree;
 
 /**
  * This is the model class for table "{{%category}}".
@@ -94,7 +95,7 @@ class Category extends \yii\db\ActiveRecord
      * 获取分类列表
      * @return array
      */
-    public function getList()
+    public static function getList($modelid = 0)
     {
         $num = self::find()->where('parentid=0')->asArray()->count();
         $data = self::find()->select('id,parentid,catname,type,modelid,sort,ismenu')->orderBy('sort asc')->asArray()->all();
@@ -102,39 +103,28 @@ class Category extends \yii\db\ActiveRecord
         //print_r($data);
         $arr = [];
         if($data){
-            for($i=1;$i<=$num;$i++){
-                $res_data = array_merge($arr,self::getTreeList($data));
-            }
+            /*for($i=1;$i<=$num;$i++){
+                $res_data = array_merge($arr,Tree::getTree($data));
+            }*/
+
+            $tree = new Tree();
+            $tree->tree($data);
+            $str = "<tr>
+						<td style='text-align:center'><input name='listorder[\$id]' type='text' size='3' value='\$sort'></td>
+						<td style='text-align:center'>\$id</td>
+						<td style='text-align:left'>\$spacer<a href='?mod=\$modelid&action=edit&catid=\$id&parentid=\$parentid'>\$catname</a></td>
+					</tr>";
+            $res_data = $tree->get_tree(0,$str);
         }
         //print_r($res_data);exit;
-        return $res_data;
-    }
 
-    /**
-     * 生成树形结构
-     * @param $data
-     * @param int $parent_id
-     * @param int $level
-     * @return array
-     */
-    private static function getTreeList(&$data, $parent_id = 0, $level = 1)
-    {
-        //echo 'level:'.$level."<br>";
-        if($data){
-            foreach ($data as $key => $val){
-                //echo $val['parentid'].'-'.$parent_id."<br>";
-                if($val['parentid'] == $parent_id){
-                    $val['catname'] = str_repeat('| ---- ',$level-1).$val['catname'];
-                    $val['level'] = $level;
-                    self::$treeList[] = $val;
-                    unset($data[$key]);
-                    self::getTreeList($data,$val['id'],$level+1);
-                }
+        /*if($modelid){
+            foreach($res_data as $key => $val){
+
             }
-        }
+        }*/
 
-        //print_r(self::$treeList);exit;
-        return self::$treeList;
+        return $res_data;
     }
 
     /**
@@ -143,21 +133,21 @@ class Category extends \yii\db\ActiveRecord
      * @param $id
      * @return array
      */
-    public static function getParentList($arr,$pid){
-        //$arr 所有分类列表
-        //$id 父级分类id
-        static $list=array();
-        foreach($arr as $val){
+    public static function getParentList($id = 0){
+        $data = self::find()->select('id,parentid,catname')->orderBy('sort asc')->asArray()->all();
+        $parentList = Tree::getParent($data,$id);
+        return $parentList;
+    }
 
-            if($val['id']== $pid){//父级分类id等于所查找的id
-                $list[]=$val;
-
-                if($val['parentid']>0){
-                    self::getParentList($arr,$val['parentid']);
-
-                }
-            }
-        }
-        return $list;
+    /**
+     * 根据父id获得所有下级子类id的数据
+     * @param $arr
+     * @param $id
+     * @return array
+     */
+    public static function getSonList($id = 0){
+        $data = self::find()->select('id,parentid,catname')->orderBy('sort asc')->asArray()->all();
+        $sonList = Tree::getSon($data,$id);
+        return $sonList;
     }
 }
