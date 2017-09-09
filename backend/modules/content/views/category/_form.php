@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use backend\modules\content\models\Model;
+use backend\modules\content\models\Category;
 
 /* @var $this yii\web\View */
 /* @var $model backend\modules\content\models\Category */
@@ -13,37 +14,37 @@ use backend\modules\content\models\Model;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'modelid')->dropdownList(
+    <?= $form->field($model, 'modelid')->label('模型')->dropdownList(
         Model::find()->select(['name', 'modelid'])->indexBy('modelid')->column(),
         ['prompt'=>'选择模型']
     ) ?>
 
-    <?= $form->field($model, 'parentid')->dropdownList(
-        \backend\modules\content\models\Category::getTreeList(),
-        ['prompt'=>'选择模型']
+    <?= $form->field($model, 'parentid')->label('所属分类')->dropdownList(
+        Category::getSelectList(),
+        ['prompt'=>'选择所属分类']
     ) ?>
-    <?= $form->field($model, 'parentid')->textInput() ?>
 
     <?= $form->field($model, 'catname')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'pic')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'keywords')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'description')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'parentdir')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'catdir')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'pic')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'url')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'setting')->textarea(['rows' => 6]) ?>
-
     <?= $form->field($model, 'sort')->textInput() ?>
 
-    <?= $form->field($model, 'ismenu')->textInput() ?>
+    <?= $form->field($model, 'ismenu')->radioList(
+        [
+            '1' => '显示',
+            '0' => '不显示'
+        ]
+    ) ?>
 
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ? '添加' : '修改', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

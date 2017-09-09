@@ -169,7 +169,7 @@ class Tree
 		if($data){
 			foreach ($data as $key => $val){
 				if($val['parentid'] == $parent_id){
-					if($val['parentid'] > 0) $spacer = str_repeat('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',$level-1).'|---- ';
+					if($val['parentid'] > 0) $spacer = str_repeat(' |---- ',$level-1);
 					$val['catname'] = $spacer.$val['catname'];
 					$val['level'] = $level;
 					$treeList[] = $val;

@@ -42,12 +42,13 @@ class Category extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['type', 'modelid', 'parentid', 'catname', 'keywords', 'description'], 'required'],
             [['type', 'modelid', 'parentid', 'child', 'sort', 'ismenu'], 'integer'],
-            [['setting'], 'required'],
             [['setting'], 'string'],
             [['arrparentid', 'arrchildid'], 'string', 'max' => 200],
             [['catname', 'catdir'], 'string', 'max' => 30],
             [['pic', 'parentdir', 'url'], 'string', 'max' => 100],
+            [['keywords'], 'string', 'max' => 50],
             [['description'], 'string', 'max' => 500],
         ];
     }
@@ -67,6 +68,7 @@ class Category extends \yii\db\ActiveRecord
             'arrchildid' => '所有子栏目ID',
             'catname' => '栏目名称',
             'pic' => '图片',
+            'keywords' => '关键字',
             'description' => '描述',
             'parentdir' => '父目录',
             'catdir' => '目录',
@@ -91,40 +93,63 @@ class Category extends \yii\db\ActiveRecord
         }
     }
 
+    private static function getData()
+    {
+        return self::find()->select('id,parentid,catname,type,modelid,sort,ismenu')->orderBy('sort asc')->asArray()->all();
+    }
+
     /**
-     * 获取分类列表
+     * 获取树型分类列表
      * @return array
      */
-    public static function getList($modelid = 0)
+    public static function getTreeList()
     {
         $num = self::find()->where('parentid=0')->asArray()->count();
-        $data = self::find()->select('id,parentid,catname,type,modelid,sort,ismenu')->orderBy('sort asc')->asArray()->all();
+        $data = self::getData();
         //echo '<pre>';
         //print_r($data);
         $arr = [];
         if($data){
-            /*for($i=1;$i<=$num;$i++){
+            for($i=1;$i<=$num;$i++){
                 $res_data = array_merge($arr,Tree::getTree($data));
-            }*/
+            }
 
-            $tree = new Tree();
+            /*$tree = new Tree();
             $tree->tree($data);
             $str = "<tr>
 						<td style='text-align:center'><input name='listorder[\$id]' type='text' size='3' value='\$sort'></td>
 						<td style='text-align:center'>\$id</td>
 						<td style='text-align:left'>\$spacer<a href='?mod=\$modelid&action=edit&catid=\$id&parentid=\$parentid'>\$catname</a></td>
 					</tr>";
-            $res_data = $tree->get_tree(0,$str);
+            $res_data = $tree->get_tree(0,$str);*/
         }
         //print_r($res_data);exit;
-
-        /*if($modelid){
-            foreach($res_data as $key => $val){
-
-            }
-        }*/
-
         return $res_data;
+    }
+
+    /**
+     * 获取下拉菜单树型分类列表
+     * @return array
+     */
+    public static function getSelectList()
+    {
+        $num = self::find()->where('parentid=0')->asArray()->count();
+        $data = self::getData();
+        //echo '<pre>';
+        //print_r($data);
+        $arr = [];
+        if($data){
+            for($i=1;$i<=$num;$i++){
+                $res_data = array_merge($arr,Tree::getTree($data));
+            }
+            foreach ($res_data as $key => $val) {
+                $list[$val['id']] = $val['catname'];
+            }
+
+        }
+        //print_r($res_data);exit;
+        //print_r($list);exit;
+        return $list;
     }
 
     /**
@@ -134,7 +159,7 @@ class Category extends \yii\db\ActiveRecord
      * @return array
      */
     public static function getParentList($id = 0){
-        $data = self::find()->select('id,parentid,catname')->orderBy('sort asc')->asArray()->all();
+        $data = self::getData();
         $parentList = Tree::getParent($data,$id);
         return $parentList;
     }
@@ -146,7 +171,7 @@ class Category extends \yii\db\ActiveRecord
      * @return array
      */
     public static function getSonList($id = 0){
-        $data = self::find()->select('id,parentid,catname')->orderBy('sort asc')->asArray()->all();
+        $data = self::getData();
         $sonList = Tree::getSon($data,$id);
         return $sonList;
     }
