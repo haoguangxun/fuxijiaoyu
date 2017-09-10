@@ -14,6 +14,13 @@ use backend\modules\content\models\Category;
 
     <?php $form = ActiveForm::begin(); ?>
 
+    <?= $form->field($model, 'type')->label('类型')->dropdownList(
+        [
+            '2'=>'栏目',
+            '1'=>'单网页'
+        ]
+    ) ?>
+
     <?= $form->field($model, 'modelid')->label('模型')->dropdownList(
         Model::find()->select(['name', 'modelid'])->indexBy('modelid')->column(),
         ['prompt'=>'选择模型']
