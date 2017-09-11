@@ -45,13 +45,13 @@ class CourseSection extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'name' => 'Name',
-            'subtitle' => 'Subtitle',
-            'video' => 'Video',
-            'url' => 'Url',
-            'template' => 'Template',
-            'audition' => 'Audition',
+            'id' => '课程ID',
+            'name' => '小节名称',
+            'subtitle' => '副标题',
+            'video' => '视频地址',
+            'url' => '链接地址',
+            'template' => '模板',
+            'audition' => '是否可试听：0不可以，1可以',
         ];
     }
 }
