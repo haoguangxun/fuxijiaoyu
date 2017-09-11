@@ -43,11 +43,11 @@ class NewsData extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'content' => 'Content',
-            'template' => 'Template',
-            'copyfrom' => 'Copyfrom',
-            'click' => 'Click',
+            'id' => '文章ID',
+            'content' => '内容',
+            'template' => '模板',
+            'copyfrom' => '来源',
+            'click' => '点击量',
         ];
     }
 }

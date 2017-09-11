@@ -45,13 +45,13 @@ class CourseData extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'content' => 'Content',
-            'syllabus' => 'Syllabus',
-            'data' => 'Data',
-            'material' => 'Material',
-            'template' => 'Template',
-            'click' => 'Click',
+            'id' => '课程ID',
+            'content' => '课程详情',
+            'syllabus' => '课程大纲',
+            'data' => '资料下载地址',
+            'material' => '电子教材地址',
+            'template' => '模板',
+            'click' => '点击量',
         ];
     }
 }

@@ -52,17 +52,17 @@ class Teacher extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'catid' => 'Catid',
-            'name' => 'Name',
-            'subtitle' => 'Subtitle',
-            'thumb' => 'Thumb',
-            'keywords' => 'Keywords',
-            'description' => 'Description',
-            'posids' => 'Posids',
-            'url' => 'Url',
-            'sort' => 'Sort',
-            'addtime' => 'Addtime',
-            'updatetime' => 'Updatetime',
+            'catid' => '栏目ID',
+            'name' => '教师姓名',
+            'subtitle' => '副标题',
+            'thumb' => '缩略图',
+            'keywords' => '关键字',
+            'description' => '描述',
+            'posids' => '是否有推荐位',
+            'url' => '链接地址',
+            'sort' => '排序',
+            'addtime' => '添加时间',
+            'updatetime' => '更新时间',
         ];
     }
 }

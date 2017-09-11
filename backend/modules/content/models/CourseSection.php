@@ -51,7 +51,7 @@ class CourseSection extends \yii\db\ActiveRecord
             'video' => '视频地址',
             'url' => '链接地址',
             'template' => '模板',
-            'audition' => '是否可试听：0不可以，1可以',
+            'audition' => '是否可试听',
         ];
     }
 }

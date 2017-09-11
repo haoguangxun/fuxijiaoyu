@@ -40,9 +40,9 @@ class TeacherData extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'content' => 'Content',
-            'template' => 'Template',
+            'id' => '教师ID',
+            'content' => '教师介绍',
+            'template' => '模板',
         ];
     }
 }

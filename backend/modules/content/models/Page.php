@@ -51,16 +51,16 @@ class Page extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'catid' => 'Catid',
-            'title' => 'Title',
-            'subtitle' => 'Subtitle',
-            'thumb' => 'Thumb',
-            'video' => 'Video',
-            'keywords' => 'Keywords',
-            'description' => 'Description',
-            'content' => 'Content',
-            'template' => 'Template',
-            'updatetime' => 'Updatetime',
+            'catid' => '栏目ID',
+            'title' => '标题',
+            'subtitle' => '副标题',
+            'thumb' => '缩略图',
+            'video' => '视频地址',
+            'keywords' => '关键字',
+            'description' => '描述',
+            'content' => '内容',
+            'template' => '模板',
+            'updatetime' => '更新时间',
         ];
     }
 }

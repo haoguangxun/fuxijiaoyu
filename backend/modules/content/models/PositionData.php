@@ -43,13 +43,13 @@ class PositionData extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'catid' => 'Catid',
-            'posid' => 'Posid',
-            'modelid' => 'Modelid',
-            'thumb' => 'Thumb',
-            'data' => 'Data',
-            'sort' => 'Sort',
+            'id' => '信息ID',
+            'catid' => '栏目ID',
+            'posid' => '推荐位ID',
+            'modelid' => '模型ID',
+            'thumb' => '是否有缩略图',
+            'data' => '数据',
+            'sort' => '排序',
         ];
     }
 }

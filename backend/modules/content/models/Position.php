@@ -41,12 +41,12 @@ class Position extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'posid' => 'Posid',
-            'modelid' => 'Modelid',
-            'catid' => 'Catid',
-            'name' => 'Name',
-            'maxnum' => 'Maxnum',
-            'sort' => 'Sort',
+            'posid' => '推荐位ID',
+            'modelid' => '模型ID',
+            'catid' => '栏目ID',
+            'name' => '推荐位名称',
+            'maxnum' => '最大保存条数',
+            'sort' => '排序',
         ];
     }
 }
