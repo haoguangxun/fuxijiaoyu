@@ -26,9 +26,8 @@ use backend\modules\content\models\Category;
         ['prompt'=>'选择模型']
     ) ?>
 
-    <?= $form->field($model, 'parentid')->label('所属分类')->dropdownList(
-        Category::getSelectList(),
-        ['prompt'=>'选择所属分类']
+    <?= $form->field($model, 'parentid')->label('所属栏目')->dropdownList(
+        Category::getSelectList()
     ) ?>
 
     <?= $form->field($model, 'catname')->textInput(['maxlength' => true]) ?>

@@ -42,7 +42,7 @@ class Category extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['type', 'modelid', 'parentid', 'catname', 'keywords', 'description'], 'required'],
+            [['type', 'modelid', 'catname', 'keywords', 'description'], 'required'],
             [['type', 'modelid', 'parentid', 'child', 'sort', 'ismenu'], 'integer'],
             [['setting'], 'string'],
             [['arrparentid', 'arrchildid'], 'string', 'max' => 200],
@@ -142,6 +142,9 @@ class Category extends \yii\db\ActiveRecord
             for($i=1;$i<=$num;$i++){
                 $res_data = array_merge($arr,Tree::getTree($data));
             }
+            $list = [
+                0 => '顶级栏目',
+            ];
             foreach ($res_data as $key => $val) {
                 $list[$val['id']] = $val['catname'];
             }
