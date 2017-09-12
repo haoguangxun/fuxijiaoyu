@@ -31,7 +31,7 @@ class CourseSection extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id', 'audition'], 'integer'],
+            [['id', 'courseid', 'audition'], 'integer'],
             [['name'], 'required'],
             [['name', 'subtitle'], 'string', 'max' => 80],
             [['video', 'url'], 'string', 'max' => 100],
@@ -45,7 +45,8 @@ class CourseSection extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => '课程ID',
+            'id' => 'ID',
+            'courseid' => '课程ID',
             'name' => '小节名称',
             'subtitle' => '副标题',
             'video' => '视频地址',

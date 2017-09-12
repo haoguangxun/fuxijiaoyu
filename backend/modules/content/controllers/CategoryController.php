@@ -4,7 +4,6 @@ namespace backend\modules\content\controllers;
 
 use Yii;
 use backend\modules\content\models\Category;
-use backend\modules\content\models\search\CategorySearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -35,34 +34,12 @@ class CategoryController extends Controller
      */
     public function actionIndex()
     {
-        header('<meta http-equiv="Content-Type" content="text/html; charset=utf-8">');
         $model = new Category();
-        //$searchModel = new CategorySearch();
-        //$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         $data = $model->getTreeList();
 
-        /*var_dump($data);
-
-        $data2 = $model->getParentList();
-        var_dump($data2);
-
-        $data3 = $model->getSonList();
-        var_dump($data3);exit;*/
         return $this->render('index', [
             'model' => $model,
             'data' => $data
-        ]);
-    }
-
-    /**
-     * Displays a single Category model.
-     * @param integer $id
-     * @return mixed
-     */
-    public function actionView($id)
-    {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
         ]);
     }
 
