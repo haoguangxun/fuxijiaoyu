@@ -17,6 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?= Html::a('添加栏目', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('添加单网页', ['create-page'], ['class' => 'btn btn-success']) ?>
     </p>
     <table class="table table-striped table-bordered">
         <thead>
@@ -41,9 +42,13 @@ $this->params['breadcrumbs'][] = $this->title;
                     <td><?=Category::getModelType($val['type'],$val['modelid']);?></td>
                     <td><?=$val['ismenu']==1 ? '是' : '否';?></td>
                     <td>
-                        <a href="/content/category/view?id=<?=$val['id']?>" title="View" aria-label="View" data-pjax="0"><span class="glyphicon glyphicon-eye-open"></span></a>
-                        <a href="/content/category/update?id=<?=$val['id']?>" title="Update" aria-label="Update" data-pjax="0"><span class="glyphicon glyphicon-pencil"></span></a>
-                        <a href="/content/category/delete?id=<?=$val['id']?>" title="Delete" aria-label="Delete" data-pjax="0" data-confirm="Are you sure you want to delete this item?" data-method="post"><span class="glyphicon glyphicon-trash"></span></a>
+                        <?php if($val['type']==1){?>
+                            <a href="/fuxijiaoyu/backend/web/content/category/update-page?id=<?=$val['id']?>" title="Update" aria-label="Update" data-pjax="0"><span class="glyphicon glyphicon-pencil"></span></a>
+                            <a href="/fuxijiaoyu/backend/web/content/category/delete-page?id=<?=$val['id']?>" title="Delete" aria-label="Delete" data-pjax="0" data-confirm="Are you sure you want to delete this item?" data-method="post"><span class="glyphicon glyphicon-trash"></span></a>
+                        <?php }else{?>
+                            <a href="/fuxijiaoyu/backend/web/content/category/update?id=<?=$val['id']?>" title="Update" aria-label="Update" data-pjax="0"><span class="glyphicon glyphicon-pencil"></span></a>
+                            <a href="/fuxijiaoyu/backend/web/content/category/delete?id=<?=$val['id']?>" title="Delete" aria-label="Delete" data-pjax="0" data-confirm="Are you sure you want to delete this item?" data-method="post"><span class="glyphicon glyphicon-trash"></span></a>
+                        <?php }?>
                     </td>
                 </tr>
         <?php

@@ -7,38 +7,36 @@ use yii\grid\GridView;
 /* @var $searchModel backend\modules\content\models\search\NewsSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'News';
+$this->title = '文章管理';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="news-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create News', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('添加文章', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
 
             'id',
             'catid',
             'title',
-            'subtitle',
-            'thumb',
+            // 'subtitle',
+            // 'thumb',
             // 'video',
             // 'keywords',
             // 'description',
             // 'posids',
             // 'url:url',
-            // 'sort',
+            'sort',
             // 'status',
             // 'islink',
-            // 'author',
-            // 'addtime',
+            'author',
+            'addtime',
             // 'updatetime',
 
             ['class' => 'yii\grid\ActionColumn'],

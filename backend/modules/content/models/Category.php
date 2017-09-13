@@ -42,7 +42,7 @@ class Category extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['type', 'modelid', 'catname', 'keywords', 'description'], 'required'],
+            [['type', 'catname', 'keywords', 'description'], 'required'],
             [['type', 'modelid', 'parentid', 'child', 'sort', 'ismenu'], 'integer'],
             [['setting'], 'string'],
             [['arrparentid', 'arrchildid'], 'string', 'max' => 200],
@@ -88,7 +88,7 @@ class Category extends \yii\db\ActiveRecord
         if($type == 1){
             return '单网页';
         }else{
-            $model = Model::findOne($modelid);
+            $model = Models::findOne($modelid);
             return $model['name'];
         }
     }

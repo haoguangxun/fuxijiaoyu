@@ -2,6 +2,7 @@
 
 namespace backend\modules\content\controllers;
 
+use backend\modules\content\models\Page;
 use Yii;
 use backend\modules\content\models\Category;
 use yii\web\Controller;
@@ -108,4 +109,100 @@ class CategoryController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+
+
+    /**
+     * Creates a new Category model.
+     * If creation is successful, the browser will be redirected to the 'view' page.
+     * @return mixed
+     */
+    public function actionCreatePage()
+    {
+        $category = new Category();
+        $page = new Page();
+
+        if (!$category) {
+            throw new NotFoundHttpException("The category was not found.");
+        }
+        if (!$page) {
+            throw new NotFoundHttpException("The category has no page.");
+        }
+
+        if ($category->load(Yii::$app->request->post()) && $page->load(Yii::$app->request->post())) {
+            $page->thumb = $category->pic;
+            $page->keywords = $category->keywords;
+            $page->description = $category->description;
+            $page->updatetime = time();
+
+            $isValid = $category->validate();
+            $isValid = $page->validate() && $isValid;
+            if ($isValid) {
+                $category->save(false);
+                $page->catid = $category->attributes['id'];
+                $page->save(false);
+                return $this->redirect(['index']);
+            }
+        }
+
+        return $this->render('create_page', [
+            'category' => $category,
+            'page' => $page,
+        ]);
+
+    }
+
+    /**
+     * Updates an existing Category model.
+     * If update is successful, the browser will be redirected to the 'view' page.
+     * @param integer $id
+     * @return mixed
+     */
+    public function actionUpdatePage($id)
+    {
+        $category = $this->findModel($id);
+        $page = Page::findOne($id);
+
+        if (!$category) {
+            throw new NotFoundHttpException("The category was not found.");
+        }
+        if (!$page) {
+            throw new NotFoundHttpException("The category has no page.");
+        }
+
+        if ($category->load(Yii::$app->request->post()) && $page->load(Yii::$app->request->post())) {
+            $page->thumb = $category->pic;
+            $page->keywords = $category->keywords;
+            $page->description = $category->description;
+            $page->updatetime = time();
+
+            $isValid = $category->validate();
+            $isValid = $page->validate() && $isValid;
+            if ($isValid) {
+                $category->save(false);
+                $page->save(false);
+                return $this->redirect(['index']);
+            }
+        }
+
+        return $this->render('update_page', [
+            'category' => $category,
+            'page' => $page,
+        ]);
+
+    }
+
+    /**
+     * Deletes an existing Category model.
+     * If deletion is successful, the browser will be redirected to the 'index' page.
+     * @param integer $id
+     * @return mixed
+     */
+    public function actionDeletePage($id)
+    {
+        Page::findOne($id)->delete();
+        $this->findModel($id)->delete();
+
+        return $this->redirect(['index']);
+    }
+
 }

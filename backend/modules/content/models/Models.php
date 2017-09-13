@@ -19,7 +19,6 @@ use Yii;
  * @property string $show_template
  * @property string $js_template
  * @property integer $sort
- * @property integer $type
  */
 class Models extends \yii\db\ActiveRecord
 {
@@ -37,9 +36,8 @@ class Models extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['setting', 'type'], 'required'],
             [['setting'], 'string'],
-            [['addtime', 'disabled', 'sort', 'type'], 'integer'],
+            [['addtime', 'disabled', 'sort'], 'integer'],
             [['name', 'category_template', 'list_template', 'show_template', 'js_template'], 'string', 'max' => 30],
             [['description'], 'string', 'max' => 100],
             [['tablename'], 'string', 'max' => 20],
@@ -64,7 +62,6 @@ class Models extends \yii\db\ActiveRecord
             'show_template' => '内容页模板',
             'js_template' => 'JS模板',
             'sort' => '排序',
-            'type' => 'Type',
         ];
     }
 }

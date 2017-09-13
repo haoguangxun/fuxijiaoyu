@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use backend\modules\content\models\Model;
+use backend\modules\content\models\Models;
 use backend\modules\content\models\Category;
 
 /* @var $this yii\web\View */
@@ -14,15 +14,10 @@ use backend\modules\content\models\Category;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'type')->label('类型')->dropdownList(
-        [
-            '2'=>'栏目',
-            '1'=>'单网页'
-        ]
-    ) ?>
+    <?= $form->field($model, 'type')->label(false)->hiddenInput(['value'=>2]);?>
 
     <?= $form->field($model, 'modelid')->label('模型')->dropdownList(
-        Model::find()->select(['name', 'modelid'])->indexBy('modelid')->column(),
+        Models::find()->select(['name', 'modelid'])->indexBy('modelid')->orderBy(['sort'=>SORT_ASC])->column(),
         ['prompt'=>'选择模型']
     ) ?>
 

@@ -7,38 +7,42 @@ use yii\grid\GridView;
 /* @var $searchModel backend\modules\content\models\search\ModelsSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Models';
+$this->title = '模型管理';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="models-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
     <p>
-        <?= Html::a('Create Models', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('创建模型', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
+        //'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
 
+            'sort',
             'modelid',
             'name',
             'description',
             'tablename',
-            'setting:ntext',
-            // 'addtime',
+            //'setting:ntext',
+            [
+                'attribute' => 'addtime',
+                'value' => function ($model){
+                    return date('Y-m-d H:i:s',$model->addtime);
+                },
+            ],
             // 'disabled',
             // 'category_template',
             // 'list_template',
             // 'show_template',
             // 'js_template',
-            // 'sort',
-            // 'type',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'template' => '{update}{delete}',
+                'header'=>'操作',
+            ],
         ],
     ]); ?>
 </div>
