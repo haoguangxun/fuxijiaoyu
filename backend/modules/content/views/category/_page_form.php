@@ -31,9 +31,13 @@ use backend\modules\content\models\Category;
 
     <?= $form->field($category, 'description')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($page, 'content')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($page, 'content')->widget(\yii\redactor\widgets\Redactor::className(), [
+        'clientOptions' => [
+            'lang' => 'zh_cn'
+        ]
+    ]) ?>
 
-    <?= $form->field($category, 'pic')->textInput(['maxlength' => true]) ?>
+    <?//= $form->field($category, 'pic')->widget(\common\widgets\file_upload\FileUpload::className()) ?>
 
     <?= $form->field($page, 'video')->textInput(['maxlength' => true]) ?>
 
@@ -41,7 +45,7 @@ use backend\modules\content\models\Category;
 
     <!--<?/*= $form->field($page, 'template')->textInput() */?>-->
 
-    <?= $form->field($category, 'sort')->textInput() ?>
+    <?= $form->field($category, 'sort')->textInput(['value'=>0]) ?>
 
     <?= $form->field($category, 'ismenu')->radioList(
         [

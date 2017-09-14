@@ -73,6 +73,13 @@ return [
         'content' => [
             'class' => 'backend\modules\content\Module',
         ],
+        'redactor' => [
+            'class' => 'yii\redactor\RedactorModule',
+            'uploadDir' => '@webroot/uploads',  //上传目录
+            'uploadUrl' => '@web/uploads', //图片可访问地址
+            'imageAllowExtensions'=>['jpg','png','gif'],
+            'fileAllowExtensions'=>['txt','doc','docx','xls','xlsx','ppt','pptx','zip','rar'],
+        ],
 
     ],
     'defaultRoute' => 'admin',
