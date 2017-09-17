@@ -2,6 +2,8 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use common\models\Category;
+use dosamigos\datepicker\DatePicker;
 
 /* @var $this yii\web\View */
 /* @var $model backend\modules\content\models\search\NewsSearch */
@@ -13,45 +15,91 @@ use yii\widgets\ActiveForm;
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
         'method' => 'get',
+        'fieldConfig' => [
+            'labelOptions' => ['style' => 'display:none;'],
+        ]
     ]); ?>
 
-    <?= $form->field($model, 'id') ?>
+    <div class="col-lg-12">
+        <div class="col-lg-2">
+            <?= $form->field($model, 'catid')->label('所属栏目')->dropdownList(
+                Category::getSelectList(),
+                [
+                    'prompt'=>'所属栏目',
+                ]
+            ) ?>
+        </div>
 
-    <?= $form->field($model, 'catid') ?>
+        <div class="col-lg-2">
+            <?= $form->field($model, 'keyword_type')->label('搜索条件')->dropdownList(
+                [
+                    'id' => 'ID',
+                    'title' => '标题',
+                    'author' => '作者',
+                ],
+                [
+                    'prompt'=>'搜索条件',
+                ]
+            ) ?>
+        </div>
 
-    <?= $form->field($model, 'title') ?>
+        <div class="col-lg-2">
+            <?php echo $form->field($model, 'keyword')->label('输入关键字') ?>
+        </div>
 
-    <?= $form->field($model, 'subtitle') ?>
+        <div class="col-lg-2">
+            <?= DatePicker::widget([
+                'model' => $model,
+                'attribute' => 'bgDate',
+                'language' => 'zh-CN',
+                //'size' => 'sm',
+                'options' => ['style'=>'width:200px;','class'=>'bgDate'],
+                'template' => '{addon}{input}',
+                'clientOptions' => [
+                    'autoclose' => true,
+                    'format' => 'yyyy-mm-dd'
+                ]
+            ]);?>
+        </div>
 
-    <?= $form->field($model, 'thumb') ?>
-
-    <?php // echo $form->field($model, 'video') ?>
-
-    <?php // echo $form->field($model, 'keywords') ?>
-
-    <?php // echo $form->field($model, 'description') ?>
-
-    <?php // echo $form->field($model, 'posids') ?>
-
-    <?php // echo $form->field($model, 'url') ?>
-
-    <?php // echo $form->field($model, 'sort') ?>
-
-    <?php // echo $form->field($model, 'status') ?>
-
-    <?php // echo $form->field($model, 'islink') ?>
-
-    <?php // echo $form->field($model, 'author') ?>
-
-    <?php // echo $form->field($model, 'addtime') ?>
-
-    <?php // echo $form->field($model, 'updatetime') ?>
-
-    <div class="form-group">
-        <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton('Reset', ['class' => 'btn btn-default']) ?>
+        <div class="col-lg-2">
+            <?= DatePicker::widget([
+                'model' => $model,
+                'attribute' => 'edDate',
+                'language' => 'zh-CN',
+                //'size' => 'sm',
+                'options' => ['style'=>'width:200px;','class'=>'edDate'],
+                'template' => '{addon}{input}',
+                'clientOptions' => [
+                    'autoclose' => true,
+                    'format' => 'yyyy-mm-dd'
+                ]
+            ]);?>
+        </div>
+        <div class="form-group col-lg-2">
+            <?= Html::submitButton('查询', ['class' => 'btn btn-primary']) ?>
+        </div>
     </div>
+
 
     <?php ActiveForm::end(); ?>
 
 </div>
+<?php
+$js = <<<JS
+    //日期插件
+    $('.bgDate').datepicker({
+        format: 'yyyy-mm-dd',
+        autoclose: true,
+    }).on("changeDate",function(){
+        $(".edDate").datepicker("setStartDate", $(".bgDate").val());
+    });
+    $('.edDate').datepicker({
+        format: 'yyyy-mm-dd',
+        autoclose: true,
+    }).on("changeDate",function(){
+        $(".bgDate").datepicker("setEndDate", $(".edDate").val());
+    });
+JS;
+$this->registerJs($js);
+?>

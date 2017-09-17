@@ -2,9 +2,10 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use common\models\Category;
 
 /* @var $this yii\web\View */
-/* @var $model backend\modules\content\models\Teacher */
+/* @var $model common\models\Teacher */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
@@ -12,30 +13,39 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'catid')->textInput() ?>
+    <?= $form->field($model, 'name')->textInput(['maxlength' => 20, 'style' => 'width:200px']) ?>
 
-    <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'subtitle')->textInput(['maxlength' => 80, 'style' => 'width:500px']) ?>
 
-    <?= $form->field($model, 'subtitle')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'catid')->label('所属栏目')->dropdownList(
+        Category::getSelectList(),
+        ['style' => 'width:200px']
+    ) ?>
 
-    <?= $form->field($model, 'thumb')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'thumb')->widget('common\widgets\file_upload\FileUpload')?>
 
-    <?= $form->field($model, 'keywords')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'keywords')->textInput(['maxlength' => 50, 'style' => 'width:500px']) ?>
 
-    <?= $form->field($model, 'description')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'description')->textarea(['maxlength' => 200, 'rows'=> 3, 'style' => 'width:800px']) ?>
 
-    <?= $form->field($model, 'posids')->textInput() ?>
+    <?= $form->field($dataModel, 'content')->widget('common\widgets\ueditor\Ueditor',[
+        'options'=>[
+            'initialFrameWidth' => '850',
+            'initialFrameHeight' => '400',
+        ]
+    ]) ?>
 
-    <?= $form->field($model, 'url')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($dataModel, 'template')->textInput(['maxlength' => 30, 'style' => 'width:200px']) ?>
 
-    <?= $form->field($model, 'sort')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'video')->textInput(['maxlength' => 100, 'style' => 'width:500px']) ?>
 
-    <?= $form->field($model, 'addtime')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'url')->textInput(['maxlength' => 100, 'style' => 'width:500px']) ?>
 
-    <?= $form->field($model, 'updatetime')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'sort')->textInput(['value' => 0, 'style' => 'width:60px']) ?>
 
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ? '添加' : '保存', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::button('取消', ['class' => 'btn btn-default','onclick'=>'window.history.back();']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

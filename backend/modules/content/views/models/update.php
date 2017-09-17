@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model backend\modules\content\models\Models */
+/* @var $model common\models\Models */
 
 $this->title = '编辑模型: ' . $model->name;
 $this->params['breadcrumbs'][] = ['label' => '模型管理', 'url' => ['index']];

@@ -4,7 +4,7 @@ use yii\helpers\Html;
 
 
 /* @var $this yii\web\View */
-/* @var $model backend\modules\content\models\Position */
+/* @var $model common\models\Position */
 
 $this->title = 'Create Position';
 $this->params['breadcrumbs'][] = ['label' => 'Positions', 'url' => ['index']];

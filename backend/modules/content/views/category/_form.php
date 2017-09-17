@@ -2,11 +2,11 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use backend\modules\content\models\Models;
-use backend\modules\content\models\Category;
+use common\models\Models;
+use common\models\Category;
 
 /* @var $this yii\web\View */
-/* @var $model backend\modules\content\models\Category */
+/* @var $model common\models\Category */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
@@ -18,25 +18,28 @@ use backend\modules\content\models\Category;
 
     <?= $form->field($model, 'modelid')->label('模型')->dropdownList(
         Models::find()->select(['name', 'modelid'])->indexBy('modelid')->orderBy(['sort'=>SORT_ASC])->column(),
-        ['prompt'=>'选择模型']
+        ['prompt'=>'选择模型'],
+        ['style' => 'width:200px']
     ) ?>
 
     <?= $form->field($model, 'parentid')->label('所属栏目')->dropdownList(
-        Category::getSelectList()
+        Category::getSelectList(),
+        ['style' => 'width:200px']
     ) ?>
 
-    <?= $form->field($model, 'catname')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'catname')->textInput(['maxlength' => 30, 'style' => 'width:200px']) ?>
 
-    <?= $form->field($model, 'keywords')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'keywords')->textInput(['maxlength' => 50, 'style' => 'width:500px']) ?>
 
-    <?= $form->field($model, 'description')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'description')->textInput(['maxlength' => 500, 'style' => 'width:800px']) ?>
 
-    <?= $form->field($model, 'pic')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'pic')->widget('common\widgets\file_upload\FileUpload')?>
 
-    <?= $form->field($model, 'url')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'url')->textInput(['maxlength' => 100, 'style' => 'width:500px']) ?>
 
-    <?= $form->field($model, 'sort')->textInput() ?>
+    <?= $form->field($model, 'sort')->textInput(['value'=>0, 'style' => 'width:60px']) ?>
 
+    <?php $model->ismenu = 1; ?>
     <?= $form->field($model, 'ismenu')->radioList(
         [
             '1' => '显示',
@@ -46,6 +49,7 @@ use backend\modules\content\models\Category;
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? '添加' : '修改', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::button('取消', ['class' => 'btn btn-default','onclick'=>'window.history.back();']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

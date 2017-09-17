@@ -5,10 +5,10 @@ namespace backend\modules\content\models\search;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use backend\modules\content\models\Models;
+use common\models\Models;
 
 /**
- * ModelsSearch represents the model behind the search form about `backend\modules\content\models\Models`.
+ * ModelsSearch represents the model behind the search form about `common\models\Models`.
  */
 class ModelsSearch extends Models
 {
@@ -47,6 +47,13 @@ class ModelsSearch extends Models
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'pagination' => ['pageSize'=>20],
+            'sort'=>[
+                'attributes'=>['sort'],
+                'defaultOrder'=>[
+                    'sort'=>SORT_ASC,
+                ],
+            ],
         ]);
 
         $this->load($params);

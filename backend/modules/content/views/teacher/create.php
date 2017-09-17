@@ -4,18 +4,17 @@ use yii\helpers\Html;
 
 
 /* @var $this yii\web\View */
-/* @var $model backend\modules\content\models\Teacher */
+/* @var $model common\models\Teacher */
 
-$this->title = 'Create Teacher';
-$this->params['breadcrumbs'][] = ['label' => 'Teachers', 'url' => ['index']];
+$this->title = '添加教师';
+$this->params['breadcrumbs'][] = ['label' => '教师管理', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="teacher-create">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
     <?= $this->render('_form', [
         'model' => $model,
+        'dataModel' => $dataModel,
     ]) ?>
 
 </div>

@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use common\models\Category;
 
 /* @var $this yii\web\View */
 /* @var $model backend\modules\content\models\search\TeacherSearch */
@@ -15,34 +16,29 @@ use yii\widgets\ActiveForm;
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'id') ?>
+    <div class="col-lg-12">
+        <div class="col-lg-2">
+            <?= $form->field($model, 'catid')->label('所属栏目')->dropdownList(
+                Category::getSelectList(),
+                [
+                    'prompt'=>'选择',
+                ]
+            ) ?>
+        </div>
 
-    <?= $form->field($model, 'catid') ?>
+        <div class="col-lg-2">
+            <?= $form->field($model, 'id') ?>
+        </div>
 
-    <?= $form->field($model, 'name') ?>
+        <div class="col-lg-2">
+            <?= $form->field($model, 'name') ?>
+        </div>
 
-    <?= $form->field($model, 'subtitle') ?>
-
-    <?= $form->field($model, 'thumb') ?>
-
-    <?php // echo $form->field($model, 'keywords') ?>
-
-    <?php // echo $form->field($model, 'description') ?>
-
-    <?php // echo $form->field($model, 'posids') ?>
-
-    <?php // echo $form->field($model, 'url') ?>
-
-    <?php // echo $form->field($model, 'sort') ?>
-
-    <?php // echo $form->field($model, 'addtime') ?>
-
-    <?php // echo $form->field($model, 'updatetime') ?>
-
-    <div class="form-group">
-        <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton('Reset', ['class' => 'btn btn-default']) ?>
+        <div class="form-group col-lg-2">
+            <?= Html::submitButton('查询', ['class' => 'btn btn-primary','style'=>'margin-top:25px;']) ?>
+        </div>
     </div>
+
 
     <?php ActiveForm::end(); ?>
 

@@ -2,9 +2,9 @@
 
 namespace backend\modules\content\controllers;
 
-use backend\modules\content\models\Page;
+use common\models\Page;
 use Yii;
-use backend\modules\content\models\Category;
+use common\models\Category;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -33,10 +33,10 @@ class CategoryController extends Controller
     {
         return [
             'upload'=>[
-                'class' => 'common\widgets\file_upload\UploadAction',     //这里扩展地址别写错
-                'config' => [
-                    'imagePathFormat' => "/upload/images/{yyyy}{mm}{dd}/{time}{rand:6}",
-                ]
+                'class' => 'common\widgets\file_upload\UploadAction',
+            ],
+            'ueditor'=>[
+                'class' => 'common\widgets\ueditor\UeditorAction',
             ]
         ];
     }

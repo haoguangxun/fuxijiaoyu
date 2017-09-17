@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model backend\modules\content\models\Models */
+/* @var $model common\models\Models */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
@@ -12,11 +12,11 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'name')->textInput(['maxlength' => 30, 'style' => 'width:200px']) ?>
 
-    <?= $form->field($model, 'description')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'description')->textInput(['maxlength' => 100, 'style' => 'width:500px']) ?>
 
-    <?= $form->field($model, 'tablename')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'tablename')->textInput(['maxlength' => 20, 'style' => 'width:200px']) ?>
 
     <!--<?/*= $form->field($model, 'setting')->textarea(['rows' => 6]) */?>
 
@@ -32,10 +32,11 @@ use yii\widgets\ActiveForm;
 
     <?/*= $form->field($model, 'js_template')->textInput(['maxlength' => true]) */?>-->
 
-    <?= $form->field($model, 'sort')->textInput() ?>
+    <?= $form->field($model, 'sort')->textInput(['value'=>0, 'style' => 'width:60px']) ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? '添加' : '保存', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::button('取消', ['class' => 'btn btn-default','onclick'=>'window.history.back();']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

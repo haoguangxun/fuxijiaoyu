@@ -5,10 +5,10 @@ namespace backend\modules\content\models\search;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use backend\modules\content\models\CourseSection;
+use common\models\CourseSection;
 
 /**
- * CourseSectionSearch represents the model behind the search form about `backend\modules\content\models\CourseSection`.
+ * CourseSectionSearch represents the model behind the search form about `common\models\CourseSection`.
  */
 class CourseSectionSearch extends CourseSection
 {

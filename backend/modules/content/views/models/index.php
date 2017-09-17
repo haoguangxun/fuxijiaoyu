@@ -17,7 +17,6 @@ $this->params['breadcrumbs'][] = $this->title;
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        //'filterModel' => $searchModel,
         'columns' => [
 
             'sort',
@@ -25,18 +24,10 @@ $this->params['breadcrumbs'][] = $this->title;
             'name',
             'description',
             'tablename',
-            //'setting:ntext',
             [
                 'attribute' => 'addtime',
-                'value' => function ($model){
-                    return date('Y-m-d H:i:s',$model->addtime);
-                },
+                'format'=>['date','php:Y-m-d H:i:s'],
             ],
-            // 'disabled',
-            // 'category_template',
-            // 'list_template',
-            // 'show_template',
-            // 'js_template',
 
             [
                 'class' => 'yii\grid\ActionColumn',

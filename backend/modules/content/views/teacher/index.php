@@ -7,37 +7,52 @@ use yii\grid\GridView;
 /* @var $searchModel backend\modules\content\models\search\TeacherSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Teachers';
+$this->title = '教师管理';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="teacher-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <?php  echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Teacher', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('添加教师', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
-            'catid',
-            'name',
-            'subtitle',
-            'thumb',
-            // 'keywords',
-            // 'description',
-            // 'posids',
-            // 'url:url',
-            // 'sort',
-            // 'addtime',
-            // 'updatetime',
+            [
+                'attribute' => 'sort',
+                'contentOptions'=>[
+                    'width'=>'5%',
+                ],
+            ],
+            [
+                'attribute' => 'id',
+                'contentOptions'=>[
+                    'width'=>'5%',
+                ],
+            ],
+            [
+                'attribute' => 'name',
+                'contentOptions'=>[
+                    'width'=>'40%',
+                ],
+            ],
+            [
+                'label' => '栏目',
+                'value' => 'category.catname',
+            ],
+            [
+                'attribute' => 'addtime',
+                'format'=>['date','php:Y-m-d H:i:s'],
+            ],
 
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'template' => '{update}{delete}',
+                'header'=>'操作',
+            ],
         ],
     ]); ?>
 </div>

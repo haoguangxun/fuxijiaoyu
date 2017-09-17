@@ -5,10 +5,10 @@ namespace backend\modules\content\models\search;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use backend\modules\content\models\Teacher;
+use common\models\Teacher;
 
 /**
- * TeacherSearch represents the model behind the search form about `backend\modules\content\models\Teacher`.
+ * TeacherSearch represents the model behind the search form about `common\models\Teacher`.
  */
 class TeacherSearch extends Teacher
 {
@@ -18,8 +18,8 @@ class TeacherSearch extends Teacher
     public function rules()
     {
         return [
-            [['id', 'catid', 'posids', 'sort', 'addtime', 'updatetime'], 'integer'],
-            [['name', 'subtitle', 'thumb', 'keywords', 'description', 'url'], 'safe'],
+            [['id', 'catid'], 'integer'],
+            [['name'], 'safe'],
         ];
     }
 
@@ -41,12 +41,20 @@ class TeacherSearch extends Teacher
      */
     public function search($params)
     {
-        $query = Teacher::find();
+        $query = Teacher::find()->with('category');
 
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'pagination' => ['pageSize'=>20],
+            'sort'=>[
+                'attributes'=>['sort','id'],
+                'defaultOrder'=>[
+                    'sort'=>SORT_DESC,
+                    'id'=>SORT_DESC,
+                ],
+            ],
         ]);
 
         $this->load($params);
@@ -61,18 +69,9 @@ class TeacherSearch extends Teacher
         $query->andFilterWhere([
             'id' => $this->id,
             'catid' => $this->catid,
-            'posids' => $this->posids,
-            'sort' => $this->sort,
-            'addtime' => $this->addtime,
-            'updatetime' => $this->updatetime,
         ]);
 
-        $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'subtitle', $this->subtitle])
-            ->andFilterWhere(['like', 'thumb', $this->thumb])
-            ->andFilterWhere(['like', 'keywords', $this->keywords])
-            ->andFilterWhere(['like', 'description', $this->description])
-            ->andFilterWhere(['like', 'url', $this->url]);
+        $query->andFilterWhere(['like', 'name', $this->name]);
 
         return $dataProvider;
     }

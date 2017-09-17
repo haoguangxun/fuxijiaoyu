@@ -2,10 +2,10 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use backend\modules\content\models\Category;
+use common\models\Category;
 
 /* @var $this yii\web\View */
-/* @var $model backend\modules\content\models\Category */
+/* @var $model common\models\Category */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
@@ -18,35 +18,44 @@ use backend\modules\content\models\Category;
     <?= $form->field($category, 'modelid')->label(false)->hiddenInput(['value'=>0]);?>
 
     <?= $form->field($category, 'parentid')->label('所属栏目')->dropdownList(
-        Category::getSelectList()
+        Category::getSelectList(),
+        ['style' => 'width:200px']
     ) ?>
 
-    <?= $form->field($category, 'catname')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($category, 'catname')->textInput(['maxlength' => 30, 'style' => 'width:200px']) ?>
 
-    <?= $form->field($page, 'title')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($page, 'title')->textInput(['maxlength' => 80, 'style' => 'width:500px']) ?>
 
-    <?= $form->field($page, 'subtitle')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($page, 'subtitle')->textInput(['maxlength' => 80, 'style' => 'width:500px']) ?>
 
-    <?= $form->field($category, 'keywords')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($category, 'keywords')->textInput(['maxlength' => 50, 'style' => 'width:500px']) ?>
 
-    <?= $form->field($category, 'description')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($category, 'description')->textarea(['maxlength' => 500, 'rows'=> 3, 'style' => 'width:800px']) ?>
 
-    <?= $form->field($page, 'content')->widget(\yii\redactor\widgets\Redactor::className(), [
+    <?= $form->field($category, 'pic')->widget('common\widgets\file_upload\FileUpload')?>
+
+    <!--<?/*= $form->field($page, 'content')->widget(\yii\redactor\widgets\Redactor::className(), [
         'clientOptions' => [
             'lang' => 'zh_cn'
         ]
+    ]) */?>-->
+
+    <?= $form->field($page, 'content')->widget('common\widgets\ueditor\Ueditor',[
+        'options'=>[
+            'initialFrameWidth' => '850',
+            'initialFrameHeight' => '400',
+        ]
     ]) ?>
 
-    <?//= $form->field($category, 'pic')->widget(\common\widgets\file_upload\FileUpload::className()) ?>
+    <?= $form->field($page, 'video')->textInput(['maxlength' => 100, 'style' => 'width:500px']) ?>
 
-    <?= $form->field($page, 'video')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($category, 'url')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($category, 'url')->textInput(['maxlength' => 100, 'style' => 'width:500px']) ?>
 
     <!--<?/*= $form->field($page, 'template')->textInput() */?>-->
 
-    <?= $form->field($category, 'sort')->textInput(['value'=>0]) ?>
+    <?= $form->field($category, 'sort')->textInput(['value'=>0, 'style' => 'width:60px']) ?>
 
+    <?php $category->ismenu = 1; ?>
     <?= $form->field($category, 'ismenu')->radioList(
         [
             '1' => '显示',
@@ -56,6 +65,7 @@ use backend\modules\content\models\Category;
 
     <div class="form-group">
         <?= Html::submitButton($category->isNewRecord ? '添加' : '修改', ['class' => $category->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::button('取消', ['class' => 'btn btn-default','onclick'=>'window.history.back();']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

@@ -5,21 +5,25 @@ namespace backend\modules\content\models\search;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use backend\modules\content\models\News;
+use common\models\News;
 
 /**
- * NewsSearch represents the model behind the search form about `backend\modules\content\models\News`.
+ * NewsSearch represents the model behind the search form about `common\models\News`.
  */
 class NewsSearch extends News
 {
+    public function attributes()
+    {
+        return array_merge(parent::attributes(),['bgDate','edDate','keyword_type','keyword']);
+    }
     /**
      * @inheritdoc
      */
     public function rules()
     {
         return [
-            [['id', 'catid', 'posids', 'sort', 'status', 'islink', 'addtime', 'updatetime'], 'integer'],
-            [['title', 'subtitle', 'thumb', 'video', 'keywords', 'description', 'url', 'author'], 'safe'],
+            [['catid'], 'integer'],
+            [['bgDate','edDate','keyword_type','keyword'], 'safe'],
         ];
     }
 
@@ -41,12 +45,20 @@ class NewsSearch extends News
      */
     public function search($params)
     {
-        $query = News::find();
+        $query = News::find()->with('category');
 
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'pagination' => ['pageSize'=>20],
+            'sort'=>[
+                'attributes'=>['sort','id'],
+                'defaultOrder'=>[
+                    'sort'=>SORT_DESC,
+                    'id'=>SORT_DESC,
+                ],
+            ],
         ]);
 
         $this->load($params);
@@ -59,24 +71,22 @@ class NewsSearch extends News
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'id' => $this->id,
             'catid' => $this->catid,
-            'posids' => $this->posids,
-            'sort' => $this->sort,
-            'status' => $this->status,
-            'islink' => $this->islink,
-            'addtime' => $this->addtime,
-            'updatetime' => $this->updatetime,
         ]);
 
-        $query->andFilterWhere(['like', 'title', $this->title])
-            ->andFilterWhere(['like', 'subtitle', $this->subtitle])
-            ->andFilterWhere(['like', 'thumb', $this->thumb])
-            ->andFilterWhere(['like', 'video', $this->video])
-            ->andFilterWhere(['like', 'keywords', $this->keywords])
-            ->andFilterWhere(['like', 'description', $this->description])
-            ->andFilterWhere(['like', 'url', $this->url])
-            ->andFilterWhere(['like', 'author', $this->author]);
+        //ID、标题、作者
+        if($this->keyword_type && $this->keyword){
+            if($this->keyword_type == 'title'){
+                $query->andWhere(['like', $this->keyword_type, $this->keyword]);
+            }else{
+                $query->andWhere([$this->keyword_type => $this->keyword,]);
+            }
+        }
+
+        //日期
+        $bgDate = $this->bgDate ? strtotime($this->bgDate) : '';
+        $edDate = $this->edDate ? strtotime($this->edDate)+86400 : '';
+        $query->andFilterWhere(['between', 'addtime', $bgDate , $edDate]);
 
         return $dataProvider;
     }

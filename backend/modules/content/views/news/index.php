@@ -12,34 +12,52 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="news-index">
 
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <?php  echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
         <?= Html::a('添加文章', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
         'columns' => [
 
-            'id',
-            'catid',
-            'title',
-            // 'subtitle',
-            // 'thumb',
-            // 'video',
-            // 'keywords',
-            // 'description',
-            // 'posids',
-            // 'url:url',
-            'sort',
-            // 'status',
-            // 'islink',
+            [
+                'attribute' => 'sort',
+                'contentOptions'=>[
+                    'width'=>'5%',
+                ],
+            ],
+            [
+                'attribute' => 'id',
+                'contentOptions'=>[
+                    'width'=>'5%',
+                ],
+            ],
+            [
+                'attribute' => 'title',
+                'contentOptions'=>[
+                    'width'=>'40%',
+                ],
+            ],
+            [
+                'label' => '栏目',
+                'value' => 'category.catname',
+            ],
             'author',
-            'addtime',
-            // 'updatetime',
+            [
+                'label' => '点击量',
+                'value' => 'data.click',
+            ],
+            [
+                'attribute' => 'addtime',
+                'format'=>['date','php:Y-m-d H:i:s'],
+            ],
 
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'template' => '{update}{delete}',
+                'header'=>'操作',
+            ],
         ],
     ]); ?>
 </div>

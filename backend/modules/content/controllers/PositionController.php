@@ -3,7 +3,7 @@
 namespace backend\modules\content\controllers;
 
 use Yii;
-use backend\modules\content\models\Position;
+use common\models\Position;
 use backend\modules\content\models\search\PositionSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
