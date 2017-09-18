@@ -2,6 +2,7 @@
 
 namespace backend\modules\content\controllers;
 
+use common\models\CourseData;
 use Yii;
 use common\models\Course;
 use backend\modules\content\models\search\CourseSearch;
@@ -26,6 +27,18 @@ class CourseController extends Controller
                     'delete' => ['POST'],
                 ],
             ],
+        ];
+    }
+
+    public function actions()
+    {
+        return [
+            'upload'=>[
+                'class' => 'common\widgets\file_upload\UploadAction',
+            ],
+            'ueditor'=>[
+                'class' => 'common\widgets\ueditor\UeditorAction',
+            ]
         ];
     }
 
@@ -64,14 +77,33 @@ class CourseController extends Controller
     public function actionCreate()
     {
         $model = new Course();
+        $dataModel = new CourseData();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
-            return $this->render('create', [
-                'model' => $model,
-            ]);
+        if (!$model) {
+            throw new NotFoundHttpException("The course was not found.");
         }
+        if (!$dataModel) {
+            throw new NotFoundHttpException("The courseData has no page.");
+        }
+
+        if ($model->load(Yii::$app->request->post()) && $dataModel->load(Yii::$app->request->post())) {
+            $model->addtime = time();
+            $model->updatetime = time();
+
+            $isValid = $model->validate();
+            $isValid = $dataModel->validate() && $isValid;
+            if ($isValid) {
+                $model->save(false);
+                $dataModel->id = $model->attributes['id'];
+                $dataModel->save(false);
+                return $this->redirect(['index']);
+            }
+        }
+
+        return $this->render('create', [
+            'model' => $model,
+            'dataModel' => $dataModel,
+        ]);
     }
 
     /**
@@ -83,14 +115,31 @@ class CourseController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $dataModel = CourseData::findOne($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
-            return $this->render('update', [
-                'model' => $model,
-            ]);
+        if (!$model) {
+            throw new NotFoundHttpException("The course was not found.");
         }
+        if (!$dataModel) {
+            throw new NotFoundHttpException("The courseData has no page.");
+        }
+
+        if ($model->load(Yii::$app->request->post()) && $dataModel->load(Yii::$app->request->post())) {
+            $model->updatetime = time();
+
+            $isValid = $model->validate();
+            $isValid = $dataModel->validate() && $isValid;
+            if ($isValid) {
+                $model->save(false);
+                $dataModel->save(false);
+                return $this->redirect(['index']);
+            }
+        }
+
+        return $this->render('update', [
+            'model' => $model,
+            'dataModel' => $dataModel,
+        ]);
     }
 
     /**
@@ -101,6 +150,7 @@ class CourseController extends Controller
      */
     public function actionDelete($id)
     {
+        CourseData::findOne($id)->delete();
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);

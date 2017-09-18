@@ -12,15 +12,18 @@ use common\models\Course;
  */
 class CourseSearch extends Course
 {
+    public function attributes()
+    {
+        return array_merge(parent::attributes(),['bgDate','edDate','keyword_type','keyword']);
+    }
     /**
      * @inheritdoc
      */
     public function rules()
     {
         return [
-            [['id', 'catid', 'teacherid', 'difficulty_level', 'course_number', 'course_duration', 'posids', 'sort', 'status', 'islink', 'addtime', 'updatetime'], 'integer'],
-            [['name', 'subtitle', 'thumb', 'keywords', 'description', 'url', 'author'], 'safe'],
-            [['price'], 'number'],
+            [['id', 'catid', 'teacherid', 'status',], 'integer'],
+            [['name', 'author'], 'safe'],
         ];
     }
 
@@ -42,12 +45,20 @@ class CourseSearch extends Course
      */
     public function search($params)
     {
-        $query = Course::find();
+        $query = Course::find()->with('category','teacher');
 
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'pagination' => ['pageSize'=>20],
+            'sort'=>[
+                'attributes'=>['sort','id'],
+                'defaultOrder'=>[
+                    'sort'=>SORT_DESC,
+                    'id'=>SORT_DESC,
+                ],
+            ],
         ]);
 
         $this->load($params);
@@ -63,24 +74,10 @@ class CourseSearch extends Course
             'id' => $this->id,
             'catid' => $this->catid,
             'teacherid' => $this->teacherid,
-            'price' => $this->price,
-            'difficulty_level' => $this->difficulty_level,
-            'course_number' => $this->course_number,
-            'course_duration' => $this->course_duration,
-            'posids' => $this->posids,
-            'sort' => $this->sort,
             'status' => $this->status,
-            'islink' => $this->islink,
-            'addtime' => $this->addtime,
-            'updatetime' => $this->updatetime,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'subtitle', $this->subtitle])
-            ->andFilterWhere(['like', 'thumb', $this->thumb])
-            ->andFilterWhere(['like', 'keywords', $this->keywords])
-            ->andFilterWhere(['like', 'description', $this->description])
-            ->andFilterWhere(['like', 'url', $this->url])
             ->andFilterWhere(['like', 'author', $this->author]);
 
         return $dataProvider;
