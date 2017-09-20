@@ -107,7 +107,7 @@ class Course extends \yii\db\ActiveRecord
      */
     public function getTeacher()
     {
-        return self::hasOne(Teacher::className(),['id'=>'teacherid']);
+        return self::hasOne(MemberTeacher::className(),['userid'=>'teacherid']);
     }
 
 }

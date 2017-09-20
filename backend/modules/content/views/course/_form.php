@@ -26,10 +26,10 @@ use common\models\Category;
 
     <?= $form->field($dataModel, 'copyfrom')->textInput(['value'=>'本站', 'maxlength' => 100, 'style' => 'width:200px']) ?>
 
-    <!--<?/*= $form->field($model, 'teacherid')->label('所属栏目')->dropdownList(
-        \common\models\Teacher::getSelectList(),
+    <?= $form->field($model, 'teacherid')->label('主讲老师')->dropdownList(
+        \common\models\MemberTeacher::find()->select(['realname','userid'])->indexBy('userid')->column(),
         ['style' => 'width:200px']
-    ) */?>-->
+    ) ?>
 
     <?= $form->field($model, 'price')->textInput(['maxlength' => 11, 'style' => 'width:80px']) ?>
 
@@ -58,6 +58,17 @@ use common\models\Category;
             'initialFrameHeight' => '400',
         ]
     ]) ?>
+
+    <?= $form->field($dataModel, 'syllabus')->widget('common\widgets\ueditor\Ueditor',[
+        'options'=>[
+            'initialFrameWidth' => '850',
+            'initialFrameHeight' => '400',
+        ]
+    ]) ?>
+
+    <?= $form->field($dataModel, 'data')->textInput(['maxlength' => 100, 'style' => 'width:500px']) ?>
+
+    <?= $form->field($dataModel, 'material')->textInput(['maxlength' => 100, 'style' => 'width:500px']) ?>
 
     <?= $form->field($dataModel, 'template')->textInput(['maxlength' => 30, 'style' => 'width:200px']) ?>
 
