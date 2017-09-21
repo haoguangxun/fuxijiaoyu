@@ -14,7 +14,7 @@ class CourseSearch extends Course
 {
     public function attributes()
     {
-        return array_merge(parent::attributes(),['bgDate','edDate','keyword_type','keyword']);
+        return array_merge(parent::attributes(),['keyword_type','keyword']);
     }
     /**
      * @inheritdoc
@@ -22,8 +22,8 @@ class CourseSearch extends Course
     public function rules()
     {
         return [
-            [['id', 'catid', 'teacherid', 'status',], 'integer'],
-            [['name', 'author'], 'safe'],
+            [['catid', 'teacherid', 'status',], 'integer'],
+            [['keyword_type','keyword'], 'safe'],
         ];
     }
 
@@ -71,14 +71,19 @@ class CourseSearch extends Course
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'id' => $this->id,
             'catid' => $this->catid,
             'teacherid' => $this->teacherid,
             'status' => $this->status,
         ]);
 
-        $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'author', $this->author]);
+        //ID、课程名称、作者
+        if($this->keyword_type && $this->keyword){
+            if($this->keyword_type == 'name'){
+                $query->andWhere(['like', $this->keyword_type, $this->keyword]);
+            }else{
+                $query->andWhere([$this->keyword_type => $this->keyword,]);
+            }
+        }
 
         return $dataProvider;
     }

@@ -12,14 +12,13 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="course-index">
 
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <?php echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
         <?= Html::a('添加课程', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
         'columns' => [
 
             [
@@ -49,9 +48,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value' => 'teacher.realname',
             ],
             'author',
+            'price',
             [
-                'label' => '点击量',
-                'value' => 'data.click',
+                'label' => '状态',
+                'value' => function($model){
+                    return $model->status==1 ? '正常' : '下线';
+                },
             ],
             [
                 'attribute' => 'addtime',
@@ -60,8 +62,18 @@ $this->params['breadcrumbs'][] = $this->title;
 
             [
                 'class' => 'yii\grid\ActionColumn',
-                'template' => '{update}{delete}',
                 'header'=>'操作',
+                'template' => '{section}{update}{delete}',
+                'buttons' => [
+                    'section' => function($url, $model) {
+                        $options = [
+                            'title' => '管理课程小节',
+                        ];
+                        $url = \yii\helpers\Url::to(['/content/course-section/index','CourseSectionSearch[courseid]'=>$model->id]);
+                        return Html::a('课程小节 ', $url, $options);
+                    },
+
+                ],
             ],
         ],
     ]); ?>

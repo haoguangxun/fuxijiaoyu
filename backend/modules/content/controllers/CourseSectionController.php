@@ -61,15 +61,16 @@ class CourseSectionController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
+    public function actionCreate($courseid)
     {
         $model = new CourseSection();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['index', 'CourseSectionSearch[courseid]' => $courseid]);
         } else {
             return $this->render('create', [
                 'model' => $model,
+                'courseid' => $courseid,
             ]);
         }
     }
@@ -85,7 +86,7 @@ class CourseSectionController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['index', 'CourseSectionSearch[courseid]' => $model->courseid]);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -101,9 +102,10 @@ class CourseSectionController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $model = $this->findModel($id);
+        $model->delete();
 
-        return $this->redirect(['index']);
+        return $this->redirect(['index', 'CourseSectionSearch[courseid]' => $model->courseid]);
     }
 
     /**

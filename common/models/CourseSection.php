@@ -53,6 +53,8 @@ class CourseSection extends \yii\db\ActiveRecord
             'url' => '链接地址',
             'template' => '模板',
             'audition' => '是否可试听',
+            'sort' => '排序',
+            'status' => '状态',
         ];
     }
 }

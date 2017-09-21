@@ -55,7 +55,7 @@ use common\models\Category;
 
     <?= $form->field($category, 'sort')->textInput(['value'=>0, 'style' => 'width:60px']) ?>
 
-    <?php $category->ismenu = 1; ?>
+    <?php if($category->isNewRecord) $category->ismenu = 1; ?>
     <?= $form->field($category, 'ismenu')->radioList(
         [
             '1' => '显示',

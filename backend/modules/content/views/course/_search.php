@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use common\models\Category;
 
 /* @var $this yii\web\View */
 /* @var $model backend\modules\content\models\search\CourseSearch */
@@ -13,53 +14,85 @@ use yii\widgets\ActiveForm;
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
         'method' => 'get',
+        'fieldConfig' => [
+            'labelOptions' => ['style' => 'display:none;'],
+        ]
     ]); ?>
 
-    <?= $form->field($model, 'id') ?>
+    <div class="col-lg-12">
+        <div class="col-lg-2">
+            <?= $form->field($model, 'catid')->dropdownList(
+                Category::getSelectList(),
+                [
+                    'prompt'=>'所属栏目',
+                ]
+            ) ?>
+        </div>
 
-    <?= $form->field($model, 'catid') ?>
+        <div class="col-lg-2">
+            <?= $form->field($model, 'teacherid')->dropdownList(
+                \common\models\MemberTeacher::find()->select(['realname','userid'])->indexBy('userid')->column(),
+                [
+                    'prompt'=>'主讲老师',
+                ]
+            ) ?>
+        </div>
 
-    <?= $form->field($model, 'name') ?>
+        <div class="col-lg-2">
+            <?= $form->field($model, 'keyword_type')->dropdownList(
+                [
+                    'id' => 'ID',
+                    'name' => '课程名称',
+                    'author' => '作者',
+                ],
+                [
+                    'prompt'=>'搜索条件',
+                ]
+            ) ?>
+        </div>
 
-    <?= $form->field($model, 'subtitle') ?>
+        <div class="col-lg-2">
+            <?php echo $form->field($model, 'keyword') ?>
+        </div>
 
-    <?= $form->field($model, 'teacherid') ?>
+        <div class="col-lg-2">
+            <?= $form->field($model, 'status')->dropdownList(
+                [
+                    1 => '正常',
+                    2 => '下线',
+                ],
+                [
+                    'prompt'=>'课程状态',
+                ]
+            ) ?>
+        </div>
 
-    <?php // echo $form->field($model, 'thumb') ?>
-
-    <?php // echo $form->field($model, 'keywords') ?>
-
-    <?php // echo $form->field($model, 'description') ?>
-
-    <?php // echo $form->field($model, 'price') ?>
-
-    <?php // echo $form->field($model, 'difficulty_level') ?>
-
-    <?php // echo $form->field($model, 'course_number') ?>
-
-    <?php // echo $form->field($model, 'course_duration') ?>
-
-    <?php // echo $form->field($model, 'posids') ?>
-
-    <?php // echo $form->field($model, 'url') ?>
-
-    <?php // echo $form->field($model, 'sort') ?>
+        <div class="form-group col-lg-2">
+            <?= Html::submitButton('查询', ['class' => 'btn btn-primary']) ?>
+        </div>
+    </div>
 
     <?php // echo $form->field($model, 'status') ?>
 
-    <?php // echo $form->field($model, 'islink') ?>
-
-    <?php // echo $form->field($model, 'author') ?>
-
-    <?php // echo $form->field($model, 'addtime') ?>
-
-    <?php // echo $form->field($model, 'updatetime') ?>
-
-    <div class="form-group">
-        <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton('Reset', ['class' => 'btn btn-default']) ?>
-    </div>
 
     <?php ActiveForm::end(); ?>
 
 </div>
+<?php
+$js = <<<JS
+    //日期插件
+    $('.bgDate').datepicker({
+        format: 'yyyy-mm-dd',
+        autoclose: true,
+    }).on("changeDate",function(){
+        $(".edDate").datepicker("setStartDate", $(".bgDate").val());
+    });
+    $('.edDate').datepicker({
+        format: 'yyyy-mm-dd',
+        autoclose: true,
+    }).on("changeDate",function(){
+        $(".bgDate").datepicker("setEndDate", $(".edDate").val());
+    });
+JS;
+$this->registerJs($js);
+?>

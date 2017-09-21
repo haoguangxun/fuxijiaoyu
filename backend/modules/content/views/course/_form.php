@@ -37,7 +37,7 @@ use common\models\Category;
 
     <?= $form->field($model, 'course_duration')->textInput(['maxlength' => 4, 'style' => 'width:80px']) ?>
 
-    <?php $model->difficulty_level = 1; ?>
+    <?php if($model->isNewRecord) $model->difficulty_level = 1; ?>
     <?= $form->field($model, 'difficulty_level')->radioList(
         [
             '1' => '初级',
@@ -75,6 +75,14 @@ use common\models\Category;
     <?= $form->field($model, 'url')->textInput(['maxlength' => 100, 'style' => 'width:500px']) ?>
 
     <?= $form->field($model, 'sort')->textInput(['value' => 0, 'style' => 'width:60px']) ?>
+
+    <?php if($model->isNewRecord) $model->status = 1; ?>
+    <?= $form->field($model, 'status')->radioList(
+        [
+            '1' => '正常',
+            '2' => '下线',
+        ]
+    ) ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? '添加' : '保存', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

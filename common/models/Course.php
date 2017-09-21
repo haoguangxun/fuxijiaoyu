@@ -75,7 +75,7 @@ class Course extends \yii\db\ActiveRecord
             'posids' => '是否有推荐位',
             'url' => '链接地址',
             'sort' => '排序',
-            'status' => '审核状态',
+            'status' => '状态',
             'islink' => '是否外部链接',
             'author' => '作者',
             'addtime' => '添加时间',
