@@ -85,7 +85,7 @@ $this->registerJsFile('@web/js/swiper.min.js',['depends'=>['frontend\assets\AppA
                     <p>力求达到线条美、结体美、<br />章法美、墨色美</p>
                     <a href="#" class="course-button">咨询</a>
                 </li>
-                <li>  
+                <li>
                     <div class="course-icon">
                         <span style="background-image: url(img/course03.jpg);"></span>
                     </div>
