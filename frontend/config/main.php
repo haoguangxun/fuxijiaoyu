@@ -11,6 +11,7 @@ return [
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
+    'defaultRoute' => 'default',
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-frontend',
@@ -36,11 +37,11 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        //urlÅäÖÃ
+        //urlï¿½ï¿½ï¿½ï¿½
         'urlManager' => [
-            'enablePrettyUrl' => true, //¿ªÆôurlÃÀ»¯
-            'showScriptName' => false, //¹Ø±Õ½Å±¾
-            'suffix' => '.html', //urlºó×º(¿É²»¼Ó)
+            'enablePrettyUrl' => true, //ï¿½ï¿½ï¿½ï¿½urlï¿½ï¿½ï¿½ï¿½
+            'showScriptName' => false, //ï¿½Ø±Õ½Å±ï¿½
+            'suffix' => '.html', //urlï¿½ï¿½×º(ï¿½É²ï¿½ï¿½ï¿½)
             'rules' => [
             ],
         ],

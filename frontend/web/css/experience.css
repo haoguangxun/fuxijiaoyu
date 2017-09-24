@@ -1,0 +1,285 @@
+.list-banner{
+	height: 455px;
+	width: 100%;
+	background: no-repeat center center/cover;
+}
+.experience{
+	overflow: hidden;
+	padding: 70px 0;
+}
+.experience h1{
+	color: #525252;
+	font-size: 18px;
+}
+.experience h1 span{
+	color: #005d92;
+	font-size: 18px;
+}
+.line span{
+	background: #ff9f13;
+	height: 4px;
+	width: 60px;
+	display: inline-block;
+}
+.experience-nav{
+	text-align: center;
+	margin: 45px 0;
+	font-size: 16px;
+	color: #6d6c6c;
+}
+.experience-nav span{
+	padding: 0 35px;
+	border-right: 2px solid #6d6c6c;
+	cursor: pointer;
+}
+.experience-nav span:last-child{
+	border: none;
+}
+.experience-nav span.active{
+	color: #005d92;
+}
+.experience-video{
+	overflow: hidden;
+}
+.experience-video li{
+	float: left;
+	overflow: hidden;
+	background: #f8f8f8;
+	width: 31.333%;
+	margin: 0 1% 60px;
+}
+.experience-video li .video-content{
+	height: 330px;
+	width: 100%;
+	position: relative;
+}
+
+.video-text{
+	padding: 20px 25px;
+	box-sizing: border-box;
+}
+.video-text h4{
+	font-size: 16px;
+	color: #666;
+	margin-bottom: 10px;
+	overflow: hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+}
+.video-text .people{
+	color: #8d8d8d;
+	font-size: 14px;
+}
+.video-text .people .share{
+	float: right;
+	font-size: 18px;
+	cursor: pointer;
+}
+.video-content .video-js .vjs-big-play-button{
+	display: none;
+}
+.video-content .hover{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.5);
+	z-index: 100;
+	color: #fff;
+	text-align: center;
+	padding: 20% 10px 0;
+	box-sizing: border-box;
+	cursor: pointer;
+	display: none;
+}
+.video-content .hover .icon-bofang{
+	font-size: 40px;
+}
+.video-content .hover div{
+	margin: 30px 0;
+}
+.video-content .hover-text span:first-child{
+	border-right: 1px solid #ffffff;	
+}
+.video-content .hover-text span{
+	padding: 0 15px;
+}
+.experience-video-img{
+	background:  no-repeat center center/cover;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+}
+.video-content:hover .hover{
+	display: block;
+}
+.video-content:hover .hover a{
+	color: #FFFFFF;
+}
+.popular{
+	padding: 55px 0;
+	background: #f8f8f8;
+	overflow: hidden;
+}
+.popular-title{
+	height: 1px;
+	background: #dddddd;
+	position: relative;
+}
+.popular-title-name{
+	position: absolute;
+	left: 0;
+	top: -22px;
+	width: 140px;
+	height: 44px;
+	background:#dddddd ;
+	line-height: 44px;
+	text-align: center;
+	color: #8d8d8d;
+	font-size: 14px;
+}
+.popular-main{
+	height: 280px;
+	margin-top: 70px;
+}
+.popular-btn{
+	width: 4%;
+	height:100%;
+	float: left;
+	position: relative;
+	cursor: pointer;
+}
+.popular-scroll{
+	width: 92%;
+    overflow: hidden;
+    position: relative;
+    float: left;
+    height: 100%;
+}
+.popular-btn span{
+	color: #a0a0a0;
+	font-size: 50px;
+	position: absolute;
+	top: 40%;
+}
+.popular-scroll ul{
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+.popular-scroll ul li{
+	float: left;
+	height: 100%;
+	width:33.3%;
+	box-sizing: border-box;
+}
+.popular-img{
+	height: 215px;
+	width: 100%;
+	overflow: hidden;
+}
+.popular-img:hover div{
+	transform: scale(1.1);
+}
+.popular-img div{
+	background: no-repeat center center/cover;
+	height: 100%;
+	cursor: pointer;
+	transition: all .5s;
+}
+.popular-img-text{
+	padding: 20px 10px;
+	color: #636363;
+	background: #FFFFFF;
+	font-size: 14px;
+	line-height: 1.5em;
+}
+.welcome{
+	overflow: hidden;
+	padding: 90px 0;
+	text-align: center;
+	color: #8d8d8d;
+}
+.welcome h1{
+	font-size: 28px;
+	margin-bottom: 15px;
+}
+.welcome p{
+	margin-bottom: 15px;
+	font-size: 14px;
+}
+.welcome .line span{
+	background: #e60045;
+	margin-bottom: 10px;
+}
+@media screen and (min-width: 100px) and (max-width: 640px) {
+	.list-banner{
+		height: 240px;
+	}
+	.experience{
+		padding: 40px 0;
+	}
+	.experience-nav span{
+		padding: 0 10px;
+	}
+	.experience-nav{
+		margin: 20px;
+	}
+	.experience-video li .video-content{
+		height: 120px;
+	}
+	.experience-video li{
+		width: 48%;
+		margin:1%;
+	}
+	.video-text{
+		padding: 8px 10px;
+	}
+	.video-text h4{
+		font-size: 14px;
+		margin-bottom: 5px;
+	}
+	.experience h1{
+		font-size: 16px;
+		padding: 0 5px;
+	}
+	.experience h1 span{
+		font-size: 16px;
+	}
+	.line span{
+		margin-left: 5px;
+	}
+	.popular-btn{
+		display: none;
+	}
+	.popular-scroll{
+		width: 100%;
+		float: none;
+		overflow-x: scroll;
+	}
+	.popular-scroll ul li{
+		width: 33% !important;
+	}
+	.popular-img{
+		height: 120px;
+	}
+	.popular-img-text{
+		padding: 10px 5px;
+		font-size: 12px;
+	}
+	.popular-main{
+		margin-top: 50px;
+		height: 200px;
+	}
+	.welcome{
+		padding: 40px 5px;
+	}
+	.welcome h1{
+		font-size: 22px;
+	}
+}
