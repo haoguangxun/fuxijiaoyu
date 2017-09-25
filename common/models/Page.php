@@ -3,6 +3,7 @@
 namespace common\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "{{%page}}".
@@ -62,5 +63,17 @@ class Page extends \yii\db\ActiveRecord
             'template' => '模板',
             'updatetime' => '更新时间',
         ];
+    }
+
+
+    /**
+     * 获取所有单网页内容
+     * @return array
+     */
+    public static function getData()
+    {
+        $data = self::find()->asArray()->all();
+        return ArrayHelper::index($data,'catid');
+        //return $data;
     }
 }

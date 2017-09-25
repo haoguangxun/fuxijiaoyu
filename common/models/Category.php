@@ -94,9 +94,13 @@ class Category extends \yii\db\ActiveRecord
         }
     }
 
-    private static function getData()
+    public static function getData($id = null)
     {
-        return self::find()->select('id,parentid,catname,type,modelid,sort,ismenu')->orderBy('sort asc')->asArray()->all();
+        if($id){
+            return self::find()->where(['id'=>$id])->asArray()->one();
+        }else{
+            return self::find()->select('id,parentid,catname,type,modelid,sort,ismenu')->orderBy('sort asc')->asArray()->all();
+        }
     }
 
     /**
@@ -175,4 +179,5 @@ class Category extends \yii\db\ActiveRecord
         $sonList = Tree::getSon($data,$id);
         return $sonList;
     }
+
 }

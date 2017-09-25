@@ -81,7 +81,7 @@ class News extends \yii\db\ActiveRecord
      */
     public function getData()
     {
-        return self::hasOne(NewsData::className(),['id'=>'id']);
+        return self::hasOne(NewsData::className(), ['id' => 'id']);
     }
 
     /**
@@ -90,6 +90,21 @@ class News extends \yii\db\ActiveRecord
      */
     public function getCategory()
     {
-        return self::hasOne(Category::className(),['id'=>'catid']);
+        return self::hasOne(Category::className(), ['id' => 'catid']);
+    }
+
+    /**
+     * 获取文章列表
+     * @return array|\yii\db\ActiveRecord[]
+     */
+    public static function getList($cid = null, $limit = 10, $offset = 0)
+    {
+        return self::find()->alias('n')
+            ->leftJoin('{{%news_data}} as d', 'n.id=d.id')
+            ->orderBy('sort desc,id desc')
+            ->andFilterWhere(['catid'=>$cid])
+            ->limit($limit)->offset($offset)
+            ->asArray()->all();
+
     }
 }
