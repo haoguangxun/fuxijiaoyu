@@ -5,6 +5,7 @@ namespace frontend\controllers;
 use common\models\Category;
 use common\models\News;
 use common\models\Page;
+use yii\data\Pagination;
 use yii\web\Controller;
 
 /**
@@ -20,11 +21,15 @@ class NewsController extends Controller
         //当前栏目内容
         $category = Category::getData(25);
         //列表数据
-        $data = News::getList(28,3);
+        $curPage = \Yii::$app->request->get('page',1);
+        $pageSize = 10;
+        $data = News::getPageList(28,$curPage,$pageSize);
+        $pages = new Pagination(['totalCount' => $data['count'], 'pageSize' => $pageSize]);
 
         return $this->render('index',[
             'category' => $category,
             'data' => $data,
+            'pages' => $pages,
         ]);
     }
 
