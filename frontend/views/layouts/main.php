@@ -1,6 +1,7 @@
 <?php
 use yii\helpers\Html;
 use frontend\assets\AppAsset;
+use yii\helpers\Url;
 
 AppAsset::register($this);
 ?>
@@ -42,8 +43,8 @@ AppAsset::register($this);
             <form action="" method="" class="search_ipt">
                 <input type="text" placeholder="如: 古琴教学" name="q" class="data_q">
             </form>
-            <img src="img/search_hover.png" alt="" class="sea_hover">
-            <img src="img/search_close.png" alt="" class="sea_close">
+            <img src="/img/search_hover.png" alt="" class="sea_hover">
+            <img src="/img/search_close.png" alt="" class="sea_close">
         </div>
     </div>
     <div class="search_content">
@@ -53,36 +54,36 @@ AppAsset::register($this);
 </div>
 <!--微信-->
 <div class="weixin-content">
-    <div class="weixin-content-img"><img src="img/ewm.png"/></div>
+    <div class="weixin-content-img"><img src="/img/ewm.png"/></div>
 </div>
 <div class="wrap">
     <div class="nav">
-        <a href="index.html" class="logo"><img src="img/logo.png"/></a>
+        <a href="index.html" class="logo"><img src="/img/logo.png"/></a>
         <ul class="nav-main" id="nav">
-            <a href="index.html"><li>首页</li></a>
-            <a href="about.html"><li>关于伏羲</li></a>
+            <a href="<?= Url::to(['default/index'])?>"><li>首页</li></a>
+            <a href="<?= Url::to(['about/index'])?>"><li>关于伏羲</li></a>
             <a href="curriculum.html"><li>课程体系</li></a>
             <a href="teacher.html"><li>师资力量</li></a>
             <a href="experience.html"><li>伏羲体验</li></a>
             <a href="student.html"><li>学员成长</li></a>
             <a href="online.html"><li>在线授课</li></a>
-            <a href="news.html"><li>新闻动态</li></a>
-            <a href="contact.html"><li>联系我们</li></a>
+            <a href="<?= Url::to(['news/list'])?>"><li>新闻动态</li></a>
+            <a href="<?= Url::to(['about/contact'])?>"><li>联系我们</li></a>
         </ul>
     </div>
 </div>
 <div class="topNav">
     <div class="wrap">
         <ul class="nav-main">
-            <a href="index.html"><li>首页</li></a>
-            <a href="about.html"><li>关于伏羲</li></a>
+            <a href="<?= Url::to(['default/index'])?>"><li>首页</li></a>
+            <a href="<?= Url::to(['about/index'])?>"><li>关于伏羲</li></a>
             <a href="curriculum.html"><li>课程体系</li></a>
             <a href="teacher.html"><li>师资力量</li></a>
             <a href="experience.html"><li>伏羲体验</li></a>
             <a href="student.html"><li>学员成长</li></a>
             <a href="online.html"><li>在线授课</li></a>
-            <a href="news.html"><li>新闻动态</li></a>
-            <a href="contact.html"><li>联系我们</li></a>
+            <a href="<?= Url::to(['news/list'])?>"><li>新闻动态</li></a>
+            <a href="<?= Url::to(['about/contact'])?>"><li>联系我们</li></a>
         </ul>
     </div>
 </div>
@@ -95,15 +96,15 @@ AppAsset::register($this);
 <div class="gb_bg">
     <div class="nav2">
         <ul>
-            <a href="index.html"><li>首页</li></a>
-            <a href="about.html"><li>关于伏羲</li></a>
+            <a href="<?= Url::to(['default/index'])?>"><li>首页</li></a>
+            <a href="<?= Url::to(['about/index'])?>"><li>关于伏羲</li></a>
             <a href="curriculum.html"><li>课程体系</li></a>
             <a href="teacher.html"><li>师资力量</li></a>
             <a href="experience.html"><li>伏羲体验</li></a>
             <a href="student.html"><li>学员成长</li></a>
             <a href="online.html"><li>在线授课</li></a>
-            <a href="news.html"><li>新闻动态</li></a>
-            <a href="contact.html"><li>联系我们</li></a>
+            <a href="<?= Url::to(['news/list'])?>"><li>新闻动态</li></a>
+            <a href="<?= Url::to(['about/contact'])?>"><li>联系我们</li></a>
         </ul>
     </div>
 </div>
@@ -138,16 +139,16 @@ AppAsset::register($this);
         <div class="foot-contact">
             <div class="foot-contact-link">
                 <div class="xinlang">
-                    <img src="img/xinlang.png"/>
+                    <img src="/img/xinlang.png"/>
                     <p>新浪微博</p>
                 </div>
                 <div class="weixin">
-                    <img src="img/weixin.png"/>
+                    <img src="/img/weixin.png"/>
                     <p>微信</p>
                 </div>
             </div>
             <div class="ewm">
-                <img src="img/ewm.png"/>
+                <img src="/img/ewm.png"/>
                 <p>关注伏羲微信</p>
             </div>
         </div>

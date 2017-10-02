@@ -1,5 +1,6 @@
 <?php
 use yii\helpers\Url;
+use yii\helpers\Html;
 
 $this->title = '伏羲教育首页';
 $this->registerMetaTag(array("name"=>"keywords","content"=>"伏羲教育首页"));
@@ -24,7 +25,7 @@ $this->registerJsFile('@web/js/swiper.min.js',['depends'=>['frontend\assets\AppA
     <div class="wrap">
         <div class="home-title">
             <h2>About Fu Xi</h2>
-            <h1><?= $page[26]['title']?></h1>
+            <h1><?= Html::encode($page[26]['title'])?></h1>
             <span></span>
         </div>
         <div class="about-text">

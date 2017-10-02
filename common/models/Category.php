@@ -96,7 +96,7 @@ class Category extends \yii\db\ActiveRecord
 
     public static function getData($id = null)
     {
-        if($id){
+        if(!empty($id)){
             return self::find()->where(['id'=>$id])->asArray()->one();
         }else{
             return self::find()->select('id,parentid,catname,description,pic,type,modelid,sort,ismenu')->orderBy('sort asc')->asArray()->all();

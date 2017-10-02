@@ -67,13 +67,16 @@ class Page extends \yii\db\ActiveRecord
 
 
     /**
-     * 获取所有单网页内容
+     * 获取单网页内容
      * @return array
      */
-    public static function getData()
+    public static function getData($id = null)
     {
-        $data = self::find()->asArray()->all();
-        return ArrayHelper::index($data,'catid');
-        //return $data;
+        if(!empty($id)){
+            return self::find()->where(['catid'=>$id])->asArray()->one();
+        }else{
+            $data = self::find()->asArray()->all();
+            return ArrayHelper::index($data,'catid');
+        }
     }
 }
