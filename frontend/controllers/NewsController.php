@@ -22,9 +22,9 @@ class NewsController extends Controller
         $curPage = \Yii::$app->request->get('page',1);
 
         //当前栏目内容
-        $category = Category::getData(1);
+        $category = Category::getData($cid);
         //新闻栏目列表
-        $newsCategory = Category::getSonList(1);
+        $sonCategory = Category::getModelSonList(1,1);
         //列表数据
         $pageSize = 5;//每页显示条数
         $data = News::getPageList($cid,$curPage,$pageSize);
@@ -32,7 +32,7 @@ class NewsController extends Controller
 
         return $this->render('index',[
             'category' => $category,
-            'newsCategory' => $newsCategory,
+            'sonCategory' => $sonCategory,
             'data' => $data,
             'pages' => $pages,
             'cid' => $cid,

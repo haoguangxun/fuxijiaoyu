@@ -26,9 +26,21 @@ class News extends \common\models\News
      * 分页获取文章列表
      * @return array|\yii\db\ActiveRecord[]
      */
-    public static function getPageList($cid = null, $curPage = 1, $pageSize = 10)
+    public static function getPageList($cid = 1, $curPage = 1, $pageSize = 10)
     {
-        $data['count'] = self::find()->andFilterWhere(['catid'=>$cid])->count();
+        //获取当前分类下所有新闻模型子类
+        $cids = [];
+        $sonCategory = Category::getModelSonList($cid,1);
+        if($sonCategory){
+            foreach ($sonCategory as $key => $val) {
+                $cids[$val['id']] = $val['id'];
+            }
+        }else{
+            $cids[] = $cid;
+        }
+        //var_dump($cids);
+
+        $data['count'] = self::find()->where(['in', 'catid', $cids])->count();
         if(!$data['count']){
             return $data = ['count'=>0,'curPage'=>$curPage,'pageSize'=>$pageSize,'start'=>0,'end'=>'0','data'=>[]];
         }
@@ -41,7 +53,7 @@ class News extends \common\models\News
         $data['end'] = $curPage*$pageSize;
         $data['data'] = self::find()
             ->orderBy('sort desc,id desc')
-            ->andFilterWhere(['catid'=>$cid])
+            ->where(['in', 'catid', $cids])
             ->limit($pageSize)->offset(($curPage-1)*$pageSize)
             ->asArray()->all();
 

@@ -142,26 +142,41 @@ class Category extends \yii\db\ActiveRecord
 
     /**
      * 根据子类id查找出所有父级分类信息
-     * @param $arr
      * @param $id
      * @return array
      */
     public static function getParentList($id = 0){
         $data = self::getData();
-        $parentList = Tree::getParent($data,$id);
-        return $parentList;
+        $list = Tree::getParent($data,$id);
+        return $list;
     }
 
     /**
      * 根据父id获得所有下级子类id的数据
-     * @param $arr
      * @param $id
      * @return array
      */
     public static function getSonList($id = 0){
         $data = self::getData();
-        $sonList = Tree::getSon($data,$id);
-        return $sonList;
+        $list = Tree::getSon($data,$id);
+        return $list;
+    }
+
+    /**
+     * 根据父id获得指定模型的下级子类的数据
+     * @param $id
+     * @param $mid
+     * @return array
+     */
+    public static function getModelSonList($id = 0, $mid = 0){
+        $data = self::getData();
+        $list = Tree::getSon($data,$id);
+        foreach ($list as $key => $val) {
+            if($val['modelid'] != $mid){
+                unset($list[$key]);
+            }
+        }
+        return $list;
     }
 
 }

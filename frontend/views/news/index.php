@@ -8,7 +8,7 @@ $this->registerMetaTag(array("name"=>"keywords","content"=>Html::encode($categor
 $this->registerMetaTag(array("name"=>"description","content"=>Html::encode($category['description'])));
 $this->registerCssFile('@web/css/news.css',['depends'=>['frontend\assets\AppAsset']]);
 $this->registerJsFile('@web/js/height.js',['depends'=>['frontend\assets\AppAsset'],'position' => $this::POS_HEAD]);
-$this->registerJsFile('@web/js/news.js',['depends'=>['frontend\assets\AppAsset'],'position' => $this::POS_HEAD]);
+//$this->registerJsFile('@web/js/news.js',['depends'=>['frontend\assets\AppAsset'],'position' => $this::POS_HEAD]);
 ?>
 <!--内容-->
 <div class="list-banner" style="background-image: url(<?=Html::encode($category['pic'])?>);"></div>
@@ -20,14 +20,14 @@ $this->registerJsFile('@web/js/news.js',['depends'=>['frontend\assets\AppAsset']
         </div>
         <div class="system-nav">
             <a href="<?=Url::to(['news/list'])?>">
-                <span <?php if(empty($cid)) echo "calss='active'";?>>全部</span>
+                <span <?php if($cid == 1) echo "class='active'";?>>全部</span>
             </a>
             <?php
-            if(!empty($newsCategory)){
-                foreach ($newsCategory as $value):
+            if(!empty($sonCategory)){
+                foreach ($sonCategory as $value):
                 ?>
                 <a href="<?=Url::to(['news/list','cid'=>$value['id']])?>">
-                    <span <?php if($cid = $value['id']) echo "calss='active'";?>>
+                    <span <?php if($cid == $value['id']) echo "class='active'";?>>
                         <?= Html::encode($value['catname'])?>
                     </span>
                 </a>
