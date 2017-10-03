@@ -5,7 +5,7 @@ namespace backend\modules\content\models\search;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use common\models\Teacher;
+use backend\modules\content\models\Teacher;
 
 /**
  * TeacherSearch represents the model behind the search form about `common\models\Teacher`.

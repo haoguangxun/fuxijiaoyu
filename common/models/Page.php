@@ -3,7 +3,6 @@
 namespace common\models;
 
 use Yii;
-use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "{{%page}}".
@@ -36,7 +35,6 @@ class Page extends \yii\db\ActiveRecord
     {
         return [
             [['catid', 'updatetime'], 'integer'],
-            [['content'], 'required'],
             [['content'], 'string'],
             [['title', 'subtitle'], 'string', 'max' => 80],
             [['thumb', 'video'], 'string', 'max' => 100],
@@ -65,18 +63,4 @@ class Page extends \yii\db\ActiveRecord
         ];
     }
 
-
-    /**
-     * 获取单网页内容
-     * @return array
-     */
-    public static function getData($id = null)
-    {
-        if(!empty($id)){
-            return self::find()->where(['catid'=>$id])->asArray()->one();
-        }else{
-            $data = self::find()->asArray()->all();
-            return ArrayHelper::index($data,'catid');
-        }
-    }
 }

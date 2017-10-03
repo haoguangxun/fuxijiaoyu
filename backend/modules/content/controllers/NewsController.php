@@ -4,7 +4,7 @@ namespace backend\modules\content\controllers;
 
 use common\models\NewsData;
 use Yii;
-use common\models\News;
+use backend\modules\content\models\News;
 use backend\modules\content\models\search\NewsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;

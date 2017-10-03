@@ -4,7 +4,7 @@ namespace backend\modules\content\controllers;
 
 use common\models\CourseData;
 use Yii;
-use common\models\Course;
+use backend\modules\content\models\Course;
 use backend\modules\content\models\search\CourseSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;

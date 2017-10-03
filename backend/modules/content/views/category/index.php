@@ -1,8 +1,7 @@
 <?php
 
 use yii\helpers\Html;
-use yii\grid\GridView;
-use common\models\Category;
+use backend\modules\content\models\Category;
 
 /* @var $this yii\web\View */
 /* @var $searchModel backend\modules\content\models\search\CategorySearch */

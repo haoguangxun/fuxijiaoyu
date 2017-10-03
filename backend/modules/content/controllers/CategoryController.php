@@ -2,9 +2,9 @@
 
 namespace backend\modules\content\controllers;
 
-use common\models\Page;
 use Yii;
-use common\models\Category;
+use backend\modules\content\models\Page;
+use backend\modules\content\models\Category;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;

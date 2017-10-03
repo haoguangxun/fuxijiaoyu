@@ -3,7 +3,7 @@
 namespace backend\modules\content\controllers;
 
 use Yii;
-use common\models\CourseSection;
+use backend\modules\content\models\CourseSection;
 use backend\modules\content\models\search\CourseSectionSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;

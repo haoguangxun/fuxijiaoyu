@@ -4,7 +4,6 @@ namespace common\models;
 
 use Yii;
 use common\helper\Tree;
-use common\models\Models;
 
 /**
  * This is the model class for table "{{%category}}".
@@ -43,7 +42,6 @@ class Category extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['type', 'catname', 'keywords', 'description'], 'required'],
             [['type', 'modelid', 'parentid', 'child', 'sort', 'ismenu'], 'integer'],
             [['setting'], 'string'],
             [['arrparentid', 'arrchildid'], 'string', 'max' => 200],
@@ -78,20 +76,6 @@ class Category extends \yii\db\ActiveRecord
             'sort' => '排序',
             'ismenu' => '是否显示',
         ];
-    }
-
-
-    /**
-     * 获得栏目类型与所属模型
-     */
-    public static function getModelType($type,$modelid)
-    {
-        if($type == 1){
-            return '单网页';
-        }else{
-            $model = Models::findOne($modelid);
-            return $model['name'];
-        }
     }
 
     public static function getData($id = null)

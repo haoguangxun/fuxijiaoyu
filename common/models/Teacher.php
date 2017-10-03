@@ -66,35 +66,4 @@ class Teacher extends \yii\db\ActiveRecord
         ];
     }
 
-    /**
-     * 获取教师内容
-     * @return \yii\db\ActiveQuery
-     */
-    public function getData()
-    {
-        return self::hasOne(TeacherData::className(),['id'=>'id']);
-    }
-
-    /**
-     * 获取栏目名称
-     * @return \yii\db\ActiveQuery
-     */
-    public function getCategory()
-    {
-        return self::hasOne(Category::className(),['id'=>'catid']);
-    }
-
-    /**
-     * 获取教师列表
-     * @return array|\yii\db\ActiveRecord[]
-     */
-    public static function getList($cid = null, $limit = 10, $offset = 0)
-    {
-        return self::find()->alias('t')
-            ->leftJoin('{{%teacher_data}} as d','t.id=d.id')
-            ->orderBy('sort desc,id desc')
-            ->andFilterWhere(['catid'=>$cid])
-            ->limit($limit)->offset($offset)
-            ->asArray()->all();
-    }
 }

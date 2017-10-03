@@ -36,7 +36,6 @@ class Models extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'description', 'tablename', 'sort'], 'required'],
             [['setting'], 'string'],
             [['addtime', 'disabled', 'sort'], 'integer'],
             [['name', 'category_template', 'list_template', 'show_template', 'js_template'], 'string', 'max' => 30],

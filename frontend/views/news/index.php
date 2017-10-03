@@ -19,10 +19,20 @@ $this->registerJsFile('@web/js/news.js',['depends'=>['frontend\assets\AppAsset']
             <span></span>
         </div>
         <div class="system-nav">
-            <span class="active">全部</span>
-            <span>行业动态</span>
-            <span>最新动态</span>
-            <span>媒体关注</span>
+            <a href="<?=Url::to(['news/list'])?>">
+                <span <?php if(empty($cid)) echo "calss='active'";?>>全部</span>
+            </a>
+            <?php
+            if(!empty($newsCategory)){
+                foreach ($newsCategory as $value):
+                ?>
+                <a href="<?=Url::to(['news/list','cid'=>$value['id']])?>">
+                    <span <?php if($cid = $value['id']) echo "calss='active'";?>>
+                        <?= Html::encode($value['catname'])?>
+                    </span>
+                </a>
+                <?php endforeach;
+            }?>
         </div>
     </div>
     <?php
@@ -46,9 +56,9 @@ $this->registerJsFile('@web/js/news.js',['depends'=>['frontend\assets\AppAsset']
             </li>
         <?php endforeach;?>
         </ul>
-        <?php if($this->context->page):?>
-            <div class="page"><?= LinkPager::widget(['pagination' => $pages]);?></div>
-        <?php endif;?>
     </div>
     <?php }?>
+    <?php if($pages):?>
+        <div class="page"><?= LinkPager::widget(['pagination' => $pages]);?></div>
+    <?php endif;?>
 </div>

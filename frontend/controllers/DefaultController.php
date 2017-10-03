@@ -2,10 +2,9 @@
 
 namespace frontend\controllers;
 
-use common\models\Category;
-use common\models\News;
-use common\models\Page;
-use common\models\Teacher;
+use frontend\models\News;
+use frontend\models\Page;
+use frontend\models\Teacher;
 use yii\web\Controller;
 
 /**
