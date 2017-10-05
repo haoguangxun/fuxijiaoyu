@@ -2,8 +2,8 @@
 
 namespace backend\modules\content\controllers;
 
-use Yii;
 use backend\modules\content\models\Page;
+use Yii;
 use backend\modules\content\models\Category;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -66,6 +66,7 @@ class CategoryController extends Controller
         $model = new Category();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            $model->updateSonCategory($model->parentid);
             return $this->redirect(['index']);
         } else {
             return $this->render('create', [
@@ -83,8 +84,11 @@ class CategoryController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $oldPid = $model->getOldAttribute('parentid');
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            $model->updateSonCategory($model->parentid);
+            $model->updateSonCategory($oldPid);
             return $this->redirect(['index']);
         } else {
             return $this->render('update', [

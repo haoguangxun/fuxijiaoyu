@@ -44,45 +44,6 @@ class Tree
 	}
 
     /**
-	* 得到父级数组
-	* @param int
-	* @return array
-	*/
-	function get_parent($myid)
-	{
-		$newarr = array();
-		if(!isset($this->arr[$myid])) return false;
-		$pid = $this->arr[$myid]['parentid'];
-		$pid = $this->arr[$pid]['parentid'];
-		if(is_array($this->arr))
-		{
-			foreach($this->arr as $id => $a)
-			{
-				if($a['parentid'] == $pid) $newarr[$id] = $a;
-			}
-		}
-		return $newarr;
-	}
-
-    /**
-	* 得到子级数组
-	* @param int
-	* @return array
-	*/
-	function get_child($myid)
-	{
-		$a = $newarr = array();
-		if(is_array($this->arr))
-		{
-			foreach($this->arr as $id => $a)
-			{
-				if($a['parentid'] == $myid) $newarr[$id] = $a;
-			}
-		}
-		return $newarr ? $newarr : false;
-	}
-
-    /**
 	* 得到树型结构
 	* @param int ID，表示获得这个ID下的所有子级
 	* @param string 生成树型结构的基本代码，例如："<option value=\$id \$selected>\$spacer\$name</option>"
@@ -187,7 +148,7 @@ class Tree
 	 * @param $id 父级分类id
 	 * @return array
 	 */
-	public static function getParent($data,$id){
+	/*public static function getParent($data,$id){
 		static $parentList = [];
 		foreach($data as $val){
 			if($val['id']== $id){//父级分类id等于所查找的id
@@ -198,7 +159,7 @@ class Tree
 			}
 		}
 		return $parentList;
-	}
+	}*/
 
 	/**
 	 * 根据父id获得所有下级子类id的数据
@@ -206,7 +167,7 @@ class Tree
 	 * @param $data 所有分类列表
 	 * @return array
 	 */
-	public static function getSon($data,$id){
+	/*public static function getSon($data,$id){
 		static $sonList = [];
 		foreach ($data as $k => $v) {
 			if($v['parentid'] == $id){
@@ -215,8 +176,83 @@ class Tree
 			}
 		}
 		return $sonList;
+	}*/
+
+	/**
+	 * 获取某个分类的所有父分类
+	 * @param $id 分类id
+	 * @param $data 所有分类
+	 * @return array
+	 */
+	public function getParents($data,$catId){
+		$parentList = array();
+		foreach($data as $item){
+			if($item['id']==$catId){
+				if($item['parentid']>0)
+					$parentList=array_merge($parentList,$this->getParents($data,$item['parentid']));
+				$parentList[]=$item;
+				break;
+			}
+		}
+		return $parentList;
 	}
 
+	/**
+	 * 获取某个分类的所有子分类
+	 * @param $id 分类id
+	 * @param $data 所有分类
+	 * @return array
+	 */
+	public function getSons($data,$catId=0,$level=1){
+		$sonList = [];
+		foreach($data as $item){
+			if($item['parentid']==$catId){
+				$item['level']=$level;
+				$sonList[]=$item;
+				$sonList=array_merge($sonList,$this->getSons($data,$item['id'],$level+1));
+			}
+		}
+		return $sonList;
+	}
+
+	/**
+	 * 得到父级数组
+	 * @param int
+	 * @return array
+	 */
+	function getParent($data,$catId)
+	{
+		$newarr = array();
+		if(!isset($data[$catId])) return false;
+		$pid = $data[$catId]['parentid'];
+		$pid = $data[$pid]['parentid'];
+		if(is_array($data))
+		{
+			foreach($data as $id => $a)
+			{
+				if($a['parentid'] == $pid) $newarr[$id] = $a;
+			}
+		}
+		return $newarr;
+	}
+
+	/**
+	 * 得到子级数组
+	 * @param int
+	 * @return array
+	 */
+	function getSon($data,$catId)
+	{
+		$a = $newarr = array();
+		if(is_array($data))
+		{
+			foreach($data as $id => $a)
+			{
+				if($a['parentid'] == $catId) $newarr[$id] = $a;
+			}
+		}
+		return $newarr ? $newarr : false;
+	}
 
 	function have($list,$item){
 		return(strpos(',,'.$list.',',','.$item.','));

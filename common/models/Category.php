@@ -3,7 +3,6 @@
 namespace common\models;
 
 use Yii;
-use common\helper\Tree;
 
 /**
  * This is the model class for table "{{%category}}".
@@ -26,8 +25,6 @@ use common\helper\Tree;
  */
 class Category extends \yii\db\ActiveRecord
 {
-    public static $treeList = [];
-
     /**
      * @inheritdoc
      */
@@ -78,6 +75,11 @@ class Category extends \yii\db\ActiveRecord
         ];
     }
 
+    /**
+     * 获取栏目信息
+     * @param null $id
+     * @return array|null|\yii\db\ActiveRecord|\yii\db\ActiveRecord[]
+     */
     public static function getData($id = null)
     {
         if(!empty($id)){
@@ -85,98 +87,6 @@ class Category extends \yii\db\ActiveRecord
         }else{
             return self::find()->select('id,parentid,catname,description,pic,type,modelid,sort,ismenu')->orderBy('sort asc')->asArray()->all();
         }
-    }
-
-    /**
-     * 获取树型分类列表
-     * @return array
-     */
-    public static function getTreeList()
-    {
-        $num = self::find()->where('parentid=0')->asArray()->count();
-        $data = self::getData();
-        //echo '<pre>';
-        //print_r($data);
-        $arr = [];
-        if($data){
-            for($i=1;$i<=$num;$i++){
-                $res_data = array_merge($arr,Tree::getTree($data));
-            }
-
-            /*$tree = new Tree();
-            $tree->tree($data);
-            $str = "<tr>
-						<td style='text-align:center'><input name='listorder[\$id]' type='text' size='3' value='\$sort'></td>
-						<td style='text-align:center'>\$id</td>
-						<td style='text-align:left'>\$spacer<a href='?mod=\$modelid&action=edit&catid=\$id&parentid=\$parentid'>\$catname</a></td>
-					</tr>";
-            $res_data = $tree->get_tree(0,$str);*/
-        }
-        //print_r($res_data);exit;
-        return $res_data;
-    }
-
-    /**
-     * 获取下拉菜单树型分类列表
-     * @return array
-     */
-    public static function getSelectList()
-    {
-        $num = self::find()->where('parentid=0')->asArray()->count();
-        $data = self::getData();
-        $arr = [];
-        if($data){
-            for($i=1;$i<=$num;$i++){
-                $res_data = array_merge($arr,Tree::getTree($data));
-            }
-            $list = [
-                0 => '顶级栏目',
-            ];
-            foreach ($res_data as $key => $val) {
-                $list[$val['id']] = $val['catname'];
-            }
-
-        }
-        return $list;
-    }
-
-    /**
-     * 根据子类id查找出所有父级分类信息
-     * @param $id
-     * @return array
-     */
-    public static function getParentList($id = 0){
-        $data = self::getData();
-        $list = Tree::getParent($data,$id);
-        return $list;
-    }
-
-    /**
-     * 根据父id获得所有下级子类id的数据
-     * @param $id
-     * @return array
-     */
-    public static function getSonList($id = 0){
-        $data = self::getData();
-        $list = Tree::getSon($data,$id);
-        return $list;
-    }
-
-    /**
-     * 根据父id获得指定模型的下级子类的数据
-     * @param $id
-     * @param $mid
-     * @return array
-     */
-    public static function getModelSonList($id = 0, $mid = 0){
-        $data = self::getData();
-        $list = Tree::getSon($data,$id);
-        foreach ($list as $key => $val) {
-            if($val['modelid'] != $mid){
-                unset($list[$key]);
-            }
-        }
-        return $list;
     }
 
 }

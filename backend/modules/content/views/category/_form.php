@@ -2,8 +2,8 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use common\models\Models;
-use common\models\Category;
+use backend\modules\content\models\Models;
+use backend\modules\content\models\Category;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Category */

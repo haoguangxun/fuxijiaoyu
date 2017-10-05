@@ -2,6 +2,7 @@
 
 namespace frontend\models;
 
+use common\models\NewsData;
 use Yii;
 
 class News extends \common\models\News
@@ -29,16 +30,13 @@ class News extends \common\models\News
     public static function getPageList($cid = 1, $curPage = 1, $pageSize = 10)
     {
         //获取当前分类下所有新闻模型子类
-        $cids = [];
+        $cids = [$cid];
         $sonCategory = Category::getModelSonList($cid,1);
         if($sonCategory){
             foreach ($sonCategory as $key => $val) {
                 $cids[$val['id']] = $val['id'];
             }
-        }else{
-            $cids[] = $cid;
         }
-        //var_dump($cids);
 
         $data['count'] = self::find()->where(['in', 'catid', $cids])->count();
         if(!$data['count']){
@@ -59,6 +57,28 @@ class News extends \common\models\News
 
         return $data;
 
+    }
+
+    /**
+     * 获取文章详情
+     * @param $id
+     * @return array
+     */
+    public static function getData($id)
+    {
+        $news = self::find()->where(['id'=>intval($id)])->asArray()->one();
+        $newsData = NewsData::find()->where(['id'=>intval($id)])->asArray()->one();
+        if($news && $newsData){
+            $data = array_merge($news,$newsData);
+        }
+        return $data ? $data : [];
+    }
+
+    public static function clickNum($id)
+    {
+        $model = NewsData::findOne(intval($id));
+        $model->click = $model->click + 1;
+        $model->save();
     }
 
 }

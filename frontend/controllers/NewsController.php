@@ -30,7 +30,7 @@ class NewsController extends Controller
         $data = News::getPageList($cid,$curPage,$pageSize);
         $pages = new Pagination(['totalCount' => $data['count'], 'pageSize' => $pageSize]);
 
-        return $this->render('index',[
+        return $this->render('list',[
             'category' => $category,
             'sonCategory' => $sonCategory,
             'data' => $data,
@@ -42,16 +42,15 @@ class NewsController extends Controller
     /**
      * 文章详情
      */
-    public function actionView()
+    public function actionView($id)
     {
-        //当前栏目内容
-        $category = Category::getData(33);
-        //单网页内容
-        $page = Page::getData(33);
+        //获取文章详情
+        $data = News::getData($id);
+        //展示量+1
+        News::clickNum($id);
 
-        return $this->render('contact',[
-            'category' => $category,
-            'page' => $page,
+        return $this->render('view',[
+            'data' => $data,
         ]);
     }
 }
