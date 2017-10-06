@@ -2,7 +2,7 @@
 use yii\helpers\Url;
 use yii\helpers\Html;
 
-$this->title = Html::encode($data['title']);
+$this->title = Html::encode($data['name']);
 $this->registerMetaTag(array("name"=>"keywords","content"=>Html::encode($data['keywords'])));
 $this->registerMetaTag(array("name"=>"description","content"=>Html::encode($data['description'])));
 $this->registerCssFile('@web/css/news.css',['depends'=>['frontend\assets\AppAsset']]);
@@ -14,8 +14,8 @@ $this->registerJsFile('http://static.bshare.cn/b/bshareC0.js',['depends'=>['fron
 <div class="newList">
     <div class="wrap">
         <div class="newList-title">
-            <h1><?=$data['title']?></h1>
-            <p>作者：<?=$data['author']?>丨浏览：<?=$data['click']?> 丨时间：<?=date('Y-m-d',$data['addtime'])?></p>
+            <h1><?=$data['name']?></h1>
+            <p><?=$data['subtitle']?></p>
         </div>
         <div class="newList-main">
             <?=$data['content']?>
@@ -38,13 +38,13 @@ $this->registerJsFile('http://static.bshare.cn/b/bshareC0.js',['depends'=>['fron
             <ul>
             <?php foreach ($more as $value):?>
                 <li>
-                    <h2><?=Html::encode($value['title'])?></h2>
-                    <h3><?= $category['catname']?> <?= date('Y-m-d',$value['addtime'])?></h3>
-                    <p><?=Html::encode(mb_substr($value['description'],0,60,'utf-8'))?><a href="<?=Url::to(['news/view','id'=>$value['id']])?>">[查看全文]</a></p>
+                    <h2><?= $category['catname']?> <?=Html::encode($value['name'])?></h2>
+                    <h3><?= $value['subtitle']?></h3>
+                    <p><?=Html::encode(mb_substr($value['description'],0,60,'utf-8'))?><a href="<?=Url::to(['teacher/view','id'=>$value['id']])?>">[查看全文]</a></p>
                 </li>
             <?php endforeach;?>
             </ul>
-            <div class="more-btn"><a href="<?= Url::to(['news/list'])?>">返回新闻动态</a></div>
+            <div class="more-btn"><a href="<?= Url::to(['teacher/list'])?>">返回师资力量</a></div>
         </div>
         <?php }?>
     </div>

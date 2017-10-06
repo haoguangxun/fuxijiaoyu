@@ -12,8 +12,8 @@ AppAsset::register($this);
     <meta charset="<?= Yii::$app->charset ?>">
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
     <?= Html::csrfMetaTags() ?>
-    <title><?= Html::encode($this->title) ?></title>
-    <?php $this->registerMetaTag(array("name"=>"application-name","content"=>"伏羲教育")) ?>
+    <title><?= Html::encode($this->title.'-'.Yii::$app->params['name']) ?></title>
+    <?php $this->registerMetaTag(array("name"=>"application-name","content"=> Html::encode(Yii::$app->params['name']))) ?>
     <?php $this->head() ?>
 </head>
 <body>
@@ -63,7 +63,7 @@ AppAsset::register($this);
             <a href="<?= Url::to(['default/index'])?>"><li>首页</li></a>
             <a href="<?= Url::to(['about/index'])?>"><li>关于伏羲</li></a>
             <a href="curriculum.html"><li>课程体系</li></a>
-            <a href="teacher.html"><li>师资力量</li></a>
+            <a href="<?= Url::to(['teacher/list'])?>"><li>师资力量</li></a>
             <a href="experience.html"><li>伏羲体验</li></a>
             <a href="student.html"><li>学员成长</li></a>
             <a href="online.html"><li>在线授课</li></a>
@@ -78,7 +78,7 @@ AppAsset::register($this);
             <a href="<?= Url::to(['default/index'])?>"><li>首页</li></a>
             <a href="<?= Url::to(['about/index'])?>"><li>关于伏羲</li></a>
             <a href="curriculum.html"><li>课程体系</li></a>
-            <a href="teacher.html"><li>师资力量</li></a>
+            <a href="<?= Url::to(['teacher/list'])?>"><li>师资力量</li></a>
             <a href="experience.html"><li>伏羲体验</li></a>
             <a href="student.html"><li>学员成长</li></a>
             <a href="online.html"><li>在线授课</li></a>
@@ -99,7 +99,7 @@ AppAsset::register($this);
             <a href="<?= Url::to(['default/index'])?>"><li>首页</li></a>
             <a href="<?= Url::to(['about/index'])?>"><li>关于伏羲</li></a>
             <a href="curriculum.html"><li>课程体系</li></a>
-            <a href="teacher.html"><li>师资力量</li></a>
+            <a href="<?= Url::to(['teacher/list'])?>"><li>师资力量</li></a>
             <a href="experience.html"><li>伏羲体验</li></a>
             <a href="student.html"><li>学员成长</li></a>
             <a href="online.html"><li>在线授课</li></a>

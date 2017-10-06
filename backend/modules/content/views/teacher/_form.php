@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use common\models\Category;
+use backend\modules\content\models\Category;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Teacher */

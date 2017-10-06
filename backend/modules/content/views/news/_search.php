@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use common\models\Category;
+use backend\modules\content\models\Category;
 use dosamigos\datepicker\DatePicker;
 
 /* @var $this yii\web\View */
@@ -53,7 +53,7 @@ use dosamigos\datepicker\DatePicker;
                 'attribute' => 'bgDate',
                 'language' => 'zh-CN',
                 //'size' => 'sm',
-                'options' => ['style'=>'width:200px;','class'=>'bgDate'],
+                'options' => ['style'=>'width:120px;','class'=>'bgDate'],
                 'template' => '{addon}{input}',
                 'clientOptions' => [
                     'autoclose' => true,
@@ -68,7 +68,7 @@ use dosamigos\datepicker\DatePicker;
                 'attribute' => 'edDate',
                 'language' => 'zh-CN',
                 //'size' => 'sm',
-                'options' => ['style'=>'width:200px;','class'=>'edDate'],
+                'options' => ['style'=>'width:120px;','class'=>'edDate'],
                 'template' => '{addon}{input}',
                 'clientOptions' => [
                     'autoclose' => true,

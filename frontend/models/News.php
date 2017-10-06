@@ -74,11 +74,15 @@ class News extends \common\models\News
         return $data ? $data : [];
     }
 
+    /**
+     * 展示量+1
+     * @param $id
+     * @throws \yii\db\Exception
+     */
     public static function clickNum($id)
     {
-        $model = NewsData::findOne(intval($id));
-        $model->click = $model->click + 1;
-        $model->save();
+        Yii::$app->db->createCommand('UPDATE {{%news_data}} SET click=click+1 WHERE id=:id')
+            ->bindValue('id',$id)->execute();
     }
 
 }

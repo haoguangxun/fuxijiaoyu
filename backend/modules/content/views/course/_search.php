@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use common\models\Category;
+use backend\modules\content\models\Category;
 
 /* @var $this yii\web\View */
 /* @var $model backend\modules\content\models\search\CourseSearch */
@@ -78,21 +78,3 @@ use common\models\Category;
     <?php ActiveForm::end(); ?>
 
 </div>
-<?php
-$js = <<<JS
-    //日期插件
-    $('.bgDate').datepicker({
-        format: 'yyyy-mm-dd',
-        autoclose: true,
-    }).on("changeDate",function(){
-        $(".edDate").datepicker("setStartDate", $(".bgDate").val());
-    });
-    $('.edDate').datepicker({
-        format: 'yyyy-mm-dd',
-        autoclose: true,
-    }).on("changeDate",function(){
-        $(".bgDate").datepicker("setEndDate", $(".edDate").val());
-    });
-JS;
-$this->registerJs($js);
-?>

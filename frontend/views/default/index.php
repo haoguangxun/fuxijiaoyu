@@ -2,9 +2,9 @@
 use yii\helpers\Url;
 use yii\helpers\Html;
 
-$this->title = '伏羲教育首页';
-$this->registerMetaTag(array("name"=>"keywords","content"=>"伏羲教育首页"));
-$this->registerMetaTag(array("name"=>"description","content"=>"伏羲教育首页"));
+$this->title = '首页';
+$this->registerMetaTag(array("name"=>"keywords","content"=>Html::encode(Yii::$app->params['keywords'])));
+$this->registerMetaTag(array("name"=>"description","content"=>Html::encode(Yii::$app->params['description'])));
 $this->registerCssFile('@web/css/home.css',['depends'=>['frontend\assets\AppAsset']]);
 $this->registerCssFile('@web/css/swiper.min.css',['depends'=>['frontend\assets\AppAsset']]);
 $this->registerJsFile('@web/js/home.js',['depends'=>['frontend\assets\AppAsset'],'position' => $this::POS_HEAD]);
