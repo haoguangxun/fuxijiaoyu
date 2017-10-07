@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 use backend\modules\content\models\Category;
 
 /* @var $this yii\web\View */
@@ -42,11 +43,11 @@ $this->params['breadcrumbs'][] = $this->title;
                     <td><?=$val['ismenu']==1 ? '是' : '否';?></td>
                     <td>
                         <?php if($val['type']==1){?>
-                            <a href="/fuxijiaoyu/backend/web/content/category/update-page?id=<?=$val['id']?>" title="Update" aria-label="Update" data-pjax="0"><span class="glyphicon glyphicon-pencil"></span></a>
-                            <a href="/fuxijiaoyu/backend/web/content/category/delete-page?id=<?=$val['id']?>" title="Delete" aria-label="Delete" data-pjax="0" data-confirm="Are you sure you want to delete this item?" data-method="post"><span class="glyphicon glyphicon-trash"></span></a>
+                            <a href="<?= Url::to(['/content/category/update-page','id'=>$val['id']])?>" title="Update" aria-label="Update" data-pjax="0"><span class="glyphicon glyphicon-pencil"></span></a>
+                            <a href="<?= Url::to(['/content/category/delete-page','id'=>$val['id']])?>" title="Delete" aria-label="Delete" data-pjax="0" data-confirm="Are you sure you want to delete this item?" data-method="post"><span class="glyphicon glyphicon-trash"></span></a>
                         <?php }else{?>
-                            <a href="/fuxijiaoyu/backend/web/content/category/update?id=<?=$val['id']?>" title="Update" aria-label="Update" data-pjax="0"><span class="glyphicon glyphicon-pencil"></span></a>
-                            <a href="/fuxijiaoyu/backend/web/content/category/delete?id=<?=$val['id']?>" title="Delete" aria-label="Delete" data-pjax="0" data-confirm="Are you sure you want to delete this item?" data-method="post"><span class="glyphicon glyphicon-trash"></span></a>
+                            <a href="<?= Url::to(['/content/category/update','id'=>$val['id']])?>" title="Update" aria-label="Update" data-pjax="0"><span class="glyphicon glyphicon-pencil"></span></a>
+                            <a href="<?= Url::to(['/content/category/delete','id'=>$val['id']])?>" title="Delete" aria-label="Delete" data-pjax="0" data-confirm="Are you sure you want to delete this item?" data-method="post"><span class="glyphicon glyphicon-trash"></span></a>
                         <?php }?>
                     </td>
                 </tr>

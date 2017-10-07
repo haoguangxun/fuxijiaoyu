@@ -38,12 +38,12 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        'urlManager' => [
+        /*'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
             ],
-        ],
+        ],*/
         'authManager' => [
             'class' => 'backend\modules\admin\components\DbManager',
             'defaultRoles' => [ //必须登录

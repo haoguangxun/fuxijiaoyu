@@ -28,8 +28,10 @@ class NewsController extends Controller
         $pageSize = 5;//每页显示条数
         $data = News::getPageList($cid,$curPage,$pageSize);
         $pages = new Pagination(['totalCount' => $data['count'], 'pageSize' => $pageSize]);
+        //栏目列表模板
+        $template = $category['list_template'] ? $category['list_template'] : 'list';
 
-        return $this->render('list',[
+        return $this->render($template,[
             'category' => $category,
             'sonCategory' => $sonCategory,
             'data' => $data,

@@ -62,11 +62,11 @@ AppAsset::register($this);
         <ul class="nav-main" id="nav">
             <a href="<?= Url::to(['default/index'])?>"><li>首页</li></a>
             <a href="<?= Url::to(['about/index'])?>"><li>关于伏羲</li></a>
-            <a href="curriculum.html"><li>课程体系</li></a>
+            <a href="<?= Url::to(['course/list','cid'=>15])?>"><li>课程体系</li></a>
             <a href="<?= Url::to(['teacher/list'])?>"><li>师资力量</li></a>
-            <a href="experience.html"><li>伏羲体验</li></a>
-            <a href="student.html"><li>学员成长</li></a>
-            <a href="online.html"><li>在线授课</li></a>
+            <a href="<?= Url::to(['course/list','cid'=>42])?>"><li>伏羲体验</li></a>
+            <a href="<?= Url::to(['student/index'])?>"><li>学员成长</li></a>
+            <a href="<?= Url::to(['course/list','cid'=>15])?>"><li>在线授课</li></a>
             <a href="<?= Url::to(['news/list'])?>"><li>新闻动态</li></a>
             <a href="<?= Url::to(['about/contact'])?>"><li>联系我们</li></a>
         </ul>
@@ -77,11 +77,11 @@ AppAsset::register($this);
         <ul class="nav-main">
             <a href="<?= Url::to(['default/index'])?>"><li>首页</li></a>
             <a href="<?= Url::to(['about/index'])?>"><li>关于伏羲</li></a>
-            <a href="curriculum.html"><li>课程体系</li></a>
+            <a href="<?= Url::to(['course/list','cid'=>15])?>"><li>课程体系</li></a>
             <a href="<?= Url::to(['teacher/list'])?>"><li>师资力量</li></a>
-            <a href="experience.html"><li>伏羲体验</li></a>
-            <a href="student.html"><li>学员成长</li></a>
-            <a href="online.html"><li>在线授课</li></a>
+            <a href="<?= Url::to(['course/list','cid'=>42])?>"><li>伏羲体验</li></a>
+            <a href="<?= Url::to(['student/index'])?>"><li>学员成长</li></a>
+            <a href="<?= Url::to(['course/list','cid'=>15])?>"><li>在线授课</li></a>
             <a href="<?= Url::to(['news/list'])?>"><li>新闻动态</li></a>
             <a href="<?= Url::to(['about/contact'])?>"><li>联系我们</li></a>
         </ul>
@@ -98,11 +98,11 @@ AppAsset::register($this);
         <ul>
             <a href="<?= Url::to(['default/index'])?>"><li>首页</li></a>
             <a href="<?= Url::to(['about/index'])?>"><li>关于伏羲</li></a>
-            <a href="curriculum.html"><li>课程体系</li></a>
+            <a href="<?= Url::to(['course/list','cid'=>15])?>"><li>课程体系</li></a>
             <a href="<?= Url::to(['teacher/list'])?>"><li>师资力量</li></a>
-            <a href="experience.html"><li>伏羲体验</li></a>
-            <a href="student.html"><li>学员成长</li></a>
-            <a href="online.html"><li>在线授课</li></a>
+            <a href="<?= Url::to(['course/list','cid'=>42])?>"><li>伏羲体验</li></a>
+            <a href="<?= Url::to(['student/index'])?>"><li>学员成长</li></a>
+            <a href="<?= Url::to(['course/list','cid'=>15])?>"><li>在线授课</li></a>
             <a href="<?= Url::to(['news/list'])?>"><li>新闻动态</li></a>
             <a href="<?= Url::to(['about/contact'])?>"><li>联系我们</li></a>
         </ul>

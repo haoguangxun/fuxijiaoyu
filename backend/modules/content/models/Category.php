@@ -138,6 +138,7 @@ class Category extends \common\models\Category
      */
     public function updateSonCategory($id)
     {
+        if(empty($id)) return;
         $son = self::getSonList($id);
         $res = self::findOne($id);
         if($son){

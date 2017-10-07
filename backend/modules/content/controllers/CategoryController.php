@@ -156,6 +156,7 @@ class CategoryController extends Controller
                 $category->save(false);
                 $page->catid = $category->attributes['id'];
                 $page->save(false);
+                $category->updateSonCategory($category->parentid);
                 return $this->redirect(['index']);
             }
         }
@@ -177,6 +178,7 @@ class CategoryController extends Controller
     {
         $category = $this->findModel($id);
         $page = Page::findOne($id);
+        $oldPid = $category->getOldAttribute('parentid');
 
         if (!$category) {
             throw new NotFoundHttpException("The category was not found.");
@@ -196,6 +198,8 @@ class CategoryController extends Controller
             if ($isValid) {
                 $category->save(false);
                 $page->save(false);
+                $category->updateSonCategory($category->parentid);
+                $category->updateSonCategory($oldPid);
                 return $this->redirect(['index']);
             }
         }

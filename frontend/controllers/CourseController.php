@@ -3,31 +3,36 @@
 namespace frontend\controllers;
 
 use frontend\models\Category;
-use frontend\models\Teacher;
+use frontend\models\Course;
+use frontend\models\News;
 use yii\data\Pagination;
 use yii\web\Controller;
 
 /**
- * Teacher controller
+ * Course controller
  */
-class TeacherController extends Controller
+class CourseController extends Controller
 {
-
     /**
-    * 教师列表
-    */
+     * 课程列表
+     */
     public function actionList()
     {
-        $cid = \Yii::$app->request->get('cid',2);
+        $cid = \Yii::$app->request->get('cid',15);
         $curPage = \Yii::$app->request->get('page',1);
 
         //当前栏目内容
         $category = Category::getData($cid);
-        //教师栏目列表
-        $sonCategory = Category::getModelSonList(2,2);
+        if($category['parentid']==0){
+            $parent = $category;
+        }else{
+            $parent = Category::getData($category['parentid']);
+        }
+        //课程栏目列表
+        $sonCategory = Category::getModelSonList($parent['id'],3);
         //列表数据
         $pageSize = 6;//每页显示条数
-        $data = Teacher::getPageList($cid,$curPage,$pageSize);
+        $data = Course::getPageList($cid,$curPage,$pageSize);
         $pages = new Pagination(['totalCount' => $data['count'], 'pageSize' => $pageSize]);
         //栏目列表模板
         $template = $category['list_template'] ? $category['list_template'] : 'list';
@@ -37,26 +42,26 @@ class TeacherController extends Controller
             'sonCategory' => $sonCategory,
             'data' => $data,
             'pages' => $pages,
+            'parent' => $parent,
             'cid' => $cid,
         ]);
     }
 
     /**
-     * 教师详情
+     * 课程详情
      */
     public function actionView($id)
     {
-        //获取教师详情
-        $data = Teacher::getData($id);
+        //获取课程详情
+        $data = Course::getData($id);
         //当前栏目内容
         $category = Category::getData($data['catid']);
-        //更多阅读
-        $more = Teacher::getList($data['catid'],3);
+        //展示量+1
+        News::clickNum($id);
 
         return $this->render('view',[
             'category' => $category,
             'data' => $data,
-            'more' => $more,
         ]);
     }
 }
