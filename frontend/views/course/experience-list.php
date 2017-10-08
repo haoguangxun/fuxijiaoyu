@@ -2,6 +2,7 @@
 use yii\helpers\Url;
 use yii\helpers\Html;
 use yii\widgets\LinkPager;
+use yii\helpers\HtmlPurifier;
 
 $this->title = Html::encode($category['catname']);
 $this->registerMetaTag(array("name"=>"keywords","content"=>Html::encode($category['keywords'])));
@@ -53,7 +54,7 @@ $this->registerJsFile('@web/js/videojs-ie8.min.js',['depends'=>['frontend\assets
                 </div>
                 <div class="video-text">
                     <h4><?=Html::encode($value['name'])?></h4>
-                    <div class="people">体验人数 <span>100</span><span class="share iconfont icon-share"></span></div>
+                    <div class="people">体验人数 <span><?=Html::encode($value['sales'])?></span><span class="share iconfont icon-share"></span></div>
                 </div>
             </li>
             <?php endforeach;?>
@@ -75,36 +76,16 @@ $this->registerJsFile('@web/js/videojs-ie8.min.js',['depends'=>['frontend\assets
             </div>
             <div class="popular-scroll">
                 <ul >
+                    <?php foreach ($hot as $value):?>
                     <li>
-                        <div class="popular-img">
-                            <div style="background-image:url(img/experience/video1.jpg);"></div>
-                        </div>
-                        <div class="popular-img-text">传家训 立家规 扬家风：修身之余也尚美</div>
+                        <a href="<?=Url::to(['course/view','id'=>$value['id']])?>">
+                            <div class="popular-img">
+                                <div style="background-image:url(<?= Html::encode($value['thumb'])?>);"></div>
+                            </div>
+                        </a>
+                        <div class="popular-img-text"><?=Html::encode($value['name'])?></div>
                     </li>
-                    <li>
-                        <div class="popular-img">
-                            <div style="background-image:url(img/experience/video1.jpg);"></div>
-                        </div>
-                        <div class="popular-img-text">传家训 立家规 扬家风：修身之余也尚美</div>
-                    </li>
-                    <li>
-                        <div class="popular-img">
-                            <div style="background-image:url(img/experience/video2.jpg);"></div>
-                        </div>
-                        <div class="popular-img-text">传家训 立家规 扬家风：修身之余也尚美</div>
-                    </li>
-                    <li>
-                        <div class="popular-img">
-                            <div style="background-image:url(img/experience/video3.jpg);"></div>
-                        </div>
-                        <div class="popular-img-text">传家训 立家规 扬家风：修身之余也尚美</div>
-                    </li>
-                    <li>
-                        <div class="popular-img">
-                            <div style="background-image:url(img/experience/video2.jpg);"></div>
-                        </div>
-                        <div class="popular-img-text">传家训 立家规 扬家风：修身之余也尚美</div>
-                    </li>
+                    <?php endforeach;?>
                 </ul>
             </div>
             <div class="popular-btn">
@@ -115,10 +96,9 @@ $this->registerJsFile('@web/js/videojs-ie8.min.js',['depends'=>['frontend\assets
 </div>
 <div class="welcome">
     <div class="wrap">
-        <h1>欢迎和我们一起探索国学之源泉</h1>
-        <p>创造在线体验和重新定义国学品牌</p>
+        <h1><?= Html::encode($page[47]['title'])?></h1>
+        <p><?= Html::encode($page[47]['subtitle'])?></p>
         <div class="line"><span></span></div>
-        <p>事无巨细、超越梦想</p>
-        <p>010-67963600</p>
+        <?= HtmlPurifier::process($page[47]['content'])?>
     </div>
 </div>

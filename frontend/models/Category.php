@@ -40,4 +40,22 @@ class Category extends \common\models\Category
     }
 
 
+    /**
+     * 获取当前分类下所有指定模型子类ID
+     * @param $cid
+     * @param $mid
+     * @return array
+     */
+    public static function getModelSonCid($cid, $mid){
+        $cids = [$cid];
+        $sonCategory = self::getModelSonList($cid,$mid);
+        if($sonCategory){
+            foreach ($sonCategory as $key => $val) {
+                $cids[$val['id']] = $val['id'];
+            }
+        }
+        return $cids;
+    }
+
+
 }

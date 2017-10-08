@@ -12,11 +12,11 @@ class News extends \common\models\News
      * 获取文章列表
      * @return array|\yii\db\ActiveRecord[]
      */
-    public static function getList($cid = null, $limit = 10, $offset = 0)
+    public static function getList($cid = null, $limit = 10, $offset = 0, $order = 'sort desc,id desc')
     {
         return self::find()->alias('n')
             ->leftJoin('{{%news_data}} as d', 'n.id=d.id')
-            ->orderBy('sort desc,id desc')
+            ->orderBy($order)
             ->andFilterWhere(['catid'=>$cid])
             ->limit($limit)->offset($offset)
             ->asArray()->all();
@@ -29,14 +29,8 @@ class News extends \common\models\News
      */
     public static function getPageList($cid = 1, $curPage = 1, $pageSize = 10)
     {
-        //获取当前分类下所有新闻模型子类
-        $cids = [$cid];
-        $sonCategory = Category::getModelSonList($cid,1);
-        if($sonCategory){
-            foreach ($sonCategory as $key => $val) {
-                $cids[$val['id']] = $val['id'];
-            }
-        }
+        //获取当前分类下所有新闻模型子类ID
+        $cids = Category::getModelSonCid($cid,1);
 
         $data['count'] = self::find()->where(['in', 'catid', $cids])->count();
         if(!$data['count']){

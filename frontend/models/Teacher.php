@@ -28,14 +28,8 @@ class Teacher extends \common\models\Teacher
      */
     public static function getPageList($cid = 2, $curPage = 1, $pageSize = 10)
     {
-        //获取当前分类下所有教师模型子类
-        $cids = [$cid];
-        $sonCategory = Category::getModelSonList($cid,2);
-        if($sonCategory){
-            foreach ($sonCategory as $key => $val) {
-                $cids[$val['id']] = $val['id'];
-            }
-        }
+        //获取当前分类下所有教师模型子类ID
+        $cids = Category::getModelSonCid($cid,2);
 
         $data['count'] = self::find()->where(['in', 'catid', $cids])->count();
         if(!$data['count']){

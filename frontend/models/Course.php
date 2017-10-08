@@ -12,14 +12,32 @@ class Course extends \common\models\Course
      * 获取课程列表
      * @return array|\yii\db\ActiveRecord[]
      */
-    public static function getList($cid = null, $limit = 10, $offset = 0)
+    public static function getList($cid = null, $limit = 10, $offset = 0, $order = 'sort desc,id desc')
     {
-        return self::find()->alias('n')
-            ->leftJoin('{{%course_data}} as d', 'n.id=d.id')
-            ->orderBy('sort desc,id desc')
+        return self::find()
+            ->orderBy($order)
             ->andFilterWhere(['catid'=>$cid])
             ->limit($limit)->offset($offset)
             ->asArray()->all();
+
+    }
+
+    /**
+     * 获取热门课程列表
+     * @return array|\yii\db\ActiveRecord[]
+     */
+    public static function getHotList($cid = 15, $limit = 3)
+    {
+        //获取当前分类下所有课程模型子类ID
+        $cids = Category::getModelSonCid($cid,3);
+
+        $data = self::find()
+            ->orderBy('sales desc')
+            ->where(['in', 'catid', $cids])
+            ->limit($limit)
+            ->asArray()->all();
+
+        return $data;
 
     }
 
@@ -29,14 +47,8 @@ class Course extends \common\models\Course
      */
     public static function getPageList($cid = 15, $curPage = 1, $pageSize = 10)
     {
-        //获取当前分类下所有课程模型子类
-        $cids = [$cid];
-        $sonCategory = Category::getModelSonList($cid,3);
-        if($sonCategory){
-            foreach ($sonCategory as $key => $val) {
-                $cids[$val['id']] = $val['id'];
-            }
-        }
+        //获取当前分类下所有课程模型子类ID
+        $cids = Category::getModelSonCid($cid,3);
 
         $data['count'] = self::find()->where(['in', 'catid', $cids])->count();
         if(!$data['count']){
