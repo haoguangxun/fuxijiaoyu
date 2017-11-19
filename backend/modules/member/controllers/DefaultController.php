@@ -1,16 +1,16 @@
 <?php
 
-namespace backend\modules\feedback\controllers;
+namespace backend\modules\member\controllers;
 
 use Yii;
+use backend\modules\member\models\Member;
+use backend\modules\member\models\search\MemberSearch;
 use yii\web\Controller;
-use backend\modules\feedback\models\Feedback;
-use backend\modules\feedback\models\search\FeedbackSearch;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * Default controller for the `feedback` module
+ * DefaultController implements the CRUD actions for Member model.
  */
 class DefaultController extends Controller
 {
@@ -30,12 +30,12 @@ class DefaultController extends Controller
     }
 
     /**
-     * Lists all Feedback models.
+     * Lists all Member models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new FeedbackSearch();
+        $searchModel = new MemberSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,7 +45,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * Displays a single Feedback model.
+     * Displays a single Member model.
      * @param string $id
      * @return mixed
      */
@@ -57,16 +57,16 @@ class DefaultController extends Controller
     }
 
     /**
-     * Creates a new Feedback model.
+     * Creates a new Member model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Feedback();
+        $model = new Member();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['view', 'id' => $model->userid]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -75,7 +75,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * Updates an existing Feedback model.
+     * Updates an existing Member model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param string $id
      * @return mixed
@@ -85,7 +85,7 @@ class DefaultController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['view', 'id' => $model->userid]);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -94,7 +94,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * Deletes an existing Feedback model.
+     * Deletes an existing Member model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param string $id
      * @return mixed
@@ -107,15 +107,15 @@ class DefaultController extends Controller
     }
 
     /**
-     * Finds the Feedback model based on its primary key value.
+     * Finds the Member model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param string $id
-     * @return Feedback the loaded model
+     * @return Member the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Feedback::findOne($id)) !== null) {
+        if (($model = Member::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

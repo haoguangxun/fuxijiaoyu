@@ -4,6 +4,7 @@ namespace backend\modules\content\models;
 
 use Yii;
 use common\models\CourseData;
+use backend\modules\member\models\MemberData;
 
 class Course extends \common\models\Course
 {
@@ -47,7 +48,7 @@ class Course extends \common\models\Course
      */
     public function getTeacher()
     {
-        return self::hasOne(MemberTeacher::className(),['userid'=>'teacherid']);
+        return self::hasOne(MemberData::className(),['userid'=>'teacherid']);
     }
 
 }

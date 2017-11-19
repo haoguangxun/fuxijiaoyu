@@ -73,6 +73,12 @@ return [
         'content' => [
             'class' => 'backend\modules\content\Module',
         ],
+        'member' => [
+            'class' => 'backend\modules\member\Module',
+        ],
+        'feedback' => [
+            'class' => 'backend\modules\feedback\Module',
+        ],
         'redactor' => [
             'class' => 'yii\redactor\RedactorModule',
             'uploadDir' => '@webroot/uploads',  //上传目录

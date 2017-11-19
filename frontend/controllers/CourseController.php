@@ -4,7 +4,7 @@ namespace frontend\controllers;
 
 use frontend\models\Category;
 use frontend\models\Course;
-use frontend\models\MemberTeacher;
+use frontend\models\Member;
 use frontend\models\News;
 use frontend\models\Page;
 use yii\data\Pagination;
@@ -60,7 +60,7 @@ class CourseController extends Controller
             $temp_params['page'] = $page;
         }elseif($parent['id'] == 40){//在线授课
             //教师列表
-            $teacher = MemberTeacher::getList();
+            $teacher = Member::getTeacherList();
             $temp_params['teacher'] = $teacher;
         }
 
@@ -78,7 +78,7 @@ class CourseController extends Controller
         //获取课程详情
         $data = Course::getData($id);
         //获取教师信息
-        $teacher = MemberTeacher::getData($data['teacherid']);
+        $teacher = Member::getData($data['teacherid']);
         //当前栏目内容
         $category = Category::getData($data['catid']);
         if($category['parentid']==0){
