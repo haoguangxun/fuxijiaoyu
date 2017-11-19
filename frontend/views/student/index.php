@@ -32,7 +32,7 @@ $this->registerJsFile('@web/js/student.js',['depends'=>['frontend\assets\AppAsse
             <?php foreach ($interview as $value):?>
             <li>
                 <div class="video">
-                    <video id="my-video" class="video-js" controls preload="auto" poster="/img/video-img.jpg" data-setup="{}">
+                    <video id="my-video" class="video-js" controls preload="auto" poster="<?=Html::encode($value['thumb'])?>" data-setup="{}">
                         <source src="<?=Html::encode($value['video'])?>" type="video/mp4">
                         <source src="http://vjs.zencdn.net/v/oceans.webm" type="video/webm">
                         <source src="http://vjs.zencdn.net/v/oceans.ogv" type="video/ogg">
