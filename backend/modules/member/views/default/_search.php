@@ -14,52 +14,36 @@ use yii\widgets\ActiveForm;
         'action' => ['index'],
         'method' => 'get',
     ]); ?>
+    <div class="col-lg-12">
 
-    <?= $form->field($model, 'userid') ?>
+        <div class="col-lg-2">
+            <?= $form->field($model, 'type')->dropdownList(
+                [
+                    1 => '学生',
+                    2 => '教师',
+                ]
+            ) ?>
+        </div>
 
-    <?= $form->field($model, 'username') ?>
+        <div class="col-lg-2">
+            <?= $form->field($model, 'userid') ?>
+        </div>
 
-    <?= $form->field($model, 'auth_key') ?>
+        <div class="col-lg-2">
+            <?= $form->field($model, 'realname') ?>
+        </div>
 
-    <?= $form->field($model, 'password') ?>
+        <div class="col-lg-2">
+            <?= $form->field($model, 'phone') ?>
+        </div>
 
-    <?= $form->field($model, 'password_reset_token') ?>
+        <div class="col-lg-2">
+            <?= $form->field($model, 'islock') ?>
+        </div>
 
-    <?php // echo $form->field($model, 'email_validate_token') ?>
-
-    <?php // echo $form->field($model, 'nickname') ?>
-
-    <?php // echo $form->field($model, 'photo') ?>
-
-    <?php // echo $form->field($model, 'phone') ?>
-
-    <?php // echo $form->field($model, 'email') ?>
-
-    <?php // echo $form->field($model, 'type') ?>
-
-    <?php // echo $form->field($model, 'amount') ?>
-
-    <?php // echo $form->field($model, 'point') ?>
-
-    <?php // echo $form->field($model, 'regtime') ?>
-
-    <?php // echo $form->field($model, 'lasttime') ?>
-
-    <?php // echo $form->field($model, 'regip') ?>
-
-    <?php // echo $form->field($model, 'lastip') ?>
-
-    <?php // echo $form->field($model, 'loginnum') ?>
-
-    <?php // echo $form->field($model, 'islock') ?>
-
-    <?php // echo $form->field($model, 'vip') ?>
-
-    <?php // echo $form->field($model, 'overduedate') ?>
-
-    <div class="form-group">
-        <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton('Reset', ['class' => 'btn btn-default']) ?>
+        <div class="form-group col-lg-2">
+            <?= Html::submitButton('查询', ['class' => 'btn btn-primary','style'=>'margin-top:25px;']) ?>
+        </div>
     </div>
 
     <?php ActiveForm::end(); ?>

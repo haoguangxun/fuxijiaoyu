@@ -18,9 +18,8 @@ class MemberSearch extends Member
     public function rules()
     {
         return [
-            [['userid', 'phone', 'type', 'point', 'regtime', 'lasttime', 'regip', 'lastip', 'loginnum', 'islock', 'vip', 'overduedate'], 'integer'],
-            [['username', 'auth_key', 'password', 'password_reset_token', 'email_validate_token', 'nickname', 'photo', 'email'], 'safe'],
-            [['amount'], 'number'],
+            [['userid', 'sex', 'phone', 'type', 'regtime', 'lasttime', 'loginnum', 'islock', 'vip'], 'integer'],
+            [['username', 'nickname', 'realname', 'email'], 'safe'],
         ];
     }
 
@@ -62,13 +61,10 @@ class MemberSearch extends Member
         $query->andFilterWhere([
             'userid' => $this->userid,
             'phone' => $this->phone,
+            'sex' => $this->sex,
             'type' => $this->type,
-            'amount' => $this->amount,
-            'point' => $this->point,
             'regtime' => $this->regtime,
             'lasttime' => $this->lasttime,
-            'regip' => $this->regip,
-            'lastip' => $this->lastip,
             'loginnum' => $this->loginnum,
             'islock' => $this->islock,
             'vip' => $this->vip,
@@ -76,12 +72,8 @@ class MemberSearch extends Member
         ]);
 
         $query->andFilterWhere(['like', 'username', $this->username])
-            ->andFilterWhere(['like', 'auth_key', $this->auth_key])
-            ->andFilterWhere(['like', 'password', $this->password])
-            ->andFilterWhere(['like', 'password_reset_token', $this->password_reset_token])
-            ->andFilterWhere(['like', 'email_validate_token', $this->email_validate_token])
+            ->andFilterWhere(['like', 'realname', $this->realname])
             ->andFilterWhere(['like', 'nickname', $this->nickname])
-            ->andFilterWhere(['like', 'photo', $this->photo])
             ->andFilterWhere(['like', 'email', $this->email]);
 
         return $dataProvider;

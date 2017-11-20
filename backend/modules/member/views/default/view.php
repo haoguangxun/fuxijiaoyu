@@ -6,49 +6,64 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model backend\modules\member\models\Member */
 
-$this->title = $model->userid;
-$this->params['breadcrumbs'][] = ['label' => 'Members', 'url' => ['index']];
+$this->title = '会员详情';
+$this->params['breadcrumbs'][] = ['label' => '会员管理'];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="member-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <p>
-        <?= Html::a('Update', ['update', 'id' => $model->userid], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->userid], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
-                'method' => 'post',
-            ],
-        ]) ?>
-    </p>
+    <h1><?= Html::encode($model->realname) ?></h1>
 
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
+
+            [
+                'attribute' => 'photo',
+                'format' => 'raw',
+                'value' => function($model){
+                    return "<img src=".$model->photo." width=300>";
+                },
+            ],
             'userid',
+            [
+                'attribute' => 'type',
+                'value' => function($model){
+                    return $model->type==1 ? '学生' : '教师';
+                },
+            ],
             'username',
-            'auth_key',
-            'password',
-            'password_reset_token',
-            'email_validate_token:email',
-            'nickname',
-            'photo',
+            //'nickname',
+            'realname',
+            [
+                'attribute' => 'sex',
+                'value' => function($model){
+                    return $model->sex==1 ? '男' : '女';
+                },
+            ],
             'phone',
             'email:email',
-            'type',
             'amount',
             'point',
-            'regtime',
-            'lasttime',
+            [
+                'attribute' => 'regtime',
+                'format'=>['date','php:Y-m-d H:i:s'],
+            ],
+            [
+                'attribute' => 'lasttime',
+                'format'=>['date','php:Y-m-d H:i:s'],
+            ],
             'regip',
             'lastip',
             'loginnum',
-            'islock',
-            'vip',
-            'overduedate',
+            [
+                'attribute' => 'islock',
+                'value' => function($model){
+                    return $model->islock==1 ? '是' : '否';
+                },
+            ],
+            //'vip',
+            //'overduedate',
         ],
     ]) ?>
 

@@ -1,6 +1,5 @@
 <?php
 
-use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
@@ -12,39 +11,57 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="member-index">
 
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <?php echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <p>
-        <?= Html::a('Create Member', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
         'columns' => [
 
             'userid',
             'username',
-            'auth_key',
-            'password',
-            'password_reset_token',
-            // 'email_validate_token:email',
-            // 'nickname',
-            // 'photo',
-            // 'phone',
+            'phone',
+            //'nickname',
+            'realname',
+            [
+                'attribute' => 'sex',
+                'value' => function($model){
+                    return $model->sex==1 ? '男' : '女';
+                },
+            ],
             // 'email:email',
-            // 'type',
+            [
+                'attribute' => 'type',
+                'value' => function($model){
+                    return $model->type==1 ? '学生' : '教师';
+                },
+            ],
             // 'amount',
             // 'point',
-            // 'regtime',
-            // 'lasttime',
+            [
+                'attribute' => 'regtime',
+                'format'=>['date','php:Y-m-d H:i:s'],
+            ],
+            [
+                'attribute' => 'lasttime',
+                'format'=>['date','php:Y-m-d H:i:s'],
+            ],
             // 'regip',
             // 'lastip',
-            // 'loginnum',
-            // 'islock',
+            'loginnum',
+            [
+                'attribute' => 'islock',
+                'value' => function($model){
+                    return $model->islock==1 ? '是' : '否';
+                },
+            ],
             // 'vip',
             // 'overduedate',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'header'=>'操作',
+                'template' => '{view}',
+            ],
         ],
     ]); ?>
 </div>

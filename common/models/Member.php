@@ -14,6 +14,8 @@ use Yii;
  * @property string $password_reset_token
  * @property string $email_validate_token
  * @property string $nickname
+ * @property string $realname
+ * @property string $sex
  * @property string $photo
  * @property string $phone
  * @property string $email
@@ -45,9 +47,9 @@ class Member extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['phone', 'type', 'point', 'regtime', 'lasttime', 'regip', 'lastip', 'loginnum', 'islock', 'vip', 'overduedate'], 'integer'],
+            [['sex','phone', 'type', 'point', 'regtime', 'lasttime', 'regip', 'lastip', 'loginnum', 'islock', 'vip', 'overduedate'], 'integer'],
             [['amount'], 'number'],
-            [['username', 'nickname'], 'string', 'max' => 20],
+            [['username', 'nickname', 'realname'], 'string', 'max' => 20],
             [['auth_key', 'password', 'email'], 'string', 'max' => 32],
             [['password_reset_token', 'email_validate_token'], 'string', 'max' => 255],
             [['photo'], 'string', 'max' => 100],
@@ -68,10 +70,12 @@ class Member extends \yii\db\ActiveRecord
             'password_reset_token' => '重置密码token',
             'email_validate_token' => '邮箱验证token',
             'nickname' => '昵称',
+            'realname' => '姓名',
+            'sex' => '性别',
             'photo' => '头像',
             'phone' => '手机号',
             'email' => '邮箱',
-            'type' => '用户类型：1学生，2教师',
+            'type' => '类型',
             'amount' => '金钱',
             'point' => '积分',
             'regtime' => '注册时间',
@@ -79,7 +83,7 @@ class Member extends \yii\db\ActiveRecord
             'regip' => '注册ip',
             'lastip' => '上次登录ip',
             'loginnum' => '登录次数',
-            'islock' => '是否锁定：0未锁定，1已锁定',
+            'islock' => '是否锁定',
             'vip' => 'VIP等级',
             'overduedate' => 'VIP过期时间',
         ];
