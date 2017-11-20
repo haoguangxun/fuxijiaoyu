@@ -1,0 +1,231 @@
+.gopay{
+	background: #f7f7f7;
+	overflow: hidden;
+	padding: 35px 0;
+}
+.gopay-main{
+	overflow: hidden;
+	background: #FFFFFF;
+	padding: 50px;
+}
+.gopay-main-top{
+	padding: 0 0 15px;
+	border-bottom: 1px solid #e2e2e2;
+}
+.form-title{
+	width: 100%;
+	display: flex;
+	color: #878787;
+	font-size: 14px;
+}
+.sign-name,.content-name{
+	flex: 5;
+}
+.sign-nav{
+	display: flex;
+	padding: 0 10px;
+}
+.sign-nav span{
+	border-bottom: 2px solid #cfcfcf;
+	padding: 15px 0;
+}
+.sign-name span{
+	border-bottom: 2px solid #1d88db;
+}
+.sign-price,.sign-num,.sign-discount,.sign-all,.content-price,.content-num,.content-discount,.content-all{
+	flex: 1;
+	justify-content: center;
+    align-items: center;
+}
+.form-item{
+	color: #878787;
+	font-size: 14px;
+	overflow: hidden;
+	margin: 30px 0;
+}
+.form-item ul{
+	display: flex;
+}
+.item-all-price{
+	text-align: right;
+	color: #878787;
+	font-size: 14px;
+}
+.item-all-price span{
+	color: #ff6029;
+}
+.gopay-main-center{
+	padding: 35px 10px;
+	overflow: hidden;
+	border-bottom: 1px solid #e2e2e2;
+}
+.title-name{
+	color: #878787;
+	font-size: 14px;
+	margin-bottom: 35px;
+}
+.code{
+	color: #bfbfbf;
+	
+	font-size: 14px;
+}
+.code-input{
+	float: left;
+}
+.code-price{
+	float: right;
+}
+.gopay-phone{
+	color: #a5a5a5;
+	font-size:14px ;
+}
+.gopay-phone input{
+	border: 1px solid #e2e2e2;
+	outline: none;
+	margin-left: 20px;
+	color: #a5a5a5;
+	width: 280px;
+	border-radius: 5px;
+	padding: 10px 20px;
+}
+.gopay-main-footer{
+	padding: 35px 50px;
+}
+.gopay-main-footer .discount{
+	text-align: right;
+	color: #a5a5a5;
+	font-size: 14px;
+}
+.all-price{
+	text-align: right;
+	font-size: 26px;
+	color: #ff6029;
+	margin: 30px 0;
+}
+.gopay-btn{
+	text-align: right;
+}
+.gopay-btn a,.pay-btn span{
+	background: #ff6029;
+	color: #FFFFFF;
+	display: inline-block;
+	cursor: pointer;
+	padding: 10px 25px;
+	border-radius: 5px;
+	margin: 15px 0;
+}
+/*支付*/
+.time-alert{
+	color: #878787;
+	font-size: 14px;
+}
+.time-alert span{
+	color: #ff6e41;
+}
+.order-content{
+	color: #b5b5b5;
+	font-size: 14px;
+	margin: 20px 0;
+}
+.order-content-left{
+	float: left;
+}
+.order-content-left span{
+	margin-right: 20px;
+}
+.order-content-right{
+	float: right;
+	color: #ff5f28;
+	font-size: 25px;
+}
+.platform{
+	background: #f8f8f8;
+	padding: 20px 15px;
+}
+.platform-title{
+	padding: 20px 0 ;
+	font-size: 14px;
+	color: #7a7a7a;
+	border-bottom: 1px solid #9d9d9d;
+}
+.platform-choice{
+	padding: 30px;
+}
+.platform-choice span{
+	display: inline-block;
+	background: #ffffff;
+	padding: 5px 0 3px;
+	width: 140px;
+	text-align: center;
+	border: 1px solid #cdcdcd;
+	vertical-align: middle;
+	cursor: pointer;
+	margin-right: 30px;
+}
+.pay-btn {
+	margin: 60px 0;
+}
+.problem{
+	overflow: hidden;
+	margin-bottom: 100px;
+}
+.problem h2{
+	font-size: 16px;
+	color: #9a9a9a;
+	margin-bottom: 25px;
+}
+.problem p,.problem a{
+	color: #b6b6b6;
+	font-size: 14px;
+	margin-bottom: 10px;
+}
+@media screen and (min-width: 100px) and (max-width: 640px) {
+	.gopay{
+		margin: 20px 0;
+		padding: 0;
+	}
+	.gopay-main{
+		padding:5px;
+	}
+	.form-item{
+		margin: 10px 0;
+		font-size: 12px;
+	}
+	.gopay-main-center{
+		padding: 10px 5px;
+	}
+	.title-name{
+		margin-bottom: 10px;
+	}
+	.gopay-phone input{
+		margin-left: 0;
+		width: 160px;
+	}
+	.gopay-phone,.code{
+		font-size: 12px;
+	}
+	.gopay-main-footer{
+		padding: 10px;
+	}
+	.all-price{
+		margin: 10px 0;
+	}
+	.order-content-left span{
+		width: 100%;
+		display: block;
+		margin-bottom: 10px;
+	}
+	.order-content-left,.order-content-right{
+		width: 100%;
+		margin-bottom: 15px;
+	}
+	.platform-choice{
+		padding: 20px 0;
+	}
+	.platform-choice span{
+		margin: 0;
+	}
+	.pay-btn{
+		margin: 10px 0 20px;
+	}
+}

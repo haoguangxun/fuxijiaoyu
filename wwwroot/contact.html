@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>联系我们</title>
+		<meta name="application-name" content="伏羲教育">
+		<meta name="description" content="伏羲教育，教育">
+		<meta name="keywords" content="伏羲教育">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+		<link rel="stylesheet" type="text/css" href="css/public.css"/>
+		<link rel="stylesheet" type="text/css" href="css/iconfont.css"/>
+		<link rel="stylesheet" type="text/css" href="css/contact.css"/>
+		<script src="js/jquery-1.11.0.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/public.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=RSRE27K1OYhprE4kwPPs9Gm2LkgAiKm1"></script>
+	</head>
+	<body>
+		<div id="header"></div>
+		<!--内容-->
+		<div class="list-banner" style="background-image: url(img/contact/contact-banner.jpg);"></div>
+		<div class="contact">
+			<div class="wrap">
+				<div class="home-title">
+					<h2>CONTACT US</h2>
+					<h1>联系我们</h1>
+					<span></span>
+				</div>
+				<div class="contact-main">
+					<div class="contact-input">
+						<div class="contact-input-left">
+							<input type="text" placeholder="姓名" />
+							<input type="text" placeholder="手机" />
+							<input type="email" placeholder="邮箱" />
+						</div>
+						<div class="contact-input-right">
+							<textarea placeholder="您想说的话"></textarea>
+							<button>提交</button>
+						</div>
+						<div class="clear"></div>
+						<div class="contact-share">
+							<div class="ewm">
+								<img src="img/ewm.png">
+								<p>关注伏羲微信</p>
+							</div>
+						</div>
+						<div class="share-btn">
+							<div class="bshare-custom icon-medium-plus">
+								<div class="bsPromo bsPromo2"></div>
+								<a title="分享到" href="http://www.bShare.cn/" id="bshare-shareto" class="bshare-more">分享到</a>
+								<a title="分享到新浪微博" class="bshare-sinaminiblog"></a>
+								<a title="分享到QQ好友" class="bshare-qqim" href="javascript:void(0);"></a>
+								<a title="分享到微信" class="bshare-weixin" href="javascript:void(0);"></a>
+								<a title="分享到腾讯微博" class="bshare-qqmb"></a>
+							</div>
+						</div>
+					</div>
+					<div class="contact-text">
+						<div class="contact-text-main">
+							<p>地址：北京市丰台区南苑路88号 宝苑国际（办公院）</p>
+							<p>电话：010-67906868转606</p>
+						</div>
+						<div class="contact-text-main">
+							<p>开车路线</p>
+							<p>1) 沿南苑路向南行驶，与龙和路交汇的路口，调头</p>
+							<p>2) 继续沿南苑路向北行驶430米，右转</p>
+							<p>3) 行驶100米，右转</p>
+							<p>4) 行驶30米，到达终点伏羲琴院</p>
+						</div>
+						<div class="contact-text-main">
+							<p>公交路线</p>
+							<p>和义南站：324路, 366路, 485路, 501路, 504路, 526路, 573路, 610路, </p>
+							<p>622路, 736路, 827路, 926路, 954路,997路, 快速公交1线, 夜2路</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="allmap" ></div>
+		<!--底部-->
+		<div class="footer">
+			<div class="wrap">
+				<p>© 2006 Fu Xi piano court.伏羲国学</p>
+				<p>备案许可证号: 京12043844号   010-67906868转606（周一至周日：7:00 - 24:00）热线电话：010-67906868</p>
+				<div class="foot-contact">
+					<div class="foot-contact-link">
+						<div class="xinlang">
+							<img src="img/xinlang.png"/>
+							<p>新浪微博</p>
+						</div>
+						<div class="weixin">
+							<img src="img/weixin.png"/>
+							<p>微信</p>
+						</div>
+					</div>
+					<div class="ewm">
+						<img src="img/ewm.png"/>
+						<p>关注伏羲微信</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</body>
+	<script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=&amp;pophcol=2&amp;lang=zh"></script>
+	<script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
+</html>
+<script type="text/javascript">
+	// 百度地图API功能
+	var map = new BMap.Map("allmap");    // 创建Map实例
+	map.centerAndZoom(new BMap.Point(116.404, 39.915), 11);  // 初始化地图,设置中心点坐标和地图级别
+	map.addControl(new BMap.MapTypeControl());   //添加地图类型控件
+	map.setCurrentCity("北京");          // 设置地图显示的城市 此项是必须设置的
+	map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
+</script>
