@@ -9,9 +9,9 @@ use common\models\User;
  */
 class SignupForm extends Model
 {
-    public $username;
-    public $email;
+    public $phone;
     public $password;
+    public $regip;
 
 
     /**
@@ -20,19 +20,15 @@ class SignupForm extends Model
     public function rules()
     {
         return [
-            ['username', 'trim'],
-            ['username', 'required'],
-            ['username', 'unique', 'targetClass' => '\common\models\User', 'message' => 'This username has already been taken.'],
-            ['username', 'string', 'min' => 2, 'max' => 255],
-
-            ['email', 'trim'],
-            ['email', 'required'],
-            ['email', 'email'],
-            ['email', 'string', 'max' => 255],
-            ['email', 'unique', 'targetClass' => '\common\models\User', 'message' => 'This email address has already been taken.'],
+            ['phone', 'trim'],
+            ['phone', 'required'],
+            ['phone', 'unique', 'targetClass' => '\common\models\User', 'message' => '该手机号已经注册！'],
+            ['phone', 'integer'],
 
             ['password', 'required'],
             ['password', 'string', 'min' => 6],
+
+            ['regip', 'default', 'value' => ip2long($_SERVER["REMOTE_ADDR"])],
         ];
     }
 
@@ -46,13 +42,13 @@ class SignupForm extends Model
         if (!$this->validate()) {
             return null;
         }
-        
+
         $user = new User();
-        $user->username = $this->username;
-        $user->email = $this->email;
+        $user->phone = $this->phone;
+        $user->regip = $this->regip;
         $user->setPassword($this->password);
         $user->generateAuthKey();
-        
+
         return $user->save() ? $user : null;
     }
 }

@@ -30,8 +30,12 @@ AppAsset::register($this);
             <div class="QQ iconfont icon-qq"></div>
             <div class="WX iconfont icon-weixin"></div>
             <div class="user">
-                <div class="login"><a href="personal.html">登陆</a></div>
-                <div class="register"><a href="register.html">注册</a></div>
+                <?php if (Yii::$app->user->isGuest) {?>
+                    <div class="login"><a href="<?= Url::to(['login/index'])?>">登陆</a></div>
+                    <div class="register"><a href="<?= Url::to(['login/register'])?>">注册</a></div>
+                <?php }else{?>
+                    <?= Yii::$app->user->identity->phone?> <?= Html::a('退出登录', ['login/logout']) ?>
+                <?php } ?>
             </div>
         </div>
     </div>

@@ -6,7 +6,7 @@ use yii\grid\GridView;
 /* @var $searchModel backend\modules\member\models\search\MemberSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = '会员管理';
+$this->title = $searchModel->type==1 ? '学员管理' : '教师管理';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="member-index">
@@ -17,8 +17,8 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'columns' => [
 
-            'userid',
-            'username',
+            'id',
+            //'username',
             'phone',
             //'nickname',
             'realname',
@@ -38,11 +38,11 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'amount',
             // 'point',
             [
-                'attribute' => 'regtime',
+                'attribute' => 'created_at',
                 'format'=>['date','php:Y-m-d H:i:s'],
             ],
             [
-                'attribute' => 'lasttime',
+                'attribute' => 'login_at',
                 'format'=>['date','php:Y-m-d H:i:s'],
             ],
             // 'regip',

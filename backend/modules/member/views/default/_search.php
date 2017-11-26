@@ -26,7 +26,7 @@ use yii\widgets\ActiveForm;
         </div>
 
         <div class="col-lg-2">
-            <?= $form->field($model, 'userid') ?>
+            <?= $form->field($model, 'id') ?>
         </div>
 
         <div class="col-lg-2">

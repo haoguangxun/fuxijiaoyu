@@ -45,6 +45,24 @@ class DefaultController extends Controller
     }
 
     /**
+     * 教师管理-别名入口
+     */
+    public function actionTeacher()
+    {
+        Yii::$app->request->setQueryParams(['MemberSearch'=>['type'=>2]]);
+        return $this->actionIndex();
+    }
+
+    /**
+     * 学员管理-别名入口
+     */
+    public function actionStudent()
+    {
+        Yii::$app->request->setQueryParams(['MemberSearch'=>['type'=>1]]);
+        return $this->actionIndex();
+    }
+
+    /**
      * Displays a single Member model.
      * @param string $id
      * @return mixed
@@ -66,7 +84,7 @@ class DefaultController extends Controller
         $model = new Member();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->userid]);
+            return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -85,7 +103,7 @@ class DefaultController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->userid]);
+            return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
                 'model' => $model,

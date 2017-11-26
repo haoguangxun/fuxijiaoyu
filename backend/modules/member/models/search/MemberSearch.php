@@ -18,7 +18,7 @@ class MemberSearch extends Member
     public function rules()
     {
         return [
-            [['userid', 'sex', 'phone', 'type', 'regtime', 'lasttime', 'loginnum', 'islock', 'vip'], 'integer'],
+            [['id', 'sex', 'phone', 'type', 'created_at', 'login_at', 'loginnum', 'islock', 'vip'], 'integer'],
             [['username', 'nickname', 'realname', 'email'], 'safe'],
         ];
     }
@@ -59,12 +59,12 @@ class MemberSearch extends Member
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'userid' => $this->userid,
+            'id' => $this->id,
             'phone' => $this->phone,
             'sex' => $this->sex,
             'type' => $this->type,
-            'regtime' => $this->regtime,
-            'lasttime' => $this->lasttime,
+            'created_at' => $this->created_at,
+            'login_at' => $this->login_at,
             'loginnum' => $this->loginnum,
             'islock' => $this->islock,
             'vip' => $this->vip,

@@ -25,7 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     return "<img src=".$model->photo." width=300>";
                 },
             ],
-            'userid',
+            'id',
             [
                 'attribute' => 'type',
                 'value' => function($model){
@@ -46,11 +46,11 @@ $this->params['breadcrumbs'][] = $this->title;
             'amount',
             'point',
             [
-                'attribute' => 'regtime',
+                'attribute' => 'created_at',
                 'format'=>['date','php:Y-m-d H:i:s'],
             ],
             [
-                'attribute' => 'lasttime',
+                'attribute' => 'login_at',
                 'format'=>['date','php:Y-m-d H:i:s'],
             ],
             'regip',

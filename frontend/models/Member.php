@@ -16,10 +16,10 @@ class Member extends \common\models\Member
     {
         $data = self::find()->alias('m')
             ->select('m.*,d.*')
-            ->leftJoin('{{%member_data}} as d', 'm.userid=d.userid')
+            ->leftJoin('{{%member_data}} as d', 'm.id=d.userid')
             ->where('type = 2')
             ->asArray()->all();
-        return ArrayHelper::index($data,'userid');
+        return ArrayHelper::index($data,'id');
     }
 
     /**
@@ -31,7 +31,7 @@ class Member extends \common\models\Member
     {
         return self::find()->alias('m')
             ->select('m.*,d.*')
-            ->leftJoin('{{%member_data}} as d', 'm.userid=d.userid')
+            ->leftJoin('{{%member_data}} as d', 'm.id=d.userid')
             ->where(['d.userid'=>$id])
             ->asArray()->one();
     }

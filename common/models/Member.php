@@ -7,10 +7,10 @@ use Yii;
 /**
  * This is the model class for table "{{%member}}".
  *
- * @property string $userid
+ * @property string $id
  * @property string $username
  * @property string $auth_key
- * @property string $password
+ * @property string $password_hash
  * @property string $password_reset_token
  * @property string $email_validate_token
  * @property string $nickname
@@ -22,8 +22,8 @@ use Yii;
  * @property integer $type
  * @property string $amount
  * @property integer $point
- * @property string $regtime
- * @property string $lasttime
+ * @property string $created_at
+ * @property string $updated_at
  * @property integer $regip
  * @property integer $lastip
  * @property integer $loginnum
@@ -47,13 +47,13 @@ class Member extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['sex','phone', 'type', 'point', 'regtime', 'lasttime', 'regip', 'lastip', 'loginnum', 'islock', 'vip', 'overduedate'], 'integer'],
+            [['sex','phone', 'type', 'point', 'created_at', 'updated_at', 'login_at', 'regip', 'lastip', 'loginnum', 'islock', 'vip', 'overduedate'], 'integer'],
             [['amount'], 'number'],
             [['username', 'nickname', 'realname'], 'string', 'max' => 20],
-            [['auth_key', 'password', 'email'], 'string', 'max' => 32],
+            [['auth_key', 'password_hash', 'email'], 'string', 'max' => 100],
             [['password_reset_token', 'email_validate_token'], 'string', 'max' => 255],
             [['photo'], 'string', 'max' => 100],
-            [['username'], 'unique'],
+            [['phone'], 'unique'],
         ];
     }
 
@@ -63,10 +63,10 @@ class Member extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'userid' => '用户ID',
+            'id' => '用户ID',
             'username' => '用户名',
             'auth_key' => '自动登录key',
-            'password' => '密码',
+            'password_hash' => '密码',
             'password_reset_token' => '重置密码token',
             'email_validate_token' => '邮箱验证token',
             'nickname' => '昵称',
@@ -78,8 +78,9 @@ class Member extends \yii\db\ActiveRecord
             'type' => '类型',
             'amount' => '金钱',
             'point' => '积分',
-            'regtime' => '注册时间',
-            'lasttime' => '最后登录时间',
+            'created_at' => '注册时间',
+            'update_at' => '修改时间',
+            'login_at' => '最后登录时间',
             'regip' => '注册ip',
             'lastip' => '上次登录ip',
             'loginnum' => '登录次数',

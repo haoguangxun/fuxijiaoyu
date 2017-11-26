@@ -47,7 +47,10 @@ $(function(){
 	    }
 	});
 	/*登陆*/
-	$('.login-btn').click(function(){
+	//$('.login-btn').click(function(){
+	$('#login-form').on('submit', function(e){
+		e.preventDefault();
+		var form = $('#login-form');
 		var cus = $('#cus').val();
 		if(cus==''){
 			$('.modal-body p').text("手机号不得为空");
@@ -66,7 +69,29 @@ $(function(){
 			$('#alert').modal();
 			return false;
 		};
+
+		$.ajax({
+			url: form.attr('action'),
+			type: 'post',
+			data: form.serialize(),
+			success: function (data) {
+				if(data.code == 10000) {
+					location.href = data.url;
+				} else {
+					$('.modal-body p').text(data.msg);
+					$('#alert').modal();
+					return false;
+				}
+			},
+			error: function() {
+				$('.modal-body p').text("网络繁忙，请稍后再试");
+				$('#alert').modal();
+				return false;
+			}
+		});
+
 	});
+
 	$('.login-head .account').click(function(){
 		$(this).addClass('active').siblings('.quick').removeClass('active');
 		$('.account-main').show().siblings('.quick-main').hide();
