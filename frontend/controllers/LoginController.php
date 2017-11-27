@@ -2,12 +2,14 @@
 
 namespace frontend\controllers;
 
+use common\helper\SendMsg;
 use frontend\models\SignupForm;
 use Yii;
 use yii\web\Controller;
 use common\models\LoginForm;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
+use yii\web\Session;
 
 /**
  * Login controller
@@ -36,12 +38,6 @@ class LoginController extends Controller
                     ],
                 ],
             ],
-            /*'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'logout' => ['post'],
-                ],
-            ],*/
         ];
     }
 
@@ -94,6 +90,47 @@ class LoginController extends Controller
     }
 
     /**
+     * 快捷登录
+     */
+    public function actionQuickLogin()
+    {
+        if (!Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
+
+        $model = new LoginForm();
+        if ($post = Yii::$app->request->post()) {
+            if ($model->load($post)) {
+                Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+                $session = new Session();
+                if ($post['verification'] != $session->get('mobile_code') || $post['LoginForm']['phone'] != $session->get('mobile')) {
+                    return [
+                        'code' => 10001,
+                        'msg' => '验证码错误'
+                    ];
+                }
+                if ($model->login()) {
+                    return [
+                        'code' => 10000,
+                        'url' => Yii::$app->getUser()->getReturnUrl()
+                    ];
+                } else {
+                    return [
+                        'code' => 10001,
+                        'msg' => '手机号或密码错误'
+                    ];
+                }
+            }
+        } else {
+            Yii::$app->user->setReturnUrl(Yii::$app->request->referrer);
+            return $this->render('login', [
+                'model' => $model,
+            ]);
+        }
+
+    }
+
+    /**
      * 退出登录
      */
     public function actionLogout()
@@ -109,19 +146,55 @@ class LoginController extends Controller
     public function actionRegister()
     {
         $model = new SignupForm();
-        if ($model->load(Yii::$app->request->post())) {
-            var_dump($model);
-            if ($user = $model->signup()) {
-                var_dump($user);
-                if (Yii::$app->getUser()->login($user)) {
-                    return $this->goHome();
+        if ($post = Yii::$app->request->post()) {
+            if ($model->load($post)) {
+                Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+                $session = new Session();
+                if ($post['verification'] != $session->get('mobile_code') || $post['SignupForm']['phone'] != $session->get('mobile')) {
+                    return [
+                        'code' => 10001,
+                        'msg' => '验证码错误'
+                    ];
+                }
+                if ($user = $model->signup()) {
+                    if (Yii::$app->getUser()->login($user)) {
+                        return [
+                            'code' => 10000,
+                            'url' => Yii::$app->getUser()->getReturnUrl()
+                        ];
+                    }
+                } else {
+                    return [
+                        'code' => 10001,
+                        'msg' => $model->errors['phone'][0]
+                    ];
                 }
             }
         }
-
+        Yii::$app->user->setReturnUrl(Yii::$app->request->referrer);
         return $this->render('register', [
             'model' => $model,
         ]);
+    }
+
+    /**
+     * 发送短信
+     */
+    public function actionSendMsg()
+    {
+        Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        $phone = Yii::$app->request->get('phone',null);
+        $res = SendMsg::send($phone);
+        if(!$res){
+            return [
+                'code' => 10001,
+                'msg' => '短信发送失败，请重试！'
+            ];
+        }
+        return [
+            'code' => 10000,
+            'msg' => '短信发送成功！'
+        ];
     }
 
 }

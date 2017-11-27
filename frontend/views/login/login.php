@@ -64,7 +64,32 @@ $this->registerJsFile('@web/js/bootstrap.min.js',['depends'=>['frontend\assets\A
 				<div class="go-register">没有账号？<?= Html::a('立即注册', ['login/register']) ?></div>
 				<?= Html::endForm() ?>
 			</div>
-			<div class="quick-main">快捷登陆</div>
+			<div class="quick-main">
+				<?= Html::beginForm(['login/quick-login'], 'post',['id' => 'quick-login-form']) ?>
+				<div class="form-item">
+					<label >手机号</label>
+					<?= Html::input('text', 'LoginForm[phone]', '', ['id' => 'phone','placeholder'=>'输入手机号码']) ?>
+				</div>
+				<div class="form-item">
+					<label>验证码</label>
+					<div class="yzm">
+						<?= Html::input('text', 'verification', '', ['id' => 'yzm','placeholder'=>'输入六位验证码']) ?>
+						<span><input type="button" value="获取验证码" onclick="sendCode(this)" /></span>
+					</div>
+				</div>
+				<div class="forget">
+					<div class="checkbox">
+						<label>
+							<?= Html::checkbox('LoginForm[rememberMe]', false, ['label' => '记住我']);?>
+						</label>
+					</div>
+				</div>
+				<div class="login-btn">
+					<?= Html::submitButton('登陆', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
+				</div>
+				<div class="go-register">没有账号？<?= Html::a('立即注册', ['login/register']) ?></div>
+				<?= Html::endForm() ?>
+			</div>
 		</div>
 	</div>
 </div>

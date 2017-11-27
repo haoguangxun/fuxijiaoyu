@@ -63,7 +63,7 @@ $this->registerJsFile('@web/js/bootstrap.min.js',['depends'=>['frontend\assets\A
 			<div class="form-item">
 				<label>验证码</label>
 				<div class="yzm">
-					<?= Html::input('password', 'verification', '', ['id' => 'yzm','placeholder'=>'输入六位验证码']) ?>
+					<?= Html::input('text', 'verification', '', ['id' => 'yzm','placeholder'=>'输入六位验证码']) ?>
 					<span><input type="button" value="获取验证码" onclick="sendCode(this)" /></span>
 				</div>
 			</div>

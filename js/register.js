@@ -7,20 +7,23 @@ $(function(){
 		var kcText = $(this).find('a').text();
 		$('.bj button .contain').text(kcText);
 	});
-	$('.register-btn button').click(function(){
-		var  phone = $('#phone').val();
+	//注册
+	$('#register-form').on('submit', function(e){
+		e.preventDefault();
+		var form = $('#register-form');
+		var phone = $('#phone').val();
 		if(phone==''){
 			$('.modal-body p').text("手机号不得为空");
 			$('#alert').modal();
 			return false;
 		};
 		if(!(/^1[34578]\d{9}$/.test(phone))){
-			$('.modal-body p').text("手机号码有误，请重填");
+			$('.modal-body p').text("手机号码有误，请重新输入");
 			$('#alert').modal();
 	        $('#phone').val("");
 	        return false; 
 	    };
-	    var  pass = $('#pass').val();
+	    var pass = $('#pass').val();
 	    if(pass.length < 6 || pass.length > 20) {
 	   		$('.modal-body p').text("请输入6-20位密码");
 			$('#alert').modal();
@@ -45,9 +48,29 @@ $(function(){
 			$('#alert').modal();
 			return false; 
 	    }
+
+		$.ajax({
+			url: form.attr('action'),
+			type: 'post',
+			data: form.serialize(),
+			success: function (data) {
+				if(data.code == 10000) {
+					location.href = data.url;
+				} else {
+					$('.modal-body p').text(data.msg);
+					$('#alert').modal();
+					return false;
+				}
+			},
+			error: function() {
+				$('.modal-body p').text("网络繁忙，请稍后再试");
+				$('#alert').modal();
+				return false;
+			}
+		});
 	});
+
 	/*登陆*/
-	//$('.login-btn').click(function(){
 	$('#login-form').on('submit', function(e){
 		e.preventDefault();
 		var form = $('#login-form');
@@ -58,7 +81,7 @@ $(function(){
 			return false;
 		};
 		if(!(/^1[34578]\d{9}$/.test(cus))){
-			$('.modal-body p').text("手机号码有误，请重填");
+			$('.modal-body p').text("手机号码有误，请重新输入");
 			$('#alert').modal();
 	        $('#cus').val("");
 	        return false; 
@@ -92,6 +115,50 @@ $(function(){
 
 	});
 
+	//快捷登录
+	$('#quick-login-form').on('submit', function(e){
+		e.preventDefault();
+		var form = $('#quick-login-form');
+		var phone = $('#phone').val();
+		if(phone==''){
+			$('.modal-body p').text("手机号不得为空");
+			$('#alert').modal();
+			return false;
+		};
+		if(!(/^1[34578]\d{9}$/.test(phone))){
+			$('.modal-body p').text("手机号码有误，请重新输入");
+			$('#alert').modal();
+			$('#phone').val("");
+			return false;
+		};
+		var yzm = $('#yzm').val();
+		if(yzm==''){
+			$('.modal-body p').text("验证码不得为空");
+			$('#alert').modal();
+			return false;
+		}
+		$.ajax({
+			url: form.attr('action'),
+			type: 'post',
+			data: form.serialize(),
+			success: function (data) {
+				if(data.code == 10000) {
+					location.href = data.url;
+				} else {
+					$('.modal-body p').text(data.msg);
+					$('#alert').modal();
+					return false;
+				}
+			},
+			error: function() {
+				$('.modal-body p').text("网络繁忙，请稍后再试");
+				$('#alert').modal();
+				return false;
+			}
+		});
+	});
+
+
 	$('.login-head .account').click(function(){
 		$(this).addClass('active').siblings('.quick').removeClass('active');
 		$('.account-main').show().siblings('.quick-main').hide();
@@ -105,11 +172,44 @@ $(function(){
 var clock = '';
 var nums = 30;
 var btn;
-function sendCode(thisBtn){ 
+function sendCode(thisBtn){
+	var  phone = $('#phone').val();
+	if(phone==''){
+		$('.modal-body p').text("手机号不得为空");
+		$('#alert').modal();
+		return false;
+	};
+	if(!(/^1[34578]\d{9}$/.test(phone))){
+		$('.modal-body p').text("手机号码有误，请重新输入");
+		$('#alert').modal();
+		$('#phone').val("");
+		return false;
+	};
+
 	btn = thisBtn;
 	btn.disabled = true; //将按钮置为不可点击
-	btn.value = nums+'秒后重获取';
-	clock = setInterval(doLoop, 1000); //一秒执行一次
+	$.ajax({
+		url: '/login/send-msg.html',
+		type: 'get',
+		data: { phone: phone},
+		success: function (data) {
+			if(data.code == 10000) {
+				btn.value = nums+'秒后重获取';
+				clock = setInterval(doLoop, 1000); //一秒执行一次
+			} else {
+				btn.disabled = false;
+				$('.modal-body p').text(data.msg);
+				$('#alert').modal();
+				return false;
+			}
+		},
+		error: function() {
+			btn.disabled = false;
+			$('.modal-body p').text("网络繁忙，请稍后再试");
+			$('#alert').modal();
+			return false;
+		}
+	});
 }
 function doLoop(){
 	nums--;
