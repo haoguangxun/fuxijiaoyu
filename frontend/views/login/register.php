@@ -71,7 +71,7 @@ $this->registerJsFile('@web/js/bootstrap.min.js',['depends'=>['frontend\assets\A
 				<?= Html::submitButton('注册', ['class' => 'btn btn-primary', 'name' => 'signup-button']) ?>
 			</div>
 			<div class="register-text">
-				<span>已有账号？<?= Html::a('登录', ['login/login']) ?></span>
+				<span>已有账号？<?= Html::a('登录', ['login/index']) ?></span>
 				<span>同意<a href="#">会员条款</a>和<a href="#">免责声明</a></span>
 			</div>
 			<?= Html::endForm() ?>

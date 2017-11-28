@@ -32,7 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     return $model->type==1 ? '学生' : '教师';
                 },
             ],
-            'username',
+            //'username',
             //'nickname',
             'realname',
             [
@@ -53,8 +53,18 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'login_at',
                 'format'=>['date','php:Y-m-d H:i:s'],
             ],
-            'regip',
-            'lastip',
+            [
+                'attribute' => 'regip',
+                'value'=> function($model){
+                    return long2ip($model->regip);
+                },
+            ],
+            [
+                'attribute' => 'lastip',
+                'value'=> function($model){
+                    return long2ip($model->lastip);
+                },
+            ],
             'loginnum',
             [
                 'attribute' => 'islock',

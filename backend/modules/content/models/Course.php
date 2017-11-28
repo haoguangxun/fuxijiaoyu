@@ -48,7 +48,7 @@ class Course extends \common\models\Course
      */
     public function getTeacher()
     {
-        return self::hasOne(Member::className(),['userid'=>'teacherid']);
+        return self::hasOne(Member::className(),['id'=>'teacherid']);
     }
 
 }

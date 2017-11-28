@@ -76,6 +76,9 @@ return [
         'member' => [
             'class' => 'backend\modules\member\Module',
         ],
+        'order' => [
+            'class' => 'backend\modules\order\Module',
+        ],
         'feedback' => [
             'class' => 'backend\modules\feedback\Module',
         ],

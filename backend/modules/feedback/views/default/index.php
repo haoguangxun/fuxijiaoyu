@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
+        //'filterModel' => $searchModel,
         'columns' => [
 
             'id',
@@ -24,7 +24,10 @@ $this->params['breadcrumbs'][] = $this->title;
             'phone',
             'email:email',
             'content',
-            'addtime',
+            [
+                'attribute' => 'addtime',
+                'format'=>['date','php:Y-m-d H:i:s'],
+            ],
             //'note',
             // 'admin_id',
             // 'status',

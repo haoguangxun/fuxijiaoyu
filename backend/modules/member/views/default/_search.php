@@ -38,7 +38,15 @@ use yii\widgets\ActiveForm;
         </div>
 
         <div class="col-lg-2">
-            <?= $form->field($model, 'islock') ?>
+            <?= $form->field($model, 'islock')->dropdownList(
+                [
+                    1 => '已锁定',
+                    0 => '未锁定',
+                ],
+                [
+                    'prompt'=>'选择',
+                ]
+            ) ?>
         </div>
 
         <div class="form-group col-lg-2">

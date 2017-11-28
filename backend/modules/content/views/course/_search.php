@@ -31,7 +31,7 @@ use backend\modules\content\models\Category;
 
         <div class="col-lg-2">
             <?= $form->field($model, 'teacherid')->dropdownList(
-                \common\models\Member::find()->select(['realname','userid'])->indexBy('userid')->column(),
+                \common\models\Member::find()->select(['realname','id'])->indexBy('id')->column(),
                 [
                     'prompt'=>'主讲老师',
                 ]
