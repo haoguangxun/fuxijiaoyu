@@ -14,7 +14,7 @@ class UserForm extends Model
 {
     public $username;
     //public $email;
-    public $description;
+    //public $description;
     public $password;
     public $status;
     public $roles;
@@ -52,7 +52,7 @@ class UserForm extends Model
             ['password', 'required', 'on' => 'create'],
        
             ['password', 'string', 'min' => 6],
-            ['description', 'string', 'length' => [0, 100]],
+            //['description', 'string', 'length' => [0, 100]],
             [['status'], 'integer'],
             //['roles','in', 'range' => array_keys(User::roleLists())],
             ['roleid','integer'],
@@ -122,7 +122,7 @@ class UserForm extends Model
             $model->username = $this->username;
             $model->status = $this->status;
             //$model->email = $this->email;
-            $model->description = $this->description;
+            //$model->description = $this->description;
             $model->roleid = $this->roleid;
             if ($this->password) {
                 $model->setPassword($this->password);

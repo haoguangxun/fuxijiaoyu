@@ -24,10 +24,8 @@ use backend\modules\content\models\Category;
 
     <?= $form->field($model, 'author')->textInput(['value' => Yii::$app->user->identity->username, 'maxlength' => 30, 'style' => 'width:200px']) ?>
 
-    <?= $form->field($dataModel, 'copyfrom')->textInput(['value'=>'本站', 'maxlength' => 100, 'style' => 'width:200px']) ?>
-
     <?= $form->field($model, 'teacherid')->label('主讲老师')->dropdownList(
-        \common\models\Member::find()->select(['realname','userid'])->where('type=2')->indexBy('userid')->column(),
+        \common\models\Member::find()->select(['realname','id'])->where('type=2')->indexBy('id')->column(),
         ['style' => 'width:200px']
     ) ?>
 

@@ -17,7 +17,7 @@ use yii\bootstrap\ActiveForm;
               <?php $form = ActiveForm::begin(['id' => 'form-assign-role']); ?>
                  <?= $form->field($model, 'roleid')->label('分配权限')->dropDownList($roles) ?>
                 <div class="form-group">
-                    <?= Html::submitButton(Yii::t('rbac-admin', 'Change'), ['class' => 'btn btn-primary', 'name' => 'change-button']) ?>
+                    <?= Html::submitButton(Yii::t('rbac-admin', '保存'), ['class' => 'btn btn-primary', 'name' => 'change-button']) ?>
                 </div>
             <?php ActiveForm::end(); ?>
         </div>

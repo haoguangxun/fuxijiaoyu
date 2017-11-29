@@ -16,11 +16,10 @@ use yii\bootstrap\ActiveForm;
     <?php $form = ActiveForm::begin(); ?>
         <?= $form->field($model, 'username') ?>
         <?= $form->field($model, 'password')->passwordInput() ?>
-        <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
         <?= $form->field($model, 'roleid')->dropDownList($roles) ?>
         <?= $form->field($model, 'status')->radioList(['10'=>'正常','0'=>'停用']) ?>
         <div class="form-group">
-            <?= Html::submitButton('Save', ['class' => 'btn btn-primary', 'name' => 'signup-button']) ?>
+            <?= Html::submitButton('保存', ['class' => 'btn btn-primary', 'name' => 'signup-button']) ?>
         </div>
     <?php ActiveForm::end(); ?>
 

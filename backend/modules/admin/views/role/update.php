@@ -7,7 +7,7 @@ use yii\helpers\Html;
 
 $context = $this->context;
 $labels = $context->labels();
-$this->title = Yii::t('rbac-admin', 'Update ' . $labels['Item']) . ': ' . $model->name;
+$this->title = Yii::t('rbac-admin', '修改角色') . ': ' . $model->name;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('rbac-admin', $labels['Items']), 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = Yii::t('rbac-admin', 'Update');

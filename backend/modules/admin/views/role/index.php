@@ -8,17 +8,16 @@ use yii\grid\GridView;
 
 $context = $this->context;
 $labels = $context->labels();
-$this->title = Yii::t('rbac-admin', $labels['Items']);
+$this->title = '角色';//Yii::t('rbac-admin', $labels['Items']);
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="admin-role-index">
 
 
-    <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a(Yii::t('rbac-admin', 'Create ' . $labels['Item']), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('rbac-admin', '添加角色'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,

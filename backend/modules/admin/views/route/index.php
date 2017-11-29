@@ -8,7 +8,7 @@ use yii\web\YiiAsset;
 /* @var $this yii\web\View */
 /* @var $routes [] */
 
-$this->title = Yii::t('rbac-admin', 'Routes');
+$this->title = Yii::t('rbac-admin', '路由');
 $this->params['breadcrumbs'][] = $this->title;
 
 AnimateAsset::register($this);
@@ -20,7 +20,6 @@ $this->registerJs("var _opts = {$opts};");
 $this->registerJs($this->render('_script.js'));
 $animateIcon = ' <i class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></i>';
 ?>
-<h1><?= Html::encode($this->title) ?></h1>
 <div class="row">
     <div class="col-sm-11">
         <div class="input-group">

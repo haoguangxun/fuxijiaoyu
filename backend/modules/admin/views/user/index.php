@@ -11,13 +11,12 @@ use yii\helpers\Url;
 /* @var $roles Yii::$app->authManager */
 
 
-$this->title = Yii::t('rbac-admin', 'Users');
+$this->title = Yii::t('rbac-admin', '账号');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="user-index">
 
-   <!-- <h1><?= Html::encode($this->title) ?></h1> --> 
-  
+
     <p>
         <?= Html::a('添加用户', ['create'], ['class' => 'btn btn-success']) ?>
     </p>

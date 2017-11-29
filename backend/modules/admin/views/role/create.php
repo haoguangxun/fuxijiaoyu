@@ -7,7 +7,7 @@ use yii\helpers\Html;
 /* @var $model backend\modules\admin\models\AdminRole */
 $context = $this->context;
 $labels = $context->labels();
-$this->title = Yii::t('rbac-admin', 'Create ' . $labels['Item']);
+$this->title = Yii::t('rbac-admin', '添加角色');
 $this->params['breadcrumbs'][] = ['label' => Yii::t('rbac-admin', $labels['Items']), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

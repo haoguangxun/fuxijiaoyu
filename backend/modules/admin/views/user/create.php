@@ -2,7 +2,7 @@
 /* @var $this yii\web\View */
 /* @var $model backend\modules\admin\models\UserForm */
 /* @var $roles yii\rbac\Role[] */
-$this->title = '创建用户';
+$this->title = '添加账号';
 $this->params['breadcrumbs'][] = ['label' => Yii::t('rbac-admin', 'User'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
