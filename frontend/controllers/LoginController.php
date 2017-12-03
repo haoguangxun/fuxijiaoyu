@@ -3,8 +3,10 @@
 namespace frontend\controllers;
 
 use common\helper\SendMsg;
+use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use Yii;
+use yii\helpers\Url;
 use yii\web\Controller;
 use common\models\LoginForm;
 use yii\filters\VerbFilter;
@@ -67,6 +69,7 @@ class LoginController extends Controller
         }
 
         $model = new LoginForm();
+        $model->scenario = 'login';
         if ($model->load(Yii::$app->request->post())) {
             Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
             if($model->login()){
@@ -94,11 +97,8 @@ class LoginController extends Controller
      */
     public function actionQuickLogin()
     {
-        if (!Yii::$app->user->isGuest) {
-            return $this->goHome();
-        }
-
         $model = new LoginForm();
+        $model->scenario = 'quickLogin';
         if ($post = Yii::$app->request->post()) {
             if ($model->load($post)) {
                 Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
@@ -117,7 +117,7 @@ class LoginController extends Controller
                 } else {
                     return [
                         'code' => 10001,
-                        'msg' => '手机号或密码错误'
+                        'msg' => '登录失败'
                     ];
                 }
             }
@@ -178,6 +178,41 @@ class LoginController extends Controller
     }
 
     /**
+     * 重设密码
+     */
+    public function actionResetPassword()
+    {
+        $model = new ResetPasswordForm();
+        if ($post = Yii::$app->request->post()) {
+            if ($model->load($post)) {
+                Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+                $session = new Session();
+                if ($post['verification'] != $session->get('mobile_code') || $post['ResetPasswordForm']['phone'] != $session->get('mobile')) {
+                    return [
+                        'code' => 10001,
+                        'msg' => '验证码错误'
+                    ];
+                }
+                if ($model->resetPassword()) {
+                    return [
+                        'code' => 10000,
+                        'url' => '/login/index.html'
+                    ];
+                } else {
+                    return [
+                        'code' => 10001,
+                        'msg' => $model->errors['phone'][0]
+                    ];
+                }
+            }
+        }
+        Yii::$app->user->setReturnUrl(Yii::$app->request->referrer);
+        return $this->render('resetPassword', [
+            'model' => $model,
+        ]);
+    }
+
+    /**
      * 发送短信
      */
     public function actionSendMsg()
@@ -193,7 +228,7 @@ class LoginController extends Controller
         }
         return [
             'code' => 10000,
-            'msg' => '短信发送成功！'
+            'msg' => '短信发送成功！'.$res
         ];
     }
 

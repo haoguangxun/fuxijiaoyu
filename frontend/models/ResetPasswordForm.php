@@ -2,7 +2,6 @@
 namespace frontend\models;
 
 use yii\base\Model;
-use yii\base\InvalidParamException;
 use common\models\User;
 
 /**
@@ -10,32 +9,11 @@ use common\models\User;
  */
 class ResetPasswordForm extends Model
 {
+    public $phone;
     public $password;
 
-    /**
-     * @var \common\models\User
-     */
     private $_user;
 
-
-    /**
-     * Creates a form model given a token.
-     *
-     * @param string $token
-     * @param array $config name-value pairs that will be used to initialize the object properties
-     * @throws \yii\base\InvalidParamException if token is empty or not valid
-     */
-    public function __construct($token, $config = [])
-    {
-        if (empty($token) || !is_string($token)) {
-            throw new InvalidParamException('Password reset token cannot be blank.');
-        }
-        $this->_user = User::findByPasswordResetToken($token);
-        if (!$this->_user) {
-            throw new InvalidParamException('Wrong password reset token.');
-        }
-        parent::__construct($config);
-    }
 
     /**
      * @inheritdoc
@@ -43,6 +21,10 @@ class ResetPasswordForm extends Model
     public function rules()
     {
         return [
+            ['phone', 'trim'],
+            ['phone', 'required'],
+            ['phone', 'integer'],
+
             ['password', 'required'],
             ['password', 'string', 'min' => 6],
         ];
@@ -55,10 +37,25 @@ class ResetPasswordForm extends Model
      */
     public function resetPassword()
     {
-        $user = $this->_user;
-        $user->setPassword($this->password);
-        $user->removePasswordResetToken();
+        if ($this->validate()) {
+            $user = $this->getUser();
+            $user->setPassword($this->password);
+            return $user->save();
+        }else{
+            return false;
+        }
+    }
 
-        return $user->save(false);
+    /**
+     * Finds user by [[phone]]
+     *
+     * @return User|null
+     */
+    protected function getUser()
+    {
+        if ($this->_user === null) {
+            $this->_user = User::findByPhone($this->phone);
+        }
+        return $this->_user;
     }
 }

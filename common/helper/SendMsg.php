@@ -28,10 +28,10 @@ class SendMsg
         self::$get['mobile'] = $mobile;
         self::$get['content'] = rawurlencode("【伏羲教育】您的验证码是：".$mobile_code."。请不要把验证码泄露给其他人。");
 
-        /*$session = new Session();
+        $session = new Session();
         $session->set('mobile',$mobile);
         $session->set('mobile_code',$mobile_code);
-        return true;*/
+        return $mobile_code;
 
         $gets =  self::xml_to_array(self::post(http_build_query(self::$get),self::$url));
 

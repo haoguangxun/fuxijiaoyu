@@ -55,7 +55,7 @@ $this->registerJsFile('@web/js/bootstrap.min.js',['depends'=>['frontend\assets\A
 						<label>
 							<?= Html::checkbox('LoginForm[rememberMe]', false, ['label' => '记住我']);?>
 						</label>
-						<?= Html::a('忘记密码', ['login/request-password-reset']) ?>
+						<?= Html::a('忘记密码', ['login/reset-password']) ?>
 					</div>
 				</div>
 				<div class="login-btn">

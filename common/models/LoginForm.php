@@ -16,6 +16,13 @@ class LoginForm extends Model
 
     private $_user;
 
+    public function scenarios()
+    {
+        return [
+            'login' => ['phone', 'password', 'rememberMe'],
+            'quickLogin' => ['phone', 'rememberMe'],
+        ];
+    }
 
     /**
      * @inheritdoc
@@ -24,11 +31,11 @@ class LoginForm extends Model
     {
         return [
             // phone and password are both required
-            [['phone'], 'required'],
+            [['phone'], 'required', 'on' => ['login', 'quickLogin']],
             // rememberMe must be a boolean value
-            ['rememberMe', 'boolean'],
+            ['rememberMe', 'boolean', 'on' => ['login', 'quickLogin']],
             // password is validated by validatePassword()
-            ['password', 'validatePassword'],
+            ['password', 'validatePassword', 'on' => ['login']],
         ];
     }
 
