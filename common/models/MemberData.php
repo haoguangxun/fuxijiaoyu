@@ -30,8 +30,6 @@ class MemberData extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['sex'], 'integer'],
-            [['realname'], 'string', 'max' => 20],
             [['hobby'], 'string', 'max' => 200],
             [['title'], 'string', 'max' => 100],
             [['vitae'], 'string', 'max' => 500],
@@ -45,8 +43,6 @@ class MemberData extends \yii\db\ActiveRecord
     {
         return [
             'userid' => '用户ID',
-            'realname' => '真实姓名',
-            'sex' => '性别：1男，2女',
             'hobby' => '个人爱好',
             'title' => '头衔',
             'vitae' => '简历',
