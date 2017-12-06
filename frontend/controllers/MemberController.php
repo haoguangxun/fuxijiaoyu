@@ -60,7 +60,7 @@ class MemberController extends Controller
     public function actionCourse()
     {
         $searchModel = new OrderSearch();
-        $dataProvider = $searchModel->search(['OrderSearch'=>['status'=>0]]);
+        $dataProvider = $searchModel->search(['OrderSearch'=>['status'=>1]]);
         return $this->render('course', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
