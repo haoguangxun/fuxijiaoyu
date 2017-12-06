@@ -24,7 +24,11 @@ $this->registerJsFile('@web/js/personal.js',['depends'=>['frontend\assets\AppAss
                 'orderid',
                 [
                     'label' => '课程名称',
-                    'value' => 'course.name',
+                    'format' => 'raw',
+                    'value' => function($model){
+                        $url = \yii\helpers\Url::to(['/course/view','id'=>$model->courseid]);
+                        return Html::a($model->course['name'], $url, ['target'=>'_blank']) ;
+                    },
                 ],
                 'amount',
                 [
