@@ -12,7 +12,7 @@ $this->registerJsFile('@web/js/swiper.min.js',['depends'=>['frontend\assets\AppA
 ?>
 <!--内容-->
 <div class="banner">
-    <div class="swiper-container">
+    <div class="swiper-container" style="height:100%">
         <div class="swiper-wrapper">
             <div class="swiper-slide" style="background-image: url(img/banner-home1.jpg);"></div>
             <div class="swiper-slide" style="background-image: url(img/banner-home2.jpg);"></div>

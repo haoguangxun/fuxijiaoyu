@@ -4,11 +4,10 @@ namespace frontend\controllers;
 
 use common\models\MemberData;
 use frontend\models\Member;
-use frontend\models\News;
-use frontend\models\Page;
-use frontend\models\Teacher;
 use yii\web\Controller;
 use Yii;
+use frontend\models\search\OrderSearch;
+
 
 /**
  * 学生会员中心
@@ -39,5 +38,40 @@ class MemberController extends Controller
             'model' => $model,
             'data_model' => $data_model,
         ]);
+    }
+
+    /**
+     * 我的订单
+     */
+    public function actionOrder()
+    {
+        $searchModel = new OrderSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('order', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
+    /**
+     * 我的课程
+     */
+    public function actionCourse()
+    {
+        $searchModel = new OrderSearch();
+        $dataProvider = $searchModel->search(['OrderSearch'=>['status'=>0]]);
+        return $this->render('course', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
+    /**
+     * 我的收藏
+     */
+    public function actionCollection()
+    {
+        return $this->render('collection');
     }
 }

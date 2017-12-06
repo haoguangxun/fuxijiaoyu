@@ -96,7 +96,7 @@ $this->registerCssFile('@web/css/curriculum.css',['depends'=>['frontend\assets\A
                         <div class="online-main-img"><div><img src="<?=$teacher[$value['teacherid']]['photo']?>"/></div></div>
                         <div class="online-main-text">
                             <h2><span><?=$teacher[$value['teacherid']]['realname']?></span>  <?=Html::encode($value['name'])?></h2>
-                            <p><span class="iconfont icon-time"></span> <?=Html::encode($value['course_number'])?>课时<?=Html::encode($value['course_duration'])?>分钟 &nbsp;&nbsp;<span class="iconfont icon-jieti"></span> <?= yii::$app->params['difficulty_level'][$value['difficulty_level']]?></p>
+                            <p><span class="iconfont icon-time"></span> <?=Html::encode($value['course_number'])?>课时<?=Html::encode($value['course_duration'])?>分钟 &nbsp;&nbsp;<span class="iconfont icon-jieti"></span> <?= Yii::$app->params['difficulty_level'][$value['difficulty_level']]?></p>
                         </div>
                     </div>
                     <div class="clear"></div>
