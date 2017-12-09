@@ -106,7 +106,7 @@ $this->registerJsFile('@web/js/swiper.min.js',['depends'=>['frontend\assets\AppA
                 ?>
                 <li>
                     <div class="main">
-                        <p><?= $value['title'] ?></p>
+                        <p><?= $value['name'] ?></p>
                         <p><?= $value['subtitle'] ?></p>
                         <div class="more"><a href="<?= Url::to(['teacher/view','id'=>$value['id']])?>">+</a></div>
                     </div>

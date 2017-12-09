@@ -22,7 +22,7 @@ class DefaultController extends Controller
         //课程体系
         $curriculumSystem = News::getList(35);
         //师资力量
-        $teacherList = Teacher::getList($limit = 16);
+        $teacherList = Teacher::getList(2,16);
         //学员体会与感受
         $studentExperience = News::getList(23);
         //行业动态

@@ -14,10 +14,12 @@ class Teacher extends \common\models\Teacher
      */
     public static function getList($cid = null, $limit = 10, $offset = 0)
     {
+        //获取当前分类下所有教师模型子类ID
+        $cids = Category::getModelSonCid($cid,2);
         return self::find()->alias('t')
             ->leftJoin('{{%teacher_data}} as d','t.id=d.id')
             ->orderBy('sort desc,id desc')
-            ->andFilterWhere(['catid'=>$cid])
+            ->andFilterWhere(['in', 'catid', $cids])
             ->limit($limit)->offset($offset)
             ->asArray()->all();
     }
