@@ -82,7 +82,7 @@ $this->registerJsFile('@web/js/swiper.min.js',['depends'=>['frontend\assets\AppA
                 endforeach;
                 ?>
             </ul>
-            <a href="<?= Url::to(['course/index'])?>" class="course-up"><span class="iconfont icon-bottom"></span></a>
+            <a href="<?= Url::to(['course/list','cid'=>15])?>" class="course-up"><span class="iconfont icon-bottom"></span></a>
             <div class="arrow">
                 <div class="arrow-l"></div>
                 <div class="arrow-r"></div>
