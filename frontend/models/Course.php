@@ -7,7 +7,7 @@ use Yii;
 
 class Course extends \common\models\Course
 {
-
+    public $userid;
     /**
      * 获取课程列表
      * @return array|\yii\db\ActiveRecord[]

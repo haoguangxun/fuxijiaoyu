@@ -6,13 +6,18 @@ function openFile(file){
 	}
 	reader.readAsDataURL(file.files[0]);
 }
-var maxstrlen=200;
     function Q(s){return document.getElementById(s);}
-    function checkWord(c){
+    function checkWord(c,maxstrlen){
         len=maxstrlen;
         var str = c.value;
-        myLen=getStrleng(str);
-        var wck=Q("wordCheck");
+        myLen=getStrleng(str,maxstrlen);
+        if(len==100){
+            var wck=Q("wordCheck100");
+        }else if(len==200){
+            var wck=Q("wordCheck200");
+        }else if(len==500){
+            var wck=Q("wordCheck500");
+        }
         if(myLen>len*2){
             c.value=str.substring(0,i+1);
         }
@@ -20,7 +25,7 @@ var maxstrlen=200;
             wck.innerHTML = Math.floor((len*2-myLen)/2);
            }
     }
-    function getStrleng(str){
+    function getStrleng(str,maxstrlen){
         myLen =0;
         i=0;
         for(;(i<str.length)&&(myLen<=maxstrlen*2);i++){

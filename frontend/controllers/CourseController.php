@@ -4,11 +4,13 @@ namespace frontend\controllers;
 
 use frontend\models\Category;
 use frontend\models\Course;
+use frontend\models\CourseSection;
 use frontend\models\Member;
 use frontend\models\News;
 use frontend\models\Page;
 use yii\data\Pagination;
 use yii\web\Controller;
+use Yii;
 
 /**
  * Course controller
@@ -97,6 +99,47 @@ class CourseController extends Controller
             'parent' => $parent,
             'data' => $data,
             'teacher' => $teacher,
+        ]);
+    }
+
+    /**
+     * 课程小节
+     */
+    public function actionSection($id)
+    {
+        $sid = intval(Yii::$app->request->get('sid',0));
+        //获取课程详情
+        $data = Course::getData($id);
+        //获取教师信息
+        $teacher = Member::getData($data['teacherid']);
+        //当前栏目内容
+        $category = Category::getData($data['catid']);
+        if($category['parentid']==0){
+            $parent = $category;
+        }else{
+            $parent = Category::getData($category['parentid']);
+        }
+        //展示量+1
+        Course::clickNum($id);
+        //小节列表
+        $list = CourseSection::getList($id);
+        //小节内容
+        $detail = [];
+        $template = 'section';
+        if($list){
+            $sid = $sid ? $sid : $list[0]['id'];
+            $detail = CourseSection::getData($sid);
+            //模板
+            $template = $detail['template'] ? $detail['template'] : 'section';
+        }
+
+        return $this->render($template,[
+            'category' => $category,
+            'parent' => $parent,
+            'data' => $data,
+            'teacher' => $teacher,
+            'list' => $list,
+            'detail' => $detail,
         ]);
     }
 }

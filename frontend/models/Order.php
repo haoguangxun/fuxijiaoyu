@@ -41,12 +41,60 @@ class Order extends \common\models\Order
     }
 
     /**
+     * 根据订单号获取订单信息
+     */
+    public function getOrder($orderid)
+    {
+        return self::find()->where(['orderid'=>$orderid])->asArray()->one();
+    }
+
+    /**
+     * 根据订单号修改订单状态
+     */
+    public function updateOrderStatus($orderid,$status,$pay_number)
+    {
+        if(empty($orderid) || empty($status) || empty($pay_number)){
+            return false;
+        }
+        $model = self::find()->where(['orderid'=>$orderid])->one();
+        $model->status = $status;
+        $model->pay_number = $pay_number;
+        $model->paytime = time();
+        if($model->save()){
+            return true;
+        }
+        return false;
+    }
+
+    /**
      * 获取课程名称
-     * @return \yii\db\ActiveQuery
      */
     public function getCourse()
     {
         return self::hasOne(Course::className(),['id'=>'courseid']);
+    }
+
+    /**
+     * 课程报名
+     * $course 课程信息
+     */
+    public function post($course)
+    {
+        $order = self::find()->where(['userid'=>Yii::$app->user->identity->id, 'courseid'=>$course['id']])->asArray()->one();
+        if($order){
+            return $order['orderid'];
+        }
+        $this->orderid = date('YmdHis',time()) . mt_rand(1000,9999);
+        $this->courseid = $course['id'];
+        $this->userid = Yii::$app->user->identity->id;
+        $this->amount = $course['price'];
+        $this->addtime = time();
+        $this->status = 0;
+
+        if($this->save()){
+            return $this->orderid;
+        }
+        return false;
     }
 
 }

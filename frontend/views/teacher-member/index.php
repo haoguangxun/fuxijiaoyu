@@ -3,7 +3,7 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\bootstrap\Alert;
 
-$this->title = '学员中心';
+$this->title = '教师中心';
 $this->registerMetaTag(array("name"=>"keywords","content"=>Html::encode(Yii::$app->params['keywords'])));
 $this->registerMetaTag(array("name"=>"description","content"=>Html::encode(Yii::$app->params['description'])));
 $this->registerCssFile('@web/css/personal.css',['depends'=>['frontend\assets\AppAsset']]);
@@ -29,7 +29,7 @@ if( Yii::$app->getSession()->hasFlash('error') ) {
 <div class="personal-title">个人资料</div>
 <div class="personal-form">
 	<div class="personal-form-title"><span>基本信息</span></div>
-	<form name="form" action="<?= Url::to(['member/index'])?>" method="post" enctype="multipart/form-data">
+	<form name="form" action="<?= Url::to(['teacher-member/index'])?>" method="post" enctype="multipart/form-data">
 		<input name="_csrf-frontend" type="hidden" id="_csrf" value="<?= Yii::$app->request->csrfToken ?>">
 	<div class="personal-form-item">
 		<label class="personal-form-portrait">头像</label>
@@ -48,7 +48,6 @@ if( Yii::$app->getSession()->hasFlash('error') ) {
 	<div class="personal-form-item">
 		<label class="personal-form-name">真实姓名</label>
 		<input class="personal-input" name="realname" type="text" value="<?=$model['realname']?>"/>
-		<!--<span>仅用户自己可见</span>-->
 	</div>
 	<div class="personal-form-item">
 		<label class="personal-form-name">性别</label>
@@ -57,10 +56,16 @@ if( Yii::$app->getSession()->hasFlash('error') ) {
 			<option value="2" <?php if($model['sex']==2)echo 'selected';?>>女</option>
 		</select>
 	</div>
-	<!--<div class="personal-form-item">
-		<label class="personal-form-name">学习类型</label>
-		<input class="personal-input" type="text" />
-	</div>-->
+	<div class="personal-form-item">
+		<label class="personal-form-name">头衔</label>
+		<textarea onKeyUp="javascript:checkWord(this,100);" onMouseDown="javascript:checkWord(this,100);" name="title"><?=$data_model['title']?></textarea>
+		<div class="surplus">还可以输入<span id="wordCheck100">100</span>个字符 </div>
+	</div>
+	<div class="personal-form-item">
+		<label class="personal-form-name">简历</label>
+		<textarea onKeyUp="javascript:checkWord(this,500);" onMouseDown="javascript:checkWord(this,500);" name="vitae"><?=$data_model['vitae']?></textarea>
+		<div class="surplus">还可以输入<span id="wordCheck500">500</span>个字符 </div>
+	</div>
 	<div class="personal-form-item">
 		<label class="personal-form-name">个人爱好</label>
 		<textarea onKeyUp="javascript:checkWord(this,200);" onMouseDown="javascript:checkWord(this,200);" name="hobby"><?=$data_model['hobby']?></textarea>

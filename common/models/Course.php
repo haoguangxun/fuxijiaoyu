@@ -76,6 +76,7 @@ class Course extends \yii\db\ActiveRecord
             'url' => '链接地址',
             'sort' => '排序',
             'status' => '状态',
+            'sales' => '学生数量',
             'islink' => '是否外部链接',
             'author' => '作者',
             'addtime' => '添加时间',

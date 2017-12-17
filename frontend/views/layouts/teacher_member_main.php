@@ -151,26 +151,20 @@ AppAsset::register($this);
                 </div>
                 <ul>
                     <li class="active">
-                        <span class="iconfont icon-kehu"></span><a href="<?= Url::to(['member/index'])?>">个人资料</a>
+                        <span class="iconfont icon-kehu"></span><a href="<?= Url::to(['teacher-member/index'])?>">个人资料</a>
                     </li>
                     <li>
-                        <span class="iconfont icon-dingdan"></span><a href="<?= Url::to(['member/order'])?>">我的订单</a>
+                        <span class="iconfont icon-kecheng"></span><a href="<?= Url::to(['teacher-member/course'])?>">我的课程</a>
                     </li>
                     <li>
-                        <span class="iconfont icon-kecheng"></span><a href="<?= Url::to(['member/course'])?>">我的课程</a>
+                        <span class="iconfont icon-dingdan"></span><a href="<?= Url::to(['teacher-member/student'])?>">我的学生</a>
                     </li>
-                    <!--<li>
-                        <span class="iconfont icon-xiazai"></span>下载内容
-                    </li>-->
                     <!--<li>
                         <span class="iconfont icon-anquan"></span>帐号安全
                     </li>-->
                     <!--<li>
                         <span class="iconfont icon-tongzhi"></span>消息通知
                     </li>-->
-                    <li>
-                        <span class="iconfont icon-shoucang"></span><a href="<?= Url::to(['member/collection'])?>">我的收藏</a>
-                    </li>
                     <li>
                         <span class="iconfont icon-tuichu"></span><a href="<?= Url::to(['login/logout'])?>">退出登录</a>
                     </li>

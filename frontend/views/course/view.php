@@ -41,8 +41,8 @@ $this->registerJsFile('@web/js/details.js',['depends'=>['frontend\assets\AppAsse
                     <a href="<?=Html::encode($data['material'])?>"><span class="iconfont icon-shu"></span>电子教材</a>
                 </div>
                 <div class="buttons">
-                    <span class="try">免费试学</span>
-                    <span class="sign"><a href="gopay.html">立即报名</a></span>
+                    <a href="<?=Url::to(['course/section','id'=>$data['id']])?>"><span class="try">免费试学</span></a>
+                    <span class="sign"><a href="<?=Url::to(['order/post','id'=>$data['id']])?>">立即报名</a></span>
                 </div>
                 <div class="message">学制   |   <?=Html::encode($data['course_number'])?>节课/期    每课时<?=Html::encode($data['course_duration'])?>分钟</div>
             </div>

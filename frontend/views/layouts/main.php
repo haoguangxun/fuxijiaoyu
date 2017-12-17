@@ -34,7 +34,13 @@ AppAsset::register($this);
                     <div class="login"><a href="<?= Url::to(['login/index'])?>">登陆</a></div>
                     <div class="register"><a href="<?= Url::to(['login/register'])?>">注册</a></div>
                 <?php }else{?>
-                    <?= Yii::$app->user->identity->phone?> <?= Html::a('会员中心', ['member/index']) ?> <?= Html::a('退出登录', ['login/logout']) ?>
+                    你好，<?= Yii::$app->user->identity->realname ? Yii::$app->user->identity->realname : Yii::$app->user->identity->phone ?>
+                    <?php if(Yii::$app->user->identity->type == 1){?>
+                        <?= Html::a('会员中心', ['member/index']) ?>
+                    <?php }else{?>
+                        <?= Html::a('教师中心', ['teacher-member/index']) ?>
+                    <?php }?>
+                    <?= Html::a('退出登录', ['login/logout']) ?>
                 <?php } ?>
             </div>
         </div>
