@@ -97,4 +97,15 @@ class Course extends \common\models\Course
             ->bindValue('id',$id)->execute();
     }
 
+    /**
+     * 购买量+1
+     * @param $id
+     * @throws \yii\db\Exception
+     */
+    public static function salesNum($id)
+    {
+        Yii::$app->db->createCommand('UPDATE {{%course}} SET sales=sales+1 WHERE id=:id')
+            ->bindValue('id',$id)->execute();
+    }
+
 }

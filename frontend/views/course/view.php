@@ -16,13 +16,15 @@ $this->registerJsFile('@web/js/details.js',['depends'=>['frontend\assets\AppAsse
         <div class="details-top">
             <div class="details-top-img">
                 <div class="video">
-                    <div class="video-btn"><span class="iconfont icon-bofang"></span>免费试学</div>
+                    <a href="<?=Url::to(['course/section','id'=>$data['id']])?>">
+                        <div class="video-btn"><span class="iconfont icon-bofang"></span>免费试学</div>
+                    </a>
                     <div class="img-box"><img src="<?= Html::encode($data['thumb'])?>"/></div>
                 </div>
                 <div class="fun">
                     <div class="share"><span class="iconfont icon-share"></span>分享</div>
-                    <div class="shoucang"><span class="iconfont icon-shoucang"></span>收藏课程<em>（0）</em></div>
-                    <div class="message">上课时间 07月12日 15：00-16：00</div>
+                    <!--<div class="shoucang"><span class="iconfont icon-shoucang"></span>收藏课程<em>（0）</em></div>-->
+                    <!--<div class="message">上课时间 07月12日 15：00-16：00</div>-->
                 </div>
             </div>
             <div class="details-text">
@@ -37,12 +39,21 @@ $this->registerJsFile('@web/js/details.js',['depends'=>['frontend\assets\AppAsse
                 </div>
                 <div class="down">
                     <a href="#">特色服务</a>
-                    <a href="<?=Html::encode($data['data'])?>"><span class="iconfont icon-ziliao"></span>资料下载</a>
-                    <a href="<?=Html::encode($data['material'])?>"><span class="iconfont icon-shu"></span>电子教材</a>
+                    <?php if($signup){?>
+                        <a href="<?=Html::encode($data['data'])?>"><span class="iconfont icon-ziliao"></span>资料下载</a>
+                        <a href="<?=Html::encode($data['material'])?>"><span class="iconfont icon-shu"></span>电子教材</a>
+                    <?php }else{?>
+                        <a href="javascript:if(confirm('请先购买此课程！'))location='<?=Url::to(['order/post','id'=>$data['id']])?>'"><span class="iconfont icon-ziliao"></span>资料下载</a>
+                        <a href="javascript:if(confirm('请先购买此课程！'))location='<?=Url::to(['order/post','id'=>$data['id']])?>'"><span class="iconfont icon-shu"></span>电子教材</a>
+                    <?php }?>
                 </div>
                 <div class="buttons">
-                    <a href="<?=Url::to(['course/section','id'=>$data['id']])?>"><span class="try">免费试学</span></a>
-                    <span class="sign"><a href="<?=Url::to(['order/post','id'=>$data['id']])?>">立即报名</a></span>
+                    <?php if($signup){?>
+                        <a href="<?=Url::to(['course/section','id'=>$data['id']])?>"><span class="try">开始学习</span></a>
+                    <?php }else{?>
+                        <a href="<?=Url::to(['course/section','id'=>$data['id']])?>"><span class="try">免费试学</span></a>
+                        <span class="sign"><a href="<?=Url::to(['order/post','id'=>$data['id']])?>">立即报名</a></span>
+                    <?php }?>
                 </div>
                 <div class="message">学制   |   <?=Html::encode($data['course_number'])?>节课/期    每课时<?=Html::encode($data['course_duration'])?>分钟</div>
             </div>
@@ -52,7 +63,7 @@ $this->registerJsFile('@web/js/details.js',['depends'=>['frontend\assets\AppAsse
                 <ul class="details-tab-nav">
                     <li class="active">课程详情</li>
                     <li>课程大纲</li>
-                    <li>留言咨询</li>
+                    <!--<li>留言咨询</li>-->
                 </ul>
                 <div class="details-tab-content">
                     <?= HtmlPurifier::process($data['content'])?>

@@ -41,6 +41,19 @@ class Order extends \common\models\Order
     }
 
     /**
+     * 获取学员是否购买过此课程
+     * $course 课程信息
+     */
+    public static function getSignup($courseid)
+    {
+        $order = self::find()->where(['userid'=>Yii::$app->user->identity->id, 'courseid'=>$courseid, 'status'=>1])->asArray()->one();
+        if($order){
+            return true;
+        }
+        return false;
+    }
+
+    /**
      * 根据订单号获取订单信息
      */
     public function getOrder($orderid)

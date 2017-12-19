@@ -86,6 +86,8 @@ class OrderController extends Controller
                 throw new NotFoundHttpException('请求失败！');
             }
         }
+        //购买量+1
+        Course::salesNum($data['courseid']);
 
         return $this->render('success',[
             'orderid' => $orderid

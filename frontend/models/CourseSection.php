@@ -12,7 +12,7 @@ class CourseSection extends \common\models\CourseSection
      */
     public static function getList($cid)
     {
-        return self::find()->where(['courseid'=>intval($cid)])->orderBy('sort desc,id desc')->asArray()->all();
+        return self::find()->where(['courseid'=>intval($cid),'status'=>1])->orderBy('sort asc,id asc')->asArray()->all();
     }
 
     /**

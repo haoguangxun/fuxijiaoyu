@@ -28,10 +28,16 @@ $this->registerJsFile('@web/js/details.js',['depends'=>['frontend\assets\AppAsse
                 </ul>
                 <div class="details-tab-content">
                     <?php if($list){
-                        foreach ($list as $value):?>
-                            <div class="news-text">
-                                <a class="more" href="<?=Url::to(['course/section','id'=>$data['id'],'sid'=>$value['id']])?>"><?=$value['name']?></a>
-                                <?php if($value['subtitle']) echo "<br>——".$value['subtitle']?>
+                        foreach ($list as $key => $value):?>
+                            <div style="margin: 10px; padding: 10px; background-color: #f1f1f1">
+                                <?=$key+1?>、
+                                <?php if($value['audition']==0 && $signup==false){?>
+                                    <?= $value['name']?>
+                                <?php }else{?>
+                                    <a class="more" href="<?=Url::to(['course/section','id'=>$data['id'],'sid'=>$value['id']])?>"><?= $value['name']?></a>
+                                <?php }?>
+                                <?php if($value['subtitle']) echo "——".$value['subtitle']?>
+                                <?php if($value['audition'] == 1) echo "<span style='color:red;'>免费试学</span>"?>
                             </div>
                         <?php endforeach;
                     }else{

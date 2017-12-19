@@ -7,6 +7,7 @@ use frontend\models\Course;
 use frontend\models\CourseSection;
 use frontend\models\Member;
 use frontend\models\News;
+use frontend\models\Order;
 use frontend\models\Page;
 use yii\data\Pagination;
 use yii\web\Controller;
@@ -90,7 +91,11 @@ class CourseController extends Controller
         }
         //展示量+1
         Course::clickNum($id);
-
+        //学员是否购买此课程
+        $signup = false;
+        if(!Yii::$app->user->isGuest){
+            $signup = Order::getSignup($id);
+        }
         //模板
         $template = $data['template'] ? $data['template'] : $category['view_template'] ? $category['view_template'] : 'view';
 
@@ -99,6 +104,7 @@ class CourseController extends Controller
             'parent' => $parent,
             'data' => $data,
             'teacher' => $teacher,
+            'signup' => $signup,
         ]);
     }
 
@@ -123,6 +129,11 @@ class CourseController extends Controller
         Course::clickNum($id);
         //小节列表
         $list = CourseSection::getList($id);
+        //学员是否购买此课程
+        $signup = false;
+        if(!Yii::$app->user->isGuest){
+            $signup = Order::getSignup($id);
+        }
         //小节内容
         $detail = [];
         $template = 'section';
@@ -131,6 +142,10 @@ class CourseController extends Controller
             $detail = CourseSection::getData($sid);
             //模板
             $template = $detail['template'] ? $detail['template'] : 'section';
+            //如果学员未购买且该小节不可免费试学
+            if($detail['audition']==0 && $signup==false){
+                $detail = [];
+            }
         }
 
         return $this->render($template,[
@@ -140,6 +155,7 @@ class CourseController extends Controller
             'teacher' => $teacher,
             'list' => $list,
             'detail' => $detail,
+            'signup' => $signup,
         ]);
     }
 }
