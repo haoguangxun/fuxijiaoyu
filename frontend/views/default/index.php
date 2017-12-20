@@ -9,6 +9,7 @@ $this->registerCssFile('@web/css/home.css',['depends'=>['frontend\assets\AppAsse
 $this->registerCssFile('@web/css/swiper.min.css',['depends'=>['frontend\assets\AppAsset']]);
 $this->registerJsFile('@web/js/home.js',['depends'=>['frontend\assets\AppAsset'],'position' => $this::POS_HEAD]);
 $this->registerJsFile('@web/js/swiper.min.js',['depends'=>['frontend\assets\AppAsset'],'position' => $this::POS_HEAD]);
+$this->registerJsFile('@web/js/bootstrap.min.js',['depends'=>['frontend\assets\AppAsset'],'position' => $this::POS_HEAD]);
 ?>
 <!--内容-->
 <div class="banner">
@@ -260,6 +261,22 @@ $this->registerJsFile('@web/js/swiper.min.js',['depends'=>['frontend\assets\AppA
     </div>
 </div>
 <div class="baoming"><img src="<?= $page[32]['thumb']?>"/></div>
+<div class="modal fade" id="alert" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">提示</h4>
+            </div>
+            <div class="modal-body">
+                <p></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="sign">
     <div class="wrap">
         <div class="sign-text">
@@ -270,52 +287,52 @@ $this->registerJsFile('@web/js/swiper.min.js',['depends'=>['frontend\assets\AppA
             <?= $page[32]['content']?>
         </div>
         <div class="sign-form">
-            <form class="form-horizontal">
+            <?= Html::beginForm(['enroll/post'], 'post',['id' => 'enroll-form', 'class'=>'form-horizontal']) ?>
                 <div class="form-group">
                     <label for="name" class="col-sm-2 control-label">您的姓名</label>
                     <div class="col-sm-8">
-                        <input type="input" id="name" class="form-control" maxlength="5">
+                        <?= Html::input('text', 'EnrollForm[name]', '', ['id' => 'name','class'=>'form-control','maxlength'=>20]) ?>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="phone" class="col-sm-2 control-label">联系方式</label>
+                    <label for="contact" class="col-sm-2 control-label">联系方式</label>
                     <div class="col-sm-8">
-                        <input type="input" class="form-control" id="phone" maxlength="20">
+                        <?= Html::input('text', 'EnrollForm[contact]', '', ['id' => 'contact','class'=>'form-control','maxlength'=>20]) ?>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="phone" class="col-sm-2 control-label">是否学过琴</label>
+                    <label for="learn" class="col-sm-2 control-label">是否学过琴</label>
                     <div class="col-sm-8">
                         <label class="radio-inline">
-                            <input type="radio" name="yasNo"  value="yas"> 是
+                            <?= Html::input('radio', 'EnrollForm[learn]', 1) ?> 是
                         </label>
                         <label class="radio-inline">
-                            <input type="radio" name="yasNo"  value="no"> 否
-                        </label>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="phone" class="col-sm-2 control-label">学习程度</label>
-                    <div class="col-sm-8">
-                        <label class="radio-inline">
-                            <input type="radio" name="degree"  value="yas"> 没有学习过
-                        </label>
-                        <label class="radio-inline">
-                            <input type="radio" name="degree"  value="no"> 一般
-                        </label>
-                        <label class="radio-inline">
-                            <input type="radio" name="degree"  value="yas"> 想系统学习
+                            <?= Html::input('radio', 'EnrollForm[learn]', 0, ['checked' => 'checked']) ?> 否
                         </label>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="phone" class="col-sm-2 control-label">期望老师</label>
+                    <label for="learning_level" class="col-sm-2 control-label">学习程度</label>
                     <div class="col-sm-8">
-                        <textarea class="form-control" rows="4" style="resize: none;"></textarea>
+                        <label class="radio-inline">
+                            <?= Html::input('radio', 'EnrollForm[learning_level]', 1, ['checked' => 'checked']) ?> 没有学习过
+                        </label>
+                        <label class="radio-inline">
+                            <?= Html::input('radio', 'EnrollForm[learning_level]', 2) ?> 一般
+                        </label>
+                        <label class="radio-inline">
+                            <?= Html::input('radio', 'EnrollForm[learning_level]', 3) ?> 想系统学习
+                        </label>
                     </div>
                 </div>
-                <div class="sign-form-btn"><button type="button" class="btn">提交</button></div>
-            </form>
+                <div class="form-group">
+                    <label for="expect_teacher" class="col-sm-2 control-label">期望老师</label>
+                    <div class="col-sm-8">
+                        <?= Html::textarea('EnrollForm[expect_teacher]', '', ['id' => 'expect_teacher','class'=>'form-control','rows'=>4,'maxlength'=>30,'style'=>'resize: none;']) ?>
+                    </div>
+                </div>
+                <div class="sign-form-btn"><?= Html::submitButton('提交', ['class' => 'btn', 'name' => 'enroll-button']) ?></div>
+            <?= Html::endForm() ?>
         </div>
     </div>
 </div>

@@ -34,7 +34,8 @@ class Feedback extends \yii\db\ActiveRecord
     {
         return [
             [['phone', 'addtime', 'admin_id', 'status'], 'integer'],
-            [['name', 'content'], 'string', 'max' => 20],
+            [['name'], 'string', 'max' => 20],
+            [['content'], 'string', 'max' => 200],
             [['email'], 'string', 'max' => 30],
             [['note'], 'string', 'max' => 50],
         ];

@@ -6,6 +6,8 @@ $this->title = Html::encode($category['catname']);
 $this->registerMetaTag(array("name"=>"keywords","content"=>Html::encode($category['keywords'])));
 $this->registerMetaTag(array("name"=>"description","content"=>Html::encode($category['description'])));
 $this->registerCssFile('@web/css/contact.css',['depends'=>['frontend\assets\AppAsset']]);
+$this->registerJsFile('@web/js/feedback.js',['depends'=>['frontend\assets\AppAsset'],'position' => $this::POS_HEAD]);
+$this->registerJsFile('@web/js/bootstrap.min.js',['depends'=>['frontend\assets\AppAsset'],'position' => $this::POS_HEAD]);
 //百度地图
 $this->registerJsFile('http://api.map.baidu.com/api?v=2.0&ak=RSRE27K1OYhprE4kwPPs9Gm2LkgAiKm1',['depends'=>['frontend\assets\AppAsset'],'position' => $this::POS_HEAD]);
 //分享
@@ -15,6 +17,22 @@ $this->registerJsFile('http://static.bshare.cn/b/bshareC0.js',['depends'=>['fron
 
 <!--内容-->
 <div class="list-banner" style="background-image: url(<?=Html::encode($category['pic'])?>);"></div>
+<div class="modal fade" id="alert" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">提示</h4>
+            </div>
+            <div class="modal-body">
+                <p></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="contact">
     <div class="wrap">
         <div class="home-title">
@@ -24,15 +42,17 @@ $this->registerJsFile('http://static.bshare.cn/b/bshareC0.js',['depends'=>['fron
         </div>
         <div class="contact-main">
             <div class="contact-input">
+                <?= Html::beginForm(['feedback/post'], 'post',['id' => 'feedback-form', 'class'=>'form-horizontal']) ?>
                 <div class="contact-input-left">
-                    <input type="text" placeholder="姓名" />
-                    <input type="text" placeholder="手机" />
-                    <input type="email" placeholder="邮箱" />
+                    <?= Html::input('text', 'FeedbackForm[name]', '', ['id' => 'name','maxlength'=>20, 'placeholder'=>'姓名']) ?>
+                    <?= Html::input('text', 'FeedbackForm[phone]', '', ['id' => 'phone','maxlength'=>20, 'placeholder'=>'手机']) ?>
+                    <?= Html::input('text', 'FeedbackForm[email]', '', ['id' => 'email','maxlength'=>50, 'placeholder'=>'邮箱']) ?>
                 </div>
                 <div class="contact-input-right">
-                    <textarea placeholder="您想说的话"></textarea>
-                    <button>提交</button>
+                    <?= Html::textarea('FeedbackForm[content]', '', ['id' => 'content', 'placeholder'=>'您想说的话','maxlength'=>200]) ?>
+                    <?= Html::submitButton('提交', ['name' => 'enroll-button']) ?>
                 </div>
+                <?= Html::endForm() ?>
                 <div class="clear"></div>
                 <div class="contact-share">
                     <div class="ewm">

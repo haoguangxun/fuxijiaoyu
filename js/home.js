@@ -130,3 +130,50 @@ $(function(){
 		}
 	});
 })
+
+//报名
+$(function(){
+	$('#enroll-form').on('submit', function(e){
+		e.preventDefault();
+		var form = $('#enroll-form');
+		var name = $('#name').val();
+		if(name==''){
+			$('.modal-body p').text("姓名不得为空");
+			$('#alert').modal();
+			return false;
+		};
+		var contact = $('#contact').val();
+		if(contact==''){
+			$('.modal-body p').text("联系方式不得为空");
+			$('#alert').modal();
+			return false;
+		};
+		var teacher = $('#expect_teacher').val();
+		if(teacher=='') {
+			$('.modal-body p').text("请输入期望教师");
+			$('#alert').modal();
+			return false;
+		};
+
+		$.ajax({
+			url: form.attr('action'),
+			type: 'post',
+			data: form.serialize(),
+			success: function (data) {
+				if(data.code == 10000) {
+					$('.modal-body p').text(data.msg);
+					$('#alert').modal();
+				} else {
+					$('.modal-body p').text(data.msg);
+					$('#alert').modal();
+					return false;
+				}
+			},
+			error: function() {
+				$('.modal-body p').text("网络繁忙，请稍后再试");
+				$('#alert').modal();
+				return false;
+			}
+		});
+	});
+});
