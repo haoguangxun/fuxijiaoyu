@@ -1,16 +1,16 @@
 <?php
 
-namespace backend\modules\member\models\search;
+namespace backend\modules\enroll\models\search;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use backend\modules\member\models\Member;
+use backend\modules\enroll\models\Enroll;
 
 /**
- * MemberSearch represents the model behind the search form about `backend\modules\member\models\Member`.
+ * EnrollSearch represents the model behind the search form about `backend\modules\enroll\models\Enroll`.
  */
-class MemberSearch extends Member
+class EnrollSearch extends Enroll
 {
     /**
      * @inheritdoc
@@ -18,8 +18,8 @@ class MemberSearch extends Member
     public function rules()
     {
         return [
-            [['id', 'sex', 'phone', 'type', 'created_at', 'login_at', 'loginnum', 'islock', 'vip'], 'integer'],
-            [['username', 'nickname', 'realname', 'email'], 'safe'],
+            [['id', 'learn', 'learning_level', 'addtime', 'admin_id', 'status'], 'integer'],
+            [['name', 'contact', 'expect_teacher', 'note'], 'safe'],
         ];
     }
 
@@ -41,7 +41,7 @@ class MemberSearch extends Member
      */
     public function search($params)
     {
-        $query = Member::find();
+        $query = Enroll::find();
 
         // add conditions that should always apply here
 
@@ -67,21 +67,17 @@ class MemberSearch extends Member
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'phone' => $this->phone,
-            'sex' => $this->sex,
-            'type' => $this->type,
-            'created_at' => $this->created_at,
-            'login_at' => $this->login_at,
-            'loginnum' => $this->loginnum,
-            'islock' => $this->islock,
-            'vip' => $this->vip,
-            'overduedate' => $this->overduedate,
+            'learn' => $this->learn,
+            'learning_level' => $this->learning_level,
+            'addtime' => $this->addtime,
+            'admin_id' => $this->admin_id,
+            'status' => $this->status,
         ]);
 
-        $query->andFilterWhere(['like', 'username', $this->username])
-            ->andFilterWhere(['like', 'realname', $this->realname])
-            ->andFilterWhere(['like', 'nickname', $this->nickname])
-            ->andFilterWhere(['like', 'email', $this->email]);
+        $query->andFilterWhere(['like', 'name', $this->name])
+            ->andFilterWhere(['like', 'contact', $this->contact])
+            ->andFilterWhere(['like', 'expect_teacher', $this->expect_teacher])
+            ->andFilterWhere(['like', 'note', $this->note]);
 
         return $dataProvider;
     }

@@ -40,11 +40,11 @@ use dmstr\widgets\Alert;
 </div>
 
 <footer class="main-footer">
-    <div class="pull-right hidden-xs">
+    <!--<div class="pull-right hidden-xs">
         <b>Version</b> 2.0
     </div>
     <strong>Copyright &copy; 2015-2016 <a href="http://zaizhihr.com">zaizhihr.com</a>.</strong> All rights
-    reserved.
+    reserved.-->
 </footer>
 
 <!-- Control Sidebar -->

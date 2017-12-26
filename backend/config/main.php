@@ -82,6 +82,9 @@ return [
         'feedback' => [
             'class' => 'backend\modules\feedback\Module',
         ],
+        'enroll' => [
+            'class' => 'backend\modules\enroll\Module',
+        ],
         'redactor' => [
             'class' => 'yii\redactor\RedactorModule',
             'uploadDir' => '@webroot/uploads',  //上传目录

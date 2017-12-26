@@ -47,6 +47,13 @@ class FeedbackSearch extends Feedback
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'pagination' => ['pageSize'=>20],
+            'sort'=>[
+                'attributes'=>['id'],
+                'defaultOrder'=>[
+                    'id'=>SORT_DESC,
+                ],
+            ],
         ]);
 
         $this->load($params);
