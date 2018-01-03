@@ -15,10 +15,10 @@ class Category extends \common\models\Category
      */
     public static function getSonList($id){
         $list = [];
-        $info = self::find()->select('child,arrchildid')->where(['id'=>$id])->asArray()->one();
+        $info = self::find()->select('child,arrchildid')->where(['id'=>$id])->orderBy('sort asc')->asArray()->one();
         if($info['child'] == 1){
             $sonIds = explode(',',$info['arrchildid']);
-            $list = self::find()->where(['in','id',$sonIds])->asArray()->all();
+            $list = self::find()->where(['in','id',$sonIds])->orderBy('sort asc')->asArray()->all();
         }
         return $list;
     }

@@ -71,7 +71,7 @@ $this->registerJsFile('http://static.bshare.cn/b/bshareC0.js',['depends'=>['fron
                     </ul>
                 </div>
             </div>
-        </div>-->
+        </div>
         <div class="img-btn">
             <ul>
                 <li>
@@ -87,7 +87,7 @@ $this->registerJsFile('http://static.bshare.cn/b/bshareC0.js',['depends'=>['fron
                     <div style="background-image: url(/img/banner-home1.jpg);">古研究生老师班</div>
                 </li>
             </ul>
-        </div>
+        </div>-->
         <?php
         if(!empty($data['data'])){
         ?>
