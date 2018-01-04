@@ -4,6 +4,7 @@ h1, h2, h3, h4, h5, h6{ font-size:14px;font-weight: normal; }
 address, cite, dfn, em, var { font-style:normal; }
 ul, ol { list-style:none; } 
 a { text-decoration:none; }
+a:hover, a:focus{text-decoration: none !important;}
 fieldset, img { border:0; }
 p{line-height: 1.5em;}
 table { border-collapse:collapse; border-spacing:0; }
@@ -42,6 +43,7 @@ html,body{
 	font-size: 14px;
 	margin-right: 20px;
 	cursor: pointer;
+    display:none;
 }
 .header .function .seach span{
 	font-size: 20px;
@@ -285,6 +287,7 @@ html,body{
     border-top-left-radius: 8px;
     border-bottom-left-radius: 8px;
     z-index: 40;
+    display:none;
 }
 .right-fdd2 li {
     height: 64px;

@@ -81,6 +81,7 @@
 	font-size: 14px;
 	margin-top: 30px;
 	line-height: 2em;
+	height: 48px;
 	text-align: center;
 }
 .about-button{
@@ -144,6 +145,9 @@
 	border-radius: 5px;
 	display: inline-block;
 }
+.course-button:hover,.course-button:focus{
+	color:#fff;
+}
 .course-up{
 	width: 35px;
 	height: 35px;
@@ -155,6 +159,9 @@
 	bottom: 0px;
 	left: 48%;
 	border-radius: 50%;
+}
+.course-up:hover,.course-up:focus{
+	color:#fff;
 }
 .course-up .iconfont{
 	font-size: 25px;
@@ -187,7 +194,7 @@
 .teachers-banner{
 	position: relative;
 	overflow: hidden;
-	height: 420px;
+	height: 460px;
 	padding: 0 0 40px;
 }
 .teachers-banner .pagination{

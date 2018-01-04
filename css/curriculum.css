@@ -85,7 +85,7 @@
 	margin: 0 1% 60px;
 }
 .system .experience-video li .video-content{
-	height: 330px;
+	height: 300px;
 	width: 100%;
 	position: relative;
 }
@@ -264,6 +264,13 @@
 	color: #a1a0a0;
 	font-size: 14px;
 	line-height: 1.5em;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 3;
+	overflow: hidden;
+}
+.teacher .page{
+	text-align: center;
 }
 .teacher .more{
 	margin-top: 10px;
