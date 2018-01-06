@@ -9,7 +9,7 @@ use yii\web\Session;
 class SendMsg
 {
     private static $account = 'C99568191'; //APIID
-    private static $password = ''; //APIKEY
+    private static $password = '7b41e79cbfe667bd4750167aaa1a4a86'; //APIKEY
     private static $url = "http://106.ihuyi.cn/webservice/sms.php?method=Submit"; //接口地址
     private static $get = [];
 
@@ -26,12 +26,11 @@ class SendMsg
         self::$get['account'] = self::$account;
         self::$get['password'] = self::$password;
         self::$get['mobile'] = $mobile;
-        self::$get['content'] = rawurlencode("【伏羲教育】您的验证码是：".$mobile_code."。请不要把验证码泄露给其他人。");
+        self::$get['content'] = "您的验证码是：".$mobile_code."。请不要把验证码泄露给其他人。";
 
         $session = new Session();
         $session->set('mobile',$mobile);
         $session->set('mobile_code',$mobile_code);
-        return $mobile_code;
 
         $gets =  self::xml_to_array(self::post(http_build_query(self::$get),self::$url));
 

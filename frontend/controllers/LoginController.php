@@ -228,7 +228,7 @@ class LoginController extends Controller
         }
         return [
             'code' => 10000,
-            'msg' => '短信发送成功！'.$res
+            'msg' => '短信发送成功！'
         ];
     }
 
