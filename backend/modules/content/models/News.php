@@ -20,6 +20,7 @@ class News extends \common\models\News
             [['keywords'], 'string', 'max' => 50],
             [['description'], 'string', 'max' => 200],
             [['author'], 'string', 'max' => 30],
+            [['sort'], 'default', 'value' => 0],
         ];
     }
 

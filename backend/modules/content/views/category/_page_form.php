@@ -53,7 +53,7 @@ use backend\modules\content\models\Category;
 
     <!--<?/*= $form->field($page, 'template')->textInput() */?>-->
 
-    <?= $form->field($category, 'sort')->textInput(['value'=>0, 'style' => 'width:60px']) ?>
+    <?= $form->field($category, 'sort')->textInput(['style' => 'width:60px']) ?>
 
     <?php if($category->isNewRecord) $category->ismenu = 1; ?>
     <?= $form->field($category, 'ismenu')->radioList(

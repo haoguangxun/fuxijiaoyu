@@ -32,7 +32,7 @@ use yii\widgets\ActiveForm;
 
     <?/*= $form->field($model, 'js_template')->textInput(['maxlength' => true]) */?>-->
 
-    <?= $form->field($model, 'sort')->textInput(['value'=>0, 'style' => 'width:60px']) ?>
+    <?= $form->field($model, 'sort')->textInput(['style' => 'width:60px']) ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? '添加' : '保存', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

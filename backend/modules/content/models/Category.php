@@ -22,6 +22,7 @@ class Category extends \common\models\Category
             [['pic', 'parentdir', 'url'], 'string', 'max' => 100],
             [['keywords'], 'string', 'max' => 50],
             [['description'], 'string', 'max' => 500],
+            [['sort'], 'default', 'value' => 0],
         ];
     }
 

@@ -25,7 +25,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'template')->textInput(['maxlength' => 30, 'style' => 'width:200px']) ?>
 
-    <?= $form->field($model, 'sort')->textInput(['value' => 0, 'style' => 'width:60px']) ?>
+    <?= $form->field($model, 'sort')->textInput(['style' => 'width:60px']) ?>
 
     <?php if($model->isNewRecord) $model->audition = 0; ?>
     <?= $form->field($model, 'audition')->radioList(

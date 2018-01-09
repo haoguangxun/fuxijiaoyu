@@ -18,6 +18,7 @@ class Models extends \common\models\Models
             [['name', 'category_template', 'list_template', 'show_template', 'js_template'], 'string', 'max' => 30],
             [['description'], 'string', 'max' => 100],
             [['tablename'], 'string', 'max' => 20],
+            [['sort'], 'default', 'value' => 0],
         ];
     }
 }

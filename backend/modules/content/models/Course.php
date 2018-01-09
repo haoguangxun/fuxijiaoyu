@@ -14,6 +14,7 @@ class Course extends \common\models\Course
     public function rules()
     {
         return [
+            [['name', 'thumb', 'difficulty_level', 'course_number', 'course_duration', 'price'], 'required'],
             [['catid', 'teacherid', 'difficulty_level', 'course_number', 'course_duration', 'posids', 'sort', 'status', 'islink', 'addtime', 'updatetime'], 'integer'],
             [['price'], 'number'],
             [['name', 'subtitle'], 'string', 'max' => 80],
@@ -21,6 +22,7 @@ class Course extends \common\models\Course
             [['keywords'], 'string', 'max' => 50],
             [['description'], 'string', 'max' => 200],
             [['author'], 'string', 'max' => 30],
+            [['sort'], 'default', 'value' => 0],
         ];
     }
 

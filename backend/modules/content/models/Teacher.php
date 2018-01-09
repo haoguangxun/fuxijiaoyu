@@ -20,6 +20,7 @@ class Teacher extends \common\models\Teacher
             [['thumb', 'url'], 'string', 'max' => 100],
             [['keywords'], 'string', 'max' => 50],
             [['description'], 'string', 'max' => 200],
+            [['sort'], 'default', 'value' => 0],
         ];
     }
 
