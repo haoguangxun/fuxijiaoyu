@@ -33,7 +33,7 @@ $this->registerJsFile('@web/js/personal.js',['depends'=>['frontend\assets\AppAss
                     'label' => '主讲老师',
                     'value' => function($model){
                         $teacher = \frontend\models\Member::find()->select('realname')->where(['id'=>$model->course['teacherid']])->column();
-                        return $teacher[0];
+                        return $teacher[0] ? $teacher[0] : '';
                     },
                 ],
                 [

@@ -35,7 +35,7 @@ $this->registerJsFile('@web/js/personal.js',['depends'=>['frontend\assets\AppAss
                     'value' => function($model){
                         //var_dump($model);
                         $member = \frontend\models\Member::find()->select('realname')->where(['id'=>$model->userid])->column();
-                        return $member[0];
+                        return $member[0] ? $member[0] : '';
                     },
                 ],
                 [
