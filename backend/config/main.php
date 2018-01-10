@@ -85,6 +85,9 @@ return [
         'enroll' => [
             'class' => 'backend\modules\enroll\Module',
         ],
+        'ad' => [
+            'class' => 'backend\modules\ad\Module',
+        ],
         'redactor' => [
             'class' => 'yii\redactor\RedactorModule',
             'uploadDir' => '@webroot/uploads',  //上传目录
