@@ -27,8 +27,6 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'content') ?>
 
-    <?php // echo $form->field($model, 'type') ?>
-
     <?php // echo $form->field($model, 'addtime') ?>
 
     <?php // echo $form->field($model, 'display') ?>

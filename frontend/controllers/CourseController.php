@@ -94,9 +94,9 @@ class CourseController extends Controller
         //展示量+1
         Course::clickNum($id);
         //获取课程收藏数量
-        Course::clickNum($id);
-        //获取用户是否收藏此课程
-        Course::clickNum($id);
+        $collectionNum = CourseCollection::getNum($id);
+        //获取当前用户是否收藏此课程
+        $isCollention = CourseCollection::getUserCollection($id);
         //学员是否购买此课程
         $signup = false;
         if(!Yii::$app->user->isGuest){
@@ -111,6 +111,8 @@ class CourseController extends Controller
             'data' => $data,
             'teacher' => $teacher,
             'signup' => $signup,
+            'collectionNum' => $collectionNum,
+            'isCollention' => $isCollention,
         ]);
     }
 
@@ -179,23 +181,32 @@ class CourseController extends Controller
         }
 
         $id = intval(Yii::$app->request->get('id',0));
-        $type = Yii::$app->request->get('type',0);
+        $action = Yii::$app->request->get('action',0);
         $model = new CourseCollection();
-        if($type == 1){
-            $res = $model->add($id);
+        if($action == 1){
+            if($model->add($id)){
+                return [
+                    'code' => 10000,
+                    'msg' => '成功'
+                ];
+            }else{
+                return [
+                    'code' => 10002,
+                    'msg' => '失败'
+                ];
+            }
         }elseif($type == 2){
-            $res = $model->del($id);
-        }
-        if($res){
-            return [
-                'code' => 10000,
-                'msg' => '成功'
-            ];
-        }else{
-            return [
-                'code' => 10001,
-                'msg' => '失败'
-            ];
+            if($model->del($id)){
+                return [
+                    'code' => 10001,
+                    'msg' => '成功'
+                ];
+            }else{
+                return [
+                    'code' => 10002,
+                    'msg' => '失败'
+                ];
+            }
         }
     }
 }

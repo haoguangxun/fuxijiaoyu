@@ -20,13 +20,25 @@ class CourseCollection extends \common\models\CourseCollection
      * 获取课程收藏数量
      * @return \yii\db\ActiveQuery
      */
-    public function getNum()
+    public static function getNum($id)
+    {
+        if(empty($id)) return 0;
+        $num = self::find()->where(['courseid'=>$id])->count();
+        return $num ? $num : 0;
+    }
+
+    /**
+     * 获取当前用户是否收藏此课程
+     * @return \yii\db\ActiveQuery
+     */
+    public static function getUserCollection($id)
     {
         if(empty($id) || empty(Yii::$app->user->identity->id)) return false;
         $model = self::find()->where(['courseid'=>$id,'userid'=>Yii::$app->user->identity->id])->one();
         if($model){
             return true;
         }
+        return false;
     }
 
     /**

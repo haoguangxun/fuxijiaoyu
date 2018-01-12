@@ -12,19 +12,19 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'name')->textInput(['maxlength' => 50, 'style' => 'width:200px']) ?>
 
-    <?= $form->field($model, 'width')->textInput() ?>
+    <?= $form->field($model, 'width')->textInput(['style' => 'width:80px']) ?>
 
-    <?= $form->field($model, 'height')->textInput() ?>
+    <?= $form->field($model, 'height')->textInput(['style' => 'width:80px']) ?>
 
     <?php if($model->isNewRecord) $model->type = 2; ?>
     <?= $form->field($model, 'type')->radioList(
         [
             '1' => '文字',
             '2' => '图片',
-            '3' => 'Flash',
-            '4' => '视频',
+            //'3' => 'Flash',
+            //'4' => '视频',
         ]
     ) ?>
 
@@ -38,6 +38,7 @@ use yii\widgets\ActiveForm;
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? '添加' : '修改', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::button('取消', ['class' => 'btn btn-default','onclick'=>'window.history.back();']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

@@ -2,6 +2,7 @@
 
 namespace backend\modules\ad\controllers;
 
+use common\models\AdPosition;
 use Yii;
 use backend\modules\ad\models\Ad;
 use backend\modules\ad\models\search\AdSearch;
@@ -29,6 +30,15 @@ class AdController extends Controller
         ];
     }
 
+    public function actions()
+    {
+        return [
+            'upload'=>[
+                'class' => 'common\widgets\file_upload\UploadAction',
+            ],
+        ];
+    }
+
     /**
      * Lists all Ad models.
      * @return mixed
@@ -37,10 +47,11 @@ class AdController extends Controller
     {
         $searchModel = new AdSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
+        $position = AdPosition::findOne($searchModel->pid);
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'position' => $position,
         ]);
     }
 
@@ -61,15 +72,19 @@ class AdController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
+    public function actionCreate($pid)
     {
         $model = new Ad();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post())) {
+            $model->addtime = time();
+            if($model->validate() && $model->save()){
+                return $this->redirect(['index', 'AdSearch[pid]' => $pid]);
+            }
         } else {
             return $this->render('create', [
                 'model' => $model,
+                'pid' => $pid,
             ]);
         }
     }
@@ -85,7 +100,7 @@ class AdController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['index', 'AdSearch[pid]' => $model->pid]);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -101,9 +116,10 @@ class AdController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $model = $this->findModel($id);
+        $model->delete();
 
-        return $this->redirect(['index']);
+        return $this->redirect(['index', 'AdSearch[pid]' => $model->pid]);
     }
 
     /**

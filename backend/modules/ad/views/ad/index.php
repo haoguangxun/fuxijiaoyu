@@ -7,15 +7,13 @@ use yii\grid\GridView;
 /* @var $searchModel backend\modules\ad\models\search\AdSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = '广告管理';
+$this->title = '广告管理：'.$position->name;
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="ad-index">
 
-    <?php echo $this->render('_search', ['model' => $searchModel]); ?>
-
     <p>
-        <?= Html::a('添加广告', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('添加广告', ['create','pid'=>$searchModel->attributes['pid']], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -23,15 +21,31 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'sort',
             'id',
-            'pid',
             'title',
-            'fileurl:url',
-            'linkurl:url',
+            [
+                'label' => '图片',
+                'format' => 'raw',
+                'value' => function ($model) {
+                    return "<img src='".$model->fileurl."' height=100>";
+                },
+            ],
             'content',
-            'addtime',
-            'display',
+            [
+                'attribute' => 'addtime',
+                'format'=>['date','php:Y-m-d H:i:s'],
+            ],
+            [
+                'label' => '状态',
+                'value' => function($model){
+                    return $model->display==1 ? '显示' : '隐藏';
+                },
+            ],
 
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'header'=>'操作',
+                'template' => '{update}{delete}',
+            ],
         ],
     ]); ?>
 </div>

@@ -29,6 +29,14 @@ class MemberController extends Controller
         }
     }
 
+    public function actions()
+    {
+        return [
+            'upload'=>[
+                'class' => 'common\widgets\file_upload\UploadAction',
+            ]
+        ];
+    }
     /**
      * 个人资料
      */

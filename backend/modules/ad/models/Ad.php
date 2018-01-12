@@ -18,6 +18,7 @@ class Ad extends \common\models\Ad
             [['title'], 'string', 'max' => 80],
             [['fileurl', 'linkurl'], 'string', 'max' => 100],
             [['content'], 'string', 'max' => 200],
+            [['sort'], 'default', 'value' => 0],
         ];
     }
 
