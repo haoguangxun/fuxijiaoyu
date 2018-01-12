@@ -23,7 +23,7 @@ $this->registerJsFile('@web/js/details.js',['depends'=>['frontend\assets\AppAsse
                 </div>
                 <div class="fun">
                     <div class="share"><span class="iconfont icon-share"></span>分享</div>
-                    <!--<div class="shoucang"><span class="iconfont icon-shoucang"></span>收藏课程<em>（0）</em></div>-->
+                    <div class="shoucang"><span class="iconfont icon-shoucang"></span>收藏课程（<em>0</em>）</div>
                     <!--<div class="message">上课时间 07月12日 15：00-16：00</div>-->
                 </div>
             </div>

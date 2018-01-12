@@ -4,12 +4,14 @@ namespace frontend\controllers;
 
 use frontend\models\Category;
 use frontend\models\Course;
+use frontend\models\CourseCollection;
 use frontend\models\CourseSection;
 use frontend\models\Member;
 use frontend\models\News;
 use frontend\models\Order;
 use frontend\models\Page;
 use yii\data\Pagination;
+use yii\helpers\Url;
 use yii\web\Controller;
 use Yii;
 
@@ -91,6 +93,10 @@ class CourseController extends Controller
         }
         //展示量+1
         Course::clickNum($id);
+        //获取课程收藏数量
+        Course::clickNum($id);
+        //获取用户是否收藏此课程
+        Course::clickNum($id);
         //学员是否购买此课程
         $signup = false;
         if(!Yii::$app->user->isGuest){
@@ -157,5 +163,39 @@ class CourseController extends Controller
             'detail' => $detail,
             'signup' => $signup,
         ]);
+    }
+
+
+    /**
+     * 课程收藏
+     * $id 课程id
+     * $type 1收藏，2取消
+     */
+    public function actionCollection($id,$type)
+    {
+        if(Yii::$app->user->isGuest){
+            $this->redirect(Url::to(['login/index']));
+            return false;
+        }
+
+        $id = intval(Yii::$app->request->get('id',0));
+        $type = Yii::$app->request->get('type',0);
+        $model = new CourseCollection();
+        if($type == 1){
+            $res = $model->add($id);
+        }elseif($type == 2){
+            $res = $model->del($id);
+        }
+        if($res){
+            return [
+                'code' => 10000,
+                'msg' => '成功'
+            ];
+        }else{
+            return [
+                'code' => 10001,
+                'msg' => '失败'
+            ];
+        }
     }
 }
