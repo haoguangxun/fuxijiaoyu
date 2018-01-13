@@ -13,7 +13,7 @@ $this->registerJsFile('@web/js/bootstrap.min.js',['depends'=>['frontend\assets\A
 ?>
 <!--内容-->
 <div class="banner">
-    <div class="swiper-container" style="height:100%">
+    <div id="ban" class="swiper-container" style="height:100%">
         <div class="swiper-wrapper">
             <?php
             if(!empty($ad)) foreach ($ad as $key => $value) :
@@ -70,7 +70,25 @@ $this->registerJsFile('@web/js/bootstrap.min.js',['depends'=>['frontend\assets\A
             <h1>课程体系</h1>
             <span></span>
         </div>
-        <div class="about-main course-main">
+        <div class="swiper-container mabout-main" id="fls">
+            <ul class="swiper-wrapper">
+                <?php
+                if(!empty($curriculumSystem)) foreach ($curriculumSystem as $key => $value) :
+                    ?>
+                    <li class="swiper-slide">
+                        <div class="course-icon">
+                            <span style="background-image: url(<?= $value['thumb'] ?>);"></span>
+                        </div>
+                        <span class="course-top"><?= $value['title'] ?></span>
+                        <p><?= $value['subtitle'] ?></p>
+                        <a href="<?= $value['url'] ?>" class="course-button">咨询</a>
+                    </li>
+                    <?php
+                endforeach;
+                ?>
+            </ul>
+        </div>
+        <div class="about-main course-main" id="pcMain">
             <ul>
                 <?php
                 if(!empty($curriculumSystem)) foreach ($curriculumSystem as $key => $value) :

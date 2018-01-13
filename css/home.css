@@ -47,6 +47,11 @@ video::-webkit-media-controls-panel {
 	padding-bottom: 60px;
 	position: relative;
 }
+.mabout-main{
+	overflow: hidden;
+	display: none;
+	text-align: center;
+}
 .course-main ul{
 	position: absolute;
 	left: 0;
@@ -78,17 +83,20 @@ video::-webkit-media-controls-panel {
 .about-main li .about-icon:hover span{
 	color: #C9C9C9;
 }
-.about-main li .about-icon span{
+.about-main li .about-icon span,.mabout-main .about-icon span{
 	font-size: 50px;
 	color: #144e8d;
 }
-.about-main li p{
+.about-main li p,.mabout-main li p{
 	color: #c7c7c7;
 	font-size: 14px;
 	margin-top: 30px;
 	line-height: 2em;
 	height: 48px;
 	text-align: center;
+}
+.mabout-main li p{
+	padding: 0 30%;
 }
 .about-button{
 	width: 190px;
@@ -549,7 +557,7 @@ video::-webkit-media-controls-panel {
 	line-height: 2em;
 	display: -webkit-box;
 	-webkit-box-orient: vertical;
-	-webkit-line-clamp: 4;
+	-webkit-line-clamp: 3;
 	overflow: hidden;
 }
 .news-main-btn{
@@ -718,6 +726,15 @@ video::-webkit-media-controls-panel {
 	}
 }
 @media  screen and (min-width: 100px) and (max-width: 640px) {
+	.course-up{
+		display: none;
+	}
+	#pcMain{
+		display: none;
+	}
+	#fls{
+		display: block;
+	}
 	.banner{
 		height: 240px;
 	}

@@ -85,4 +85,5 @@ $this->registerJsFile('http://static.bshare.cn/b/bshareC0.js',['depends'=>['fron
     map.centerAndZoom(point, 17);
     var marker = new BMap.Marker(point);  // 创建标注
     map.addOverlay(marker);              // 将标注添加到地图中
+    map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
 </script>
