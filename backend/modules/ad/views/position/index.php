@@ -29,8 +29,8 @@ $this->params['breadcrumbs'][] = $this->title;
                     return $model::$type[$model->type];
                 },
             ],
-            'width',
-            'height',
+            //'width',
+            //'height',
             [
                 'label' => '状态',
                 'value' => function($model){
