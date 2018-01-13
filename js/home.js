@@ -14,9 +14,6 @@ $(document).ready(function(){
 	    pagination : '.swiper-pagination',
 	    paginationClickable :true,
 	});
-	$('.teachers-banner li').hover(function(){
-		$(this).find('.main').slideToggle(200);
-	});
 	$('#my-video').width(100+'%');
 	var videoW = $('#my-video').width();
 	$('#my-video,.video-more').height(videoW/2);

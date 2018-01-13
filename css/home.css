@@ -96,6 +96,9 @@
 	font-size: 14px;
 	border-radius: 10px;
 }
+.about-button:hover{
+	color: #fff;
+}
 .course{
 	background: #144e8d;
 	padding: 85px 0;
@@ -246,7 +249,13 @@
 	padding: 10% 5% 0;
 	box-sizing: border-box;
 	text-align: center;
-	display: none;
+	visibility: hidden;
+	opacity: 0;
+	transition: all .5s;
+}
+.teachers-banner li:hover .main{
+	visibility: visible;
+	opacity: 1;
 }
 .teachers-banner li .main p{
 	line-height: 2em;

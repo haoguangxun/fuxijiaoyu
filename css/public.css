@@ -287,7 +287,6 @@ html,body{
     border-top-left-radius: 8px;
     border-bottom-left-radius: 8px;
     z-index: 40;
-    display:none;
 }
 .right-fdd2 li {
     height: 64px;

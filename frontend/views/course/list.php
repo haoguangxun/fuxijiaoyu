@@ -8,8 +8,7 @@ $this->registerMetaTag(array("name"=>"keywords","content"=>Html::encode($categor
 $this->registerMetaTag(array("name"=>"description","content"=>Html::encode($category['description'])));
 $this->registerCssFile('@web/css/curriculum.css',['depends'=>['frontend\assets\AppAsset']]);
 //分享
-$this->registerJsFile('http://static.bshare.cn/b/buttonLite.js#style=-1&uuid=&pophcol=2&lang=zh',['depends'=>['frontend\assets\AppAsset']]);
-$this->registerJsFile('http://static.bshare.cn/b/bshareC0.js',['depends'=>['frontend\assets\AppAsset']]);
+$this->registerJsFile('http://v3.jiathis.com/code/jia.js',['depends'=>['frontend\assets\AppAsset']]);
 ?>
 <!--内容-->
 <div class="list-banner" style="background-image: url(<?=Html::encode($category['pic'])?>);"></div>
@@ -107,7 +106,7 @@ $this->registerJsFile('http://static.bshare.cn/b/bshareC0.js',['depends'=>['fron
                 </div>
                 <div class="video-text">
                     <h4><?=Html::encode($value['name'])?></h4>
-                    <div class="people">体验人数 <span><?=Html::encode($value['sales'])?></span><span class="share iconfont icon-share"></span></div>
+                    <div class="people">体验人数 <span><?=Html::encode($value['sales'])?></span><div class="jiathis_style_32x32"><a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a></div></div>
                 </div>
             </li>
             <?php endforeach;?>
@@ -130,14 +129,13 @@ $this->registerJsFile('http://static.bshare.cn/b/bshareC0.js',['depends'=>['fron
         </li>
         <?php endforeach;?>
     </ul>
-    <div class="share">
-        <div class="bshare-custom icon-medium-plus"><div class="bsPromo bsPromo2"></div>
-            <div class="bsPromo bsPromo2"></div>
-            <span style="color: #4481b8;">分享到：</span>
-            <a title="分享到新浪微博" class="bshare-sinaminiblog"></a>
-            <a title="分享到QQ好友" class="bshare-qqim" href="javascript:void(0);"></a>
-            <a  title="分享到微信" class="bshare-weixin" href="javascript:void(0);"></a>
-            <a title="分享到腾讯微博" class="bshare-qqmb"></a>
+    <div class="jiathis_style_32x32">
+        <div class="share-main">
+            <span style="color: #4481b8; float: left;margin-top: 6px;">分享到：</span>
+            <a class="jiathis_button_qzone"></a>
+            <a class="jiathis_button_tsina"></a>
+            <a class="jiathis_button_tqq"></a>
+            <a class="jiathis_button_weixin"></a>
         </div>
     </div>
 </div>

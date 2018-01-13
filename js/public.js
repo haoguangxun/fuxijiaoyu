@@ -1,5 +1,4 @@
 $(function(){
-	$("#header").load('header.html', function (data, status, xhr) {
 		/*搜索*/
 		$('.header .function .seach').click(function(){
 			$('.seach-main').show();
@@ -12,13 +11,13 @@ $(function(){
 			$('body,html').animate({scrollTop:0},300);
 		});
 		/*pc导航*/
-		$(window).scroll(function(){
+	/*	$(window).scroll(function(){
 			if($(document).scrollTop()>170){
 				$('.topNav').stop().fadeIn(200);
 			}else{
 				$('.topNav').stop().fadeOut(200);
 			}
-		});
+		});*/
 		/*微信*/
 		$('.right-fdd2 li:eq(2)').click(function(){
 			$('.weixin-content').show();
@@ -49,6 +48,4 @@ $(function(){
 		        myNav[i].className="active";
 		    }
 		}
-	});
-	$("#footer").load('footer.html')
 })
