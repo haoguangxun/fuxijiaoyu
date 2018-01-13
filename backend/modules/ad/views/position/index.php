@@ -14,9 +14,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?php echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <p>
-        <?= Html::a('添加广告位', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+    <!--<p>
+        <?//= Html::a('添加广告位', ['create'], ['class' => 'btn btn-success']) ?>
+    </p>-->
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'columns' => [
@@ -29,8 +29,8 @@ $this->params['breadcrumbs'][] = $this->title;
                     return $model::$type[$model->type];
                 },
             ],
-            'width',
-            'height',
+            //'width',
+            //'height',
             [
                 'label' => '状态',
                 'value' => function($model){

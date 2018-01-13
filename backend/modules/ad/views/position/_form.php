@@ -14,10 +14,6 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => 50, 'style' => 'width:200px']) ?>
 
-    <?= $form->field($model, 'width')->textInput(['style' => 'width:80px']) ?>
-
-    <?= $form->field($model, 'height')->textInput(['style' => 'width:80px']) ?>
-
     <?php if($model->isNewRecord) $model->type = 2; ?>
     <?= $form->field($model, 'type')->radioList(
         [
