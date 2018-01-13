@@ -10,14 +10,14 @@ $(function(){
 		$('.returnTop').click(function(){
 			$('body,html').animate({scrollTop:0},300);
 		});
-		/*pc导航*/
-	/*	$(window).scroll(function(){
+		//pc导航
+		$(window).scroll(function(){
 			if($(document).scrollTop()>170){
 				$('.topNav').stop().fadeIn(200);
 			}else{
 				$('.topNav').stop().fadeOut(200);
 			}
-		});*/
+		});
 		/*微信*/
 		$('.right-fdd2 li:eq(2)').click(function(){
 			$('.weixin-content').show();
