@@ -443,6 +443,9 @@
 	background: #12244c;
 }
 @media screen and (min-width: 100px) and (max-width: 640px) {
+	.jiathis_style_32x32{
+		display: none !important;
+	}
 	.list-banner{
 		height: 240px;
 	}

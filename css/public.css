@@ -161,7 +161,8 @@ html,body{
     line-height: 19px;
 }
 .header .function .user{
-	float: left;	
+	float: left;
+    margin-right: 55px;
 }
 .header .function .user a{
 	color: #666;

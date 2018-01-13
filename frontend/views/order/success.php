@@ -16,7 +16,7 @@ $this->registerCssFile('@web/css/pay.css',['depends'=>['frontend\assets\AppAsset
 				<div class="cont pay_top">
 					<div class="pay_cont pay_cont2 wrap">
 						<div class="pay_hr pay_hr2">
-							<img src="images/pay.png" alt="">
+							<img src="/img/pay.png" alt="">
 							<span>恭喜您，购买成功！</span>
 						</div>
 						<div class="pay_suc">
