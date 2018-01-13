@@ -68,7 +68,7 @@ AppAsset::register($this);
 </div>
 <div class="wrap">
     <div class="nav">
-        <a href="index.html" class="logo"><img src="/img/logo.png"/></a>
+        <a href="<?= Url::to(['default/index'])?>" class="logo"><img src="/img/logo.png"/></a>
         <ul class="nav-main" id="nav">
             <a href="<?= Url::to(['default/index'])?>"><li>首页</li></a>
             <a href="<?= Url::to(['about/index'])?>"><li>学院概括</li></a>
