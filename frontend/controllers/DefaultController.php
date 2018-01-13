@@ -2,6 +2,7 @@
 
 namespace frontend\controllers;
 
+use frontend\models\Ad;
 use frontend\models\News;
 use frontend\models\Page;
 use frontend\models\Teacher;
@@ -31,6 +32,8 @@ class DefaultController extends Controller
         //最新动态
         $newsTrendsPic = News::getList(8,1);
         $newsTrends = News::getList(8,3,1);
+        //轮播图
+        $ad = Ad::getList(1);
 
         return $this->render('index',[
             'page' => $page,
@@ -41,6 +44,7 @@ class DefaultController extends Controller
             'industryTrends' => $industryTrends,
             'newsTrendsPic' => $newsTrendsPic,
             'newsTrends' => $newsTrends,
+            'ad' => $ad,
         ]);
     }
 }

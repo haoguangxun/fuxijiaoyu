@@ -15,9 +15,13 @@ $this->registerJsFile('@web/js/bootstrap.min.js',['depends'=>['frontend\assets\A
 <div class="banner">
     <div class="swiper-container" style="height:100%">
         <div class="swiper-wrapper">
-            <div class="swiper-slide" style="background-image: url(img/banner-home1.jpg);"></div>
-            <div class="swiper-slide" style="background-image: url(img/banner-home2.jpg);"></div>
-            <div class="swiper-slide" style="background-image: url(img/banner-home3.jpg);"></div>
+            <?php
+            if(!empty($ad)) foreach ($ad as $key => $value) :
+            ?>
+            <div class="swiper-slide" style="background-image: url(<?=$value['fileurl']?>);"></div>
+            <?php
+            endforeach;
+            ?>
         </div>
         <div class="swiper-pagination"></div>
     </div>
