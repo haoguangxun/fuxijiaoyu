@@ -13,6 +13,12 @@
 	background: #007aff;
 	opacity: 0.8;
 }
+video::-webkit-media-controls-enclosure {
+	overflow:hidden;
+}
+video::-webkit-media-controls-panel {
+	width: calc(100% + 30px);
+}
 .about{
 	overflow: hidden;
 	margin: 95px 0;
@@ -783,6 +789,7 @@
 	}
 	.grow-banner{
 		padding: 40px 0 0;
+		width: 100%;
 	}
 	.news-img, .news-text{
 		width: 100%;

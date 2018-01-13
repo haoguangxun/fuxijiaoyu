@@ -65,8 +65,24 @@
 	cursor: pointer;
 	margin-right: 10px;
 }
+.details-top .fun .share .jiathis_style_32x32{
+	display: inline-block;
+	vertical-align: middle;
+}
+.details-top .fun .share .jiathis_style_32x32  .jtico{
+	background: none;
+	padding-left: 0 !important;
+	font-size: 16px;
+	color: #707070;
+
+}
+.details-top .fun .share .fx{
+	display: inline-block;
+	vertical-align: middle;
+}
 .details-top .fun .shoucang{
 	float: left;
+	line-height: 32px;
 }
 .details-top .fun .message{
 	float: right;

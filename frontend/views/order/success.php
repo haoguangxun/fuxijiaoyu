@@ -11,8 +11,31 @@ $this->registerCssFile('@web/css/pay.css',['depends'=>['frontend\assets\AppAsset
 <div class="gopay">
 	<div class="wrap">
 		<div class="gopay-main">
-			<div class="gopay-main-top">
-				支付成功
+			<div class="gopay-main-top" style="border: none">
+
+				<div class="cont pay_top">
+					<div class="pay_cont pay_cont2 wrap">
+						<div class="pay_hr pay_hr2">
+							<img src="images/pay.png" alt="">
+							<span>恭喜您，购买成功！</span>
+						</div>
+						<div class="pay_suc">
+							<span>订单编号：<em>748192952822542124</em></span>
+							<span>您已成功支付：<i>189元</i> <font>（我们会在20分钟内为您尽快发货）</font></span>
+						</div>
+						<p class="pay_p"><span>*温馨提示：</span>官方销售点：北京市丰台区万丰路300号宁波银行写字楼303室，地铁9号或14号A口出向北200米过一个红绿灯继续向北100米左手边即到</p>
+						<div class="pay_other">
+							您还可以
+							<a href="" class="contiu">继续购买</a>
+							<a href="">查看积分</a>
+							<span>|</span>
+							<a href="">积分兑换</a>
+							<span>|</span>
+							<a href="">查看订单</a>
+						</div>
+					</div>
+				</div>
+
 			</div>
 		</div>
 	</div>

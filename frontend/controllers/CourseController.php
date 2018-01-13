@@ -173,15 +173,19 @@ class CourseController extends Controller
      * $id 课程id
      * $type 1收藏，2取消
      */
-    public function actionCollection($id,$type)
+    public function actionCollection()
     {
+        Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
         if(Yii::$app->user->isGuest){
-            $this->redirect(Url::to(['login/index']));
-            return false;
+            return [
+                'code' => 10003,
+                'msg' => '请先登录'
+            ];
         }
 
         $id = intval(Yii::$app->request->get('id',0));
         $action = Yii::$app->request->get('action',0);
+
         $model = new CourseCollection();
         if($action == 1){
             if($model->add($id)){
@@ -195,7 +199,7 @@ class CourseController extends Controller
                     'msg' => '失败'
                 ];
             }
-        }elseif($type == 2){
+        }elseif($action == 2){
             if($model->del($id)){
                 return [
                     'code' => 10001,

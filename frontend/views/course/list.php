@@ -106,7 +106,7 @@ $this->registerJsFile('http://v3.jiathis.com/code/jia.js',['depends'=>['frontend
                 </div>
                 <div class="video-text">
                     <h4><?=Html::encode($value['name'])?></h4>
-                    <div class="people">体验人数 <span><?=Html::encode($value['sales'])?></span><div class="jiathis_style_32x32"><a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a></div></div>
+                    <div class="people">体验人数 <span><?=Html::encode($value['sales'])?></span><div class="jiathis_style_32x32"><a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis iconfont icon-share" target="_blank"></a></div></div>
                 </div>
             </li>
             <?php endforeach;?>

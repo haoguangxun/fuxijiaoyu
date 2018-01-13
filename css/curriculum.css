@@ -111,6 +111,14 @@
 	font-size: 18px;
 	cursor: pointer;
 }
+.system .video-text .jiathis_style_32x32  .jtico{
+	background:none;
+}
+.system .video-text .jiathis_style_32x32  .jiathis_txt{
+	font-size: 18px;
+	color: #707070;
+	margin-top: -5px;
+}
 .system .video-content .hover{
 	position: absolute;
 	top: 0;

@@ -8,6 +8,7 @@ $this->registerMetaTag(array("name"=>"keywords","content"=>Html::encode($data['k
 $this->registerMetaTag(array("name"=>"description","content"=>Html::encode($data['description'])));
 $this->registerCssFile('@web/css/details.css',['depends'=>['frontend\assets\AppAsset']]);
 $this->registerJsFile('@web/js/details.js',['depends'=>['frontend\assets\AppAsset'],'position' => $this::POS_HEAD]);
+$this->registerJsFile('http://v3.jiathis.com/code/jia.js',['depends'=>['frontend\assets\AppAsset']]);
 ?>
 <!--内容-->
 <div class="details">
@@ -22,7 +23,7 @@ $this->registerJsFile('@web/js/details.js',['depends'=>['frontend\assets\AppAsse
                     <div class="img-box"><img src="<?= Html::encode($data['thumb'])?>"/></div>
                 </div>
                 <div class="fun">
-                    <div class="share"><span class="iconfont icon-share"></span>分享</div>
+                    <div class="share"><div class="jiathis_style_32x32"><a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis iconfont icon-share" target="_blank"></a></div><div class="fx">分享</div></div>
                     <div class="shoucang" id="<?= $data['id']?>" action="<?= $isCollention ? 2 : 1;?>"><span class="iconfont icon-shoucang"></span>收藏课程（<em><?=$collectionNum?></em>）</div>
                     <!--<div class="message">上课时间 07月12日 15：00-16：00</div>-->
                 </div>

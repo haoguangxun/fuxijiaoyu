@@ -179,6 +179,51 @@
 	font-size: 14px;
 	margin-bottom: 10px;
 }
+/*pay*/
+.pay_hr{text-align: center;font-size: 22px;color:#3d3d3d;}
+.pay_hr img{margin-bottom: -12px;display: inline-block;}
+.pay_address{width:100%;padding: 1%;border:solid 1px #eeeeee;background-color: #fafafa;margin: 3% 0 2%;}
+.pay_address p{font-size:14px;color:#3d3d3d;margin: 10px 0;}
+.pay_address p span{margin-right: 5%;}
+.paying{width:100%;padding: 2%;border:solid 1px #eeeeee;margin: 5px 0;}
+.pay_type{overflow: hidden;margin-left: 2%;}
+.pay_type li{cursor:pointer;float: left;width:150px;height:42px;text-align:center;line-height:42px;font-size: 18px;color:#383838;margin: 0 10px;border:solid 1px #eeeeee;border-bottom:0;background-color: #eee;}
+.pay_type li.li_cur{background-color: #fff;}
+.pays{padding: 1% 1% 5%;border:solid 1px #eeeeee;margin-top: -1px;}
+._pays p{color:#b4b4b4;margin: 10px 0;}
+.pay_box{display: inline-block;}
+.pay_radio{overflow: hidden;}
+.pay_radio li{cursor:pointer;float: left;margin: 2%;overflow: hidden;}
+.pay_box,.pay_box2{float: left;}
+.pay_box input,.pay_radio2{display: none;}
+.pay_box{margin-top: 10px;padding: 0 10px;}
+.pay_box2{border:solid 1px #eee;}
+.pay_box2.img_cur{border:solid 1px #6eaf4f;}
+.pay_two{overflow: hidden;}
+.pay_sm{width:200px;text-align: center;float: right;margin-right: 10%;}
+.pay_sm p{font-size:18px;color:#383838;}
+._pays{display: none;}
+.pay_money{font-size:14px;color:#383838;}
+.pay_money span{font-size:22px;color:#01a29c;}
+.pay_ming,.pay_money{margin: 10px;}
+.pay_ming a{display: inline-block;font-size:18px;color:#fff;background-color: #01a29c;width:110px;height:32px;line-height: 32px;text-align: center;}
+.pay_more{margin: 5%;color:#000;}
+.pay_more a{color:#002aff;text-decoration: underline !important;}
+.pay_more a img{margin-bottom: -2px;margin-left: 2px;}
+.pay_cont2{background-color: #f5f5f5;padding: 5% 0;width: 100%;}
+.pay_hr2{font-size:28px;}
+.pay_hr2 img{margin-bottom: -8px;}
+.pay_suc{width:100%;height:50px;line-height: 50px;background-color: #e4e4e4;padding-left:25%;margin: 2% 0;}
+.pay_suc span{font-size:14px;color:#3d3d3d;}
+.pay_suc em{margin-right: 20%;}
+.pay_suc i{font-size: 16px;color:#da6216;}
+.pay_suc font{font-size: 14px;color:#0066b3;}
+.pay_p{font-size: 14px;color:#777777;text-align: center;margin-top: 1%;margin-bottom: 3%;}
+.pay_p span{font-size: 14px;color:#f16d15;}
+.pay_other{font-size: 15px;color:#a8a8a8;text-align: center;}
+.pay_other a,.pay_other span{margin: 0 4px;font-size: 15px;color:#0066b3;}
+.pay_other .contiu{display:inline-block;width:85px;height:32px;line-height: 32px;text-align: center;color:#fff;background-color: #009944;}
+
 @media screen and (min-width: 100px) and (max-width: 640px) {
 	.gopay{
 		margin: 20px 0;
