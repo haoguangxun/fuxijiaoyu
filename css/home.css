@@ -97,6 +97,7 @@ video::-webkit-media-controls-panel {
 }
 .mabout-main li p{
 	padding: 0 30%;
+	height: auto;
 }
 .about-button{
 	width: 190px;
