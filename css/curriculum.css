@@ -280,6 +280,7 @@
 	-webkit-box-orient: vertical;
 	-webkit-line-clamp: 3;
 	overflow: hidden;
+    height: 65px;
 }
 .teacher .page{
 	text-align: center;
@@ -517,6 +518,7 @@
 	}
 	.teacher-show p{
 		font-size: 12px;
+        height:auto;
 	}
 	.teacher-show .teacher-img{
 		margin-bottom: 20px;
