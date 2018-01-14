@@ -60,6 +60,5 @@ class SignupForm extends Model
             return null;
         }
 
-        return $user->save() ? $user : null;
     }
 }
