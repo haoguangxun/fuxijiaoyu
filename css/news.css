@@ -3,6 +3,9 @@
 	width: 100%;
 	background: no-repeat center center/cover;
 }
+.page{
+	text-align: center;
+}
 .news{
 	overflow: hidden;
 	padding: 120px 0 70px;
