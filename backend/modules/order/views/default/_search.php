@@ -42,6 +42,7 @@ use dosamigos\datepicker\DatePicker;
                 [
                     1 => '支付宝',
                     2 => '微信',
+                    3 => '线下支付',
                 ],
                 [
                     'prompt'=>'支付方式',

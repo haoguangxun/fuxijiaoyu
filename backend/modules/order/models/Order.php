@@ -14,6 +14,7 @@ class Order extends \common\models\Order
     public function rules()
     {
         return [
+            [['status', 'pay_type', 'pay_number'], 'required'],
             [['courseid', 'userid', 'addtime', 'paytime', 'pay_number', 'pay_type', 'status'], 'integer'],
             [['amount'], 'number'],
             [['orderid'], 'string', 'max' => 30],

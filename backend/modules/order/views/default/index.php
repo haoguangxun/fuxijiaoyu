@@ -55,11 +55,25 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'pay_type',
                 'value' => function($model){
-                    return $model->pay_type ? $model->pay_type==1 ? '支付宝' : '微信' : '-';
+                    if($model->pay_type == 1){
+                        $msg = '支付宝';
+                    }elseif($model->pay_type == 2){
+                        $msg = '微信';
+                    }elseif($model->pay_type ==3){
+                        $msg = '线下支付';
+                    }else{
+                        $msg = '-';
+                    }
+                    return $msg;
                 },
             ],
             'note',
 
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'header'=>'操作',
+                'template' => '{update}',
+            ],
         ],
     ]); ?>
 </div>

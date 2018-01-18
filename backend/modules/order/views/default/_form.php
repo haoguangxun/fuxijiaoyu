@@ -12,28 +12,30 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'orderid')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'paytime')->hiddenInput(['value' => time()])->label(false) ?>
 
-    <?= $form->field($model, 'courseid')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'status')->radioList(
+        [
+            '0' => '未支付',
+            '1' => '已支付',
+        ]
+    ) ?>
 
-    <?= $form->field($model, 'userid')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'pay_type')->radioList(
+        [
+            '1' => '支付宝',
+            '2' => '微信',
+            '3' => '线下支付',
+        ]
+    ) ?>
 
-    <?= $form->field($model, 'amount')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'pay_number')->textInput(['maxlength' => 20, 'style' => 'width:200px']) ?>
 
-    <?= $form->field($model, 'addtime')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'paytime')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'pay_number')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'pay_type')->textInput() ?>
-
-    <?= $form->field($model, 'note')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'status')->textInput() ?>
+    <?= $form->field($model, 'note')->textInput(['maxlength' => 50, 'style' => 'width:500px']) ?>
 
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ? '添加' : '保存', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::button('取消', ['class' => 'btn btn-default','onclick'=>'window.history.back();']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

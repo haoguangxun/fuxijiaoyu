@@ -28,7 +28,24 @@ if( Yii::$app->getSession()->hasFlash('error') ) {
 <div class="gopay">
 	<div class="wrap">
 		<div class="gopay-main">
-			<div class="gopay-main-top">
+
+			<?php if(in_array($course['catid'],[40,48,49,50,51])){?>
+				<div class="cont pay_top">
+					<div class="pay_cont pay_cont2 wrap">
+						<div class="pay_hr pay_hr2">
+							<img src="/img/pay.png" alt="">
+							<span>恭喜您，购买成功！</span>
+						</div>
+						<div class="pay_suc">
+							<span>订单编号：<em><?=$orderid?></em></span>
+							<span><i>请您在线下完成付款后将订单编号告知管理员。</i></span>
+						</div>
+						<p class="pay_p"><span>*温馨提示：</span>客服电话：010-67906868</p>
+					</div>
+				</div>
+			<?php }?>
+
+				<div class="gopay-main-top">
 				<div class="form-title">
 					<div class="sign-nav sign-name"><span>课程名称</span></div>
 					<div class="sign-nav sign-num"><span>授课教师</span></div>
@@ -72,25 +89,27 @@ if( Yii::$app->getSession()->hasFlash('error') ) {
 					<!--<input type="text" placeholder="留下手机号码，为您提供更好的课程服务 "/>-->
 				</div>
 			</div>
-			<div class="platform">
-				<div class="platform-title"><span class="iconfont icon-arrowR"></span> 平台支付（微信 支付宝）</div>
-				<div class="platform-choice">
-					<span class="platform-zfb"><img src="/img/zfb.jpg"/></span>
-					<span class="platform-wx"><img src="/img/wx.jpg"/></span>
+			<?php if(!in_array($course['catid'],[40,48,49,50,51])){?>
+				<div class="platform">
+					<div class="platform-title"><span class="iconfont icon-arrowR"></span> 平台支付（微信 支付宝）</div>
+					<div class="platform-choice">
+						<span class="platform-zfb"><img src="/img/zfb.jpg"/></span>
+						<span class="platform-wx"><img src="/img/wx.jpg"/></span>
+					</div>
 				</div>
-			</div>
-			<!--<div class="pay-btn"><span>立即支付</span></div>-->
-			<div class="problem">
-				<h2>付款中遇到问题：</h2>
-				<p>如您的订单金额较大。</p>
-				<p>建议您切换到IE浏览器进行支付，如提示“需安装控件”请立即安装。</p>
-				<p>如无法在线支付，请联系客服，客服电话：010-67906868</p>
-			</div>
-			<div class="gopay-main-footer">
-				<!--<div class="discount">已为您 抵扣<span>￥0</span></div>-->
-				<div class="all-price">￥ <span><?= $course['price']?></span></div>
-				<div class="gopay-btn"><a href="<?= Url::to(['order/pay-success','orderid'=>$orderid,'pay_number'=>10000])?>">确认支付</a></div>
-			</div>
+				<!--<div class="pay-btn"><span>立即支付</span></div>-->
+				<div class="problem">
+					<h2>付款中遇到问题：</h2>
+					<p>如您的订单金额较大。</p>
+					<p>建议您切换到IE浏览器进行支付，如提示“需安装控件”请立即安装。</p>
+					<p>如无法在线支付，请联系客服，客服电话：010-67906868</p>
+				</div>
+				<div class="gopay-main-footer">
+					<!--<div class="discount">已为您 抵扣<span>￥0</span></div>-->
+					<div class="all-price">￥ <span><?= $course['price']?></span></div>
+					<div class="gopay-btn"><a href="<?= Url::to(['order/pay-success','orderid'=>$orderid,'pay_number'=>10000])?>">确认支付</a></div>
+				</div>
+			<?php }?>
 		</div>
 	</div>
 </div>
