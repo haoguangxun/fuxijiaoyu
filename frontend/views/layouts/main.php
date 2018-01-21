@@ -50,10 +50,10 @@ AppAsset::register($this);
 <div class="seach-main">
     <div class="search_top">
         <div class="wrap">
-            <form action="" method="" class="search_ipt">
-                <input type="text" placeholder="如: 古琴教学" name="q" class="data_q">
+            <form action="<?= Url::to(['search/index'])?>" method="get" name="search" class="search_ipt">
+                <input type="text" placeholder="请输入要搜索的关键字" name="keyword" class="data_q">
             </form>
-            <img src="/img/search_hover.png" alt="" class="sea_hover">
+            <img src="/img/search_hover.png" alt="" class="sea_hover" onclick="search.submit()">
             <img src="/img/search_close.png" alt="" class="sea_close">
         </div>
     </div>

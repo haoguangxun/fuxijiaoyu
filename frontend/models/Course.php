@@ -72,6 +72,35 @@ class Course extends \common\models\Course
     }
 
     /**
+     * 分页获取课程搜索列表
+     * @return array|\yii\db\ActiveRecord[]
+     */
+    public static function getSearchList($keyword = '', $curPage = 1, $pageSize = 10)
+    {
+        if(empty($keyword)) return false;
+
+        $data['count'] = self::find()->where(['like', 'name', $keyword])->count();
+        if(!$data['count']){
+            return $data = ['count'=>0,'curPage'=>$curPage,'pageSize'=>$pageSize,'start'=>0,'end'=>'0','data'=>[]];
+        }
+        if(ceil($data['count']/$pageSize)<$curPage){
+            $curPage = ceil($data['count']/$pageSize);
+        }
+        $data['curPage'] = $curPage;
+        $data['pageSize'] = $pageSize;
+        $data['start'] = ($curPage-1)*$pageSize+1;
+        $data['end'] = $curPage*$pageSize;
+        $data['data'] = self::find()
+            ->orderBy('sort desc,id desc')
+            ->where(['like', 'name', $keyword])
+            ->limit($pageSize)->offset(($curPage-1)*$pageSize)
+            ->asArray()->all();
+
+        return $data;
+
+    }
+
+    /**
      * 获取课程详情
      * @param $id
      * @return array
