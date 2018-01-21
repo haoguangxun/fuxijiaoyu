@@ -47,7 +47,7 @@ $this->registerJsFile('@web/js/height.js',['depends'=>['frontend\assets\AppAsset
                 <div class="teacher-img"><div style="background-image:url(<?= Html::encode($value['thumb'])?>)"></div></div>
                 <p><?=Html::encode($value['description'])?></p>
                 <div  class="more">
-                    <a href="<?=Url::to(['teacher/view','id'=>$value['id']])?>">查看详情<a>
+                    <a href="<?=Url::to(['teacher/view','id'=>$value['id']])?>">查看详情</a>
                 </div>
             </li>
         <?php endforeach;?>
