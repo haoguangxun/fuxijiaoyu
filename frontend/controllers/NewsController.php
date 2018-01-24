@@ -22,8 +22,14 @@ class NewsController extends Controller
 
         //当前栏目内容
         $category = Category::getData($cid);
+        $pid = $category['parentid'];
+        $pcategory = [];
+        if($pid){
+            //父栏目内容
+            $pcategory = Category::getData($pid);
+        }
         //新闻栏目列表
-        $sonCategory = Category::getModelSonList(1,1);
+        $sonCategory = Category::getModelSonList(!empty($category['parentid']) ? $category['parentid'] : $cid,1);
         //列表数据
         $pageSize = 5;//每页显示条数
         $data = News::getPageList($cid,$curPage,$pageSize);
@@ -33,10 +39,12 @@ class NewsController extends Controller
 
         return $this->render($template,[
             'category' => $category,
+            'pcategory' => $pcategory,
             'sonCategory' => $sonCategory,
             'data' => $data,
             'pages' => $pages,
             'cid' => $cid,
+            'pid' => $pid,
         ]);
     }
 

@@ -130,13 +130,12 @@ html,body{
 .topNav ul{
 	width: 100%;
 	overflow: hidden;
-	display: flex;
 	text-align: center;
 }
 .topNav a{
-	padding: 20px 0;
+	padding: 20px 25px;
 	color: #FFFFFF;
-	flex: 1;
+    display:inline-block;
 }
 .topNav a:hover{
 	color: #1d88db;

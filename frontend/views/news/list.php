@@ -15,12 +15,12 @@ $this->registerJsFile('@web/js/height.js',['depends'=>['frontend\assets\AppAsset
 <div class="news">
     <div class="wrap">
         <div class="home-title">
-            <h1>新闻动态</h1>
+            <h1><?= isset($pcategory['catname']) ? $pcategory['catname'] : $category['catname'];?></h1>
             <span></span>
         </div>
         <div class="system-nav">
-            <a href="<?=Url::to(['news/list'])?>">
-                <span <?php if($cid == 1) echo "class='active'";?>>全部</span>
+            <a href="<?=Url::to(['news/list','cid'=>$pid])?>">
+                <span <?php if($pid == 0) echo "class='active'";?>>全部</span>
             </a>
             <?php
             if(!empty($sonCategory)){

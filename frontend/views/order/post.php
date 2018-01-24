@@ -32,10 +32,6 @@ if( Yii::$app->getSession()->hasFlash('error') ) {
 			<?php if(in_array($course['catid'],[40,48,49,50,51])){?>
 				<div class="cont pay_top">
 					<div class="pay_cont pay_cont2 wrap">
-						<div class="pay_hr pay_hr2">
-							<img src="/img/pay.png" alt="">
-							<span>恭喜您，购买成功！</span>
-						</div>
 						<div class="pay_suc">
 							<span>订单编号：<em><?=$orderid?></em></span>
 							<span><i>请您在线下完成付款后将订单编号告知管理员。</i></span>

@@ -166,6 +166,7 @@
 .more-news .more-btn a{
 	color: #FFFFFF
 }
+.page{text-align: center;}
 @media screen and (min-width: 100px) and (max-width: 640px) {
 	.list-banner{
 		height: 240px;
