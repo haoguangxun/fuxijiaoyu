@@ -81,7 +81,7 @@ $this->registerJsFile('@web/js/bootstrap.min.js',['depends'=>['frontend\assets\A
                         </div>
                         <span class="course-top"><?= $value['title'] ?></span>
                         <p><?= $value['subtitle'] ?></p>
-                        <a href="<?= $value['url'] ?>" class="course-button">咨询</a>
+                        <a href="tencent://message/?uin=123456789&amp;Site=QQ咨询&amp;Menu=yes" class="course-button">咨询</a>
                     </li>
                     <?php
                 endforeach;
