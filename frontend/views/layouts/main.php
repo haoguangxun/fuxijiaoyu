@@ -158,7 +158,6 @@ AppAsset::register($this);
             </div>
             <div class="ewm">
                 <?= \common\widgets\ad\AdWidget::widget(['pid'=>3])?>
-                <img src="/img/ewm.png"/>
                 <p>关注伏羲微信</p>
             </div>
         </div>
