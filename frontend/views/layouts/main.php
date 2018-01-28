@@ -64,11 +64,11 @@ AppAsset::register($this);
 </div>
 <!--微信-->
 <div class="weixin-content">
-    <div class="weixin-content-img"><img src="/img/ewm.png"/></div>
+    <div class="weixin-content-img"><?= \common\widgets\ad\AdWidget::widget(['pid'=>3])?></div>
 </div>
 <div class="wrap">
     <div class="nav">
-        <a href="<?= Url::to(['default/index'])?>" class="logo"><img src="/img/logo.png"/></a>
+        <a href="<?= Url::to(['default/index'])?>" class="logo"><img src="<?= \common\widgets\ad\AdWidget::widget(['pid'=>4])?>"/></a>
         <ul class="nav-main" id="nav">
             <a href="<?= Url::to(['default/index'])?>"><li>首页</li></a>
             <a href="<?= Url::to(['about/index'])?>"><li>学院概括</li></a>
@@ -123,11 +123,11 @@ AppAsset::register($this);
     <ul>
         <li>
             <span class="iconfont icon-qq"></span>
-            <a href="tencent://message/?uin=123456789&amp;Site=QQ咨询&amp;Menu=yes">在线咨询</a>
+            <a href="tencent://message/?uin=2733086100&amp;Site=QQ咨询&amp;Menu=yes">在线咨询</a>
         </li>
         <li>
             <span class="iconfont icon-phone"></span>
-            <a>咨询电话:111</a>
+            <a>咨询电话:13911831421</a>
         </li>
         <li>
             <span class="iconfont icon-weixin"></span>
@@ -144,8 +144,7 @@ AppAsset::register($this);
 
 <div class="footer">
     <div class="wrap">
-        <p>© 2006 Fu Xi piano court.伏羲国学</p>
-        <p>备案许可证号: 京12043844号   010-67906868转606（周一至周日：7:00 - 24:00）热线电话：010-67906868</p>
+        <?= \common\widgets\page\PageWidget::widget(['cid'=>56])?>
         <div class="foot-contact">
             <div class="foot-contact-link">
                 <div class="xinlang">
@@ -158,6 +157,7 @@ AppAsset::register($this);
                 </div>
             </div>
             <div class="ewm">
+                <?= \common\widgets\ad\AdWidget::widget(['pid'=>3])?>
                 <img src="/img/ewm.png"/>
                 <p>关注伏羲微信</p>
             </div>

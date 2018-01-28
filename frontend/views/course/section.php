@@ -16,8 +16,6 @@ $this->registerJsFile('@web/js/details.js',['depends'=>['frontend\assets\AppAsse
             <div class="video">
                 <video  controls preload="auto" width="100%">
                     <source src="<?= $detail ? $detail['video'] : '';?>" type="video/mp4">
-                    <source src="http://vjs.zencdn.net/v/oceans.webm" type="video/webm">
-                    <source src="http://vjs.zencdn.net/v/oceans.ogv" type="video/ogg">
                 </video>
             </div>
         </div>

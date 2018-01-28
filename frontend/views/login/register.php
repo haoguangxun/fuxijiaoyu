@@ -1,5 +1,5 @@
 <?php
-
+use yii\helpers\Url;
 use yii\helpers\Html;
 
 $this->title = '会员注册';
@@ -41,25 +41,6 @@ $this->registerJsFile('@web/js/bootstrap.min.js',['depends'=>['frontend\assets\A
 				<label >密码</label>
 				<?= Html::input('password', 'SignupForm[password]', '', ['id' => 'pass','placeholder'=>'请输入6-20位密码']) ?>
 			</div>
-			<!--<div class="form-select">
-				<div class="btn-group kc">
-				  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="contain">选择课程</span> <span class="iconfont icon-bottom"></span>
-				  </button>
-				  <ul class="dropdown-menu">
-					<li><a href="javascript:;">课程1</a></li>
-					<li><a href="javascript:;">课程2</a></li>
-					<li><a href="javascript:;">课程3</a></li>
-				  </ul>
-				</div>
-				<div class="btn-group bj">
-				  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="contain">选择班级</span> <span class="iconfont icon-bottom"></span>
-				  </button>
-				  <ul class="dropdown-menu">
-					<li><a href="javascript:;">班级1</a></li>
-					<li><a href="javascript:;">班级2</a></li>
-				  </ul>
-				</div>
-			</div>-->
 			<div class="form-item">
 				<label>验证码</label>
 				<div class="yzm">
@@ -72,7 +53,7 @@ $this->registerJsFile('@web/js/bootstrap.min.js',['depends'=>['frontend\assets\A
 			</div>
 			<div class="register-text">
 				<span>已有账号？<?= Html::a('登录', ['login/index']) ?></span>
-				<span>同意<a href="#">会员条款</a>和<a href="#">免责声明</a></span>
+				<span>同意<a href="<?= Url::to(['page/index','cid'=>58])?>">会员条款</a>和<a href="<?= Url::to(['page/index','cid'=>59])?>">免责声明</a></span>
 			</div>
 			<?= Html::endForm() ?>
 		</div>

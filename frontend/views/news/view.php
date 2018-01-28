@@ -18,6 +18,13 @@ $this->registerJsFile('http://static.bshare.cn/b/bshareC0.js',['depends'=>['fron
             <p>作者：<?=$data['author']?>丨浏览：<?=$data['click']?> 丨时间：<?=date('Y-m-d',$data['addtime'])?></p>
         </div>
         <div class="newList-main">
+            <?php if($data['video']){?>
+                <div class="video">
+                    <video  controls preload="auto" width="100%">
+                        <source src="<?= $data['video'];?>" type="video/mp4">
+                    </video>
+                </div>
+            <?php }?>
             <?=$data['content']?>
         </div>
         <div class="share">

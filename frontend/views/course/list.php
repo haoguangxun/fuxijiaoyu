@@ -117,6 +117,7 @@ $this->registerJsFile('http://v3.jiathis.com/code/jia.js',['depends'=>['frontend
         <?php endif;?>
     </div>
 </div>
+<a name="campus"></a>
 <div class="campus">
     <div class="wrap">
         <h1>CAMPUS ENVIRONMENT <span>/ 校区环境</span></h1>

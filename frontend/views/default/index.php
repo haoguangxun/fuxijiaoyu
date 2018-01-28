@@ -81,7 +81,7 @@ $this->registerJsFile('@web/js/bootstrap.min.js',['depends'=>['frontend\assets\A
                         </div>
                         <span class="course-top"><?= $value['title'] ?></span>
                         <p><?= $value['subtitle'] ?></p>
-                        <a href="tencent://message/?uin=123456789&amp;Site=QQ咨询&amp;Menu=yes" class="course-button">咨询</a>
+                        <a href="tencent://message/?uin=2733086100&amp;Site=QQ咨询&amp;Menu=yes" class="course-button">咨询</a>
                     </li>
                     <?php
                 endforeach;
@@ -99,7 +99,7 @@ $this->registerJsFile('@web/js/bootstrap.min.js',['depends'=>['frontend\assets\A
                     </div>
                     <span class="course-top"><?= $value['title'] ?></span>
                     <p><?= $value['subtitle'] ?></p>
-                    <a href="<?= $value['url'] ?>" class="course-button">咨询</a>
+                    <a href="tencent://message/?uin=2733086100&amp;Site=QQ咨询&amp;Menu=yes" class="course-button">咨询</a>
                 </li>
                 <?php
                 endforeach;
@@ -153,8 +153,6 @@ $this->registerJsFile('@web/js/bootstrap.min.js',['depends'=>['frontend\assets\A
             <div class="video-img-show"><span class="iconfont icon-bofang"></span><img src="<?= $page[37]['thumb']?>"/></div>
             <video  controls preload="auto">
                 <source src="<?= $page[37]['video']?>" type="video/mp4">
-                <source src="http://vjs.zencdn.net/v/oceans.webm" type="video/webm">
-                <source src="http://vjs.zencdn.net/v/oceans.ogv" type="video/ogg">
             </video>
         </div>
         <div class="video-more">
@@ -361,7 +359,7 @@ $this->registerJsFile('@web/js/bootstrap.min.js',['depends'=>['frontend\assets\A
 <div class="icon-link">
     <ul>
         <li>
-            <a href="#">
+            <a href="<?= Url::to(['page/index','cid'=>57])?>">
                 <div class="icon-link-main">
                     <div class="icon-link-main-img"><img src="img/icon-link1.png"/></div>
                     <div class="icon-link-main-text">
@@ -372,7 +370,7 @@ $this->registerJsFile('@web/js/bootstrap.min.js',['depends'=>['frontend\assets\A
             </a>
         </li>
         <li>
-            <a href="experience.html">
+            <a href="<?= Url::to(['news/list','cid'=>42])?>">
                 <div class="icon-link-main">
                     <div class="icon-link-main-img"><img src="img/icon-link2.png"/></div>
                     <div class="icon-link-main-text">
@@ -383,7 +381,7 @@ $this->registerJsFile('@web/js/bootstrap.min.js',['depends'=>['frontend\assets\A
             </a>
         </li>
         <li>
-            <a href="#">
+            <a href="<?= Url::to(['course/list','cid'=>'15'])?>#campus">
                 <div class="icon-link-main">
                     <div class="icon-link-main-img"><img src="img/icon-link3.png"/></div>
                     <div class="icon-link-main-text">
@@ -394,7 +392,7 @@ $this->registerJsFile('@web/js/bootstrap.min.js',['depends'=>['frontend\assets\A
             </a>
         </li>
         <li>
-            <a href="#">
+            <a href="<?= Url::to(['about/index'])?>">
                 <div class="icon-link-main">
                     <div class="icon-link-main-img"><img src="img/icon-link4.png"/></div>
                     <div class="icon-link-main-text">

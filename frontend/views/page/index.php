@@ -1,8 +1,7 @@
 <?php
-use yii\helpers\Url;
 use yii\helpers\Html;
 
-$this->title = Html::encode($data['name']);
+$this->title = Html::encode($data['title']);
 $this->registerMetaTag(array("name"=>"keywords","content"=>Html::encode($data['keywords'])));
 $this->registerMetaTag(array("name"=>"description","content"=>Html::encode($data['description'])));
 $this->registerCssFile('@web/css/news.css',['depends'=>['frontend\assets\AppAsset']]);
@@ -11,11 +10,13 @@ $this->registerJsFile('http://static.bshare.cn/b/buttonLite.js#style=-1&uuid=&po
 $this->registerJsFile('http://static.bshare.cn/b/bshareC0.js',['depends'=>['frontend\assets\AppAsset']]);
 ?>
 <!--内容-->
+<?php if($category['pic']){?>
+<div class="list-banner" style="background-image: url(<?=Html::encode($category['pic'])?>);"></div>
+<?php }?>
 <div class="newList">
     <div class="wrap">
         <div class="newList-title">
-            <h1><?=$data['name']?></h1>
-            <p><?=$data['subtitle']?></p>
+            <h1><?=$data['title']?></h1>
         </div>
         <div class="newList-main">
             <?php if($data['video']){?>
@@ -37,22 +38,5 @@ $this->registerJsFile('http://static.bshare.cn/b/bshareC0.js',['depends'=>['fron
                 <a title="分享到腾讯微博" class="bshare-qqmb"></a>
             </div>
         </div>
-        <?php
-        if(!empty($more)){
-        ?>
-        <div class="more-news">
-            <h1>更多阅读</h1>
-            <ul>
-            <?php foreach ($more as $value):?>
-                <li>
-                    <h2><?= $category['catname']?> <?=Html::encode($value['name'])?></h2>
-                    <h3><?= $value['subtitle']?></h3>
-                    <p><?=Html::encode(mb_substr($value['description'],0,60,'utf-8'))?><a href="<?=Url::to(['teacher/view','id'=>$value['id']])?>">[查看全文]</a></p>
-                </li>
-            <?php endforeach;?>
-            </ul>
-            <div class="more-btn"><a href="<?= Url::to(['teacher/list'])?>">返回师资力量</a></div>
-        </div>
-        <?php }?>
     </div>
 </div>
