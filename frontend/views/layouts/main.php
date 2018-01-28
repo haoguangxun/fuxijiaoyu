@@ -68,7 +68,7 @@ AppAsset::register($this);
 </div>
 <div class="wrap">
     <div class="nav">
-        <a href="<?= Url::to(['default/index'])?>" class="logo"><img src="<?= \common\widgets\ad\AdWidget::widget(['pid'=>4])?>"/></a>
+        <a href="<?= Url::to(['default/index'])?>" class="logo"><?= \common\widgets\ad\AdWidget::widget(['pid'=>4])?></a>
         <ul class="nav-main" id="nav">
             <a href="<?= Url::to(['default/index'])?>"><li>首页</li></a>
             <a href="<?= Url::to(['about/index'])?>"><li>学院概括</li></a>
