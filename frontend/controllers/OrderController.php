@@ -61,37 +61,38 @@ class OrderController extends Controller
      */
     public function actionPay()
     {
+        $post = Yii::$app->request->post();
+        if(empty($post)){
+            throw new NotFoundHttpException('参数错误！');
+        }
+
+        if($post['pay_type'] == 1){//微信支付
+
+
+
+        }elseif($post['pay_type'] == 2){//支付宝支付
+
+            require_once dirname(Yii::$app->basePath).'/vendor/alipay/pagepay/service/AlipayTradeService.php';
+            require_once dirname(Yii::$app->basePath).'/vendor/alipay/pagepay/buildermodel/AlipayTradePagePayContentBuilder.php';
+
+            //构造参数
+            $payRequestBuilder = new \AlipayTradePagePayContentBuilder();
+            $payRequestBuilder->setBody(trim($post['body']));
+            $payRequestBuilder->setSubject(trim($post['subject']));
+            $payRequestBuilder->setTotalAmount(trim($post['total_amount']));
+            $payRequestBuilder->setOutTradeNo(trim($post['orderid']));
+
+            $config = Yii::$app->params['alipay'];
+            $aop = new \AlipayTradeService($config);
+
+            $response = $aop->pagePay($payRequestBuilder,$config['return_url'],$config['notify_url']);
+
+            //输出表单
+            var_dump($response);
+
+        }
 
     }
 
-    /**
-     * 支付成功回调
-     */
-    public function actionPaySuccess()
-    {
-        $orderid = Yii::$app->request->get('orderid',0);
-        $pay_number = Yii::$app->request->get('pay_number',0);
-        if(empty($orderid) || empty($pay_number)){
-            throw new NotFoundHttpException('请求非法1！');
-        }
-        $model = new order();
-        $data = $model->getOrder($orderid);
-        if(empty($data) || $data['userid'] != Yii::$app->user->identity->id) {
-            throw new NotFoundHttpException('请求非法！');
-        }
-
-        if ($data['status'] != 1 ) {
-            $r = $model->updateOrderStatus($orderid,1,$pay_number);
-            if(!$r) {
-                throw new NotFoundHttpException('请求失败！');
-            }
-        }
-        //购买量+1
-        Course::salesNum($data['courseid']);
-
-        return $this->render('success',[
-            'orderid' => $orderid
-        ]);
-    }
 
 }

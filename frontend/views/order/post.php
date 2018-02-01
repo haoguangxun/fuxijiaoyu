@@ -86,25 +86,37 @@ if( Yii::$app->getSession()->hasFlash('error') ) {
 				</div>
 			</div>
 			<?php if(!in_array($course['catid'],[40,48,49,50,51])){?>
-				<div class="platform">
-					<div class="platform-title"><span class="iconfont icon-arrowR"></span> 平台支付（微信 支付宝）</div>
-					<div class="platform-choice">
-						<span class="platform-zfb"><img src="/img/zfb.jpg"/></span>
-						<span class="platform-wx"><img src="/img/wx.jpg"/></span>
+				<?= Html::beginForm(['order/pay'], 'post',['id' => 'pay-form']) ?>
+				<?= Html::input('hidden', 'orderid', $orderid) ?>
+				<?= Html::input('hidden', 'subject', $course['name']) ?>
+				<?= Html::input('hidden', 'total_amount', 0.01/*$course['price']*/) ?>
+				<?= Html::input('hidden', 'body', '') ?>
+				<?= Html::input('radio', 'pay_type', '1') ?>微信
+				<?= Html::input('radio', 'pay_type', '2') ?>支付宝
+					<div class="platform">
+						<div class="platform-title"><span class="iconfont icon-arrowR"></span> 平台支付（微信 支付宝）</div>
+						<div class="platform-choice">
+							<span class="platform-zfb"><img src="/img/zfb.jpg"/></span>
+							<span class="platform-wx"><img src="/img/wx.jpg"/></span>
+						</div>
 					</div>
-				</div>
-				<!--<div class="pay-btn"><span>立即支付</span></div>-->
-				<div class="problem">
-					<h2>付款中遇到问题：</h2>
-					<p>如您的订单金额较大。</p>
-					<p>建议您切换到IE浏览器进行支付，如提示“需安装控件”请立即安装。</p>
-					<p>如无法在线支付，请联系客服，客服电话：010-67906868</p>
-				</div>
-				<div class="gopay-main-footer">
-					<!--<div class="discount">已为您 抵扣<span>￥0</span></div>-->
-					<div class="all-price">￥ <span><?= $course['price']?></span></div>
-					<div class="gopay-btn"><a href="<?= Url::to(['order/pay-success','orderid'=>$orderid,'pay_number'=>10000])?>">确认支付</a></div>
-				</div>
+					<!--<div class="pay-btn"><span>立即支付</span></div>-->
+					<div class="problem">
+						<h2>付款中遇到问题：</h2>
+						<p>如您的订单金额较大。</p>
+						<p>建议您切换到IE浏览器进行支付，如提示“需安装控件”请立即安装。</p>
+						<p>如无法在线支付，请联系客服，客服电话：010-67906868</p>
+					</div>
+					<div class="gopay-main-footer">
+						<!--<div class="discount">已为您 抵扣<span>￥0</span></div>-->
+						<div class="all-price">￥ <span><?= $course['price']?></span></div>
+						<div class="gopay-btn">
+							<!--<a href="<?/*= Url::to(['order/pay-success','orderid'=>$orderid,'pay_number'=>10000])*/?>">确认支付</a>-->
+							<!--<button type="submit" name="submit" value="确认支付" style="width: 100px; height: 30px;"></button>-->
+							<?= Html::submitButton('确认支付', ['name' => 'submit']) ?>
+						</div>
+					</div>
+				<?= Html::endForm() ?>
 			<?php }?>
 		</div>
 	</div>
