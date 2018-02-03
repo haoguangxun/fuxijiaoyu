@@ -18,8 +18,20 @@ class AlipayController extends Controller
      */
     public function actionReturn()
     {
-        require_once dirname(Yii::$app->basePath).'/vendor/alipay/pagepay/service/AlipayTradeService.php';
-
+        require_once '/vendor/alipay/pagepay/service/AlipayTradeService.php';
+        //http://www.fuxijiaoyu.com/alipay/return_url.php?
+        //total_amount=0.01
+        //&timestamp=2018-02-02+01%3A49%3A08
+        //&sign=dsdXIQYS7ktGNlCY5Qb2Jf%2F5ZHmcnQoeJEu5%2FX7z47GPcCx5HBoYly5mlJpqO7WsglQhh5L8Ry26XP2LZ%2BD80oNhFnhFCHvBNAB7lPHSj6xgWkyyGUo2fNAurlFbbPlRp6gBOKqjjRUkKMagochn3PdPOb2%2FiQgfp2sNtY3aaDCtEE5LMrc%2BCZy3JmRI83h7xMT5ogqJAgT0zPWJofYV7bV%2BE4vEI4jncPzrfYYh3yTfm234w%2FNq%2FHs3%2B1yARHprIGq6EWEWGz%2BILPWLOnH3I6NB%2BuOZUV%2FKek36GonTXj0nxOkHSPIL1ULAHfjwnZiN10jVkqW3rR%2FdtiGeDJU9KQ%3D%3D
+        //&trade_no=2018020221001004640288860424
+        //&sign_type=RSA2
+        //&auth_app_id=2018013002110709
+        //&charset=UTF-8
+        //&seller_id=2088821312646841
+        //&method=alipay.trade.page.pay.return
+        //&app_id=2018013002110709
+        //&out_trade_no=201801181635544991
+        //&version=1.0
         $data = Yii::$app->request->get();
         $config = Yii::$app->params['alipay'];
 
@@ -59,7 +71,7 @@ class AlipayController extends Controller
      */
     public function actionNotify()
     {
-        require_once dirname(Yii::$app->basePath).'/vendor/alipay/pagepay/service/AlipayTradeService.php';
+        require_once '/vendor/alipay/pagepay/service/AlipayTradeService.php';
 
         $data = Yii::$app->request->post();
         $config = Yii::$app->params['alipay'];

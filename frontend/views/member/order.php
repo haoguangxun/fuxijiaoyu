@@ -40,7 +40,7 @@ $this->registerJsFile('@web/js/personal.js',['depends'=>['frontend\assets\AppAss
                     'attribute' => 'status',
                     'format' => 'raw',
                     'value' => function($model){
-                        $url = \yii\helpers\Url::to(['#','orderid'=>$model->orderid]);
+                        $url = \yii\helpers\Url::to(['order/post','id'=>$model->courseid]);
                         return $model->status==1 ? '已支付' : '未支付<br>'. Html::a('去支付 ', $url) ;
                     },
                 ],
