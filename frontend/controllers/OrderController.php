@@ -71,8 +71,8 @@ class OrderController extends Controller
 
 
         }elseif($post['pay_type'] == 2){//支付宝支付
-            require(__DIR__ . '/../../vendor/alipay/pagepay/service/AlipayTradeService.php');
-            require(__DIR__ . '/../../vendor/alipay/pagepay/buildermodel/AlipayTradePagePayContentBuilder.php');
+            require(__DIR__ . '/../../common/vendors/alipay/pagepay/service/AlipayTradeService.php');
+            require(__DIR__ . '/../../common/vendors/alipay/pagepay/buildermodel/AlipayTradePagePayContentBuilder.php');
             //require_once dirname(Yii::$app->basePath).'/vendor/alipay/pagepay/service/AlipayTradeService.php';
             //require_once dirname(Yii::$app->basePath).'/vendor/alipay/pagepay/buildermodel/AlipayTradePagePayContentBuilder.php';
             //require_once '/common/vendors/alipay/pagepay/service/AlipayTradeService.php';
