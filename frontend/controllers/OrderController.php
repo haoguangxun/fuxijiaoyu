@@ -100,7 +100,7 @@ class OrderController extends Controller
     {
         $get = Yii::$app->request->get();
         return $this->render('success',[
-            'orderid' => $get['out_trade_no'],
+            'orderid' => $get['orderid'],
             'trade_no' => $get['trade_no'],
             'total_amount' => $get['total_amount']
         ]);
