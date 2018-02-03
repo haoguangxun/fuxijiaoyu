@@ -73,10 +73,6 @@ class OrderController extends Controller
         }elseif($post['pay_type'] == 2){//支付宝支付
             require(__DIR__ . '/../../common/vendors/alipay/pagepay/service/AlipayTradeService.php');
             require(__DIR__ . '/../../common/vendors/alipay/pagepay/buildermodel/AlipayTradePagePayContentBuilder.php');
-            //require_once dirname(Yii::$app->basePath).'/vendor/alipay/pagepay/service/AlipayTradeService.php';
-            //require_once dirname(Yii::$app->basePath).'/vendor/alipay/pagepay/buildermodel/AlipayTradePagePayContentBuilder.php';
-            //require_once '/common/vendors/alipay/pagepay/service/AlipayTradeService.php';
-            //require_once '/common/vendors/alipay/pagepay/buildermodel/AlipayTradePagePayContentBuilder.php';
 
             //构造参数
             $payRequestBuilder = new \AlipayTradePagePayContentBuilder();
@@ -95,6 +91,19 @@ class OrderController extends Controller
 
         }
 
+    }
+
+    /**
+     * 支付成功
+     */
+    public function actionSuccess()
+    {
+        $get = Yii::$app->request->get();
+        return $this->render('success',[
+            'orderid' => $get['out_trade_no'],
+            'trade_no' => $get['trade_no'],
+            'total_amount' => $get['total_amount']
+        ]);
     }
 
 

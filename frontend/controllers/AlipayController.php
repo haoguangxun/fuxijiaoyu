@@ -7,6 +7,7 @@ namespace frontend\controllers;
 
 use frontend\models\Course;
 use frontend\models\Order;
+use yii\helpers\Url;
 use yii\web\Controller;
 use Yii;
 
@@ -18,7 +19,7 @@ class AlipayController extends Controller
      */
     public function actionReturn()
     {
-        require_once '/vendor/alipay/pagepay/service/AlipayTradeService.php';
+        require(__DIR__ . '/../../common/vendors/alipay/pagepay/service/AlipayTradeService.php');
         //http://www.fuxijiaoyu.com/alipay/return_url.php?
         //total_amount=0.01
         //&timestamp=2018-02-02+01%3A49%3A08
@@ -52,11 +53,9 @@ class AlipayController extends Controller
 
             $out_trade_no = htmlspecialchars($data['out_trade_no']);//商户订单号
             $trade_no = htmlspecialchars($data['trade_no']);//支付宝交易号
+            $total_amount = htmlspecialchars($data['total_amount']);//支付金额
 
-            return $this->render('success',[
-                'orderid' => $out_trade_no,
-                'trade_no' => $trade_no
-            ]);
+            $this->redirect(Url::to(['order/success','orderid' => $out_trade_no, 'trade_no' => $trade_no, 'total_amount' =>$total_amount]));
 
         }
         else {
@@ -71,7 +70,7 @@ class AlipayController extends Controller
      */
     public function actionNotify()
     {
-        require_once '/vendor/alipay/pagepay/service/AlipayTradeService.php';
+        require(__DIR__ . '/../../common/vendors/alipay/pagepay/service/AlipayTradeService.php');
 
         $data = Yii::$app->request->post();
         $config = Yii::$app->params['alipay'];
