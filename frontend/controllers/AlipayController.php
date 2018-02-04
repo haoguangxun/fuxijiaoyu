@@ -60,7 +60,7 @@ class AlipayController extends Controller
             }
             //修改订单状态
             if ($data['status'] != 1 ) {
-                $r = $model->updateOrderStatus($out_trade_no,1,$trade_no);
+                $r = $model->updateOrderStatus($out_trade_no,1,$trade_no,1);
                 if(!$r) {
                     exit('请求失败！');
                 }
@@ -118,7 +118,7 @@ class AlipayController extends Controller
                 }
                 //修改订单状态
                 if ($data['status'] != 1 ) {
-                    $r = $model->updateOrderStatus($out_trade_no,1,$trade_no);
+                    $r = $model->updateOrderStatus($out_trade_no,1,$trade_no,1);
                     if(!$r) {
                         exit('请求失败！');
                     }

@@ -64,14 +64,15 @@ class Order extends \common\models\Order
     /**
      * 根据订单号修改订单状态
      */
-    public function updateOrderStatus($orderid,$status,$pay_number)
+    public function updateOrderStatus($orderid,$status,$pay_number,$pay_type)
     {
-        if(empty($orderid) || empty($status) || empty($pay_number)){
+        if(empty($orderid) || empty($status) || empty($pay_number) || empty($pay_type)){
             return false;
         }
         $model = self::find()->where(['orderid'=>$orderid])->one();
         $model->status = $status;
         $model->pay_number = $pay_number;
+        $model->pay_type = $pay_type;
         $model->paytime = time();
         if($model->save()){
             return true;

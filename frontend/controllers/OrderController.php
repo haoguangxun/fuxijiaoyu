@@ -102,7 +102,8 @@ class OrderController extends Controller
         return $this->render('success',[
             'orderid' => $get['orderid'],
             'trade_no' => $get['trade_no'],
-            'total_amount' => $get['total_amount']
+            'total_amount' => $get['total_amount'],
+            'courseid' => $get['courseid']
         ]);
     }
 
