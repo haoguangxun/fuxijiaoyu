@@ -53,7 +53,7 @@ class AlipayController extends Controller
             $total_amount = htmlspecialchars($data['total_amount']);//支付金额
 
             //业务逻辑
-            $model = new order();
+            /*$model = new order();
             $data = $model->getOrder($out_trade_no);
             if(empty($data)) {
                 exit('请求非法！');
@@ -66,7 +66,7 @@ class AlipayController extends Controller
                 }
                 //购买量+1
                 Course::salesNum($data['courseid']);
-            }
+            }*/
 
             $this->redirect(Url::to(['order/success',
                 'orderid' => $out_trade_no,
@@ -90,7 +90,7 @@ class AlipayController extends Controller
     {
         require(__DIR__ . '/../../common/vendors/alipay/pagepay/service/AlipayTradeService.php');
 
-        $data = Yii::$app->request->post();
+        $data = $_POST;
         $config = Yii::$app->params['alipay'];
 
         $alipaySevice = new \AlipayTradeService($config);
@@ -98,11 +98,11 @@ class AlipayController extends Controller
         $result = $alipaySevice->check($data);
 
         /* 实际验证过程建议商户添加以下校验。
-        1、商户需要验证该通知数据中的out_trade_no是否为商户系统中创建的订单号，
-        2、判断total_amount是否确实为该订单的实际金额（即商户订单创建时的金额），
-        3、校验通知中的seller_id（或者seller_email) 是否为out_trade_no这笔单据的对应的操作方（有的时候，一个商户可能有多个seller_id/seller_email）
-        4、验证app_id是否为该商户本身。
-        */
+         1、商户需要验证该通知数据中的out_trade_no是否为商户系统中创建的订单号，
+         2、判断total_amount是否确实为该订单的实际金额（即商户订单创建时的金额），
+         3、校验通知中的seller_id（或者seller_email) 是否为out_trade_no这笔单据的对应的操作方（有的时候，一个商户可能有多个seller_id/seller_email）
+         4、验证app_id是否为该商户本身。
+         */
         if($result) {//验证成功
 
             $out_trade_no = $data['out_trade_no'];//商户订单号
