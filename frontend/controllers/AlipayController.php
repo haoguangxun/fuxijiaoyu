@@ -47,15 +47,33 @@ class AlipayController extends Controller
         */
         if($result) {//验证成功
 
-            //请在这里加上商户的业务逻辑程序代码
-
             //获取支付宝的通知返回参数，可参考技术文档中页面跳转同步通知参数列表
-
             $out_trade_no = htmlspecialchars($data['out_trade_no']);//商户订单号
             $trade_no = htmlspecialchars($data['trade_no']);//支付宝交易号
             $total_amount = htmlspecialchars($data['total_amount']);//支付金额
 
-            $this->redirect(Url::to(['order/success','orderid' => $out_trade_no, 'trade_no' => $trade_no, 'total_amount' =>$total_amount]));
+            //业务逻辑
+            $model = new order();
+            $data = $model->getOrder($out_trade_no);
+            if(empty($data)) {
+                exit('请求非法！');
+            }
+            //修改订单状态
+            if ($data['status'] != 1 ) {
+                $r = $model->updateOrderStatus($out_trade_no,1,$trade_no);
+                if(!$r) {
+                    exit('请求失败！');
+                }
+                //购买量+1
+                Course::salesNum($data['courseid']);
+            }
+
+            $this->redirect(Url::to(['order/success',
+                'orderid' => $out_trade_no,
+                'trade_no' => $trade_no,
+                'total_amount' => $total_amount,
+                'courseid' => $data['courseid']
+            ]));
 
         }
         else {
@@ -92,21 +110,21 @@ class AlipayController extends Controller
             $trade_status = $data['trade_status'];//交易状态
 
             if ($trade_status == 'TRADE_SUCCESS') {//支付成功
-
+                //业务逻辑
                 $model = new order();
                 $data = $model->getOrder($out_trade_no);
                 if(empty($data)) {
-                    echo '请求非法！';
+                    exit('请求非法！');
                 }
                 //修改订单状态
                 if ($data['status'] != 1 ) {
                     $r = $model->updateOrderStatus($out_trade_no,1,$trade_no);
                     if(!$r) {
-                        echo '请求失败！';
+                        exit('请求失败！');
                     }
+                    //购买量+1
+                    Course::salesNum($data['courseid']);
                 }
-                //购买量+1
-                Course::salesNum($data['courseid']);
 
             }
 
