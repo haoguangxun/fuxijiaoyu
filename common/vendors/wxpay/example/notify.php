@@ -2,9 +2,9 @@
 ini_set('date.timezone','Asia/Shanghai');
 error_reporting(E_ERROR);
 
-require_once "../lib/WxPay.Api.php";
-require_once '../lib/WxPay.Notify.php';
-require_once 'log.php';
+require_once __DIR__ . '/../../../../common/vendors/wxpay/lib/WxPay.Api.php';
+require_once __DIR__ . '/../../../../common/vendors/wxpay/lib/WxPay.Notify.php';
+require_once __DIR__ . '/../../../../common/vendors/wxpay/example/log.php';
 
 //初始化日志
 $logHandler= new CLogFileHandler("../logs/".date('Y-m-d').'.log');

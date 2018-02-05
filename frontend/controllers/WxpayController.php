@@ -10,20 +10,9 @@ use frontend\models\Order;
 use yii\web\Controller;
 use Yii;
 
-// 处理回调数据
-//ini_set('date.timezone','Asia/Shanghai');
-//error_reporting(E_ERROR);
-
-//require_once __DIR__ . '/../../common/vendors/wxpay/lib/WxPay.Api.php';
-//require_once __DIR__ . '/../../common/vendors/wxpay/lib/WxPay.Notify.php';
 require_once __DIR__ . '/../../common/vendors/wxpay/example/notify.php';
-//require_once __DIR__ . '/../../common/vendors/wxpay/example/log.php';
 
-//初始化日志
-//$logHandler= new \CLogFileHandler("../logs/".date('Y-m-d').'.log');
-//$log = \Log::Init($logHandler, 15);
-
-class WxController extends Controller
+class WxpayController extends Controller
 {
 
     /**
@@ -60,6 +49,7 @@ class WxController extends Controller
         }
 
     }
+
 
     /**
      * 将xml转为array
