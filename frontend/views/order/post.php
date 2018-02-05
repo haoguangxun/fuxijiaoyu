@@ -88,6 +88,7 @@ if( Yii::$app->getSession()->hasFlash('error') ) {
 			<?php if(!in_array($course['catid'],[40,48,49,50,51])){?>
 				<?= Html::beginForm(['order/pay'], 'post',['id' => 'pay-form']) ?>
 				<?= Html::input('hidden', 'orderid', $orderid) ?>
+				<?= Html::input('hidden', 'courseid', $course['id']) ?>
 				<?= Html::input('hidden', 'subject', $course['name']) ?>
 				<?= Html::input('hidden', 'total_amount', 0.01/*$course['price']*/) ?>
 				<?= Html::input('hidden', 'body', '') ?>

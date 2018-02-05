@@ -59,14 +59,14 @@ class AlipayController extends Controller
                 exit('请求非法！');
             }
             //修改订单状态
-            /*if ($data['status'] != 1 ) {
+            if ($data['status'] != 1 ) {
                 $r = $model->updateOrderStatus($out_trade_no,1,$trade_no,1);
                 if(!$r) {
                     exit('请求失败！');
                 }
                 //购买量+1
                 Course::salesNum($data['courseid']);
-            }*/
+            }
 
             $this->redirect(Url::to(['order/success',
                 'orderid' => $out_trade_no,

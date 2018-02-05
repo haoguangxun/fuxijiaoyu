@@ -61,6 +61,8 @@ class OrderController extends Controller
      */
     public function actionPay()
     {
+        header("Content-Type:text/html; charset=UTF-8");
+
         $post = Yii::$app->request->post();
         if(empty($post)){
             throw new NotFoundHttpException('参数错误！');
@@ -68,7 +70,28 @@ class OrderController extends Controller
 
         if($post['pay_type'] == 1){//微信支付
 
+            require_once __DIR__ . '/../../common/vendors/wxpay/lib/WxPay.Api.php';
+            require_once __DIR__ . '/../../common/vendors/wxpay/example/WxPay.NativePay.php';
+            require_once __DIR__ . '/../../common/vendors/wxpay/example/log.php';
 
+            $input = new \WxPayUnifiedOrder();
+            $input->SetBody('预订'.trim($post['subject']).'订单');
+            $input->SetAttach('预订'.trim($post['subject']).'订单');
+            $input->SetOut_trade_no(trim($post['orderid']));
+            $input->SetTotal_fee(trim($post['total_amount']) * 100);
+            $input->SetTime_start(date("YmdHis"));
+            $input->SetTime_expire(date("YmdHis", time() + 600));
+            $input->SetGoods_tag("");
+            $input->SetNotify_url("http://www.fuxiguoxue.com/wxpay/notify.html"); // 地址是外网能访问的，且不能包含参数
+            $input->SetTrade_type("NATIVE");
+            $input->SetProduct_id(trim($post['courseid']));
+            $notify = new \NativePay();
+            $result = $notify->GetPayUrl($input);
+            $code_url = $result["code_url"];
+
+            return $this->render('wxpay',[
+                'code_url' => $code_url
+            ]);
 
         }elseif($post['pay_type'] == 2){//支付宝支付
             require(__DIR__ . '/../../common/vendors/alipay/pagepay/service/AlipayTradeService.php');

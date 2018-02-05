@@ -29,4 +29,16 @@ return [
         //支付宝公钥,查看地址：https://openhome.alipay.com/platform/keyManage.htm 对应APPID下的支付宝公钥。
         'alipay_public_key' => "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAjIBX71TCZ5/AtjmsvfcFjm4c4tBe/1jvudTktiy51avQjgTUwyusZVIy0bHyvlUb4bMcXD3HdRTy+VL4RkgVtiXr1QTw4m5/ixe9nk8IJno0K1YHcOOu/BQN3QnxTe6ijpFK8Me3kyLrqxH4MhQTCcheZ8BAdnpleeVKm9y/9to0dWxCy1gRhdvwNaj0kic+VlcewX4R9hCB5kGWqivhpWbXLH1j5AHhLkbKN5XAZ/EqhlyXOO618A2dk2XqjAJ/z0d0ekejMp1ynX1voz5Dd4z0dPik4Pjq5p2A+tLo5/cH+Nbw8p9KroFiaR2DT1b/Y+rM69PWbPlUll1H/RngRQIDAQAB",
     ],
+    'wxpay' => [
+        //绑定支付的APPID（必须配置，开户邮件中可查看）
+        'app_id' => "wxca8966ac77ea67be",
+        //商户号（必须配置，开户邮件中可查看）
+        'mchid' => "1498172942",
+        //商户支付密钥，参考开户邮件设置（必须配置，登录商户平台自行设置）
+        //设置地址：https://pay.weixin.qq.com/index.php/account/api_cert
+        'key' => "MVvI10v1Oxlksc4Eh0XlazkqXKlNQBBy",
+        //APPSECRET：公众帐号secert（仅JSAPI支付的时候需要配置， 登录公众平台，进入开发者中心可设置）
+        //获取地址：https://mp.weixin.qq.com/advanced/advanced?action=dev&t=advanced/dev&token=2005451881&lang=zh_CN
+        'appsecret' => "eb3e66a2927be0c68e9b6e4c0854fdab",
+    ],
 ];
