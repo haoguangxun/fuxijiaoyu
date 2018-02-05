@@ -23,7 +23,9 @@ class WxpayController extends Controller
 
         \Log::DEBUG("begin notify");
         $notify = new \PayNotifyCallBack();
+        $notify->Handle(false);
 
+        /*
         $postXml = $GLOBALS["HTTP_RAW_POST_DATA"];
         $postArr = $this->FromXml($postXml);
 
@@ -47,6 +49,7 @@ class WxpayController extends Controller
             }
 
         }
+        */
 
     }
 
