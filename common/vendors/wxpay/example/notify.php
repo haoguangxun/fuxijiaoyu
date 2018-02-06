@@ -7,7 +7,7 @@ require_once __DIR__ . '/../../../../common/vendors/wxpay/lib/WxPay.Notify.php';
 require_once __DIR__ . '/../../../../common/vendors/wxpay/example/log.php';
 
 //初始化日志
-$logHandler= new CLogFileHandler(__DIR__ . '/../../../../common/vendors/wxpay/logs/'.date('Y-m-d').'.log');
+$logHandler= new CLogFileHandler(__DIR__ . '/../../../../common/vendors/wxpay/logs.txt');
 $log = Log::Init($logHandler, 15);
 
 class PayNotifyCallBack extends WxPayNotify
