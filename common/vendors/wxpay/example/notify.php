@@ -22,7 +22,7 @@ class PayNotifyCallBack extends WxPayNotify
 			$input->SetOut_trade_no($out_trade_no);//商户订单号
 		}
 		$result = WxPayApi::orderQuery($input);
-		Log::DEBUG("query:" . json_encode($result));
+		//Log::DEBUG("query:" . json_encode($result));
 		if(array_key_exists("return_code", $result)
 			&& array_key_exists("result_code", $result)
 			&& $result["return_code"] == "SUCCESS"
