@@ -90,7 +90,7 @@ if( Yii::$app->getSession()->hasFlash('error') ) {
 				<?= Html::input('hidden', 'orderid', $orderid) ?>
 				<?= Html::input('hidden', 'courseid', $course['id']) ?>
 				<?= Html::input('hidden', 'subject', $course['name']) ?>
-				<?= Html::input('hidden', 'total_amount', 0.01/*$course['price']*/) ?>
+				<?= Html::input('hidden', 'total_amount', $course['price']) ?>
 				<?= Html::input('hidden', 'body', '') ?>
 				<?= Html::input('radio', 'pay_type', '1',['id' => 'pay-wx']) ?>
 				<?= Html::input('radio', 'pay_type', '2',['id' => 'pay-zfb','checked'=>'checked']) ?>
