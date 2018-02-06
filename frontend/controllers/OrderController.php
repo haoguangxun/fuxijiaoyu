@@ -75,8 +75,8 @@ class OrderController extends Controller
             require_once __DIR__ . '/../../common/vendors/wxpay/example/log.php';
 
             $input = new \WxPayUnifiedOrder();
-            $input->SetBody('预订'.trim($post['subject']).'订单');
-            $input->SetAttach('预订'.trim($post['subject']).'订单');
+            $input->SetBody(trim($post['subject']));
+            $input->SetAttach(trim($post['subject']));
             $input->SetOut_trade_no(trim($post['orderid']));
             $input->SetTotal_fee(trim($post['total_amount']) * 100);
             $input->SetTime_start(date("YmdHis"));

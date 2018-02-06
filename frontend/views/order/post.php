@@ -103,12 +103,13 @@ if( Yii::$app->getSession()->hasFlash('error') ) {
 					</div>
 					<!--<div class="pay-btn"><span>立即支付</span></div>-->
 					<div class="problem">
+						<p></p>
 						<h2>付款中遇到问题：</h2>
-						<p>如您的订单金额较大。</p>
-						<p>建议您切换到IE浏览器进行支付，如提示“需安装控件”请立即安装。</p>
+						<!--<p>如您的订单金额较大。</p>
+						<p>建议您切换到IE浏览器进行支付，如提示“需安装控件”请立即安装。</p>-->
 						<p>如无法在线支付，请联系客服，客服电话：010-67906868</p>
 					</div>
-					<div class="gopay-main-footer">
+					<div class="gopay-main-footer" style="margin-top: -150px;">
 						<!--<div class="discount">已为您 抵扣<span>￥0</span></div>-->
 						<div class="all-price">￥ <span><?= $course['price']?></span></div>
 						<div class="gopay-btn">
