@@ -25,13 +25,14 @@ class WxpayController extends Controller
         $notify = new \PayNotifyCallBack();
         $notify->Handle(false);
 
-        /*
+
         $postXml = $GLOBALS["HTTP_RAW_POST_DATA"];
+        \Log::DEBUG($postXml);
         $postArr = $this->FromXml($postXml);
 
         // 查询是否支付成功
         $res = $notify->Queryorder($postArr['transaction_id']);
-        if ($res) {
+        if ($res['trade_state'] == 'SUCCESS') {
             //业务逻辑
             $model = new order();
             $data = $model->getOrder($postArr['out_trade_no']);
@@ -49,7 +50,6 @@ class WxpayController extends Controller
             }
 
         }
-        */
 
     }
 
