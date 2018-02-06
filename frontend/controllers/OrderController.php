@@ -87,11 +87,26 @@ class OrderController extends Controller
             $input->SetProduct_id(trim($post['courseid']));
             $notify = new \NativePay();
             $result = $notify->GetPayUrl($input);
-            $code_url = $result["code_url"];
 
-            return $this->render('wxpay',[
-                'code_url' => $code_url
-            ]);
+            if(isset($result['err_code']) && $result['err_code'] == 'ORDERPAID'){ //订单已支付
+                $this->redirect(Url::to(['order/success',
+                    'orderid' => $post['orderid'],
+                    'total_amount' => $post['total_amount'],
+                    'courseid' => $post['courseid']
+                ]));
+            }else{ //订单未支付
+                if(!isset($result["code_url"])){
+                    $this->redirect(Url::to(['order/success',
+                        'orderid' => $post['orderid'],
+                        'total_amount' => $post['total_amount'],
+                        'courseid' => $post['courseid']
+                    ]));
+                }
+                $code_url = $result["code_url"];
+                return $this->render('wxpay',[
+                    'code_url' => $code_url
+                ]);
+            }
 
         }elseif($post['pay_type'] == 2){//支付宝支付
             require(__DIR__ . '/../../common/vendors/alipay/pagepay/service/AlipayTradeService.php');
@@ -124,7 +139,7 @@ class OrderController extends Controller
         $get = Yii::$app->request->get();
         return $this->render('success',[
             'orderid' => $get['orderid'],
-            'trade_no' => $get['trade_no'],
+            //'trade_no' => $get['trade_no'],
             'total_amount' => $get['total_amount'],
             'courseid' => $get['courseid']
         ]);

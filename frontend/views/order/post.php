@@ -92,13 +92,13 @@ if( Yii::$app->getSession()->hasFlash('error') ) {
 				<?= Html::input('hidden', 'subject', $course['name']) ?>
 				<?= Html::input('hidden', 'total_amount', 0.01/*$course['price']*/) ?>
 				<?= Html::input('hidden', 'body', '') ?>
-				<?= Html::input('radio', 'pay_type', '1') ?>微信
-				<?= Html::input('radio', 'pay_type', '2') ?>支付宝
+				<?= Html::input('radio', 'pay_type', '1',['id' => 'pay-wx']) ?>
+				<?= Html::input('radio', 'pay_type', '2',['id' => 'pay-zfb']) ?>
 					<div class="platform">
 						<div class="platform-title"><span class="iconfont icon-arrowR"></span> 平台支付（微信 支付宝）</div>
 						<div class="platform-choice">
-							<span class="platform-zfb"><img src="/img/zfb.jpg"/></span>
-							<span class="platform-wx"><img src="/img/wx.jpg"/></span>
+                            <label for="pay-zfb" class="active"><span class="platform-zfb"><img src="/img/zfb.jpg"/></span></label>
+							<label for="pay-wx"><span class="platform-wx"><img src="/img/wx.jpg"/></span></label>
 						</div>
 					</div>
 					<!--<div class="pay-btn"><span>立即支付</span></div>-->
@@ -122,3 +122,8 @@ if( Yii::$app->getSession()->hasFlash('error') ) {
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+     $('.platform-choice label').click(function(){
+        $(this).addClass('active').siblings('label').removeClass('active');
+     })
+</script>
