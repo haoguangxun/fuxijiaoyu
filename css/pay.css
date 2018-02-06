@@ -8,7 +8,7 @@
 	background: #FFFFFF;
 	padding: 50px;
 }
-.platform-choice input{
+.gopay-main input{
 	visibility: hidden;
 }
 .gopay-main-top{
@@ -108,7 +108,7 @@
 .gopay-btn{
 	text-align: right;
 }
-.gopay-btn a,.pay-btn span,.pay-btn button{
+.gopay-btn a,.pay-btn span,.gopay-btn button{
 	background: #ff6029;
 	color: #FFFFFF;
 	display: inline-block;
@@ -116,6 +116,8 @@
 	padding: 10px 25px;
 	border-radius: 5px;
 	margin: 15px 0;
+    border:none;
+    outline:none;
 }
 /*æ”¯ä»˜*/
 .time-alert{

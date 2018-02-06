@@ -7,16 +7,20 @@ require_once __DIR__ . '/../../../../common/vendors/wxpay/lib/WxPay.Notify.php';
 require_once __DIR__ . '/../../../../common/vendors/wxpay/example/log.php';
 
 //初始化日志
-$logHandler= new CLogFileHandler("../logs/".date('Y-m-d').'.log');
+$logHandler= new CLogFileHandler(__DIR__ . '/../../../../common/vendors/wxpay/logs/'.date('Y-m-d').'.log');
 $log = Log::Init($logHandler, 15);
 
 class PayNotifyCallBack extends WxPayNotify
 {
 	//查询订单
-	public function Queryorder($transaction_id)
+	public function Queryorder($transaction_id = 0,$out_trade_no = 0)
 	{
 		$input = new WxPayOrderQuery();
-		$input->SetTransaction_id($transaction_id);
+		if(!empty($transaction_id)){
+			$input->SetTransaction_id($transaction_id);//微信订单号
+		}else{
+			$input->SetOut_trade_no($out_trade_no);//商户订单号
+		}
 		$result = WxPayApi::orderQuery($input);
 		Log::DEBUG("query:" . json_encode($result));
 		if(array_key_exists("return_code", $result)
@@ -24,7 +28,7 @@ class PayNotifyCallBack extends WxPayNotify
 			&& $result["return_code"] == "SUCCESS"
 			&& $result["result_code"] == "SUCCESS")
 		{
-			return true;
+			return $result;
 		}
 		return false;
 	}
@@ -48,6 +52,6 @@ class PayNotifyCallBack extends WxPayNotify
 	}
 }
 
-Log::DEBUG("begin notify");
-$notify = new PayNotifyCallBack();
-$notify->Handle(false);
+//Log::DEBUG("begin notify");
+//$notify = new PayNotifyCallBack();
+//$notify->Handle(false);

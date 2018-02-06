@@ -53,6 +53,39 @@ class WxpayController extends Controller
 
     }
 
+    //查询订单
+    public function actionQueryOrder()
+    {
+        Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        $out_trade_no = Yii::$app->request->get('out_trade_no',0);
+        if(empty($out_trade_no)){
+            return [
+                'code' => 10001,
+                'msg' => 'ERROR'
+            ];
+        }
+        $notify = new \PayNotifyCallBack();
+        if($res = $notify->Queryorder(0,$out_trade_no))
+        {
+            if($res['trade_state'] == 'SUCCESS'){
+                return [
+                    'code' => 10000,
+                    'msg' => 'SUCCESS'
+                ];
+            }else{
+                return [
+                    'code' => 10001,
+                    'msg' => 'NOPAY'
+                ];
+            }
+        }
+        return [
+            'code' => 10001,
+            'msg' => 'ERROR'
+        ];
+
+    }
+
 
     /**
      * 将xml转为array

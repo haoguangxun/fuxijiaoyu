@@ -95,15 +95,11 @@ class OrderController extends Controller
                     'courseid' => $post['courseid']
                 ]));
             }else{ //订单未支付
-                if(!isset($result["code_url"])){
-                    $this->redirect(Url::to(['order/success',
-                        'orderid' => $post['orderid'],
-                        'total_amount' => $post['total_amount'],
-                        'courseid' => $post['courseid']
-                    ]));
-                }
                 $code_url = $result["code_url"];
                 return $this->render('wxpay',[
+                    'orderid' => $post['orderid'],
+                    'total_amount' => $post['total_amount'],
+                    'courseid' => $post['courseid'],
                     'code_url' => $code_url
                 ]);
             }

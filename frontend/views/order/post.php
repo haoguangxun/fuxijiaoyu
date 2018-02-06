@@ -93,7 +93,7 @@ if( Yii::$app->getSession()->hasFlash('error') ) {
 				<?= Html::input('hidden', 'total_amount', 0.01/*$course['price']*/) ?>
 				<?= Html::input('hidden', 'body', '') ?>
 				<?= Html::input('radio', 'pay_type', '1',['id' => 'pay-wx']) ?>
-				<?= Html::input('radio', 'pay_type', '2',['id' => 'pay-zfb']) ?>
+				<?= Html::input('radio', 'pay_type', '2',['id' => 'pay-zfb','checked'=>'checked']) ?>
 					<div class="platform">
 						<div class="platform-title"><span class="iconfont icon-arrowR"></span> 平台支付（微信 支付宝）</div>
 						<div class="platform-choice">
@@ -112,8 +112,6 @@ if( Yii::$app->getSession()->hasFlash('error') ) {
 						<!--<div class="discount">已为您 抵扣<span>￥0</span></div>-->
 						<div class="all-price">￥ <span><?= $course['price']?></span></div>
 						<div class="gopay-btn">
-							<!--<a href="<?/*= Url::to(['order/pay-success','orderid'=>$orderid,'pay_number'=>10000])*/?>">确认支付</a>-->
-							<!--<button type="submit" name="submit" value="确认支付" style="width: 100px; height: 30px;"></button>-->
 							<?= Html::submitButton('确认支付', ['name' => 'submit']) ?>
 						</div>
 					</div>
