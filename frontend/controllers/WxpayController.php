@@ -29,9 +29,10 @@ class WxpayController extends Controller
         $postXml = $GLOBALS["HTTP_RAW_POST_DATA"];
         \Log::DEBUG($postXml);
         $postArr = $this->FromXml($postXml);
-
+        \Log::DEBUG($postArr);
         // 查询是否支付成功
         $res = $notify->Queryorder($postArr['transaction_id']);
+        \Log::DEBUG($res);
         if ($res['trade_state'] == 'SUCCESS') {
             //业务逻辑
             $model = new order();
