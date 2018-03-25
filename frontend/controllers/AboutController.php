@@ -2,6 +2,7 @@
 
 namespace frontend\controllers;
 
+use frontend\models\Ad;
 use frontend\models\Category;
 use frontend\models\News;
 use frontend\models\Page;
@@ -26,6 +27,8 @@ class AboutController extends Controller
         $brandProcess2 = News::getList(28,3,4);
         //大事件MEMORABILIA
         $memorabilia = News::getList(30,3);
+        //品牌介绍图片
+        $brandAd = Ad::getList(5,4);
 
         return $this->render('index',[
             'category' => $category,
@@ -33,6 +36,7 @@ class AboutController extends Controller
             'brandProcess1' => $brandProcess1,
             'brandProcess2' => $brandProcess2,
             'memorabilia' => $memorabilia,
+            'brandAd' => $brandAd,
         ]);
     }
 

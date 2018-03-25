@@ -34,8 +34,6 @@ $this->registerJsFile('@web/js/student.js',['depends'=>['frontend\assets\AppAsse
                 <div class="video">
                     <video id="my-video" class="video-js" controls preload="auto" poster="<?=Html::encode($value['thumb'])?>" data-setup="{}">
                         <source src="<?=Html::encode($value['video'])?>" type="video/mp4">
-                        <source src="http://vjs.zencdn.net/v/oceans.webm" type="video/webm">
-                        <source src="http://vjs.zencdn.net/v/oceans.ogv" type="video/ogg">
                     </video>
                 </div>
                 <div class="video-text">
@@ -63,12 +61,14 @@ $this->registerJsFile('@web/js/student.js',['depends'=>['frontend\assets\AppAsse
             <div class="style-run-scroll">
                 <ul class="style-run-item">
                 <?php foreach ($style as $key => $value):?>
+                    <a href="<?=Url::to(['student/view','id'=>$value['id']])?>">
                     <li>
                         <div class="main">
                             <p><?=Html::encode($value['title'])?></p>
                         </div>
                         <img src="<?=Html::encode($value['thumb'])?>"/>
                     </li>
+                    </a>
                     <?php
                     if(($key+1)%8 == 0){
                         echo '</ul><ul class="style-run-item">';
@@ -123,10 +123,8 @@ $this->registerJsFile('@web/js/student.js',['depends'=>['frontend\assets\AppAsse
             <?php foreach ($prize as $value):?>
             <li>
                 <div class="video">
-                    <video id="my-video" class="video-js" controls preload="auto" poster="/img/video-img.jpg" data-setup="{}">
+                    <video id="my-video" class="video-js" controls preload="auto" poster="<?=Html::encode($value['thumb'])?>" data-setup="{}">
                         <source src="<?=Html::encode($value['video'])?>" type="video/mp4">
-                        <source src="http://vjs.zencdn.net/v/oceans.webm" type="video/webm">
-                        <source src="http://vjs.zencdn.net/v/oceans.ogv" type="video/ogg">
                     </video>
                 </div>
                 <div class="video-text">

@@ -51,19 +51,18 @@ $this->registerJsFile('@web/js/about.js',['depends'=>['frontend\assets\AppAsset'
         <div class="introduce-text">
             <?= HtmlPurifier::process($page[27]['content'])?>
         </div>
+        <?php
+        if(!empty($brandAd))?>
         <ul class="introduce-img">
-            <li>
-                <div class="introduce-img-main"  style="background-image: url(/img/banner-home1.jpg);"></div>
-            </li>
-            <li>
-                <div class="introduce-img-main"  style="background-image: url(/img/banner-home2.jpg);"></div>
-            </li>
-            <li>
-                <div class="introduce-img-main"  style="background-image: url(/img/banner-home3.jpg);"></div>
-            </li>
-            <li>
-                <div class="introduce-img-main"  style="background-image: url(/img/banner-home1.jpg);"></div>
-            </li>
+            <?php
+            if(!empty($brandAd)) foreach ($brandAd as $key => $value) :
+                ?>
+                <li>
+                    <div class="introduce-img-main"  style="background-image: url(<?=$value['fileurl']?>);"></div>
+                </li>
+                <?php
+            endforeach;
+            ?>
         </ul>
     </div>
 </div>
