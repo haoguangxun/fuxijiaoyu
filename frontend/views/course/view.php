@@ -40,20 +40,29 @@ $this->registerJsFile('http://v3.jiathis.com/code/jia.js',['depends'=>['frontend
                 </div>
                 <div class="down">
                     <a href="#">特色服务</a>
-                    <?php if($signup){?>
+                    <?php if($data['price']==0){?>
                         <a href="<?=Html::encode($data['data'])?>"><span class="iconfont icon-ziliao"></span>资料下载</a>
                         <a href="<?=Html::encode($data['material'])?>"><span class="iconfont icon-shu"></span>电子教材</a>
                     <?php }else{?>
-                        <a href="javascript:if(confirm('请先购买此课程！'))location='<?=Url::to(['order/post','id'=>$data['id']])?>'"><span class="iconfont icon-ziliao"></span>资料下载</a>
-                        <a href="javascript:if(confirm('请先购买此课程！'))location='<?=Url::to(['order/post','id'=>$data['id']])?>'"><span class="iconfont icon-shu"></span>电子教材</a>
+                        <?php if($signup){?>
+                            <a href="<?=Html::encode($data['data'])?>"><span class="iconfont icon-ziliao"></span>资料下载</a>
+                            <a href="<?=Html::encode($data['material'])?>"><span class="iconfont icon-shu"></span>电子教材</a>
+                        <?php }else{?>
+                            <a href="javascript:if(confirm('请先购买此课程！'))location='<?=Url::to(['order/post','id'=>$data['id']])?>'"><span class="iconfont icon-ziliao"></span>资料下载</a>
+                            <a href="javascript:if(confirm('请先购买此课程！'))location='<?=Url::to(['order/post','id'=>$data['id']])?>'"><span class="iconfont icon-shu"></span>电子教材</a>
+                        <?php }?>
                     <?php }?>
                 </div>
                 <div class="buttons">
-                    <?php if($signup){?>
+                    <?php if($data['price']==0){?>
                         <a href="<?=Url::to(['course/section','id'=>$data['id']])?>"><span class="try">开始学习</span></a>
                     <?php }else{?>
-                        <a href="<?=Url::to(['course/section','id'=>$data['id']])?>"><span class="try">免费试学</span></a>
-                        <span class="sign"><a href="<?=Url::to(['order/post','id'=>$data['id']])?>">立即报名</a></span>
+                        <?php if($signup){?>
+                            <a href="<?=Url::to(['course/section','id'=>$data['id']])?>"><span class="try">开始学习</span></a>
+                        <?php }else{?>
+                            <a href="<?=Url::to(['course/section','id'=>$data['id']])?>"><span class="try">免费试学</span></a>
+                            <span class="sign"><a href="<?=Url::to(['order/post','id'=>$data['id']])?>">立即报名</a></span>
+                        <?php }?>
                     <?php }?>
                 </div>
                 <div class="message">学制   |   <?=Html::encode($data['course_number'])?>节课/期    每课时<?=Html::encode($data['course_duration'])?>分钟</div>
