@@ -75,7 +75,7 @@ AppAsset::register($this);
             <a href="<?= Url::to(['course/list','cid'=>15])?>"><li>课程体系</li></a>
             <a href="<?= Url::to(['course/list','cid'=>40])?>"><li>线下授课</li></a>
             <a href="<?= Url::to(['teacher/list'])?>"><li>师资力量</li></a>
-            <a href="<?= Url::to(['news/list','cid'=>42])?>"><li>伏羲体验</li></a>
+            <a href="<?= Url::to(['news/list','cid'=>64])?>"><li>伏羲分院</li></a>
             <a href="<?= Url::to(['student/index'])?>"><li>学员成长</li></a>
             <a href="<?= Url::to(['news/list','cid'=>1])?>"><li>新闻动态</li></a>
             <a href="<?= Url::to(['about/contact'])?>"><li>联系我们</li></a>
@@ -90,7 +90,7 @@ AppAsset::register($this);
             <a href="<?= Url::to(['course/list','cid'=>15])?>"><li>课程体系</li></a>
             <a href="<?= Url::to(['course/list','cid'=>40])?>"><li>线下授课</li></a>
             <a href="<?= Url::to(['teacher/list'])?>"><li>师资力量</li></a>
-            <a href="<?= Url::to(['news/list','cid'=>42])?>"><li>伏羲体验</li></a>
+            <a href="<?= Url::to(['news/list','cid'=>64])?>"><li>伏羲分院</li></a>
             <a href="<?= Url::to(['student/index'])?>"><li>学员成长</li></a>
             <a href="<?= Url::to(['news/list','cid'=>1])?>"><li>新闻动态</li></a>
             <a href="<?= Url::to(['about/contact'])?>"><li>联系我们</li></a>
@@ -111,7 +111,7 @@ AppAsset::register($this);
             <a href="<?= Url::to(['course/list','cid'=>15])?>"><li>课程体系</li></a>
             <a href="<?= Url::to(['course/list','cid'=>40])?>"><li>线下授课</li></a>
             <a href="<?= Url::to(['teacher/list'])?>"><li>师资力量</li></a>
-            <a href="<?= Url::to(['news/list','cid'=>42])?>"><li>伏羲体验</li></a>
+            <a href="<?= Url::to(['news/list','cid'=>64])?>"><li>伏羲分院</li></a>
             <a href="<?= Url::to(['student/index'])?>"><li>学员成长</li></a>
             <a href="<?= Url::to(['news/list','cid'=>1])?>"><li>新闻动态</li></a>
             <a href="<?= Url::to(['about/contact'])?>"><li>联系我们</li></a>
