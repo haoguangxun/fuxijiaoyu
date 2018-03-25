@@ -39,11 +39,12 @@ if( Yii::$app->getSession()->hasFlash('error') ) {
 			</label>
 			<input class="personal-input" name="photo" type="hidden"/>
 			<input id="uploaderInput" type="file" accept="image/*" multiple="" onchange='openFile(this)'>
-			<?php
-			//use common\widgets\file_upload\FileUpload;   //引入扩展
-			//echo FileUpload::widget(['value'=>$model['photo']]);
-			?>
 		</div>
+		<?php
+		//use common\widgets\file_upload\FileUpload;   //引入扩展
+		//echo FileUpload::widget();
+		//echo FileUpload::widget(['value'=>$model['photo']]);
+		?>
 	</div>
 	<!--<div class="personal-form-item">
 		<span>用户名2122</span>

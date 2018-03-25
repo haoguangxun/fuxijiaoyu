@@ -44,7 +44,7 @@ class FileUpload extends InputWidget
                 'attribute' => $this->attribute,
             ]);
         } else {
-            return $this->render('index',[
+            return $this->render('index2',[
                 'config'=>$this->config,
                 'inputName' => 'file-upload',
                 'inputValue'=> $this->value

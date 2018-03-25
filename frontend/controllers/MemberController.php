@@ -3,12 +3,14 @@
 namespace frontend\controllers;
 
 use common\models\MemberData;
+use common\models\UploadForm;
 use frontend\models\Member;
 use yii\helpers\Url;
 use yii\web\Controller;
 use Yii;
 use frontend\models\search\OrderSearch;
 use frontend\models\search\CourseCollectionSearch;
+use yii\web\UploadedFile;
 
 /**
  * 学生会员中心
@@ -37,6 +39,22 @@ class MemberController extends Controller
             ]
         ];
     }
+
+    public function actionUpload()
+    {
+        $model = new UploadForm();
+
+        if(Yii::$app->request->post()){
+            $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
+            if($model->upload()){
+                //文件上传成功
+                return;
+            }
+        }
+
+        return $this->render('upload', ['model' => $model]);
+    }
+
     /**
      * 个人资料
      */
