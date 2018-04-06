@@ -18,7 +18,7 @@ $this->registerJsFile('@web/js/bootstrap.min.js',['depends'=>['frontend\assets\A
             <?php
             if(!empty($ad)) foreach ($ad as $key => $value) :
             ?>
-            <div class="swiper-slide" style="background-image: url(<?=$value['fileurl']?>);"></div>
+            <div class="swiper-slide"><img src="<?=$value['fileurl']?>"/></div>
             <?php
             endforeach;
             ?>
@@ -206,7 +206,7 @@ $this->registerJsFile('@web/js/bootstrap.min.js',['depends'=>['frontend\assets\A
                         <?php
                         if(!empty($industryTrendsPic)) foreach ($industryTrendsPic as $key => $value) :
                         ?>
-                        <div class="img"><img src="<?= $value['thumb'] ?>"/></div>
+                        <div class="img" style="background-image: url(<?= $value['thumb'] ?>);"></div>
                         <h1><?= $value['title'] ?></h1>
                         <p><?= $value['description'] ?></p>
                         <a href="<?= Url::to(['news/view','id'=>$value['id']])?>" class="news-list">查看详情</a>

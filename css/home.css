@@ -1,10 +1,13 @@
 .banner{
-	height: 730px;
+	height:auto;
 }
 .banner .swiper-slide{
 	height: 100%;
 	cursor: pointer;
 	background:no-repeat center center/cover;
+}
+.banner .swiper-slide img{
+	width: 100%;
 }
 .banner .swiper-pagination-bullet{
 	background: #FFFFFF ;
@@ -494,6 +497,8 @@ video::-webkit-media-controls-panel {
 	overflow: hidden;
 	cursor: pointer;
 	margin-bottom: 25px;
+	background: no-repeat center center;
+	background-size: cover;
 }
 .news-img .img:hover img{
 	transform: scale(1.2);
@@ -526,6 +531,7 @@ video::-webkit-media-controls-panel {
 .news-text .item{
 	padding: 18px 5px;
 	overflow: hidden;
+	max-height: 135px;
 	border-bottom: 1px solid #b5b5b5;
 }
 .news-text .item:hover{
@@ -551,6 +557,9 @@ video::-webkit-media-controls-panel {
 	font-size: 16px;
 	color: #737373;
 	margin-bottom: 20px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 .news-text-contain p{
 	font-size: 12px;

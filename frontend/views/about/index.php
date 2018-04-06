@@ -47,7 +47,11 @@ $this->registerJsFile('@web/js/about.js',['depends'=>['frontend\assets\AppAsset'
 </div>
 <div id="introduce" class="introduce">
     <div class="wrap">
-        <h1><?= Html::encode($page[27]['title'])?><span>INTROODUCE</span></h1>
+    	<div class="home-title">
+            <h2>INTROODUCES</h2>
+            <h1><?= Html::encode($page[27]['title'])?</h1>
+            <span></span>
+       </div>
         <div class="introduce-text">
             <?= HtmlPurifier::process($page[27]['content'])?>
         </div>
@@ -193,7 +197,7 @@ $this->registerJsFile('@web/js/about.js',['depends'=>['frontend\assets\AppAsset'
 <div id="Memorabilia" class="Memorabilia">
     <div class="wrap">
         <div class="home-title">
-            <h2>MEMORABILIA</h2>
+            <h2>BIG EVENT</h2>
             <h1>大事件</h1>
             <span></span>
         </div>
