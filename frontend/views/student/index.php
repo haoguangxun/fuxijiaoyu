@@ -48,9 +48,7 @@ $this->registerJsFile('@web/js/student.js',['depends'=>['frontend\assets\AppAsse
 <div class="student-style">
     <div class="wrap">
         <div class="home-title">
-            <h2>STUDENT STYLE</h2>
-            <h1>学员风采</h1>
-            <span></span>
+            <h1 style="color:#6b6b6b;font-size: 36px;">学员风采</h1>
         </div>
         <div class="style-run">
             <div class="style-btn-l"><span class="iconfont icon-arrowL"></span></div>
