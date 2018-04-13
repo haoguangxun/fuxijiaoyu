@@ -20,8 +20,6 @@ $(document).ready(function(){
 	$('#my-video').width(100+'%');
 	var videoW = $('#my-video').width();
 	$('#my-video,.video-more').height(videoW/2);
-	
-	teachers();
 });
 $(function(){
 	var newSwiper = new Swiper('#fls',{
@@ -74,6 +72,7 @@ function teachers(){
 		$('.teachers-banner ul').eq($(this).index()).fadeIn(200).siblings('.teachers-banner ul').fadeOut(200);
 	})
 };
+teachers();
 /*学员*/
 $(function(){
 	var sNum = 0;
