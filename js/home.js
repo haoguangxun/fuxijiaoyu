@@ -20,6 +20,8 @@ $(document).ready(function(){
 	$('#my-video').width(100+'%');
 	var videoW = $('#my-video').width();
 	$('#my-video,.video-more').height(videoW/2);
+	
+	teachers();
 });
 $(function(){
 	var newSwiper = new Swiper('#fls',{
@@ -56,11 +58,11 @@ $(function(){
 	});
 });
 /*师资力量*/
-$(function(){
+function teachers(){
 	$('.teachers-banner ul').hide();
 	$('.teachers-banner ul:first').show();
 	var ulNum = $('.teachers-banner ul').length;
-	console.log(ulNum)
+	console.log(33333)
 	for(var i=0;i<ulNum;i++){
 		var span = document.createElement('span');
 		$('.pagination').append(span);
@@ -71,10 +73,11 @@ $(function(){
 		$(this).addClass('active').siblings().removeClass('active');
 		$('.teachers-banner ul').eq($(this).index()).fadeIn(200).siblings('.teachers-banner ul').fadeOut(200);
 	})
-});
+};
 /*学员*/
 $(function(){
 	var sNum = 0;
+	console.log(sNum)
 	var sLi = $('.grow-banner-scroll li').length;
 	$('.grow-banner-scroll ul').width((sLi*100)+'%');
 	$('.grow-banner-scroll li').width((100/sLi)+'%');
