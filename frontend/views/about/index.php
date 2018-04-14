@@ -49,7 +49,7 @@ $this->registerJsFile('@web/js/about.js',['depends'=>['frontend\assets\AppAsset'
     <div class="wrap">
     	<div class="home-title">
             <h2>INTROODUCES</h2>
-            <h1><?= Html::encode($page[27]['title'])?</h1>
+            <h1><?= Html::encode($page[27]['title'])?></h1>
             <span></span>
        </div>
         <div class="introduce-text">

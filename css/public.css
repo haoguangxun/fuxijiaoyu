@@ -235,11 +235,14 @@ html,body{
     margin:0 1px;
     font-size: 14px;
 }
+.nav .nav-main li a{
+	color: #959595;
+}
 .nav .nav-main li:hover{
 	background: #1d88db;
 	color: #ffffff;
 }
-.nav .nav-main a.active li{
+.nav .nav-main li a.active{
 	background: #1d88db;
 	color: #ffffff;
 }
