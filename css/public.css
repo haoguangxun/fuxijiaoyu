@@ -264,7 +264,10 @@ html,body{
 }
 .nav .twoNav a:hover{
 	color: #fff !important;
-	background: #337ab7;
+	background: #337ab7v;
+}
+.nav .nav-main .twoNav a.active{
+	background: none;
 }
 /*底部*/
 .footer{
