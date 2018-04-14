@@ -73,7 +73,7 @@ AppAsset::register($this);
             <li><a href="<?= Url::to(['default/index'])?>">首页</a></li>
             <li><a href="<?= Url::to(['about/index'])?>">学院概括</a></li>
             <li><a href="<?= Url::to(['teacher/list'])?>">师资力量</a></li>
-            <li>课程体系</a>
+            <li class="oneNav"><a>课程体系</a>
             	<div class="twoNav">
             		<a href="<?= Url::to(['course/list','cid'=>15])?>">在线课程</a>
             		<a href="<?= Url::to(['course/list','cid'=>40])?>">面授课程</a>
