@@ -75,8 +75,8 @@ AppAsset::register($this);
             <li><a href="<?= Url::to(['teacher/list'])?>">师资力量</a></li>
             <li class="oneNav"><a>课程体系</a>
             	<div class="twoNav">
-            		<a href="<?= Url::to(['course/list','cid'=>15])?>">在线课程</a>
-            		<a href="<?= Url::to(['course/list','cid'=>40])?>">面授课程</a>
+            		<a href="<?= Url::to(['course/list','cid'=>15])?>">面授课程</a>
+            		<a href="<?= Url::to(['course/list','cid'=>40])?>">在线课程</a>
             	</div>
             </li>
             <li><a href="<?= Url::to(['news/list','cid'=>64])?>">伏羲分院</a></li>
@@ -92,8 +92,8 @@ AppAsset::register($this);
             <li><a href="<?= Url::to(['default/index'])?>">首页</a></li>
             <li><a href="<?= Url::to(['about/index'])?>">学院概括</a></li>
             <li><a href="<?= Url::to(['teacher/list'])?>">师资力量</a></li>
-            <li><a href="<?= Url::to(['course/list','cid'=>15])?>">课程体系</a></li>
-            <li><a href="<?= Url::to(['course/list','cid'=>40])?>">面授课程</a></li>
+            <li><a href="<?= Url::to(['course/list','cid'=>15])?>">面授课程</a></li>
+            <li><a href="<?= Url::to(['course/list','cid'=>40])?>">在线课程</a></li>
             <li><a href="<?= Url::to(['news/list','cid'=>64])?>">伏羲分院</a></li>
             <li><a href="<?= Url::to(['student/index'])?>">学员成长</a></li>
             <li><a href="<?= Url::to(['news/list','cid'=>1])?>">新闻动态</a></li>
@@ -113,8 +113,8 @@ AppAsset::register($this);
             <a href="<?= Url::to(['default/index'])?>"><li>首页</li></a>
             <a href="<?= Url::to(['about/index'])?>"><li>学院概括</li></a>
             <a href="<?= Url::to(['teacher/list'])?>"><li>师资力量</li></a>
-            <a href="<?= Url::to(['course/list','cid'=>15])?>"><li>课程体系</li></a>
-            <a href="<?= Url::to(['course/list','cid'=>40])?>"><li>面授课程</li></a>
+            <a href="<?= Url::to(['course/list','cid'=>15])?>"><li>面授课程</li></a>
+            <a href="<?= Url::to(['course/list','cid'=>40])?>"><li>在线课程</li></a>
             <a href="<?= Url::to(['news/list','cid'=>64])?>"><li>伏羲分院</li></a>
             <a href="<?= Url::to(['student/index'])?>"><li>学员成长</li></a>
             <a href="<?= Url::to(['news/list','cid'=>1])?>"><li>新闻动态</li></a>

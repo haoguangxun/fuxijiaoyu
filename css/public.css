@@ -212,6 +212,8 @@ html,body{
 .nav{
 	height: 50px;
 	margin:40px 0;
+	position: relative;
+    z-index: 2;
 }
 .nav .logo{
 	height: 100%;
@@ -258,6 +260,7 @@ html,body{
 }
 .nav .nav-main .oneNav:hover .twoNav{
 	display: block;
+	background: rgba(0,0,0,0.1);
 }
 .nav .twoNav a{
 	color:#959595 !important;

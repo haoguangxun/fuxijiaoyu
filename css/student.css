@@ -71,6 +71,7 @@
 	height: 420px;
 	width: 100%;
 	overflow: hidden;
+	margin-top: 30px;
 }
 .style-btn-l,.style-btn-r{
 	width: 50px;
@@ -85,7 +86,7 @@
 	cursor: pointer;
 }
 .style-btn-l span,.style-btn-r span{
-	font-size: 28px;
+	font-size: 22px;
 }
 .style-btn-l{
 	left: 0;
