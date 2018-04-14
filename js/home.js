@@ -25,7 +25,7 @@ $(function(){
 	var newSwiper = new Swiper('#fls',{
 
 	});
-	$('.news-img .img').height($('.news-img .img').width().3/4);
+	$('.news-img .img').height($('.news-img .img').width()*3/4);
 })
 /*课程体系*/
 $(function(){
