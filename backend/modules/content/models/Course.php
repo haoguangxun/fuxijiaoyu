@@ -18,7 +18,7 @@ class Course extends \common\models\Course
             [['catid', 'teacherid', 'difficulty_level', 'course_number', 'course_duration', 'posids', 'sort', 'status', 'islink', 'addtime', 'updatetime'], 'integer'],
             [['price'], 'number'],
             [['name', 'subtitle'], 'string', 'max' => 80],
-            [['thumb', 'url'], 'string', 'max' => 100],
+            [['teachers', 'thumb', 'url'], 'string', 'max' => 100],
             [['keywords'], 'string', 'max' => 50],
             [['description'], 'string', 'max' => 200],
             [['author'], 'string', 'max' => 30],

@@ -12,7 +12,7 @@ use Yii;
  * @property string $name
  * @property string $subtitle
  * @property integer $teacherid
- * @property integer $teacher
+ * @property integer $teachers
  * @property string $thumb
  * @property string $keywords
  * @property string $description
@@ -48,7 +48,7 @@ class Course extends \yii\db\ActiveRecord
             [['catid', 'teacherid', 'difficulty_level', 'course_number', 'course_duration', 'posids', 'sort', 'status', 'islink', 'addtime', 'updatetime'], 'integer'],
             [['price'], 'number'],
             [['name', 'subtitle'], 'string', 'max' => 80],
-            [['thumb', 'url'], 'string', 'max' => 100],
+            [['teachers', 'thumb', 'url'], 'string', 'max' => 100],
             [['keywords'], 'string', 'max' => 50],
             [['description'], 'string', 'max' => 200],
             [['author'], 'string', 'max' => 30],
@@ -66,7 +66,7 @@ class Course extends \yii\db\ActiveRecord
             'name' => '课程名称',
             'subtitle' => '副标题',
             'teacherid' => '主讲老师ID',
-            'teacher' => '授课老师',
+            'teachers' => '授课老师',
             'thumb' => '缩略图',
             'keywords' => '关键字',
             'description' => '描述',

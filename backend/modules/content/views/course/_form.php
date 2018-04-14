@@ -29,7 +29,7 @@ use backend\modules\content\models\Category;
         ['style' => 'width:200px']
     ) ?>
 
-    <?= $form->field($model, 'teacher')->textInput(['maxlength' => 30, 'style' => 'width:200px']) ?>
+    <?= $form->field($model, 'teachers')->textInput(['maxlength' => 100, 'style' => 'width:300px']) ?>
 
     <?= $form->field($model, 'price')->textInput(['maxlength' => 11, 'style' => 'width:80px']) ?>
 

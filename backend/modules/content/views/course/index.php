@@ -47,6 +47,10 @@ $this->params['breadcrumbs'][] = $this->title;
                 'label' => '主讲老师',
                 'value' => 'teacher.realname',
             ],
+            [
+                'label' => '授课老师',
+                'value' => 'teacher',
+            ],
             'author',
             'price',
             [
