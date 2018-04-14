@@ -228,7 +228,6 @@ html,body{
 }
 .nav .nav-main li{
 	float: left;
-    padding: 0px 15px;
     color: #959595;
     height: 35px;
     line-height: 35px;
@@ -237,10 +236,15 @@ html,body{
 }
 .nav .nav-main li a{
 	color: #959595;
+	display: block;
+	padding: 0 15px;
 }
 .nav .nav-main li:hover{
 	background: #1d88db;
 	color: #ffffff;
+}
+.nav .nav-main li:hover a{
+	color: #fff;
 }
 .nav .nav-main li a.active{
 	background: #1d88db;
