@@ -19,11 +19,11 @@ $(function(){
 			}
 		});
 		/*微信*/
-		$('.right-fdd2 li:eq(2)').click(function(){
+		$('.icon-weixin').click(function(){
 			$('.weixin-content').show();
 			 event.stopPropagation();
 		});
-		$(document).click(function(){
+		$('.weixin-content').click(function(){
 			$('.weixin-content').hide();
 		});
 		/*手机端导航*/
