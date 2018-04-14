@@ -6,7 +6,10 @@ $(function(){
 	var newsWidth = $('.news-img').width()*3/4;
 	$('.news-img').height(newsWidth);
 	
-	var leg = $('.system-nav a').length;
-	var wid = $('.system-nav a').innerWidth();
-	$('.system-nav-scroll').width(wid*leg);
+	var wid = 0;
+	for(var i=0;i<$('.system-nav a').length;i++){
+		var aW = $('.system-nav a').eq(i).innerWidth()
+		wid = wid + aW;
+	};
+	$('.system-nav-scroll').width(wid);
 })
