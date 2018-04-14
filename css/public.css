@@ -132,6 +132,9 @@ html,body{
 	overflow: hidden;
 	text-align: center;
 }
+.topNav li{
+	display:inline-block;
+}
 .topNav a{
 	padding: 20px 25px;
 	color: #FFFFFF;
