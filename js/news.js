@@ -6,5 +6,5 @@ $(function(){
 		$(this).addClass('active').siblings('span').removeClass('active');
 		$('.news-list ul').eq(index).show().siblings('ul').hide();
 	});
-	$('.news-img').height($('.news-img').width()*2/3);
+	$('.news-img').height($('.news-img').width());
 })

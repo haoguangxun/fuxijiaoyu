@@ -19,9 +19,8 @@ $(function(){
 			}
 		});
 		/*微信*/
-		$('.icon-weixin').click(function(){
+		$('.right-fdd2 li:eq(2)').click(function(){
 			$('.weixin-content').show();
-			 event.stopPropagation();
 		});
 		$('.weixin-content').click(function(){
 			$('.weixin-content').hide();
