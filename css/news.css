@@ -13,8 +13,12 @@
 	padding-bottom: 20px;
 	overflow-x: auto;
 }
+.system-nav-scroll{
+	overflow: hidden;
+	margin:  0 auto;
+}
 .news .system-nav a{
-	display: inline-block;
+	float: left;
 }
 .news .system-nav span.active{
 	background: #ff9f13;
