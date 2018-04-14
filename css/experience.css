@@ -219,7 +219,7 @@
 }
 @media screen and (min-width: 100px) and (max-width: 640px) {
 	.list-banner{
-		height: 240px;
+		height:180px;
 	}
 	.experience{
 		padding: 40px 0;

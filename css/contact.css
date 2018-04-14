@@ -90,7 +90,7 @@
 }
 @media screen and (min-width: 100px) and (max-width: 640px) {
 	.list-banner{
-		height: 240px;
+		height:180px;
 	}
 	.contact{
 		padding: 50px 10px;

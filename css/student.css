@@ -274,7 +274,7 @@
 }
 @media  screen and (min-width: 100px) and (max-width: 640px) {
 	.list-banner{
-		height: 240px;
+		height:180px;
 	}
 	.student-video{
 		padding: 30px 0;
