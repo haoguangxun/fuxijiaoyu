@@ -259,6 +259,13 @@ html,body{
 .nav .nav-main .oneNav:hover .twoNav{
 	display: block;
 }
+.nav .twoNav a{
+	color:#959595 !important;
+}
+.nav .twoNav a:hover{
+	color: #fff !important;
+	background: #337ab7;
+}
 /*底部*/
 .footer{
 	background: #12244c;
