@@ -6,10 +6,4 @@ $(function(){
 		$(this).addClass('active').siblings('span').removeClass('active');
 		$('.news-list ul').eq(index).show().siblings('ul').hide();
 	});
-	var leg = $('.system-nav a').length;
-	var wid = $('.system-nav a').width();
-	console.log(leg)
-	console.log(1)
-	$('.system-nav-scroll').width(wid*leg);
 })
-alert(1)

@@ -5,4 +5,8 @@ $(function(){
 	/*新闻动态高度适应*/
 	var newsWidth = $('.news-img').width()*3/4;
 	$('.news-img').height(newsWidth);
+	
+	var leg = $('.system-nav a').length;
+	var wid = $('.system-nav a').width();
+	$('.system-nav-scroll').width(wid*leg);
 })
