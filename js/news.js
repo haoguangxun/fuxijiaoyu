@@ -9,6 +9,7 @@ $(function(){
 	var leg = $('.system-nav a').length;
 	var wid = $('.system-nav a').width();
 	console.log(leg)
-	console.log(wid)
+	console.log(1)
 	$('.system-nav-scroll').width(wid*leg);
 })
+alert(1)
