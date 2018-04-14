@@ -26,6 +26,8 @@ $(function(){
 
 	});
 	$('.news-img .img').height($('.news-img .img').width()*3/4);
+	var heights = $('.news-img').height();
+	$('.news-main').height(heights);
 })
 /*课程体系*/
 $(function(){

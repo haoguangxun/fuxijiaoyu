@@ -469,7 +469,7 @@ video::-webkit-media-controls-panel {
 }
 .news-main{
 	position: relative;
-	height: 460px;
+	height: 540px;
 	width: 100%;
 	margin-top: 100px;
 	overflow: hidden;
@@ -500,7 +500,7 @@ video::-webkit-media-controls-panel {
 	height: 230px;
 	overflow: hidden;
 	cursor: pointer;
-	margin-bottom: 25px;
+	margin-bottom: 15px;
 	background: no-repeat center center;
 	background-size: cover;
 }
@@ -515,12 +515,16 @@ video::-webkit-media-controls-panel {
 .news-img h1{
 	font-size: 16px;
 	color: #777;
-	margin-bottom: 25px;
+	margin-bottom: 15px;
 }
 .news-img p{
-	margin-bottom: 25px;
+	margin-bottom: 15px;
 	font-size: 14px;
 	color: #b5b5b5;
+	display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
 }
 .news-list{
 	font-size: 14px;
@@ -535,7 +539,7 @@ video::-webkit-media-controls-panel {
 .news-text .item{
 	padding: 18px 5px;
 	overflow: hidden;
-	max-height: 135px;
+	max-height: 170px;
 	border-bottom: 1px solid #b5b5b5;
 }
 .news-text .item:hover{
@@ -555,7 +559,9 @@ video::-webkit-media-controls-panel {
 }
 .news-text-contain{
 	float: right;
-	width: 410px;
+	width:calc(100% - 105px);
+	width:-moz-calc(100% - 105px);
+	width:-webkit-calc(100% - 105px);
 }
 .news-text-contain h2{
 	font-size: 16px;
