@@ -256,7 +256,7 @@ html,body{
 .nav .twoNav{
 	display: none;
 }
-.nav .nav-main li .oneNav:hover .twoNav{
+.nav .nav-main .oneNav:hover .twoNav{
 	display: block;
 }
 /*底部*/
