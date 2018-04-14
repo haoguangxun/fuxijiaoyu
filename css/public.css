@@ -264,7 +264,7 @@ html,body{
 }
 .nav .twoNav a:hover{
 	color: #fff !important;
-	background: #337ab7v;
+	background: #337ab7;
 }
 .nav .nav-main .twoNav a.active{
 	background: none;
