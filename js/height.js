@@ -7,6 +7,6 @@ $(function(){
 	$('.news-img').height(newsWidth);
 	
 	var leg = $('.system-nav a').length;
-	var wid = $('.system-nav a').width();
+	var wid = $('.system-nav a').innerWidth();
 	$('.system-nav-scroll').width(wid*leg);
 })
