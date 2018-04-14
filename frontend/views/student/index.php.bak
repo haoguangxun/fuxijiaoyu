@@ -18,21 +18,28 @@ $this->registerJsFile('@web/js/student.js',['depends'=>['frontend\assets\AppAsse
     <div class="wrap">
         <h1>伏羲学员采访</h1>
         <p>继承民族文化，弘扬中华精神。成为中国最有价值的教学机构</p>
+        <!--<div class="system-nav">
+            <span class="active">所有课程</span>
+            <span>古琴</span>
+            <span>书法</span>
+            <span>绘画</span>
+            <span>太极</span>
+        </div>-->
         <?php
         if(!empty($interview)){
         ?>
         <ul>
             <?php foreach ($interview as $value):?>
-            <a href="<?=Url::to(['student/view','id'=>$value['id']])?>">
-                <li>
-                    <div class="video">
-                        <img src="<?=Html::encode($value['thumb'])?>"/>
-                    </div>
-                    <div class="video-text">
-                        <p><?=Html::encode($value['title'])?></p>
-                    </div>
-                </li>
-            </a>
+            <li>
+                <div class="video">
+                    <video id="my-video" class="video-js" controls preload="auto" poster="<?=Html::encode($value['thumb'])?>" data-setup="{}">
+                        <source src="<?=Html::encode($value['video'])?>" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-text">
+                    <p><?=Html::encode($value['title'])?></p>
+                </div>
+            </li>
             <?php endforeach;?>
         </ul>
         <?php }?>
@@ -112,16 +119,16 @@ $this->registerJsFile('@web/js/student.js',['depends'=>['frontend\assets\AppAsse
         ?>
         <ul>
             <?php foreach ($prize as $value):?>
-            <a href="<?=Url::to(['student/view','id'=>$value['id']])?>">
-                <li>
-                    <div class="video">
-                        <img src="<?=Html::encode($value['thumb'])?>"/>
-                    </div>
-                    <div class="video-text">
-                        <p><?=Html::encode($value['title'])?></p>
-                    </div>
-                </li>
-            </a>
+            <li>
+                <div class="video">
+                    <video id="my-video" class="video-js" controls preload="auto" poster="<?=Html::encode($value['thumb'])?>" data-setup="{}">
+                        <source src="<?=Html::encode($value['video'])?>" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-text">
+                    <p><?=Html::encode($value['title'])?></p>
+                </div>
+            </li>
             <?php endforeach;?>
         </ul>
         <?php }?>

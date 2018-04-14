@@ -53,8 +53,8 @@ class CourseController extends Controller
 
         if($parent['id'] == 15){//课程体系
             //校区环境
-            $campus = News::getList(41,3);
-            $temp_params['campus'] = $campus;
+            //$campus = News::getList(41,3);
+            //$temp_params['campus'] = $campus;
 
         }elseif($parent['id'] == 42){//伏羲体验
             //热门课程

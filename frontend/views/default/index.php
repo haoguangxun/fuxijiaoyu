@@ -18,7 +18,7 @@ $this->registerJsFile('@web/js/bootstrap.min.js',['depends'=>['frontend\assets\A
             <?php
             if(!empty($ad)) foreach ($ad as $key => $value) :
             ?>
-            <div class="swiper-slide"><img src="<?=$value['fileurl']?>"/></div>
+            <div class="swiper-slide"><a href="<?=$value['linkurl']?>"><img src="<?=$value['fileurl']?>"/></a></div>
             <?php
             endforeach;
             ?>
@@ -381,12 +381,12 @@ $this->registerJsFile('@web/js/bootstrap.min.js',['depends'=>['frontend\assets\A
             </a>
         </li>
         <li>
-            <a href="<?= Url::to(['course/list','cid'=>'15'])?>#campus">
+            <a href="<?= Url::to(['about/index'])?>#environment">
                 <div class="icon-link-main">
                     <div class="icon-link-main-img"><img src="img/icon-link3.png"/></div>
                     <div class="icon-link-main-text">
-                        <h4>校区环境</h4>
-                        <h5>Campus environment</h5>
+                        <h4>学院环境</h4>
+                        <h5>College environment</h5>
                     </div>
                 </div>
             </a>

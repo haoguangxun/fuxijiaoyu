@@ -15,149 +15,36 @@ $this->registerJsFile('@web/js/about.js',['depends'=>['frontend\assets\AppAsset'
     <div class="wrap">
         <ul>
             <li>
-                <a href="#introduce">
-                    <span>P</span>
-                    <!--<p>1990年古琴独奏CD《落霞流水》获台北“金鼎奖”。</p>-->
-                    <h5>品牌介绍</h5>
-                </a>
-            </li>
-            <li>
-                <a href="#process">
-                    <span>L</span>
-                    <!--<p>1990年古琴独奏CD《落霞流水》获台北“金鼎奖”。</p>-->
-                    <h5>品牌历程</h5>
-                </a>
-            </li>
-            <li>
                 <a href="#culture">
-                    <span>Q</span>
+                    <span>C</span>
                     <!--<p>1990年古琴独奏CD《落霞流水》获台北“金鼎奖”。</p>-->
                     <h5>企业文化</h5>
                 </a>
             </li>
             <li>
-                <a href="#Memorabilia">
-                    <span>D</span>
+                <a href="#business">
+                    <span>B</span>
                     <!--<p>1990年古琴独奏CD《落霞流水》获台北“金鼎奖”。</p>-->
-                    <h5>大事件</h5>
+                    <h5>相关业务</h5>
                 </a>
             </li>
+            <li>
+                <a href="#environment">
+                    <span>E</span>
+                    <!--<p>1990年古琴独奏CD《落霞流水》获台北“金鼎奖”。</p>-->
+                    <h5>学院环境</h5>
+                </a>
+            </li>
+            <!--<li>
+                <a href="#process">
+                    <span>L</span>
+                    <h5>品牌历程</h5>
+                </a>
+            </li>-->
         </ul>
     </div>
 </div>
-<div id="introduce" class="introduce">
-    <div class="wrap">
-    	<div class="home-title">
-            <h2>INTROODUCES</h2>
-            <h1><?= Html::encode($page[27]['title'])?></h1>
-            <span></span>
-       </div>
-        <div class="introduce-text">
-            <?= HtmlPurifier::process($page[27]['content'])?>
-        </div>
-        <?php
-        if(!empty($brandAd))?>
-        <ul class="introduce-img">
-            <?php
-            if(!empty($brandAd)) foreach ($brandAd as $key => $value) :
-                ?>
-                <li>
-                    <div class="introduce-img-main"  style="background-image: url(<?=$value['fileurl']?>);"></div>
-                </li>
-                <?php
-            endforeach;
-            ?>
-        </ul>
-    </div>
-</div>
-<div id="process" class="process">
-    <div class="wrap">
-        <div class="home-title">
-            <h2>BRAND PROCESS</h2>
-            <h1>品牌历程</h1>
-            <span></span>
-        </div>
-        <div class="process-main">
-            <div class="process-main-scroll">
-                <?php
-                if(!empty($brandProcess1)){
-                ?>
-                <div class="process-main-item">
-                    <div class="process-main-left">
-                        <ul>
-                            <?php
-                            foreach ($brandProcess1 as $value) :
-                            ?>
-                            <li>
-                                <div style="background-image: url(<?= Html::encode($value['thumb'])?>);"></div>
-                            </li>
-                            <?php
-                            endforeach;
-                            ?>
-                        </ul>
-                    </div>
-                    <div class="process-main-right">
-                        <div class="scroll-box">
-                            <ul>
-                                <?php
-                                foreach ($brandProcess1 as $value) :
-                                    ?>
-                                    <li>
-                                        <a href="<?= Url::to(['news/view','id'=>$value['id']])?>"><?= Html::encode($value['title'])?></a>
-                                    </li>
-                                    <?php
-                                endforeach;
-                                ?>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <?php }
 
-                if(!empty($brandProcess2)){
-                ?>
-                <div class="process-main-item">
-                    <div class="process-main-left">
-                        <ul>
-                            <?php
-                            foreach ($brandProcess2 as $value) :
-                                ?>
-                                <li>
-                                    <div style="background-image: url(<?= Html::encode($value['thumb'])?>);"></div>
-                                </li>
-                                <?php
-                            endforeach;
-                            ?>
-                        </ul>
-                    </div>
-                    <div class="process-main-right">
-                        <div class="scroll-box">
-                            <ul>
-                                <?php
-                                foreach ($brandProcess2 as $value) :
-                                    ?>
-                                    <li>
-                                        <a href="<?= Url::to(['news/view','id'=>$value['id']])?>"><?= Html::encode($value['title'])?></a>
-                                </li>
-                                <?php
-                                endforeach;
-                                ?>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <?php }?>
-            </div>
-            <?php
-            if(!empty($brandProcess2)){
-            ?>
-            <div class="scroll-btn">
-                <span class="btnL iconfont icon-arrowL"></span><span class="btnR iconfont icon-arrowR"></span>
-            </div>
-            <?php }?>
-        </div>
-    </div>
-</div>
 <div id="culture" class="culture">
     <div class="wrap">
         <div class="home-title">
@@ -194,36 +81,23 @@ $this->registerJsFile('@web/js/about.js',['depends'=>['frontend\assets\AppAsset'
         </div>
     </div>
 </div>
-<div id="Memorabilia" class="Memorabilia">
+
+<div id="business" class="aText">
     <div class="wrap">
-        <div class="home-title">
-            <h2>BIG EVENT</h2>
-            <h1>大事件</h1>
-            <span></span>
-        </div>
-        <?php
-        if(!empty($memorabilia)){
-        ?>
-        <ul>
-            <?php
-            foreach ($memorabilia as $value) :
-                ?>
-                <li>
-                    <div class="img-box">
-                        <img src="<?= Html::encode($value['thumb'])?>"/>
-                    </div>
-                    <a href="<?= Url::to(['news/view','id'=>$value['id']])?>"><?= Html::encode($value['title'])?></a>
-                </li>
-                <?php
-            endforeach;
-            ?>
-        </ul>
-        <?php }?>
+        <h2><?= Html::encode($page[31]['title'])?> Related business</h2>
+        <?= HtmlPurifier::process($page[31]['content'])?>
     </div>
 </div>
-<div class="aText">
+
+<div id="environment" class="culture">
     <div class="wrap">
-        <h2><?= Html::encode($page[31]['title'])?> Why choose us</h2>
-        <?= HtmlPurifier::process($page[31]['content'])?>
+        <div class="home-title">
+            <h2>College environment</h2>
+            <h1><?= Html::encode($page[60]['title'])?></h1>
+            <span></span>
+        </div>
+        <div class="about-text">
+            <?= HtmlPurifier::process($page[60]['content'])?>
+        </div>
     </div>
 </div>

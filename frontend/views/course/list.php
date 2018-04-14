@@ -35,58 +35,7 @@ $this->registerJsFile('http://v3.jiathis.com/code/jia.js',['depends'=>['frontend
                 <?php endforeach;
             }?>
         </div>
-        <!--<div class="category">
-            <div class="form-select">
-                <div class="btn-group">
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="contain">最新</span> <span class="iconfont icon-bottom"></span>
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><a href="javascript:;">1</a></li>
-                        <li><a href="javascript:;">2</a></li>
-                    </ul>
-                </div>
-                <div class="btn-group">
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="contain">课程体系</span> <span class="iconfont icon-bottom"></span>
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><a href="javascript:;">1</a></li>
-                        <li><a href="javascript:;">2</a></li>
-                    </ul>
-                </div>
-                <div class="btn-group">
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="contain">内容类型</span> <span class="iconfont icon-bottom"></span>
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><a href="javascript:;">1</a></li>
-                        <li><a href="javascript:;">2</a></li>
-                    </ul>
-                </div>
-                <div class="btn-group">
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="contain">难度等级</span> <span class="iconfont icon-bottom"></span>
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><a href="javascript:;">1</a></li>
-                        <li><a href="javascript:;">2</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="img-btn">
-            <ul>
-                <li>
-                    <div style="background-image: url(/img/banner-home1.jpg);">古琴初级班</div>
-                </li>
-                <li>
-                    <div style="background-image: url(/img/banner-home1.jpg);">古琴中级班</div>
-                </li>
-                <li>
-                    <div style="background-image: url(/img/banner-home1.jpg);">古琴高级班</div>
-                </li>
-                <li>
-                    <div style="background-image: url(/img/banner-home1.jpg);">古研究生老师班</div>
-                </li>
-            </ul>
-        </div>-->
+
         <?php
         if(!empty($data['data'])){
         ?>
@@ -115,28 +64,5 @@ $this->registerJsFile('http://v3.jiathis.com/code/jia.js',['depends'=>['frontend
         <?php if($pages):?>
             <div class="page"><?= LinkPager::widget(['pagination' => $pages]);?></div>
         <?php endif;?>
-    </div>
-</div>
-<a name="campus"></a>
-<div class="campus">
-    <div class="wrap">
-        <h1>CAMPUS ENVIRONMENT <span>/ 校区环境</span></h1>
-        <div class="line"><span></span></div>
-    </div>
-    <ul class="campus-img">
-        <?php foreach ($campus as $value):?>
-        <li>
-            <div style="background-image: url(<?= Html::encode($value['thumb'])?>);"></div>
-        </li>
-        <?php endforeach;?>
-    </ul>
-    <div class="jiathis_style_32x32">
-        <div class="share-main">
-            <span style="color: #4481b8; float: left;margin-top: 6px;">分享到：</span>
-            <a class="jiathis_button_qzone"></a>
-            <a class="jiathis_button_tsina"></a>
-            <a class="jiathis_button_tqq"></a>
-            <a class="jiathis_button_weixin"></a>
-        </div>
     </div>
 </div>
