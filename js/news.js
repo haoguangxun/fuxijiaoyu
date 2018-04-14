@@ -8,5 +8,7 @@ $(function(){
 	});
 	var leg = $('.system-nav a').length;
 	var wid = $('.system-nav a').width();
+	console.log(leg)
+	console.log(wid)
 	$('.system-nav-scroll').width(wid*leg);
 })
