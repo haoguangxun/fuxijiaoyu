@@ -755,9 +755,6 @@ video::-webkit-media-controls-panel {
 	#fls{
 		display: block;
 	}
-	.banner{
-		height: 240px;
-	}
 	.about{
 		margin-top: 20px;
 	}
