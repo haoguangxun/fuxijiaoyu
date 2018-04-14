@@ -31,7 +31,7 @@ $this->registerJsFile('http://v3.jiathis.com/code/jia.js',['depends'=>['frontend
             <div class="details-text">
                 <h1><?=Html::encode($data['name'])?></h1>
                 <div class="details-text-content">
-                    <span>主讲老师：<?=Html::encode($teacher['realname'])?></span>
+                    <span>主讲老师：<?php if($data['teacher']){ echo Html::encode($data['teacher']); }else{ echo Html::encode($teacher['realname']);}?></span>
                     <span><?=Html::encode($data['subtitle'])?></span>
                 </div>
                 <div class="cost">

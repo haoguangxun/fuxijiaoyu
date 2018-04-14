@@ -12,6 +12,7 @@ use Yii;
  * @property string $name
  * @property string $subtitle
  * @property integer $teacherid
+ * @property integer $teacher
  * @property string $thumb
  * @property string $keywords
  * @property string $description
@@ -65,6 +66,7 @@ class Course extends \yii\db\ActiveRecord
             'name' => '课程名称',
             'subtitle' => '副标题',
             'teacherid' => '主讲老师ID',
+            'teacher' => '授课老师',
             'thumb' => '缩略图',
             'keywords' => '关键字',
             'description' => '描述',
