@@ -260,7 +260,7 @@ html,body{
 }
 .nav .nav-main .oneNav:hover .twoNav{
 	display: block;
-	background: rgba(0,0,0,0.1);
+	background: #fafafa;
 }
 .nav .twoNav a{
 	color:#959595 !important;

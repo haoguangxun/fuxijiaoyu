@@ -11,6 +11,10 @@
 .news .system-nav{
 	text-align: center;
 	padding-bottom: 20px;
+	overflow-x: scroll;
+}
+.news .system-nav a{
+	display: inline-block;
 }
 .news .system-nav span.active{
 	background: #ff9f13;
@@ -111,6 +115,7 @@
 }
 .newList-main img{
 	max-width: 100%;
+	height: auto !important;
 }
 .newList-main h2,.newList-main p{
 	color: #999;

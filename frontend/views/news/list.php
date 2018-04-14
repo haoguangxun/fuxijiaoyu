@@ -19,20 +19,22 @@ $this->registerJsFile('@web/js/height.js',['depends'=>['frontend\assets\AppAsset
             <span></span>
         </div>
         <div class="system-nav">
-            <a href="<?=Url::to(['news/list','cid'=>$pid])?>">
-                <span <?php if($pid == 0) echo "class='active'";?>>全部</span>
-            </a>
-            <?php
-            if(!empty($sonCategory)){
-                foreach ($sonCategory as $value):
-                ?>
-                <a href="<?=Url::to(['news/list','cid'=>$value['id']])?>">
-                    <span <?php if($cid == $value['id']) echo "class='active'";?>>
-                        <?= Html::encode($value['catname'])?>
-                    </span>
-                </a>
-                <?php endforeach;
-            }?>
+        	<div class="system-nav-scroll">
+	            <a href="<?=Url::to(['news/list','cid'=>$pid])?>">
+	                <span <?php if($pid == 0) echo "class='active'";?>>全部</span>
+	            </a>
+	            <?php
+	            if(!empty($sonCategory)){
+	                foreach ($sonCategory as $value):
+	                ?>
+	                <a href="<?=Url::to(['news/list','cid'=>$value['id']])?>">
+	                    <span <?php if($cid == $value['id']) echo "class='active'";?>>
+	                        <?= Html::encode($value['catname'])?>
+	                    </span>
+	                </a>
+	                <?php endforeach;
+	            }?>
+	        </div>
         </div>
     </div>
     <?php

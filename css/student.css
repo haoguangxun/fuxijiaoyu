@@ -351,4 +351,7 @@
 	.student-product ul li .video{
 		height: 160px;
 	}
+	.style-run li .main p{
+		font-size: 12px;
+	}
 }

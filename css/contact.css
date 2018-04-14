@@ -114,4 +114,7 @@
 	#allmap{
 		height: 300px;
 	}
+	.contact-input-left input{
+		width: 100%;
+	}
 }
