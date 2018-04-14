@@ -487,9 +487,13 @@ video::-webkit-media-controls-panel {
 	height: 100%;
 }
 .news-img,.news-text{
-	width: 50%;
+	width: 38%;
 	float: left;
 	box-sizing: border-box;
+}
+.news-text{
+	width: 60%;
+	float: right;
 }
 .news-img .img{
 	width: 100%;
