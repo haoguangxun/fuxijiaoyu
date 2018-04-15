@@ -254,8 +254,8 @@
 }.student-product ul li:hover .video-text{
 	border-bottom: 2px solid #ef4136;
 }
-.student-product ul li .video{
-	height: 230px;
+.student-product ul li .video img{
+	width: 100%;
 }
 .student-product ul li .my-video-dimensions{
 	width: 100%;
