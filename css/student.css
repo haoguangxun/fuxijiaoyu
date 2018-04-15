@@ -46,8 +46,8 @@
 	margin:5px 1%;
 	box-shadow:0 0 8px #b3b3b3;
 }
-.student-video ul li .video{
-	height: 230px;
+.student-video ul li .video img{
+	width: 100%;
 }
 .student-video ul li .my-video-dimensions{
 	width: 100%;
