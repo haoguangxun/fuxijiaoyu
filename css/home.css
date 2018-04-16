@@ -316,6 +316,7 @@ video::-webkit-media-controls-panel {
 	height: 100%;
 	background: #144E8D;
 	z-index: 1;
+	object-fit: cover;
 }
 .video-img-show{
 	position: absolute;
@@ -358,14 +359,14 @@ video::-webkit-media-controls-panel {
 	float: left;
 	width: 50%;
 	text-align: center;
-	padding: 0 5%;
+	padding: 0 10%;
 	box-sizing: border-box;
 }
 .video-more p{
 	color: #FFFFFF;
 	font-size: 18px;
 	line-height: 1.5em;
-	margin: 3% 0 5%;
+	margin: 4% 0 6%;
 }
 .video-icon{
 	margin: 5% 0;
