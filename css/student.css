@@ -71,7 +71,7 @@
 	height: 420px;
 	width: 100%;
 	overflow: hidden;
-	margin-top: 30px;
+	margin-top: 38px;
 }
 .style-btn-l,.style-btn-r{
 	width: 50px;
@@ -118,8 +118,8 @@
 	top:0;
 	left: 0;
 	z-index: 1;
-	width: 100%;
-	height: 100%;
+	width: 99%;
+	height: 98%;
 }
 .style-run li .main{
 	z-index: 2;
