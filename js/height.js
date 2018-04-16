@@ -3,8 +3,8 @@ $(function(){
 	var wid = $('.teacher-img').width()*3/4;
 	$('.teacher-img').height(wid);
 	/*新闻动态高度适应*/
-	var newsWidth = $('.news-img').width()*3/4;
-	$('.news-img').height(newsWidth);
+	var newsWidth = $('.news-img').width();
+	$('.news-img').height(newsWidth/1.56);
 	
 	var wid = 0;
 	for(var i=0;i<$('.system-nav a').length;i++){
