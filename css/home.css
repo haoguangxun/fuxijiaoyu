@@ -297,7 +297,7 @@ video::-webkit-media-controls-panel {
 	bottom: -50px !important;
 }
 .grow{
-	height: 400px;
+	height: 380px;
 	width: 100%;
 	background: #144e8d;
 	border-bottom:4px solid  #feba29;
@@ -488,12 +488,12 @@ video::-webkit-media-controls-panel {
 	height: 100%;
 }
 .news-img,.news-text{
-	width: 42%;
+	width: 45%;
 	float: left;
 	box-sizing: border-box;
 }
 .news-text{
-	width: 56%;
+	width: 52%;
 	float: right;
 }
 .news-img .img{
