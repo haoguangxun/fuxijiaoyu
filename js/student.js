@@ -26,7 +26,7 @@ $(function(){
 	var hg = $('.style-run li img').height();
 	console.log(hg);
 	console.log($('.style-run li img'));
-	$('.style-run li .main').height(hg);
+	$('.style-run li .main').innerHeight(hg);
 	$('.style-run li').height(hg);
 	$('.style-run').height(2*hg);
 	$('.style-run-scroll').height(2*hg);
