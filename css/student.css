@@ -68,7 +68,6 @@
 }
 .style-run{
 	position: relative;
-	height: 420px;
 	width: 100%;
 	overflow: hidden;
 	margin-top: 38px;
@@ -119,7 +118,7 @@
 	left: 0;
 	z-index: 1;
 	width: 99%;
-	height: 98%;
+	height: auto;
 }
 .style-run li .main{
 	z-index: 2;
