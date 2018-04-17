@@ -23,14 +23,15 @@ $(function(){
 			}
 		}
 	});
-	var hg = $('.style-run li img').height();
-	console.log(hg);
-	console.log($('.style-run li img'));
-	$('.style-run li .main').innerHeight(hg);
-	$('.style-run li').height(hg);
-	$('.style-run').height(2*hg);
-	$('.style-run-scroll').height(2*hg);
-	$('.style-run-item').height(2*hg);
+	var rImg = $('.style-run li img');
+	rImg.load(function(){
+		var hg = rImg.height();
+		$('.style-run li .main').innerHeight(hg);
+		$('.style-run li').height(hg);
+		$('.style-run').height(2*hg);
+		$('.style-run-scroll').height(2*hg);
+		$('.style-run-item').height(2*hg);
+	})
 })
 $(function(){
 	var length = $('.experience-run li').length;
