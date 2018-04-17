@@ -111,6 +111,7 @@
     float: left;
     cursor: pointer;
     position: relative;
+    overflow: hidden;
 }
 .style-run li img,.style-run li .main{
 	position: absolute;

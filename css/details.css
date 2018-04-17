@@ -251,7 +251,7 @@
 		float: none;
 	}
 	.details-top-img .video{
-		height: 240px;
+		height: auto;
 	}
 	.details-top .fun{
 		overflow: hidden;

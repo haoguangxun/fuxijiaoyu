@@ -6,7 +6,9 @@ $(function(){
 		var index = $(this).index();
 		$('.details-tab-content').eq(index).show().siblings('.details-tab-content').hide();
 	})
-
+	
+	$('.details-top-img .video').height($('.details-top-img .video').width()/1.36);
+	
 	//收藏
 	$('.shoucang').click(function(){
 		var id = $(this).attr('id');
