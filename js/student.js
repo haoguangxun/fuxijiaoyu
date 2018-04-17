@@ -26,9 +26,9 @@ $(function(){
 	var hg = $('.style-run li img').height();
 	$('.style-run li .main').height(hg);
 	$('.style-run li').height(hg);
-	$('.style-run').height(2hg);
-	$('.style-run-scroll').height(2hg);
-	$('.style-run-item').height(2hg);
+	$('.style-run').height(2*hg);
+	$('.style-run-scroll').height(2*hg);
+	$('.style-run-item').height(2*hg);
 })
 $(function(){
 	var length = $('.experience-run li').length;
