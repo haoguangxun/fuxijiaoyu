@@ -63,15 +63,21 @@ $(function(){
 	$('.teachers-banner ul').hide();
 	$('.teachers-banner ul:first').show();
 	var ulNum = $('.teachers-banner ul').length;
-	for(var i=0;i<ulNum;i++){
-		var span = document.createElement('span');
-		$('.pagination').append(span);
-	};
-	$('.pagination span:first').addClass('active');
-	$('.pagination span').click(function(){
-		$(this).addClass('active').siblings().removeClass('active');
-		$('.teachers-banner ul').eq($(this).index()).fadeIn(200).siblings('.teachers-banner ul').fadeOut(200);
-	})
+	var n =0;
+	$('.t-b-r').click(function(){
+		n++;
+		if(n>1){
+			n=1;
+		}
+		$('.teachers-banner ul').eq(n).fadeIn(200).siblings('.teachers-banner ul').fadeOut(200);
+	});
+	$('.t-b-l').click(function(){
+		n--;
+		if(n<0){
+			n=0;
+		}
+		$('.teachers-banner ul').eq(n).fadeIn(200).siblings('.teachers-banner ul').fadeOut(200);
+	});
 });
 /*学员*/
 $(function(){
