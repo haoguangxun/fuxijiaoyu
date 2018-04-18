@@ -225,16 +225,12 @@ video::-webkit-media-controls-panel {
 	transform: translateX(-50%);
 }
 .teachers-banner .pagination span{
-	width: 10px;
-	height: 10px;
-	background: #acacac;
-	border-radius: 50%;
-	margin: 0 10px;
+	width: 34px;
 	display: inline-block;
 	cursor: pointer;
 }
-.teachers-banner .pagination span.active{
-	background: #0858aa;
+.teachers-banner .pagination span img{
+	width: 100%;
 }
 .teachers-banner ul{
 	height: 420px;
