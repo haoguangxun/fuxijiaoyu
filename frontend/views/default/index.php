@@ -142,10 +142,8 @@ $this->registerJsFile('@web/js/bootstrap.min.js',['depends'=>['frontend\assets\A
                 endforeach;
                 ?>
             </ul>
-            <div class="pagination">
-            	<span class="t-b-l"><img src="../img/t-b-l.png"/></span>
-            	<span class="t-b-r"><img src="../img/t-b-r.png"/></span>
-            </div>
+        	<span class="t-b-l"><img src="../img/t-b-l.png"/></span>
+        	<span class="t-b-r"><img src="../img/t-b-r.png"/></span>
         </div>
     </div>
 </div>

@@ -218,18 +218,30 @@ video::-webkit-media-controls-panel {
 	height: 460px;
 	padding: 0 0 40px;
 }
-.teachers-banner .pagination{
+.teachers-banner .t-b-l{
 	position: absolute;
-	bottom: -20px;
-	left: 50%;
-	transform: translateX(-50%);
-}
-.teachers-banner .pagination span{
+	left: -20px;
+	z-index: 2;
+	top: 50%;
+	transform: translateY(-50%);
 	width: 34px;
 	display: inline-block;
 	cursor: pointer;
 }
-.teachers-banner .pagination span img{
+.teachers-banner .t-b-l img{
+	width: 100%;
+}
+.teachers-banner .t-b-r{
+	position: absolute;
+	right: -20px;
+	z-index: 2;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 34px;
+	display: inline-block;
+	cursor: pointer;
+}
+.teachers-banner .t-b-r img{
 	width: 100%;
 }
 .teachers-banner ul{
