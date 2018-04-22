@@ -214,16 +214,15 @@ video::-webkit-media-controls-panel {
 }
 .teachers-banner{
 	position: relative;
-	overflow: hidden;
 	height: 460px;
 	padding: 0 0 40px;
 }
 .teachers-banner .t-b-l{
 	position: absolute;
-	left: -20px;
+	left: -36px;
 	z-index: 2;
 	top: 50%;
-	transform: translateY(-50%);
+	transform: translateY(-100%);
 	width: 34px;
 	display: inline-block;
 	cursor: pointer;
@@ -233,10 +232,10 @@ video::-webkit-media-controls-panel {
 }
 .teachers-banner .t-b-r{
 	position: absolute;
-	right: -20px;
+	right: -36px;
 	z-index: 2;
 	top: 50%;
-	transform: translateY(-50%);
+	transform: translateY(-100%);
 	width: 34px;
 	display: inline-block;
 	cursor: pointer;
