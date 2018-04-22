@@ -66,8 +66,8 @@ $(function(){
 	var n =0;
 	$('.t-b-r').click(function(){
 		n++;
-		if(n>1){
-			n=1;
+		if(n>ulNum-1){
+			n=ulNum-1;
 		}
 		$('.teachers-banner ul').eq(n).fadeIn(200).siblings('.teachers-banner ul').fadeOut(200);
 	});
