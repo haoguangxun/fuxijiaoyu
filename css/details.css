@@ -206,6 +206,10 @@
 	color: #8c8c8c;
 	font-size: 14px;
 }
+.details-tab-content img{
+	max-width: 100% !important;
+	height: auto !important; 
+}
 .details-teacher-title{
 	height: 50px;
 	line-height: 50px;

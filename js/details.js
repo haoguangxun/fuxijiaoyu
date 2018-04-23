@@ -7,7 +7,7 @@ $(function(){
 		$('.details-tab-content').eq(index).show().siblings('.details-tab-content').hide();
 	})
 	
-	$('.details-top-img .video').height($('.details-top-img .video').width()/1.36);
+	$('.details-top-img .video').height($('.details-top-img .video').width()/1.5);
 	
 	//收藏
 	$('.shoucang').click(function(){
