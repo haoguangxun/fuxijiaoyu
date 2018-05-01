@@ -24,6 +24,11 @@
     margin: 50px 0 25px;
     text-align: center;
 }
+.student-video .video-text p{
+	text-align: left;
+	height: 48px;
+    overflow: hidden;
+}
 .system-nav span.active {
     background: #ef4136;
     color: #fff;
@@ -55,7 +60,7 @@
 }
 .student-video ul li .video-text{
 	background: #f7f7f7;
-	padding: 25px 0;
+	padding: 25px 15px;
 	color: #6b6b6b;
 	font-size: 14px;
 	text-align: center;
