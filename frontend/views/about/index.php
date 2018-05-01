@@ -16,21 +16,21 @@ $this->registerJsFile('@web/js/about.js',['depends'=>['frontend\assets\AppAsset'
         <ul>
             <li>
                 <a href="#culture">
-                    <span>C</span>
+                    <span>Q</span>
                     <!--<p>1990年古琴独奏CD《落霞流水》获台北“金鼎奖”。</p>-->
                     <h5>企业文化</h5>
                 </a>
             </li>
             <li>
                 <a href="#business">
-                    <span>B</span>
+                    <span>X</span>
                     <!--<p>1990年古琴独奏CD《落霞流水》获台北“金鼎奖”。</p>-->
                     <h5>相关业务</h5>
                 </a>
             </li>
             <li>
                 <a href="#environment">
-                    <span>E</span>
+                    <span>X</span>
                     <!--<p>1990年古琴独奏CD《落霞流水》获台北“金鼎奖”。</p>-->
                     <h5>学院环境</h5>
                 </a>
@@ -84,7 +84,11 @@ $this->registerJsFile('@web/js/about.js',['depends'=>['frontend\assets\AppAsset'
 
 <div id="business" class="aText">
     <div class="wrap">
-        <h2><?= Html::encode($page[31]['title'])?> Related business</h2>
+    	<div class="home-title">
+            <h2>Related business</h2>
+            <h1><?= Html::encode($page[31]['title'])?></h1>
+            <span></span>
+       </div>
         <?= HtmlPurifier::process($page[31]['content'])?>
     </div>
 </div>

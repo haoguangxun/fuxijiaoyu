@@ -15,7 +15,7 @@
 }
 .about-nav li{
 	float: left;
-	width: 25%;
+	width: 33.33%;
 	text-align: center;
 	cursor: pointer;
 	box-sizing: border-box;
@@ -29,13 +29,10 @@
 	left: 0;
 }
 .about-nav li:nth-child(2){
-	left: 25%;
+	left: 33.33%;
 }
 .about-nav li:nth-child(3){
-	left: 50%;
-}
-.about-nav li:nth-child(4){
-	left: 75%;
+	left: 66.66%;
 }
 .about-nav li span{
 	width: 120px;
@@ -59,7 +56,7 @@
 }
 .about-nav li h5{
 	color: #005d92;
-	margin-top: 15px;
+	margin-top: 30px;
 	font-size: 16px;
 }
 .about-nav li p{
@@ -71,7 +68,7 @@
 .about-nav li:hover{
 	border: 1px solid #e5e5e5;
 	background: url(../img/about/about-nav.jpg) no-repeat center top/contain #FFFFFF;
-	padding: 50px 20px 20px;
+	padding: 103px 20px 30px;
 	top: -126px;
 }
 .about-nav li:hover p{
