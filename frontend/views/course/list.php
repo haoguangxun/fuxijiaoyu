@@ -69,7 +69,6 @@ $this->registerJsFile('http://v3.jiathis.com/code/jia.js',['depends'=>['frontend
 <script type="text/javascript">
 	$(function(){
 		$('.system .experience-video li .video-content').height($('.system .experience-video li .video-content').width()/1.5);
-		$('.online li .video-content').height($('.online li .video-content').width()/1.5);
 	})
 	
 </script>

@@ -118,3 +118,8 @@ $this->registerCssFile('@web/css/curriculum.css',['depends'=>['frontend\assets\A
 <?php if($pages):?>
     <div class="page"><?= LinkPager::widget(['pagination' => $pages]);?></div>
 <?php endif;?>
+<script type="text/javascript">
+	$(function(){
+		$('.online li .video-content').height($('.online li .video-content').width()/1.5);
+	})
+</script>
