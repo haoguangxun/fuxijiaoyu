@@ -479,6 +479,11 @@ html,body{
     color: #fff;
     margin: 0 0 6px 0;
 }
+@media only screen and (min-width: 641px) and (max-width:1200px) {
+	.wrap{
+		width: 100%;
+	}
+}
 /*适配*/
 @media only screen and (min-width: 100px) and (max-width: 640px) {
 	.wrap{
