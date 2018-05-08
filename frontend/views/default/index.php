@@ -103,7 +103,13 @@ $this->registerJsFile('@web/js/bootstrap.min.js',['depends'=>['frontend\assets\A
                     <div class="course-icon">
                         <span style="background-image: url(<?= $value['thumb'] ?>);"></span>
                     </div>
-                    <span class="course-top"><?= $value['title'] ?></span>
+                    <span class="course-top">
+                        <?php if($value['url']){?>
+                            <a href="<?=$value['url']?>"><?= $value['title'] ?></a>
+                        <?php }else{?>
+                            <?= $value['title'] ?>
+                        <?php }?>
+                    </span>
                     <p><?= $value['subtitle'] ?></p>
                     <a href="tencent://message/?uin=2733086100&amp;Site=QQ咨询&amp;Menu=yes" class="course-button">咨询</a>
                 </li>
