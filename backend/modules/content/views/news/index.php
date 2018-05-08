@@ -39,7 +39,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     'width'=>'40%',
                 ],
                 'value' => function($model){
-                    return "<span title='$model->title'>".mb_substr($model->title,0,20,'utf-8')."</span>";
+                    return "<span title='$model->title'>".mb_substr($model->title,0,30,'utf-8')."</span>";
                 },
                 'format' => 'raw'
             ],
