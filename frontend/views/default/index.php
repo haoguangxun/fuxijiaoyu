@@ -79,7 +79,13 @@ $this->registerJsFile('@web/js/bootstrap.min.js',['depends'=>['frontend\assets\A
                         <div class="course-icon">
                             <span style="background-image: url(<?= $value['thumb'] ?>);"></span>
                         </div>
-                        <span class="course-top"><?= $value['title'] ?></span>
+                        <span class="course-top">
+                            <?php if($value['url']){?>
+                                <a href="<?=$value['url']?>"><?= $value['title'] ?></a>
+                            <?php }else{?>
+                                <?= $value['title'] ?>
+                            <?php }?>
+                        </span>
                         <p><?= $value['subtitle'] ?></p>
                         <a href="tencent://message/?uin=2733086100&amp;Site=QQ咨询&amp;Menu=yes" class="course-button">咨询</a>
                     </li>
@@ -205,7 +211,7 @@ $this->registerJsFile('@web/js/bootstrap.min.js',['depends'=>['frontend\assets\A
                 <li>
                     <div class="news-img">
                         <?php
-                        if(!empty($industryTrendsPic)) foreach ($industryTrendsPic as $key => $value) :
+                        if(!empty($newsTrendsPic)) foreach ($newsTrendsPic as $key => $value) :
                         ?>
                         <div class="img" style="background-image: url(<?= $value['thumb'] ?>);"></div>
                         <h1><?= $value['title'] ?></h1>
@@ -217,7 +223,7 @@ $this->registerJsFile('@web/js/bootstrap.min.js',['depends'=>['frontend\assets\A
                     </div>
                     <div class="news-text">
                         <?php
-                        if(!empty($industryTrends)) foreach ($industryTrends as $key => $value) :
+                        if(!empty($newsTrends)) foreach ($newsTrends as $key => $value) :
                         ?>
                         <a href="<?= Url::to(['news/view','id'=>$value['id']])?>">
                         <div class="item">
@@ -239,7 +245,7 @@ $this->registerJsFile('@web/js/bootstrap.min.js',['depends'=>['frontend\assets\A
                 <li>
                     <div class="news-img">
                         <?php
-                        if(!empty($industryTrendsPic)) foreach ($industryTrendsPic as $key => $value) :
+                        if(!empty($newsTrendsPic)) foreach ($newsTrendsPic as $key => $value) :
                         ?>
                         <div class="img"><img src="<?= $value['thumb'] ?>"/></div>
                         <h1><?= $value['title'] ?></h1>
@@ -251,7 +257,7 @@ $this->registerJsFile('@web/js/bootstrap.min.js',['depends'=>['frontend\assets\A
                     </div>
                     <div class="news-text">
                         <?php
-                        if(!empty($industryTrends)) foreach ($industryTrends as $key => $value) :
+                        if(!empty($newsTrends)) foreach ($newsTrends as $key => $value) :
                         ?>
                         <a href="<?= Url::to(['news/view','id'=>$value['id']])?>">
                         <div class="item">
@@ -276,7 +282,7 @@ $this->registerJsFile('@web/js/bootstrap.min.js',['depends'=>['frontend\assets\A
                     <div class="news-main-btn-l"><span class="iconfont icon-arrowL"></span></div>
                     <div class="news-main-btn-r"><span class="iconfont icon-arrowR"></span></div>
                 </div>
-                <a href="<?= Url::to(['news/list','cid'=>4])?>">查看更多</a>
+                <a href="<?= Url::to(['news/list','cid'=>1])?>">查看更多</a>
             </div>
         </div>
     </div>

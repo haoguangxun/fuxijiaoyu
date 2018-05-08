@@ -14,10 +14,13 @@ class News extends \common\models\News
      */
     public static function getList($cid = null, $limit = 10, $offset = 0, $order = 'sort desc,id desc')
     {
+        //获取当前分类下所有新闻模型子类ID
+        $cids = Category::getModelSonCid($cid,1);
+
         return self::find()->alias('n')
             ->leftJoin('{{%news_data}} as d', 'n.id=d.id')
             ->orderBy($order)
-            ->andFilterWhere(['catid'=>$cid])
+            ->andFilterWhere(['in', 'catid', $cids])
             ->limit($limit)->offset($offset)
             ->asArray()->all();
 

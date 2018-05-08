@@ -38,6 +38,10 @@ $this->params['breadcrumbs'][] = $this->title;
                 'contentOptions'=>[
                     'width'=>'30%',
                 ],
+                'value' => function($model){
+                    return "<span title='$model->name'>".mb_substr($model->name,0,20,'utf-8')."</span>";
+                },
+                'format' => 'raw'
             ],
             [
                 'label' => '栏目',

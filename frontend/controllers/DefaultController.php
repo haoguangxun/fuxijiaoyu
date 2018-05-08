@@ -29,9 +29,9 @@ class DefaultController extends Controller
         //行业动态
         $industryTrendsPic = News::getList(4,1);
         $industryTrends = News::getList(4,3,1);
-        //最新动态
-        $newsTrendsPic = News::getList(8,1);
-        $newsTrends = News::getList(8,3,1);
+        //新闻动态
+        $newsTrendsPic = News::getList(1,1);
+        $newsTrends = News::getList(1,3,1);
         //轮播图
         $ad = Ad::getList(1);
 
@@ -40,8 +40,8 @@ class DefaultController extends Controller
             'curriculumSystem' => $curriculumSystem,
             'teacherList' => $teacherList,
             'studentExperience' => $studentExperience,
-            'industryTrendsPic' => $industryTrendsPic,
-            'industryTrends' => $industryTrends,
+            //'industryTrendsPic' => $industryTrendsPic,
+            //'industryTrends' => $industryTrends,
             'newsTrendsPic' => $newsTrendsPic,
             'newsTrends' => $newsTrends,
             'ad' => $ad,

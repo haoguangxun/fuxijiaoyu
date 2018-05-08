@@ -22,7 +22,10 @@ $this->params['breadcrumbs'][] = $this->title;
             'orderid',
             [
                 'label' => '课程名称',
-                'value' => 'course.name',
+                'value' => function($model){
+                    return '<span title='.$model->course["name"].'>'.mb_substr($model->course['name'],0,20,'utf-8')."</span>";
+                },
+                'format' => 'raw'
             ],
             'userid',
             [
